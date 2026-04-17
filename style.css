@@ -1,0 +1,1386 @@
+.revisi-terbaru,
+.revisi-terbaru * {
+  box-sizing: border-box;
+}
+.revisi-terbaru {
+  background: #f4f2ee;
+  height: 4168px;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  height: auto;
+  position: absolute;
+  left: -3px;
+  top: 33px;
+  overflow: visible;
+}
+.navbar {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-1 {
+  background: #ffffff;
+  width: 1451px;
+  height: 108px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.about-us {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 177.25px;
+  top: 40px;
+  width: 136.03px;
+  height: 27px;
+}
+.le-li-lu {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 41.22px;
+  top: 40px;
+  width: 136.03px;
+  height: 27px;
+}
+.portofolio {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 374.09px;
+  top: 40px;
+  width: 136.03px;
+  height: 27px;
+}
+.testimoni {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 570.92px;
+  top: 40px;
+  width: 136.03px;
+  height: 27px;
+}
+.rectangle-289 {
+  background: #d9d9d9;
+  width: 1.03px;
+  height: 100px;
+  position: absolute;
+  left: 139.12px;
+  top: 4px;
+}
+.category-mask {
+  height: auto;
+  position: absolute;
+  left: -3px;
+  top: 760px;
+  overflow: visible;
+}
+.desain-tanpa-judul-9-2 {
+  width: 1959.97px;
+  height: 979.99px;
+  position: absolute;
+  left: 757.32px;
+  top: 770px;
+  transform-origin: 0 0;
+  transform: rotate(86.663deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 1959.97/979.99;
+}
+.line-1 {
+  margin-top: -10px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 10px 0 0 0;
+  width: 132px;
+  height: 0px;
+  position: absolute;
+  left: 1417px;
+  top: 125px;
+  transform-origin: 0 0;
+  transform: rotate(180deg) scale(1, 1);
+}
+.line-2 {
+  margin-top: -10px;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 10px 0 0 0;
+  width: 9px;
+  height: 0px;
+  position: absolute;
+  left: 1268px;
+  top: 125px;
+  transform-origin: 0 0;
+  transform: rotate(180deg) scale(1, 1);
+}
+.rectangle-390 {
+  background: #ffffff;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #6c5c5c;
+  border-width: 0.5px;
+  width: 186px;
+  height: 55px;
+  position: absolute;
+  left: 76px;
+  top: 591px;
+}
+.rectangle-391 {
+  background: #403b2b;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #6c5c5c;
+  border-width: 0.5px;
+  width: 336px;
+  height: 55px;
+  position: absolute;
+  left: 293px;
+  top: 591px;
+}
+.group-9 {
+  position: absolute;
+  inset: 0;
+}
+.order-now {
+  color: #312c2c;
+  text-align: center;
+  font-family: "Poppins-Black", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  position: absolute;
+  left: 16px;
+  top: 600px;
+  width: 303px;
+  height: 41px;
+}
+.log-in-with-google {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Poppins-Italic", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: italic;
+  position: absolute;
+  left: 309px;
+  top: 600px;
+  width: 335px;
+  height: 41px;
+}
+.material-icon-theme-google {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  left: 314px;
+  top: 602px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.group {
+  width: 84.45%;
+  height: 87.46%;
+  position: absolute;
+  right: 7.74%;
+  left: 7.81%;
+  bottom: 6.29%;
+  top: 6.25%;
+  overflow: visible;
+}
+.rectangle-394 {
+  background: linear-gradient(
+    89.97deg,
+    rgba(254, 214, 21, 1) 0%,
+    rgba(255, 237, 148, 1) 100%
+  );
+  border-radius: 20px;
+  width: 1393px;
+  height: 905px;
+  position: absolute;
+  left: 204px;
+  top: calc(50% - 633px);
+}
+.group-37 {
+  position: absolute;
+  inset: 0;
+}
+.group-13 {
+  width: 411.37px;
+  height: 260.5px;
+  position: static;
+}
+.rectangle-333 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 248px;
+  top: calc(50% - 507px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 273px;
+  top: calc(50% - 488px);
+  width: 277px;
+  height: 141px;
+}
+.kibutsuji-muzan-muzan-12 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 338px;
+  top: calc(50% - 302px);
+  width: 268px;
+  height: 28.11px;
+}
+.kibutsuji-muzan-muzan-12-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.kibutsuji-muzan-muzan-12-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-5 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 273px;
+  top: 1772px;
+  object-fit: cover;
+}
+.ellipse-6 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 310px;
+  top: 1806px;
+}
+.div {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 313px;
+  top: 1803px;
+  width: 10px;
+  height: 22px;
+}
+.vector-14 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 340px;
+  top: 1807.5px;
+  overflow: visible;
+}
+.rectangle-3332 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 248px;
+  top: calc(50% - -92.01px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-ut-enim-ad-minim-veniam-quis-nostrud-exercitation-ullamco-laboris-nisi-ut-aliquip-ex-ea-commodo-consequat {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 273px;
+  top: calc(50% - -111.01px);
+  width: 307px;
+  height: 141px;
+}
+.christofer-chh-2008 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 338px;
+  top: calc(50% - -297.01px);
+  width: 268px;
+  height: 28.11px;
+}
+.christofer-chh-2008-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.christofer-chh-2008-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-52 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 273px;
+  top: 2371.01px;
+  object-fit: cover;
+}
+.ellipse-62 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 310px;
+  top: 2405.01px;
+}
+.div2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 313px;
+  top: 2402.01px;
+  width: 10px;
+  height: 22px;
+}
+.vector-142 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 340px;
+  top: 2406.51px;
+  overflow: visible;
+}
+.rectangle-3333 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 249px;
+  top: calc(50% - 207.5px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.kentanggoreng-kentang-123 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 339px;
+  top: calc(50% - 2.5px);
+  width: 268px;
+  height: 28.11px;
+}
+.kentanggoreng-kentang-123-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.kentanggoreng-kentang-123-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-53 {
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 274px;
+  top: 2071.5px;
+  object-fit: cover;
+}
+.ellipse-63 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 311px;
+  top: 2105.5px;
+}
+.div3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 314px;
+  top: 2102.5px;
+  width: 10px;
+  height: 22px;
+}
+.vector-143 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 341px;
+  top: 2107px;
+  overflow: visible;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-ut-enim-ad-minim-veniam {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 274px;
+  top: calc(50% - 188.5px);
+  width: 307px;
+  height: 141px;
+}
+.group-38 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-3334 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 718px;
+  top: calc(50% - 507px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua2 {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 743px;
+  top: calc(50% - 488px);
+  width: 277px;
+  height: 141px;
+}
+.kibutsuji-muzan-muzan-122 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 808px;
+  top: calc(50% - 302px);
+  width: 268px;
+  height: 28.11px;
+}
+.kibutsuji-muzan-muzan-122-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.kibutsuji-muzan-muzan-122-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-54 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 743px;
+  top: 1772px;
+  object-fit: cover;
+}
+.ellipse-64 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 780px;
+  top: 1806px;
+}
+.div4 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 783px;
+  top: 1803px;
+  width: 10px;
+  height: 22px;
+}
+.vector-144 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 810px;
+  top: 1807.5px;
+  overflow: visible;
+}
+.rectangle-3335 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 718px;
+  top: calc(50% - -92.01px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-ut-enim-ad-minim-veniam-quis-nostrud-exercitation-ullamco-laboris-nisi-ut-aliquip-ex-ea-commodo-consequat2 {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 743px;
+  top: calc(50% - -111.01px);
+  width: 307px;
+  height: 141px;
+}
+.christofer-chh-20082 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 808px;
+  top: calc(50% - -297.01px);
+  width: 268px;
+  height: 28.11px;
+}
+.christofer-chh-20082-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.christofer-chh-20082-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-55 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 743px;
+  top: 2371.01px;
+  object-fit: cover;
+}
+.ellipse-65 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 780px;
+  top: 2405.01px;
+}
+.div5 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 783px;
+  top: 2402.01px;
+  width: 10px;
+  height: 22px;
+}
+.vector-145 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 810px;
+  top: 2406.51px;
+  overflow: visible;
+}
+.rectangle-3336 {
+  background: #fdfdfd;
+  border-radius: 10px;
+  width: 411.37px;
+  height: 260.5px;
+  position: absolute;
+  left: 719px;
+  top: calc(50% - 207.5px);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.kentanggoreng-kentang-1232 {
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 809px;
+  top: calc(50% - 2.5px);
+  width: 268px;
+  height: 28.11px;
+}
+.kentanggoreng-kentang-1232-span {
+  color: #473c3b;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.kentanggoreng-kentang-1232-span2 {
+  color: #9f9f9f;
+  font-family: "Poppins-Italic", sans-serif;
+  font-style: italic;
+}
+.ellipse-56 {
+  border-radius: 50%;
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  left: 744px;
+  top: 2071.5px;
+  object-fit: cover;
+}
+.ellipse-66 {
+  background: #4d4dff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  left: 781px;
+  top: 2105.5px;
+}
+.div6 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  position: absolute;
+  left: 784px;
+  top: 2102.5px;
+  width: 10px;
+  height: 22px;
+}
+.vector-146 {
+  border-radius: 0px;
+  width: 230.5px;
+  height: 0px;
+  position: absolute;
+  left: 811px;
+  top: 2107px;
+  overflow: visible;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-ut-enim-ad-minim-veniam2 {
+  color: #312c2c;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  left: 744px;
+  top: calc(50% - 188.5px);
+  width: 307px;
+  height: 141px;
+}
+.group-16 {
+  height: auto;
+  position: absolute;
+  left: -166px;
+  top: 3546px;
+  overflow: visible;
+}
+.le-li-lu2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 64px;
+  font-weight: 600;
+  position: absolute;
+  left: 35px;
+  top: 3644px;
+  width: 338px;
+  height: 72px;
+}
+.bantuan-dukungan {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 35px;
+  top: 3826px;
+  width: 259px;
+  height: 35px;
+}
+.layanan-informasi {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 362px;
+  top: 3826px;
+  width: 251px;
+  height: 35px;
+}
+.hubungi-kami-pusat-bantuan-syarat-ketentuan-kebijakan-privasi {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 35px;
+  top: 3884px;
+  width: 226px;
+  height: 204px;
+}
+.pemesanan-online-informasi-testimoni-jasa-desain-customer-services {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 362px;
+  top: 3881px;
+  width: 231px;
+  height: 204px;
+}
+.tentang-kami {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 681px;
+  top: 3826px;
+  width: 170px;
+  height: 35px;
+}
+.tentang-le-li-lu-karier-partner-kerja-sama-kontak-kami {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 681px;
+  top: 3881px;
+  width: 248px;
+  height: 204px;
+}
+.cara-daftar-akun-cara-pemesanan-online-panduan-pembayaran-informasi-lainnya {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 939px;
+  top: 3873px;
+  width: 285px;
+  height: 203px;
+}
+.panduan-pengguna {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 939px;
+  top: 3826px;
+  width: 239px;
+  height: 35px;
+}
+.desain-tanpa-judul-9-22 {
+  width: 1424.98px;
+  height: 712.49px;
+  position: absolute;
+  left: 96px;
+  top: 3793.33px;
+  transform-origin: 0 0;
+  transform: rotate(-8.407deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 2/1;
+}
+.group-19 {
+  position: absolute;
+  inset: 0;
+}
+.see-more {
+  color: #000000;
+  text-align: center;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 1136px;
+  top: 827px;
+  width: 262px;
+  height: 39px;
+}
+.vector-6 {
+  width: 148px;
+  height: 0px;
+  position: absolute;
+  left: 1181px;
+  top: 866px;
+  overflow: visible;
+}
+.rectangle-4 {
+  background: #ffd951;
+  border-radius: 25px;
+  width: 10.56%;
+  height: 1.15%;
+  position: absolute;
+  right: 6.18%;
+  left: 83.26%;
+  bottom: 98.13%;
+  top: 0.72%;
+  box-shadow: 0px 4px 7px 0px rgba(255, 234, 157, 0.5);
+}
+.log-in {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  right: 9.61%;
+  left: 86.7%;
+  width: 3.69%;
+  bottom: 98.34%;
+  top: 1.01%;
+  height: 0.65%;
+}
+.rectangle-28 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 20px;
+  width: 735px;
+  height: 368px;
+  position: absolute;
+  left: -137px;
+  top: 925px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25),
+    inset 0px -150px 50px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+.rectangle-395 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 20px;
+  width: 371px;
+  height: 368px;
+  position: absolute;
+  left: 651px;
+  top: 925px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25),
+    inset 0px -150px 50px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+.rectangle-397 {
+  background: linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 20px;
+  width: 371px;
+  height: 368px;
+  position: absolute;
+  left: 1391px;
+  top: 929px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25),
+    inset 0px -150px 50px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+.rectangle-396 {
+  background: linear-gradient(to left, #c4c4c4, #c4c4c4),
+    linear-gradient(to left, #d9d9d9, #d9d9d9);
+  border-radius: 20px;
+  width: 245px;
+  height: 368px;
+  position: absolute;
+  left: 1084px;
+  top: 925px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25),
+    inset 0px -150px 50px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+.banner-19-6 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 300;
+  position: absolute;
+  left: calc(50% - 829px);
+  top: 1229px;
+  width: 404px;
+  height: 127px;
+}
+.banner-1-1 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 300;
+  position: absolute;
+  left: calc(50% - 60px);
+  top: 1229px;
+  width: 240px;
+}
+.banner-4-5 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 300;
+  position: absolute;
+  left: calc(50% - -380px);
+  top: 1177px;
+  width: 240px;
+}
+.banner-3-45 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 300;
+  position: absolute;
+  left: calc(50% - -682px);
+  top: 1177px;
+  width: 240px;
+}
+.testimoni2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Black", sans-serif;
+  font-size: 48px;
+  line-height: 88px;
+  font-weight: 900;
+  position: absolute;
+  left: 279px;
+  top: 1487px;
+  width: 632px;
+  height: 90px;
+}
+.see-more2 {
+  color: #000000;
+  text-align: center;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 1119px;
+  top: 1491px;
+  width: 268px;
+  height: 40px;
+}
+.vector-7 {
+  width: 148px;
+  height: 0px;
+  position: absolute;
+  left: 1175px;
+  top: 1543px;
+  transform: translate(0px, -0.5px);
+  overflow: visible;
+}
+.group-28 {
+  position: absolute;
+  inset: 0;
+}
+.firefly-gift-of-odyssey-2-3-2 {
+  width: 805px;
+  height: 766px;
+  position: absolute;
+  left: 22px;
+  top: 2691px;
+  object-fit: cover;
+  aspect-ratio: 805/766;
+}
+.rectangle-340 {
+  background: #f4f2ee;
+  width: 772px;
+  height: 264px;
+  position: absolute;
+  left: 53px;
+  top: 3241px;
+  filter: blur(2px);
+}
+.siapa-kami {
+  text-align: center;
+  font-family: "-", sans-serif;
+  font-size: 64px;
+  line-height: 88px;
+  font-weight: 400;
+  position: absolute;
+  left: 59px;
+  top: 2539px;
+  width: 474px;
+  height: 90px;
+}
+.siapa-kami-span {
+  color: #000000;
+  font-family: "Poppins-Black", sans-serif;
+  font-weight: 900;
+}
+.siapa-kami-span2 {
+  color: #fed615;
+  font-family: "Poppins-SemiBoldItalic", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+.siapa-kami-span3 {
+  color: #fed615;
+  font-family: "Poppins-Black", sans-serif;
+  font-weight: 900;
+}
+.line-4 {
+  margin-top: -10px;
+  border-style: solid;
+  border-color: #fed615;
+  border-width: 10px 0 0 0;
+  width: 703px;
+  height: 0px;
+  position: absolute;
+  left: 1238px;
+  top: 2584px;
+  transform-origin: 0 0;
+  transform: rotate(180deg) scale(1, 1);
+}
+.rectangle-392 {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 732px;
+  height: 148px;
+  position: absolute;
+  left: 59px;
+  top: 3361px;
+}
+.group-12 {
+  width: 632px;
+  height: 84px;
+  position: static;
+}
+.project-selesai {
+  color: #414141;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 120px;
+  top: 3430px;
+}
+._19-jt {
+  color: #e6ab07;
+  text-align: center;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: 132px;
+  top: 3379px;
+}
+._67 {
+  color: #e6ab07;
+  text-align: center;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: 308px;
+  top: 3379px;
+}
+.klien-puas {
+  color: #414141;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 308px;
+  top: 3430px;
+}
+._76 {
+  color: #e6ab07;
+  text-align: center;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: 496px;
+  top: 3379px;
+}
+.klien-aktif {
+  color: #414141;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 492px;
+  top: 3430px;
+}
+._3 {
+  color: #e6ab07;
+  text-align: center;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: 671px;
+  top: 3379px;
+}
+.tahun-pengalaman {
+  color: #414141;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: 500;
+  position: absolute;
+  left: 641px;
+  top: 3435px;
+  width: 111px;
+}
+.group-11 {
+  width: 582px;
+  height: 854px;
+  position: static;
+}
+.rectangle-298 {
+  background: #fdfdfd;
+  border-radius: 20px;
+  width: 582px;
+  height: 470px;
+  position: absolute;
+  left: 826px;
+  top: 3058px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.rectangle-317 {
+  background: #fed615;
+  border-radius: 10px;
+  width: 52px;
+  height: 50px;
+  position: absolute;
+  left: 871px;
+  top: 3102px;
+  box-shadow: 0px 8px 15px 0px rgba(250, 254, 21, 0.45);
+}
+.rectangle-337 {
+  background: #fed615;
+  border-radius: 10px;
+  width: 52px;
+  height: 51px;
+  position: absolute;
+  left: 871px;
+  top: 3196px;
+  box-shadow: 0px 8px 15px 0px rgba(250, 254, 21, 0.45);
+}
+.rectangle-338 {
+  background: #fed615;
+  border-radius: 10px;
+  width: 52px;
+  height: 50px;
+  position: absolute;
+  left: 872px;
+  top: 3294px;
+  box-shadow: 0px 8px 15px 0px rgba(250, 254, 21, 0.45);
+}
+.rectangle-339 {
+  background: #fed615;
+  border-radius: 10px;
+  width: 52px;
+  height: 51px;
+  position: absolute;
+  left: 871px;
+  top: 3398px;
+  box-shadow: 0px 8px 15px 0px rgba(250, 254, 21, 0.45);
+}
+.profesional-tim-berpengalaman-dan-tersertifikasi-di-bidangnya {
+  color: #473c3b;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 955px;
+  top: 3102px;
+  width: 445px;
+  height: 93px;
+}
+.profesional-tim-berpengalaman-dan-tersertifikasi-di-bidangnya-span {
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.profesional-tim-berpengalaman-dan-tersertifikasi-di-bidangnya-span2 {
+  font-family: "Poppins-Medium", sans-serif;
+  font-weight: 500;
+}
+.cepat-proses-pengerjaan-yang-efisien-tanpa-mengorbankan-kualitas {
+  color: #473c3b;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 953px;
+  top: 3198px;
+  width: 445px;
+  height: 93px;
+}
+.cepat-proses-pengerjaan-yang-efisien-tanpa-mengorbankan-kualitas-span {
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.cepat-proses-pengerjaan-yang-efisien-tanpa-mengorbankan-kualitas-span2 {
+  font-family: "Poppins-Medium", sans-serif;
+  font-weight: 500;
+}
+.berkualitas-standar-kerja-tinggi-dengan-hasil-yang-memuaskan {
+  color: #473c3b;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 955px;
+  top: 3291px;
+  width: 445px;
+  height: 94px;
+}
+.berkualitas-standar-kerja-tinggi-dengan-hasil-yang-memuaskan-span {
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.berkualitas-standar-kerja-tinggi-dengan-hasil-yang-memuaskan-span2 {
+  font-family: "Poppins-Medium", sans-serif;
+  font-weight: 500;
+}
+.terpercaya-transparan-amanah-dan-bertanggung-jawab {
+  color: #473c3b;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 955px;
+  top: 3398px;
+  width: 445px;
+  height: 93px;
+}
+.terpercaya-transparan-amanah-dan-bertanggung-jawab-span {
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-weight: 600;
+}
+.terpercaya-transparan-amanah-dan-bertanggung-jawab-span2 {
+  font-family: "Poppins-Medium", sans-serif;
+  font-weight: 500;
+}
+.partner-terpercaya-untuk-solusi-digital-anda {
+  color: #473c3b;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 55px;
+  font-weight: 700;
+  position: absolute;
+  left: 843px;
+  top: 2674px;
+  width: 557px;
+  height: 166px;
+}
+.le-li-lu-memberikan-layanan-digital-cepat-efisien-dan-berkualitas-dengan-tim-profesional-dan-tingkat-kepuasan-98-kami-fokus-memberikan-hasil-terbaik-sekaligus-membangun-hubungan-jangka-panjang-bagi-setiap-klien {
+  color: #473c3b;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 843px;
+  top: 2796px;
+  width: 527px;
+  height: 216px;
+}
+.frame {
+  width: 23px;
+  height: 24px;
+  position: absolute;
+  left: 885px;
+  top: 3115px;
+  overflow: visible;
+}
+.frame2 {
+  width: 23px;
+  height: 25px;
+  position: absolute;
+  left: 885px;
+  top: 3209px;
+  overflow: visible;
+}
+.frame3 {
+  width: 23px;
+  height: 24px;
+  position: absolute;
+  left: 887px;
+  top: 3304px;
+  overflow: visible;
+}
+.frame4 {
+  width: 23px;
+  height: 25px;
+  position: absolute;
+  left: 885px;
+  top: 3411px;
+  overflow: visible;
+}
