@@ -63,11 +63,12 @@
                     <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
                     <a href="#portfolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
                     <a href="#testimoni" class="text-gray-600 hover:text-black font-medium transition-colors">Testimoni</a>
+                    <a href="#" class="text-gray-600 hover:text-black font-medium transition-colors">Home</a>
                 </div>
             </div>
             <div class="flex items-center">
-                <button class="bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</button>
-                <button class="md:hidden ml-4 text-gray-600">
+                <a href="login"><button class="bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</button>
+                <button class="md:hidden ml-4 text-gray-600"></a>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
@@ -93,8 +94,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="relative lg:h-[600px] flex items-center justify-center fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="turbo.jpeg" alt="Ilustrasi Kucing" class="object-contain drop-shadow-2xl w-full max-w-lg lg:max-w-xl">
+                <div class="absolute -top-[5rem] right-0 lg:h-full flex items-center justify-center fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="{{ asset('Image/hero-image.png') }}" alt="Ilustrasi Kucing" class=" h-full">
                 </div>
             </div>
         </div>
@@ -143,6 +144,7 @@
 
     <!-- ================= TESTIMONI SECTION ================= -->
     <section id="testimoni" class="py-24 bg-[#F9F5F0] relative overflow-hidden">
+        <img src="{{ asset('Image/titik.png') }}" alt="Titik" class="absolute top-0 left-0 h-full">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
              style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;">
         </div>
@@ -162,8 +164,14 @@
                             <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                <div><h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4><span class="text-xs text-gray-400">@muzan12</span></div>
-                                <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm flex items-center gap-1">
+                                        Kibutsuji Muzan
+                                        <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>    
+                                    </h4>
+                                    <span class="text-xs text-gray-400">@muzan12</span>
+                                </div>
+                                
                             </div>
                         </div>
                         <!-- Card 2 -->
@@ -171,7 +179,9 @@
                             <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris..."</p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                <div><h4 class="font-bold text-gray-900 text-sm">Christofer</h4><span class="text-xs text-gray-400">@chh_2008</span></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Christofer</h4><span class="text-xs text-gray-400">@chh_2008</span>
+                                </div>
                                 <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
                             </div>
                         </div>
@@ -217,7 +227,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <!-- Left: Image & Stats -->
                 <div class="lg:col-span-7 relative reveal delay-100">
-                    <img src="Firefly.webp" onerror="this.src='https://placehold.co/800x600?text=About+Image'" class="w-full h-auto object-cover block rounded-xl shadow-sm">
+                    <img src="{{ asset('image/Firefly.webp') }}" class="w-full h-auto object-cover block rounded-xl shadow-sm">
                     <div class="absolute -bottom-6 left-4 right-4 md:left-8 md:right-auto md:w-[90%] bg-white p-6 rounded-xl shadow-2xl flex justify-between items-center z-20 border border-gray-100 flex-wrap gap-4">
                         <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">19Jt</p><p class="text-xs text-gray-500">Project Selesai</p></div>
                         <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">67%</p><p class="text-xs text-gray-500">Klien Puas</p></div>
@@ -296,10 +306,9 @@
     </section>
 
     <!-- ================= FOOTER BARU (REVISI: GELAMBANG SAMA) ================= -->'
-             
+    <footer class="relative">
         <!-- Gelombang Kuning Tebal di Paling Bawah (Menggunakan SVG yang sama tapi di-rotate/diposisikan di bottom) -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0">  
-        </div>
+        <img src="{{ asset('Image/wave.png') }}" alt="Wave" class="absolute -bottom-[2rem] left-0 w-full overflow-hidden leading-none z-0">
 
         <!-- Dekorasi Halftone Dot Pattern di Kanan Bawah (Di atas kuning, di dalam area hitam) -->
         <div class="absolute bottom-20 right-0 w-96 h-96 opacity-20 pointer-events-none z-0">
@@ -311,7 +320,7 @@
             </svg>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem]">
             
             <!-- Logo -->
             <div class="mb-12">
@@ -319,7 +328,7 @@
             </div>
 
             <!-- Grid Links -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 text-sm">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
                 
                 <!-- Kolom 1 -->
                 <div>
@@ -371,4 +380,3 @@
 
 </body>
 </html>
-
