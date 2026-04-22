@@ -60,14 +60,14 @@
                 <a href="#" class="text-xl md:text-2xl font-bold tracking-tight text-gray-900">LeLiLu</a>
                 <div class="h-8 w-[1px] bg-gray-200 hidden md:block"></div>
                 <div class="hidden md:flex space-x-8 items-center ml-2">
-                    <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
+                    <a href="#" class="text-gray-600 hover:text-black font-medium transition-colors">Home</a>
                     <a href="#portfolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
                     <a href="#testimoni" class="text-gray-600 hover:text-black font-medium transition-colors">Testimoni</a>
-                    <a href="#" class="text-gray-600 hover:text-black font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
                 </div>
             </div>
             <div class="flex items-center">
-                <a href="login"><button class="bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</button>
+                <a href="/login"><button class="bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</button>
                 <button class="md:hidden ml-4 text-gray-600"></a>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
