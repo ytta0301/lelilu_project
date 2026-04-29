@@ -15,16 +15,16 @@
 </head>
 <body class="bg-yellow-400 min-h-screen flex items-center justify-center p-4">
 
-    <div class="bg-white rounded-3xl overflow-hidden flex flex-col md:flex-row max-w-4xl w-full custom-shadow">
+    <div class="bg-white rounded-[50px] overflow-hidden flex flex-col md:flex-row max-w-3x1 w-50 h-50 custom-shadow">
         
         <div class="relative min-h-[300px]">
             <div class="absolute top-8 left-8 z-10">
                 <h1 class="text-white text-3xl font-bold tracking-wider drop-shadow-md">LeLiLu</h1>
             </div>
-            <img src="{{ asset('image/bunga.png') }}" alt="" class="w-full h-full object-cover">
+            <img src="{{ asset('image/bunga.png') }}" alt="" class="w-50 h-50 object-cover">
         </div>
 
-        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <div class="md:w-1/2 px-8 md:px-12 flex flex-col justify-center">
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-800">Selamat Datang <span class="text-yellow-500 italic">Kembali</span></h2>
                 <div class="h-1.5 w-24 bg-yellow-400 mt-1 rounded-full"></div>
@@ -33,8 +33,8 @@
 
             <form action="#" class="space-y-4">
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-1">Email</label>
-                    <input type="email" placeholder="Email anda" 
+                    <label class="block text-gray-700 font-semibold mb-1">Nomor WhatsApp</label>
+                    <input type="text" placeholder="Nomor WhatsApp anda" 
                            class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
                 </div>
 
@@ -66,13 +66,15 @@
                 </div>
 
                 <div class="flex gap-3">
-                    <button type="button" class="flex-1 border border-gray-300 py-2.5 rounded-lg text-gray-500 font-medium hover:bg-gray-50">Kembali</button>
-                    <button type="submit" class="flex-1 bg-yellow-400 py-2.5 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition">Masuk Ke Akun</button>
+                    <a href="/" type="button" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto">
+                        Kembali
+                    </a>
+                    <a href="/dashbord" type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">Masuk Ke Akun</a>
                 </div>
             </form>
 
             <p class="text-center mt-8 text-sm text-gray-600">
-                Belum punya akun? <a href="#" class="text-yellow-500 font-bold hover:underline">Daftar Sekarang</a>
+                Belum punya akun? <a href="/register" class="text-yellow-500 font-bold hover:underline">Daftar Sekarang</a>
             </p>
         </div>
     </div>
