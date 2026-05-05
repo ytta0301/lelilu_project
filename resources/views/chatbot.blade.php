@@ -163,7 +163,7 @@
             color: #333;
             padding: 12px 16px;
             border-radius: 18px 18px 18px 4px;
-            max-width: 70%;
+            max-width: 100%;
             font-size: 14px;
             line-height: 1.6;
             word-wrap: break-word;
@@ -370,7 +370,7 @@
                     </div>
                 @endforeach
             @else
-                <div class="empty-state">"" Mulai percakapan...</div>
+                <div class="empty-state">Mulai percakapan...</div>
             @endif
         </div>
 
@@ -407,7 +407,7 @@
                 </form>
                 <div class="powered-by">
                     <span>Powered By:</span>
-                    <div class="gemini-badge">✨ Gemini</div>
+                    <div class="gemini-badge"><img src="{{ asset('images/google-gemini-icon.webp') }}" height="13px" width="13px"> Gemini</div>
                 </div>
             </div>
         </div>
