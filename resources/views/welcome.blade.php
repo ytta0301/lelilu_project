@@ -61,9 +61,10 @@
                 <div class="h-8 w-[1px] bg-gray-200 hidden md:block"></div>
                 <div class="hidden md:flex space-x-8 items-center ml-2">
                     <a href="#" class="text-gray-600 hover:text-black font-medium transition-colors">Home</a>
-                    <a href="#portfolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
+                    <a href="/portofolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
                     <a href="#testimoni" class="text-gray-600 hover:text-black font-medium transition-colors">Testimoni</a>
                     <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
+                    <a href="/chatbot" class="text-gray-600 hover:text-black font-medium transition-colors">AI</a>
                 </div>
             </div>
             <div class="flex items-center">
@@ -87,7 +88,7 @@
                         <span class="font-handwriting text-white italic text-6xl md:text-8xl lg:text-9xl block mt-2 drop-shadow-md">terbaik</span>
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button>
+                        <a href="/order"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
                         <button class="bg-[#202124] text-white font-medium py-3 px-8 rounded-full shadow-lg hover:bg-black transition flex items-center justify-center gap-3">
                             <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             Log in with Google
@@ -107,7 +108,7 @@
     </section>
 
     <!-- ================= BEST SELLER SECTION ================= -->
-    <section id="portfolio" class="py-20 bg-[#FAFAFA] relative overflow-hidden">
+     <section id="portfolio" class="py-20 bg-[#FAFAFA] relative overflow-hidden">
         <div class="absolute bottom-0 right-0 w-64 h-64 opacity-20 pointer-events-none">
              <svg width="100%" height="100%" viewBox="0 0 200 200"><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#FFD700"></circle></pattern><rect width="100%" height="100%" fill="url(#dots)"></rect></svg>
         </div>
@@ -120,25 +121,59 @@
                 </div>
                 <a href="#" class="text-gray-800 font-semibold hover:text-[#FFD700] transition flex items-center gap-1 group">See More <span class="transform group-hover:translate-x-1 transition-transform">&gt;</span></a>
             </div>
+            
             <div class="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory fade-in-up" style="animation-delay: 0.2s;">
+                
+                <!-- ITEM 1: Dengan Pop-up Detail -->
                 <div class="min-w-[300px] md:min-w-[450px] snap-center cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-[250px] object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent"><p class="text-white font-bold text-lg">Banner 19:6</p></div>
+                    
+                    <!-- POP UP CONTENT (Hanya muncul di Best Seller) -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-center">
+                            <h3 class="font-bold text-gray-900">Banner Promosi</h3>
+                            <p class="text-xs text-gray-500 mt-1">Ukuran 19:6 | High Res</p>
+                            <span class="inline-block mt-2 text-[#FFD700] font-bold text-sm">Rp 150.000</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ITEM 2: Dengan Pop-up Detail -->
                 <div class="min-w-[250px] md:min-w-[300px] snap-center cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                     <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-[250px] object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent"><p class="text-white font-bold text-lg">Banner 1:1</p></div>
+                    
+                    <!-- POP UP CONTENT -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-center">
+                            <h3 class="font-bold text-gray-900">Feed Instagram</h3>
+                            <p class="text-xs text-gray-500 mt-1">Ukuran 1:1 | Estetik</p>
+                            <span class="inline-block mt-2 text-[#FFD700] font-bold text-sm">Rp 50.000</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ITEM 3: Dengan Pop-up Detail -->
                 <div class="min-w-[200px] md:min-w-[240px] snap-center cursor-pointer group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                     <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-[250px] object-cover transform group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent"><p class="text-white font-bold text-lg">Banner 4:5</p></div>
+                    
+                    <!-- POP UP CONTENT -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-center">
+                            <h3 class="font-bold text-gray-900">Story IG</h3>
+                            <p class="text-xs text-gray-500 mt-1">Ukuran 4:5 | Interaktif</p>
+                            <span class="inline-block mt-2 text-[#FFD700] font-bold text-sm">Rp 35.000</span>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
         
-        <!-- WAVE DIVIDER (Portfolio to Testimoni) -->
+        <!-- WAVE DIVIDER -->
         <div class="custom-wave-container wave-divider">
-            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#F9F5F0" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
         </div>
     </section>
 
@@ -156,7 +191,7 @@
                 <div class="lg:col-span-9 bg-[#FFD700] rounded-[3rem] p-8 md:p-12 shadow-xl relative overflow-hidden fade-in-up">
                     <div class="flex justify-between items-end mb-10 border-b border-black/10 pb-6">
                         <h2 class="text-4xl md:text-5xl font-bold text-black font-poppins">Testimoni</h2>
-                        <a href="#" class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">See More <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&gt;</span></a>
+                        <a href="/testimoni" class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">See More <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&gt;</span></a>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Card 1 -->

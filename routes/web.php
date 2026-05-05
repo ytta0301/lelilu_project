@@ -14,7 +14,32 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/dashbord', function () {
     return view('dashbord.dashbord'); // Folder.NamaFile
+});
+
+Route::get('/order', function () {
+    return view('order.order'); // Folder.NamaFile
+});
+
+Route::get('/payment', function () {
+    return view('payment.payment'); // Folder.NamaFile
+});
+
+Route::get('/admin', function () {
+    return view('admin.admin'); // Folder.NamaFile
+});
+
+Route::get('/history', function () {
+    return view('history.history'); // Folder.NamaFile
+});
+
+Route::get('/portofolio', function () {
+    return view('portofolio.portofolio'); // Folder.NamaFile
+});
+
+Route::get('/testimoni', function () {
+    return view('testimoni.testimoni'); // Folder.NamaFile
 });
 

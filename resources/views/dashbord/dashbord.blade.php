@@ -1,991 +1,725 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeLiLu – Portofolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeLilu - Desain & Ilustrasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
+        :root {
+            --primary-yellow: #F7D038;
+            --dark-gray: #333333;
+            --light-bg: #F8F9FA;
+            --text-dark: #2C2C2C;
+            --text-muted: #888888;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-        }
-
-        :root {
-            --yellow: #F5C518;
-            --yellow-dark: #e0b000;
-            --cream: #F0EDE6;
-            --dark: #111111;
-            --gray: #888;
-            --white: #ffffff;
-            --radius: 16px;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
-        }
-
-        html {
-            scroll-behavior: smooth;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--dark);
+            color: var(--text-dark);
+            background-color: #FFFFFF;
         }
 
-        /* ══════════════════ NAV ══════════════════ */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===================== */
+        /*        NAVBAR         */
+        /* ===================== */
         nav {
-            background: var(--white);
             display: flex;
-            align-items: stretch;
-            border-bottom: 1.5px solid #e8e8e8;
-            position: sticky;
-            top: 0;
-            z-index: 200;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 32px;
+            height: 68px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #EAEAEA;
         }
 
-        .nav-logo {
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 700;
-            font-size: 1.15rem;
-            padding: 0 28px;
+        .nav-left {
             display: flex;
             align-items: center;
-            border-right: 1.5px solid #e8e8e8;
-            letter-spacing: -0.3px;
         }
 
-        .nav-links {
+        nav .logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 28px;
+            background-color: #D0D0D0;
+            margin: 0 24px;
+        }
+
+        nav .nav-links {
             display: flex;
+            gap: 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
             list-style: none;
         }
 
-        .nav-links li a {
-            display: block;
-            padding: 20px 26px;
-            text-decoration: none;
-            color: #444;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-bottom: 3px solid transparent;
-            transition: color .2s, border-color .2s;
+        nav .nav-links a {
+            color: #555555;
+            transition: color 0.2s;
         }
 
-        .nav-links li a:hover,
-        .nav-links li a.active {
-            color: var(--dark);
-            border-bottom-color: var(--dark);
+        nav .nav-links a:hover {
+            color: var(--text-dark);
         }
 
-        /* ══════════════════ BREADCRUMB ══════════════════ */
-        .breadcrumb {
-            padding: 10px 48px;
-            font-size: 0.82rem;
-            color: var(--gray);
-            background: var(--white);
-            border-bottom: 1px solid #ebebeb;
-        }
-
-        .breadcrumb a {
-            color: var(--yellow-dark);
-            text-decoration: none;
+        nav .nav-links a.active {
+            color: var(--text-dark);
             font-weight: 600;
         }
 
-        .breadcrumb span {
-            margin: 0 5px;
-            color: #bbb;
-        }
-
-        /* ══════════════════ HERO / PORTFOLIO ══════════════════ */
-        .portfolio-section {
-            padding: 32px 48px 0;
-            position: relative;
-        }
-
-        .portofolio-wave {
-            z-index: -10;
-            position: absolute;
-            top: -5rem;
-            left: 0;
-            width: 100%;
-        }
-
-        .portfolio-top {
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
+            gap: 12px;
         }
 
-        .search-wrap {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 300px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
-        }
-
-        .search-wrap input {
-            border: none;
-            outline: none;
-            font-family: 'DM Sans', sans-serif;
+        .nav-username {
+            font-weight: 600;
             font-size: 0.9rem;
-            color: #aaa;
-            flex: 1;
-            background: transparent;
+            color: var(--text-dark);
         }
 
-        .search-wrap svg {
-            flex-shrink: 0;
-            opacity: .4;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 28px;
-        }
-
-        .filter-tabs button {
-            background: none;
+        .btn-logout {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
             border: none;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            padding-bottom: 4px;
-            border-bottom: 2.5px solid transparent;
-            transition: all .2s;
-        }
-
-        .filter-tabs button.active {
-            color: var(--dark);
-            border-bottom-color: var(--dark);
+            border-radius: 999px;
+            padding: 10px 22px;
+            font-size: 0.9rem;
             font-weight: 700;
-        }
-
-        .filter-tabs button:hover {
-            color: var(--dark);
-        }
-
-        /* ── Cards container ── */
-        .cards-bg {
-            border-radius: 28px 28px 0 0;
-            padding: 36px 40px 40px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform .25s, box-shadow .25s;
+            font-family: 'Poppins', sans-serif;
             cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.13);
+        .btn-logout:hover {
+            background-color: #e6c000;
         }
 
-        .card-img {
-            width: 100%;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-            display: block;
-            background: #ddd;
+        .btn-logout:active {
+            transform: scale(0.97);
         }
 
-        .card-body {
-            padding: 18px 20px 20px;
-            flex: 1;
+        /* Welcome Section */
+        .welcome-section {
+            background-color: var(--light-bg);
+            padding: 40px 5% 0 5%;
+        }
+
+        .welcome-top {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .welcome-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
             line-height: 1.2;
         }
 
-        .card-desc {
-            font-size: 0.8rem;
-            color: var(--gray);
-            line-height: 1.55;
+        .welcome-image img {
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .orders-section {
+            padding-bottom: 60px;
+        }
+
+        .orders-title h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        .orders-title h2::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .orders-title p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .empty-orders {
+            background-color: #EBEBEB;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            margin-top: 30px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--primary-yellow);
+            padding: 60px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .about-text {
             flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            color: #FFFFFF;
+            font-style: italic;
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            font-weight: 500;
+            max-width: 400px;
+        }
+
+        .about-images {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            position: relative;
+        }
+
+        .about-images img {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .img-large { width: 350px; height: 200px; }
+        .img-small-1 { width: 180px; height: 180px; position: absolute; bottom: -40px; left: 50px; }
+        .img-small-2 { width: 150px; height: 220px; position: absolute; bottom: -50px; right: 50px; }
+
+        /* Catalog Section */
+        .catalog-container {
+            display: flex;
+            padding: 60px 5%;
+            gap: 40px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .sidebar h2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .category-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .category-list li {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .category-list li:hover {
+            color: var(--primary-yellow);
+            font-weight: 600;
+        }
+
+        .custom-design-box {
+            background-color: var(--primary-yellow);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .custom-design-box h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .custom-design-box h3 span {
+            font-style: italic;
+            color: #FFFFFF;
+        }
+
+        .custom-design-box button {
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            border: none;
+            padding: 10px 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Catalog Content */
+        .catalog-content {
+            flex: 1;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #EAEAEA;
+            padding-bottom: 10px;
+        }
+
+        .tabs span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .tabs span.active {
+            color: var(--text-dark);
+            font-weight: 800;
+            position: relative;
+        }
+
+        .tabs span.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-dark);
+            bottom: -11px;
+            left: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #EAEAEA;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-body h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .card-body p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .card-btn {
-            margin-top: 14px;
-            align-self: flex-end;
-            background: none;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 28px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all .2s;
-        }
-
-        .card-btn:hover {
-            background: var(--yellow);
-            border-color: var(--yellow);
-        }
-
-        /* ── Pagination ── */
-        .pagination {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 36px;
-        }
-
-        .pag-bar {
-            width: 180px;
-            height: 7px;
-            background: var(--dark);
-            border-radius: 99px;
-        }
-
-        .pag-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #bbb;
-            cursor: pointer;
-            transition: background .2s, transform .2s;
-        }
-
-        .pag-dot.active {
-            background: var(--dark);
-            transform: scale(1.25);
-        }
-
-        .pag-dot:hover {
-            background: var(--dark);
-        }
-
-        /* ══════════════════ CREATOR SECTION ══════════════════ */
-        .creator-section {
-            background: var(--white);
-            padding: 48px 0 56px;
-        }
-
-        .creator-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            padding: 0 48px;
-            margin-bottom: 28px;
-        }
-
-        .creator-title {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
-        .creator-title em {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 700;
-            color: var(--yellow-dark);
+            display: block;
+            width: 60px;
+            height: 8px;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            margin-left: auto;
         }
 
         .see-more {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            border-bottom: 1.5px solid var(--dark);
-            padding-bottom: 2px;
-        }
-
-        .see-more:hover {
-            color: var(--yellow-dark);
-            border-color: var(--yellow-dark);
-        }
-
-        /* Divider line */
-        .creator-divider {
-            margin: 0 48px 28px;
-            height: 2px;
-            background: linear-gradient(to right, var(--dark) 60%, transparent 100%);
-        }
-
-        /* Scrollable creator row */
-        .creator-row {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 0 48px 12px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-
-        .creator-row::-webkit-scrollbar {
-            display: none;
-        }
-
-        .creator-card {
-            flex: 0 0 220px;
-            background: var(--white);
-            border: 1.5px solid #eee;
-            border-radius: var(--radius);
-            overflow: hidden;
-            scroll-snap-align: start;
-            transition: transform .25s, box-shadow .25s;
-        }
-
-        .creator-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.11);
-        }
-
-        .creator-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
             display: block;
-            background: #ddd;
-        }
-
-        .creator-body {
-            padding: 14px 16px 16px;
-        }
-
-        .creator-name {
-            font-size: 0.92rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .creator-name span {
-            font-weight: 400;
-            color: var(--gray);
-            font-size: 0.82rem;
-        }
-
-        .creator-desc {
-            font-size: 0.76rem;
-            color: var(--gray);
-            line-height: 1.5;
-            margin-bottom: 14px;
-        }
-
-        .creator-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-follow {
-            background: var(--dark);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            padding: 7px 16px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.78rem;
+            text-align: right;
+            margin-top: 30px;
+            font-size: 0.9rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: background .2s;
+            text-decoration: underline;
         }
 
-        .btn-follow:hover {
-            background: #333;
+        /* Footer */
+        .footer-wrapper {
+            position: relative;
+            background-color: var(--dark-gray);
+            color: #FFFFFF;
+            margin-top: 50px;
+            padding-top: 50px;
         }
 
-        .btn-gallery {
-            background: none;
-            color: var(--dark);
-            border: 1.5px solid #ddd;
-            border-radius: 8px;
-            padding: 7px 14px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all .2s;
-            flex: 1;
-            text-align: center;
-        }
-
-        .btn-gallery:hover {
-            border-color: var(--yellow);
-            background: var(--yellow);
-        }
-
-        /* Dots on creator bg */
-        .creator-dots-bg {
-            background: radial-gradient(circle, var(--yellow) 1.5px, transparent 1.5px);
-            background-size: 14px 14px;
-            opacity: 0.3;
+        .footer-waves {
             position: absolute;
-            width: 100px;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-waves svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
             height: 100px;
-            pointer-events: none;
         }
 
-        /* ══════════════════ CTA SECTION ══════════════════ */
-        .cta-section {
-            background: var(--cream);
+        .footer-wrapper::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--primary-yellow);
+            z-index: -1;
+            clip-path: ellipse(60% 50px at 50% 50%);
+        }
+
+        .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 380px;
-        }
-
-        .cta-left {
-            padding: 64px 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 18px;
-        }
-
-        .cta-left h2 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-
-        .cta-left h2 em {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--yellow-dark);
-        }
-
-        .cta-left p {
-            font-size: 0.95rem;
-            color: var(--gray);
-            line-height: 1.65;
-            max-width: 320px;
-        }
-
-        .cta-btn {
-            background: var(--yellow);
-            color: var(--dark);
-            border: none;
-            border-radius: 12px;
-            padding: 16px 28px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            width: fit-content;
-            transition: background .2s, transform .15s;
-            box-shadow: 0 4px 16px rgba(245, 197, 24, 0.35);
-        }
-
-        .cta-btn:hover {
-            background: var(--yellow-dark);
-            transform: translateY(-2px);
-        }
-
-        .cta-right {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .cta-accent {
-            position: absolute;
-            bottom: 28px;
-            right: 28px;
-            width: 70px;
-            height: 4px;
-            background: var(--yellow);
-            border-radius: 99px;
-        }
-
-        /* ══════════════════ FOOTER ══════════════════ */
-        footer {
-            position: relative;
-        }
-
-        .footer-wave {
-            position: absolute;
-            bottom: 0;
-            z-index: 1;
-            width: 100%;
-            height: 500px;
-        }
-
-        .footer-img-wrap {
-            width: 100%;
-            height: 500px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.85);
-        }
-
-        .footer-body {
-            padding: 0px 48px 36px;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 40px 5% 60px 5%;
         }
 
         .footer-logo {
-            font-family: 'DM Sans', sans-serif;
+            font-size: 2.5rem;
             font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 36px;
+            grid-column: span 4;
+            margin-bottom: 20px;
         }
 
-        .footer-cols {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 36px;
-        }
-
-        .footer-col h4 {
-            font-size: 0.85rem;
+        .footer-col h5 {
+            font-size: 1rem;
             font-weight: 700;
-            color: var(--white);
-            margin-bottom: 14px;
-            letter-spacing: 0.2px;
+            margin-bottom: 20px;
         }
 
         .footer-col ul {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 9px;
         }
 
-        .footer-col ul li a {
-            font-size: 0.82rem;
-            color: #aaa;
-            text-decoration: none;
-            transition: color .2s;
+        .footer-col ul li {
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            color: #CCCCCC;
+            cursor: pointer;
         }
 
-        .footer-col ul li a:hover {
-            color: var(--yellow);
+        .footer-col ul li:hover {
+            color: #FFFFFF;
         }
 
-        .footer-bottom {
-            border-top: 1px solid #2a2a2a;
-            padding-top: 20px;
-            font-size: 0.78rem;
-            color: #555;
-            text-align: center;
+        @media (max-width: 992px) {
+            .about-section { flex-direction: column; }
+            .about-images { margin-top: 60px; }
+            .img-small-1, .img-small-2 { position: relative; inset: 0; }
+            .catalog-container { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ══════════════════ ANIMATIONS ══════════════════ */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            animation: fadeUp .4s ease both;
-        }
-
-        .card:nth-child(1) {
-            animation-delay: .05s;
-        }
-
-        .card:nth-child(2) {
-            animation-delay: .1s;
-        }
-
-        .card:nth-child(3) {
-            animation-delay: .15s;
-        }
-
-        .card:nth-child(4) {
-            animation-delay: .2s;
-        }
-
-        .card:nth-child(5) {
-            animation-delay: .25s;
-        }
-
-        .card:nth-child(6) {
-            animation-delay: .3s;
-        }
-
-        /* ══════════════════ RESPONSIVE ══════════════════ */
-        @media (max-width: 900px) {
-            .card-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .cta-section {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-right {
-                height: 260px;
-            }
-
-            .footer-cols {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .portfolio-section,
-            .cards-bg,
-            .creator-header,
-            .creator-divider,
-            .creator-row,
-            .cta-left,
-            .footer-body {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        @media (max-width: 540px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-cols {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-left h2 {
-                font-size: 2rem;
-            }
-
-            .portfolio-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .search-wrap {
-                width: 100%;
-            }
+        @media (max-width: 600px) {
+            .welcome-top { flex-direction: column; text-align: center; }
+            .welcome-image { margin-top: 30px; }
+            .grid-container { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- ═══ NAV ═══ -->
+    <!-- Navigation -->
     <nav>
-        <div class="nav-logo">LeLiLu</div>
-        <ul class="nav-links">
-            <li><a href="#">About us</a></li>
-            <li><a href="#" class="active">Portofolio</a></li>
-            <li><a href="#">Testimoni</a></li>
-        </ul>
+        <div class="nav-left">
+            <div class="logo">LeLilu</div>
+            <div class="nav-divider"></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Portofolio</a></li>
+                <li><a href="#">Testimoni</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">AI</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <span class="nav-username">Username</span>
+            <button class="btn-logout">Log out</button>
+        </div>
     </nav>
 
-    <!-- ═══ BREADCRUMB ═══ -->
-    <div class="breadcrumb">
-        <a href="#">Home</a>
-        <span>›</span>
-        <span>Portofolio</span>
-    </div>
-
-    <!-- ═══ PORTFOLIO SECTION ═══ -->
-    <div class="portfolio-section">
-        <img src="{{ asset('Image/wave2.png') }}" class="portofolio-wave" alt="">
-        <div class="portfolio-top">
-            <div class="search-wrap">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.3">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input type="text" id="searchInput" placeholder="Cari apa?...." />
+    <!-- Welcome Section -->
+    <header class="welcome-section">
+        <div class="welcome-top">
+            <div class="welcome-text">
+                <h1>Hi *User*<br>Selamat<br>datang<br>kembali</h1>
             </div>
-            <div class="filter-tabs">
-                <button class="active" onclick="filterCards('all',this)">Semua</button>
-                <button onclick="filterCards('desain',this)">BundLe Desain</button>
-                <button onclick="filterCards('lainnya',this)">BundLe Lainnya</button>
+            <div class="welcome-image">
+                <img src="https://placehold.co/500x250/2C2C2C/FFD700?text=Hello!" alt="Hello Card">
             </div>
         </div>
+        
+        <div class="orders-section">
+            <div class="orders-title">
+                <h2>Pesanan anda</h2>
+                <p>Lihat dan temukan pesanan anda</p>
+            </div>
+            <div class="empty-orders">
+                Tidak Ada pesanan
+            </div>
+        </div>
+    </header>
 
-        <!-- Cards bg -->
-        <div class="cards-bg">
-            <div class="card-grid" id="cardGrid">
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-text">
+            <h2>ADA APA<br>AJA SIH<br>DI <span>LELILU?</span></h2>
+            <br>
+            <p>Wujudkan ide imajinatifmu menjadi kenyataan dengan ilustrasi orisinal berkualitas tinggi, dibuat khusus sesuai <em>permintaanmu</em></p>
+        </div>
+        <div class="about-images">
+            <img src="https://placehold.co/400x200/C2B280/FFFFFF?text=Vintage+Gas+Station" alt="Img1" class="img-large">
+            <img src="https://placehold.co/200x200/A0D6B4/FFFFFF?text=Vintage+Cars" alt="Img2" class="img-small-1">
+            <img src="https://placehold.co/180x250/FFB347/FFFFFF?text=Vintage+Poster" alt="Img3" class="img-small-2">
+        </div>
+    </section>
 
-                <div class="card" data-cat="desain">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="A.X.E my bini" />
+    <!-- Catalog Section -->
+    <section class="catalog-container">
+        <aside class="sidebar">
+            <h2>Katalog</h2>
+            
+            <div class="category-title" style="margin-top: 30px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                Kategori
+            </div>
+            <ul class="category-list">
+                <li>Desain Grafis</li>
+                <li>Aset Digital</li>
+                <li>Branding</li>
+                <li>Ilustrasi</li>
+                <li>UI/UX Kit</li>
+                <li>Desain Banner</li>
+            </ul>
+
+            <div class="custom-design-box">
+                <h3>Mau <span>Custom</span><br>bentuk desain<br>Sendiri?<br>KAMI BISA!</h3>
+                <a href="/order"><button>Konsultasi Desain Sekarang</button></a>
+            </div>
+        </aside>
+
+        <main class="catalog-content">
+            <div class="search-bar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" placeholder="Cari apa?">
+            </div>
+
+            <div class="tabs">
+                <span class="active">Semua</span>
+                <span>Bundle Desain</span>
+                <span>Bundle Lainnya</span>
+            </div>
+
+            <div class="grid-container">
+                <div class="card">
+                    <img src="https://placehold.co/300x150/FFD1DC/333?text=Abstract+Art" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">A.X.E my bini</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
+                        <h4>A.X.E my bini</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
-
-                <div class="card" data-cat="lainnya">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="ambon" />
+                <div class="card">
+                    <img src="https://placehold.co/300x150/E6E6FA/333?text=Illustration" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">ambon</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
+                        <h4>ambon</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
-
-                <div class="card" data-cat="desain">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80" alt="Rico jawa" />
+                <div class="card">
+                    <img src="https://placehold.co/300x150/FFFACD/333?text=Shapes" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">Rico jawa</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
+                        <h4>Rico jawa</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
-
-                <div class="card" data-cat="lainnya">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=80" alt="suki" />
+                <div class="card">
+                    <img src="https://placehold.co/300x150/FF69B4/FFF?text=Holo" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">suki</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
+                        <h4>suki</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
-
-                <div class="card" data-cat="desain">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80" alt="Tyara lope" />
+                <div class="card">
+                    <img src="https://placehold.co/300x150/D2B48C/333?text=Koi+Fish" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">Tyara lope</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
+                        <h4>Tyara lope</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
-
-                <div class="card" data-cat="lainnya">
-                    <img class="card-img" src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=600&q=80" alt="Kukuh mls" />
+                <div class="card">
+                    <img src="https://placehold.co/300x150/F08080/333?text=Drawing" alt="Product">
                     <div class="card-body">
-                        <div class="card-title">Kukuh mls</div>
-                        <div class="card-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
-                        <button class="card-btn">Lihat</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <div class="pag-bar"></div>
-                <div class="pag-dot active" onclick="setDot(this)"></div>
-                <div class="pag-dot" onclick="setDot(this)"></div>
-                <div class="pag-dot" onclick="setDot(this)"></div>
-                <div class="pag-dot" onclick="setDot(this)"></div>
-                <div class="pag-dot" onclick="setDot(this)"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ CREATOR SECTION ═══ -->
-    <div class="creator-section">
-        <div class="creator-header">
-            <div class="creator-title">LeLiLu <em>Creator</em></div>
-            <a href="#" class="see-more">See More &rsaquo;</a>
-        </div>
-        <div class="creator-divider"></div>
-
-        <div class="creator-row">
-
-            <div class="creator-card">
-                <img class="creator-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Kukuhfaws" />
-                <div class="creator-body">
-                    <div class="creator-name">Kukuhfaws <span>| @kukuh</span></div>
-                    <div class="creator-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt</div>
-                    <div class="creator-actions">
-                        <button class="btn-gallery" style="width:100%">Visit Gallery</button>
+                        <h4>Kukuh mis</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                        <span class="card-btn"></span>
                     </div>
                 </div>
             </div>
 
-            <div class="creator-card">
-                <img class="creator-img" src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=400&q=80" alt="Tyara" />
-                <div class="creator-body">
-                    <div class="creator-name">Tyara <span>| @arachu</span></div>
-                    <div class="creator-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt</div>
-                    <div class="creator-actions">
-                        <button class="btn-follow">Follow</button>
-                        <button class="btn-gallery">Visit Gallery</button>
-                    </div>
-                </div>
-            </div>
+            <a href="#" class="see-more">Lihat Selengkapnya</a>
+        </main>
+    </section>
 
-            <div class="creator-card">
-                <img class="creator-img" src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400&q=80" alt="Marcya" />
-                <div class="creator-body">
-                    <div class="creator-name">Marcya <span>| @cyaann67</span></div>
-                    <div class="creator-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt</div>
-                    <div class="creator-actions">
-                        <button class="btn-follow">Follow</button>
-                        <button class="btn-gallery">Visit Gallery</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="creator-card">
-                <img class="creator-img" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80" alt="Ershon" />
-                <div class="creator-body">
-                    <div class="creator-name">Ershon <span>| @Juan</span></div>
-                    <div class="creator-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt</div>
-                    <div class="creator-actions">
-                        <button class="btn-follow">Follow</button>
-                        <button class="btn-gallery">Visit Gallery</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="creator-card">
-                <img class="creator-img" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Raka" />
-                <div class="creator-body">
-                    <div class="creator-name">Raka <span>| @raka.art</span></div>
-                    <div class="creator-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt</div>
-                    <div class="creator-actions">
-                        <button class="btn-follow">Follow</button>
-                        <button class="btn-gallery">Visit Gallery</button>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+        <div class="footer-waves">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z" fill="#333333"></path>
+            </svg>
         </div>
-    </div>
-
-    <!-- ═══ CTA SECTION ═══ -->
-    <div class="cta-section">
-        <div class="cta-left">
-            <h2>Punya Proyek<br>untuk <em>Kami?</em></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-            <button class="cta-btn">Ayo gabung<br>sekarang!</button>
-        </div>
-        <div class="cta-right">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Proyek" />
-            <div class="cta-accent"></div>
-        </div>
-    </div>
-
-    <!-- ═══ FOOTER ═══ -->
-    <footer>
-        <img src="{{ asset('Image/wave3.png') }}" class="footer-wave" alt="">
-        <div class="footer-img-wrap">
-            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1400&q=80" alt="Footer background" />
-        </div>
-
-        <div class="footer-body">
-            <div class="footer-logo">LeLiLu</div>
-
-            <div class="footer-cols">
-                <div class="footer-col">
-                    <h4>Bantuan &amp; Dukungan</h4>
-                    <ul>
-                        <li><a href="#">Hubungi Kami</a></li>
-                        <li><a href="#">Pusat Bantuan</a></li>
-                        <li><a href="#">Syarat &amp; Ketentuan</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Layanan &amp; Informasi</h4>
-                    <ul>
-                        <li><a href="#">Pemesanan Online</a></li>
-                        <li><a href="#">Informasi Testimoni</a></li>
-                        <li><a href="#">Jasa Desain</a></li>
-                        <li><a href="#">Customer Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Tentang Kami</h4>
-                    <ul>
-                        <li><a href="#">Tentang LeLiLu</a></li>
-                        <li><a href="#">Karier</a></li>
-                        <li><a href="#">Partner &amp; Kerja Sama</a></li>
-                        <li><a href="#">Kontak Kami</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Panduan Pengguna</h4>
-                    <ul>
-                        <li><a href="#">Cara Daftar Akun</a></li>
-                        <li><a href="#">Cara Pemesanan Online</a></li>
-                        <li><a href="#">Panduan Pembayaran</a></li>
-                        <li><a href="#">Informasi Lainnya</a></li>
-                    </ul>
-                </div>
+        
+        <div class="footer-content">
+            <div class="footer-logo">LeLilu</div>
+            
+            <div class="footer-col">
+                <h5>Bantuan & Dukungan</h5>
+                <ul>
+                    <li>Hubungi Kami</li>
+                    <li>Pusat Bantuan</li>
+                    <li>Syarat & Ketentuan</li>
+                    <li>Kebijakan Privasi</li>
+                </ul>
             </div>
-
-            <div class="footer-bottom">
-                &copy; 2026 LeLiLu. All rights reserved.
+            <div class="footer-col">
+                <h5>Layanan & Informasi</h5>
+                <ul>
+                    <li>Pemesanan Online</li>
+                    <li>Informasi Testimoni</li>
+                    <li>Jasa Desain</li>
+                    <li>Customer Service</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Tentang Kami</h5>
+                <ul>
+                    <li>Tentang LeLilu</li>
+                    <li>Karier</li>
+                    <li>Partner & Kerja Sama</li>
+                    <li>Kontak Kami</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Panduan Pengguna</h5>
+                <ul>
+                    <li>Cara Daftar Akun</li>
+                    <li>Cara Pemesanan Online</li>
+                    <li>Panduan Pembayaran</li>
+                    <li>Informasi Lainnya</li>
+                </ul>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Filter cards
-        function filterCards(cat, btn) {
-            document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.querySelectorAll('.card').forEach(card => {
-                const show = cat === 'all' || card.dataset.cat === cat;
-                card.style.display = show ? '' : 'none';
-                if (show) card.style.animation = 'none', card.offsetHeight, card.style.animation = 'fadeUp .35s ease both';
-            });
-        }
-
-        // Search
-        document.getElementById('searchInput').addEventListener('input', function() {
-            const q = this.value.toLowerCase();
-            document.querySelectorAll('.card').forEach(card => {
-                const title = card.querySelector('.card-title').textContent.toLowerCase();
-                card.style.display = title.includes(q) ? '' : 'none';
-            });
-        });
-
-        // Pagination dots
-        function setDot(el) {
-            document.querySelectorAll('.pag-dot').forEach(d => d.classList.remove('active'));
-            el.classList.add('active');
-        }
-    </script>
-
 </body>
-
 </html>
