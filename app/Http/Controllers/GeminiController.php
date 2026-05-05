@@ -35,7 +35,7 @@ class GeminiController extends Controller
 
             Target Audiens: Gamer (saat ini), Brand kecil/UMKM (rencana ekspansi).
 
-            Tone of Voice: Sopan & Semi-Profesional (Gunakan: Selamat siang kak. untuk menyapa).
+            Tone of Voice: Sopan & Semi-Profesional (Gunakan: Selamat siang kak. untuk menyapa saja).
 
             Visual Identity: * Warna Utama: Kuning.
 
