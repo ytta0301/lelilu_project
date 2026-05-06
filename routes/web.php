@@ -1,58 +1,32 @@
 <?php
 
-use App\Models\Product;
-use App\Models\Post;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeminiController;
-use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\HistoryController;
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+// Guest only
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+});
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
+// Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Semua halaman bebas diakses
+Route::get('/', fn() => view('welcome'));
+Route::get('/dashboard', fn() => view('dashboard.dashboard'));
+Route::get('/order', fn() => view('order.order'));
+Route::get('/payment', fn() => view('payment.payment'));
+Route::get('/portofolio', fn() => view('portofolio.portofolio'));
+Route::get('/testimoni', fn() => view('testimoni.testimoni'));
+Route::get('/history', [HistoryController::class, 'index'])->name('history');
+Route::get('/admin', fn() => view('admin.admin'));
+
+// Chatbot
 Route::get('/chatbot', [GeminiController::class, 'index'])->name('chatbot.index');
 Route::post('/chatbot/ask', [GeminiController::class, 'ask'])->name('gemini.ask');
 Route::post('/chatbot/clear', [GeminiController::class, 'clear'])->name('chatbot.clear');
-
-
-Route::get('/', function () {
-    return view('welcome'); // Folder.NamaFile
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard'); // Folder.NamaFile
-});
-
-Route::get('/order', function () {
-    return view('order.order'); // Folder.NamaFile
-});
-
-Route::get('/payment', function () {
-    return view('payment.payment'); // Folder.NamaFile
-});
-
-Route::get('/admin', function () {
-    return view('admin.admin'); // Folder.NamaFile
-});
-
-Route::get('/history', function () {
-    return view('history.history'); // Folder.NamaFile
-});
-
-Route::get('/portofolio', function () {
-    return view('portofolio.portofolio'); // Folder.NamaFile
-});
-
-Route::get('/testimoni', function () {
-    return view('testimoni.testimoni'); // Folder.NamaFile
-});
-
-Route::get('/profile', function () {
-    return view('profile.profile'); // Folder.NamaFile
-});

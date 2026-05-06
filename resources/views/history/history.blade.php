@@ -271,11 +271,11 @@ body {
 
   <!-- Filter Tabs -->
   <div class="filter-bar">
-    <button class="filter-tab active" onclick="filterTab(this,'semua')">Semua</button>
-    <button class="filter-tab" onclick="filterTab(this,'pending')">Pending</button>
-    <button class="filter-tab" onclick="filterTab(this,'kirim')">Sudah Dikirim</button>
-    <button class="filter-tab" onclick="filterTab(this,'selesai')">Selesai</button>
-    <button class="filter-tab" onclick="filterTab(this,'batal')">Batal</button>
+    <a href="{{ route('history') }}" class="filter-tab {{ !request('status') ? 'active' : '' }}">Semua</a>
+    <a href="{{ route('history', ['status' => 'pending']) }}" class="filter-tab {{ request('status') == 'pending' ? 'active' : '' }}">Pending</a>
+    <a href="{{ route('history', ['status' => 'proses']) }}" class="filter-tab {{ request('status') == 'proses' ? 'active' : '' }}">Proses</a>
+    <a href="{{ route('history', ['status' => 'selesai']) }}" class="filter-tab {{ request('status') == 'selesai' ? 'active' : '' }}">Selesai</a>
+    <a href="{{ route('history', ['status' => 'dibatalkan']) }}" class="filter-tab {{ request('status') == 'dibatalkan' ? 'active' : '' }}">Dibatalkan</a>
   </div>
 
   <!-- Search -->
@@ -297,8 +297,6 @@ body {
 <div class="yellow-bg">
   <div style="max-width:900px;margin:0 auto;padding:0 24px;">
     <div class="content-card">
-
-      <!-- Title -->
       <div class="daftar-title">
         <h1>Daftar <span>Pesanan</span></h1>
         <div class="title-line"></div>
@@ -307,189 +305,71 @@ body {
           <div class="title-dot"></div>
         </div>
       </div>
-
-      <!-- Orders — shown for "Semua" -->
-      <div id="semua" class="all-content">
-
-        <!-- Card 1: Proses -->
-        <div class="order-card">
-          <div class="order-status-bar status-proses">Prosess</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
+      @auth
+        @forelse ($pemesanans as $pesan)
+          @php
+            $statusClass = match($pesan->status) {
+              'proses'     => 'status-proses',
+              'selesai'    => 'status-selesai',
+              'pending'    => 'status-pending',
+              'dibatalkan' => 'status-batal',
+              default      => 'status-pending',
+            };
+            $statusLabel = match($pesan->status) {
+              'proses'     => 'Proses',
+              'selesai'    => 'Selesai',
+              'pending'    => 'Pending',
+              'dibatalkan' => 'Dibatalkan',
+              default      => ucfirst($pesan->status),
+            };
+          @endphp
+          <div class="order-card">
+            <div class="order-status-bar {{ $statusClass }}">{{ $statusLabel }}</div>
+            <div class="order-body">
+              <div class="order-top">
+                <div class="order-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                </div>
+                <div class="order-meta">
+                  <h3>{{ $pesan->jenis }}</h3>
+                  <span class="order-date">
+                    {{ \Carbon\Carbon::parse($pesan->created_at)->translatedFormat('d F Y') }}
+                  </span>
+                </div>
               </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-            <div class="order-footer">
-              <div>
-                <div class="order-total-label">Total Pembelian</div>
-                <div class="order-price">Rp.450.000</div>
-              </div>
-              <button class="btn-beli-lagi">Beli lagi</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Proses -->
-        <div class="order-card">
-          <div class="order-status-bar status-proses">Prosess</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-            <div class="order-footer">
-              <div>
-                <div class="order-total-label">Total Pembelian</div>
-                <div class="order-price">Rp.450.000</div>
-              </div>
-              <button class="btn-beli-lagi">Beli lagi</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Selesai -->
-        <div class="order-card">
-          <div class="order-status-bar status-selesai">Selesai</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
+              <div class="order-footer">
+                <div>
+                  <div class="order-total-label">Total Pembelian</div>
+                  <div class="order-price">Rp {{ number_format($pesan->harga, 0, ',', '.') }}</div>
+                </div>
+                <a href="/order" class="btn-beli-lagi">Pesan Lagi</a>
               </div>
             </div>
           </div>
-        </div>
-
-      </div><!-- /#semua -->
-
-      <!-- Pending filter -->
-      <div id="pending" class="filter-content">
-        <div class="order-card">
-          <div class="order-status-bar status-pending">Pending</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-            <div class="order-footer">
-              <div>
-                <div class="order-total-label">Total Pembelian</div>
-                <div class="order-price">Rp.450.000</div>
-              </div>
-              <button class="btn-beli-lagi">Beli lagi</button>
-            </div>
+        @empty
+          <div style="text-align:center; padding: 40px 0; color: #aaa;">
+            <p style="font-size:1rem; font-weight:600;">Belum ada pesanan</p>
+            <p style="font-size:.85rem; margin-top:8px;">Pesanan kamu akan muncul di sini</p>
           </div>
+        @endforelse
+
+      @else
+        {{-- Tidak login --}}
+        <div style="text-align:center; padding: 60px 0;">
+          <p style="font-size:1rem; font-weight:600; color:#111; margin-bottom:8px;">
+            Kamu belum login
+          </p>
+          <p style="font-size:.85rem; color:#aaa; margin-bottom:24px;">
+            Login untuk melihat riwayat pesananmu
+          </p>
+          <a href="/login" style="background:#f5c800; padding:10px 28px; border-radius:10px; font-weight:700; font-size:.9rem; color:#111; text-decoration:none;">
+            Login Sekarang
+          </a>
         </div>
-      </div>
-
-      <!-- Sudah Dikirim filter -->
-      <div id="kirim" class="filter-content">
-        <div class="order-card">
-          <div class="order-status-bar status-kirim">Sudah Dikirim</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-            <div class="order-footer">
-              <div>
-                <div class="order-total-label">Total Pembelian</div>
-                <div class="order-price">Rp.450.000</div>
-              </div>
-              <button class="btn-beli-lagi">Beli lagi</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Selesai filter -->
-      <div id="selesai" class="filter-content">
-        <div class="order-card">
-          <div class="order-status-bar status-selesai">Selesai</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-            <div class="order-footer">
-              <div>
-                <div class="order-total-label">Total Pembelian</div>
-                <div class="order-price">Rp.450.000</div>
-              </div>
-              <button class="btn-beli-lagi">Beli lagi</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Batal filter -->
-      <div id="batal" class="filter-content">
-        <div class="order-card">
-          <div class="order-status-bar status-batal">Batal</div>
-          <div class="order-body">
-            <div class="order-top">
-              <div class="order-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <div class="order-meta">
-                <h3>Desain logo</h3>
-                <span class="order-date">22 april 2026</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pagination -->
-      <div class="pagination">
-        <button class="page-btn" onclick="changePage(-1)">&lt;</button>
-        <span class="page-number" id="pageNum">1</span>
-        <button class="page-btn" onclick="changePage(1)">&gt;</button>
-      </div>
-
-    </div><!-- /.content-card -->
+      @endauth
+    </div>
   </div>
 </div>
 

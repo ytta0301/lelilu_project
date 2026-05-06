@@ -537,8 +537,15 @@
             </ul>
         </div>
         <div class="nav-right">
-            <a href="/profile"><span class="nav-username">Username</span></a>
-            <button class="btn-logout">Log out</button>
+            @auth
+                <span class="nav-username">{{ auth()->user()->name }}</span>
+                <form action="{{ route('logout') }}" method="POST" style="display:inline">
+                    @csrf
+                    <button type="submit" class="btn-logout">Log out</button>
+                </form>
+            @else
+                <a href="/login" class="btn-logout">Login</a>
+            @endauth
         </div>
     </nav>
 

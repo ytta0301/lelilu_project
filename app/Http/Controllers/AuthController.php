@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function showRegister()
     {
-        return view('/account/register');
+        return view('account.register');
     }
 
     public function register(Request $request)
@@ -20,20 +20,30 @@ class AuthController extends Controller
             'name'     => 'required|string|max:255',
             'whatsapp' => 'required|string|unique:users,whatsapp',
             'password' => 'required|min:6|confirmed',
+        ], [
+            'name.required'      => 'Nama wajib diisi.',
+            'whatsapp.required'  => 'Nomor WhatsApp wajib diisi.',
+            'whatsapp.unique'    => 'Nomor WhatsApp sudah terdaftar.',
+            'password.required'  => 'Password wajib diisi.',
+            'password.min'       => 'Password minimal 6 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
-        User::create([
+        $user = User::create([
             'name'     => $request->name,
             'whatsapp' => $request->whatsapp,
             'password' => bcrypt($request->password),
+            'role'     => 'user',
         ]);
 
-        return redirect('/login');
+        Auth::login($user);
+
+        return redirect('/dashboard');
     }
 
     public function showLogin()
     {
-        return view('/account/login');
+        return view('account.login');
     }
 
     public function login(Request $request)
@@ -41,6 +51,9 @@ class AuthController extends Controller
         $request->validate([
             'whatsapp' => 'required|string',
             'password' => 'required|string',
+        ], [
+            'whatsapp.required' => 'Nomor WhatsApp wajib diisi.',
+            'password.required' => 'Password wajib diisi.',
         ]);
 
         $user = User::where('whatsapp', $request->whatsapp)->first();
@@ -53,12 +66,18 @@ class AuthController extends Controller
 
         Auth::login($user, $request->boolean('remember'));
 
-        return redirect('/dashboard'); // sesuaikan tujuan setelah login
+        if ($user->role === 'admin') {
+            return redirect('/admin');
+        }
+
+        return redirect('/dashboard');
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/login');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
