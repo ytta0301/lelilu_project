@@ -75,7 +75,7 @@
   /* ── TWO-COLUMN LAYOUT ── */
   .order-layout {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 300px;
     gap: 40px;
     align-items: start;
   }
@@ -204,7 +204,7 @@
     border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     margin-top: 10px;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
@@ -217,47 +217,89 @@
   }
   .btn-primary:active { transform: translateY(0); box-shadow: none; }
 
-  /* ── GALLERY ── */
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
+  /* ── CUSTOM REFERENCE PANEL ── */
+  .ref-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-top: 4px;
   }
 
-  .gallery-item {
-    border-radius: 14px;
+  .ref-box {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
     position: relative;
-    background: #e0ddd8;
+    background: #fafafa;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s;
   }
-  .gallery-item.wide {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 9;
+  .ref-box:hover {
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 3px rgba(245,200,0,0.18);
   }
-  .gallery-item.tall {
-    aspect-ratio: 3 / 4;
+
+  .ref-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #aaa;
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 20px;
+    pointer-events: none;
   }
-  .gallery-item img {
+
+  .ref-preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.35s ease;
+    display: none;
+    transition: transform .35s ease;
   }
-  .gallery-item:hover img { transform: scale(1.04); }
+  .ref-preview.visible { display: block; }
+  .ref-box:hover .ref-preview.visible { transform: scale(1.03); }
 
-  .gallery-label {
+  /* hover overlay when image loaded */
+  .hover-overlay {
     position: absolute;
-    bottom: 8px;
-    left: 10px;
-    font-size: 0.7rem;
-    color: #fff;
-    background: rgba(0,0,0,0.32);
-    padding: 2px 8px;
-    border-radius: 20px;
-    backdrop-filter: blur(4px);
+    inset: 0;
+    background: rgba(0,0,0,0.28);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
   }
+  .hover-overlay.active { display: flex; }
+  .ref-box:hover .hover-overlay.active { opacity: 1; }
+
+  .btn-edit {
+    background: var(--yellow);
+    color: var(--dark);
+    border: none;
+    border-radius: 50px;
+    padding: 9px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+  }
+  .btn-edit:hover {
+    background: var(--yellow-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245,200,0,.35);
+  }
+  .btn-edit:active { transform: translateY(0); }
 
   /* ── BACK ── */
   .back-link {
@@ -315,7 +357,7 @@
     .page-title { font-size: 2.2rem; }
     .card { padding: 28px 20px 32px; }
     .order-layout { grid-template-columns: 1fr; }
-    .gallery { display: none; }
+    .ref-box { aspect-ratio: 4 / 3; }
   }
 </style>
 </head>
@@ -333,7 +375,7 @@
 
   <!-- CARD -->
   <div class="card">
-    <p class="card-title">Form Pemesanan</p>
+    <p class="card-title">Form Pemesanan Banner</p>
 
     <div class="order-layout">
 
@@ -346,72 +388,91 @@
           <input class="form-input" id="nama" type="text" placeholder="Nama kamu">
         </div>
 
-        <!-- LAYANAN -->
+        <!-- UKURAN BANNER -->
         <div class="form-group">
-          <label class="form-label">Layanan</label>
+          <label class="form-label">ukuran banner</label>
           <div class="select-wrapper">
             <div class="custom-select" id="customSelect" onclick="toggleSelect()">
-              <span id="selectLabel">Art Comission</span>
+              <span id="selectLabel" style="color:#c0c0c0">pilih ukuran banner</span>
               <span class="select-arrow">&#8964;</span>
             </div>
             <div class="select-dropdown" id="selectDropdown">
-              <div class="select-option selected" data-value="1" onclick="pickOption(this)">
-                <span class="option-badge">1</span> Art Comission
+              <div class="select-option" data-value="60x160" onclick="pickOption(this)">
+                <span class="option-badge">1</span> 60 × 160 cm
               </div>
-              <div class="select-option" data-value="2" onclick="pickOption(this)">
-                <span class="option-badge">2</span> Logo Design
+              <div class="select-option" data-value="80x200" onclick="pickOption(this)">
+                <span class="option-badge">2</span> 80 × 200 cm
               </div>
-              <div class="select-option" data-value="3" onclick="pickOption(this)">
-                <span class="option-badge">3</span> Poster Design
+              <div class="select-option" data-value="100x200" onclick="pickOption(this)">
+                <span class="option-badge">3</span> 100 × 200 cm
+              </div>
+              <div class="select-option" data-value="120x240" onclick="pickOption(this)">
+                <span class="option-badge">4</span> 120 × 240 cm
+              </div>
+              <div class="select-option" data-value="150x300" onclick="pickOption(this)">
+                <span class="option-badge">5</span> 150 × 300 cm
+              </div>
+              <div class="select-option" data-value="custom" onclick="pickOption(this)">
+                <span class="option-badge">✦</span> Custom
               </div>
             </div>
           </div>
         </div>
 
-        <!-- PESAN -->
+        <!-- NOMOR TELEPON -->
         <div class="form-group">
-          <label class="form-label">Pesan</label>
-          <textarea class="form-textarea" id="pesan" placeholder="Jelaskan Kebutuhan kamu..."></textarea>
+          <label class="form-label">Nomor Telepon</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input class="form-input" id="phone1" type="tel" placeholder="08___">
+            <input class="form-input" id="phone2" type="tel" placeholder="lanjutan nomor">
+          </div>
         </div>
 
-        <a href="/payment"><button class="btn-primary" onclick="submitOrder()">Kirim Pesanan</button></a>
+        <!-- DESKRIPSI -->
+        <div class="form-group">
+          <label class="form-label">Deskripsi Pemesanan</label>
+          <textarea class="form-textarea" id="pesan" placeholder="Tulis deskripsi desain yang kamu inginkan..."></textarea>
+        </div>
+
+        <button class="btn-primary" onclick="submitOrder()">masukan gambar</button>
       </div>
 
-      <!-- RIGHT: GALLERY -->
-      <div class="gallery">
-        <!-- Wide top image -->
-        <div class="gallery-item wide">
-          <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
-            alt="By Fahri"
-            onerror="this.parentElement.style.background='linear-gradient(135deg,#d4e8f5,#a8c8e0)'">
-          <span class="gallery-label">By Fahri</span>
+      <!-- RIGHT: CUSTOM REFERENCE -->
+      <div class="ref-panel">
+        <!-- Image box -->
+        <div class="ref-box" id="refBox" onclick="triggerUpload()" title="Klik untuk tambah gambar referensi">
+          <div class="ref-placeholder" id="refPlaceholder">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.4">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <span>Custom Reference<br>here</span>
+          </div>
+          <!-- Edit overlay (shown on hover when image is loaded) -->
+          <div class="hover-overlay" id="hoverOverlay">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <img id="refPreview" class="ref-preview" alt="Reference preview">
         </div>
-        <!-- Bottom left -->
-        <div class="gallery-item tall">
-          <img
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80"
-            alt="By Tyara"
-            onerror="this.parentElement.style.background='linear-gradient(135deg,#c8e0d4,#a0c0b0)'">
-          <span class="gallery-label">By Tyara</span>
-        </div>
-        <!-- Bottom right -->
-        <div class="gallery-item tall">
-          <img
-            src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?w=400&q=80"
-            alt="Art Work"
-            onerror="this.parentElement.style.background='linear-gradient(135deg,#e8d4c0,#c0a080)'">
-        </div>
+
+        <!-- Edit button -->
+        <button class="btn-edit" onclick="triggerUpload()">Edit</button>
+
+        <!-- Hidden file input -->
+        <input type="file" id="refFileInput" accept="image/*" onchange="handleRefFile(event)" style="display:none">
       </div>
 
     </div><!-- /order-layout -->
   </div><!-- /card -->
 
-  <a class="back-link" href="/dashbord">Back</a>
+  <a class="back-link" href="/dashboard">Back</a>
 </div>
 
 <!-- TOAST -->
-<div class="toast" id="toast">🎉 Pesanan berhasil dikirim!</div>
+<div class="toast" id="toast"></div>
 
 <script>
   /* ── Custom Select ── */
@@ -435,22 +496,65 @@
   function pickOption(el) {
     document.querySelectorAll('.select-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
-    document.getElementById('selectLabel').textContent = el.textContent.trim();
+    const clone = el.cloneNode(true);
+    clone.querySelector('.option-badge').remove();
+    const label = document.getElementById('selectLabel');
+    label.textContent = clone.textContent.trim();
+    label.style.color = 'var(--dark)';
     document.getElementById('customSelect').classList.remove('open');
     document.removeEventListener('click', closeOnOutside);
+  }
+
+  /* ── Image Upload ── */
+  function triggerUpload() {
+    document.getElementById('refFileInput').click();
+  }
+
+  function handleRefFile(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      const img         = document.getElementById('refPreview');
+      const placeholder = document.getElementById('refPlaceholder');
+      const overlay     = document.getElementById('hoverOverlay');
+      img.src = ev.target.result;
+      img.classList.add('visible');
+      placeholder.style.display = 'none';
+      overlay.classList.add('active');
+      showToast('✓ Gambar referensi berhasil diubah');
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
   }
 
   /* ── Submit ── */
   function submitOrder() {
     const nama  = document.getElementById('nama').value.trim();
+    const phone = document.getElementById('phone1').value.trim();
     const pesan = document.getElementById('pesan').value.trim();
-    if (!nama)  { shakeEl('nama');  return; }
-    if (!pesan) { shakeEl('pesan'); return; }
-    showToast();
+    const img   = document.getElementById('refPreview');
+
+    if (!nama)  { shakeEl('nama');  showToast('⚠ Nama belum diisi'); return; }
+    if (!phone) { shakeEl('phone1'); showToast('⚠ Nomor telepon belum diisi'); return; }
+    if (!pesan) { shakeEl('pesan'); showToast('⚠ Deskripsi belum diisi'); return; }
+    if (!img.classList.contains('visible')) {
+      showToast('⚠ Tambahkan gambar referensi dulu');
+      triggerUpload();
+      return;
+    }
+
+    showToast('🎉 Pesanan berhasil dikirim!');
     setTimeout(() => {
-      document.getElementById('nama').value  = '';
-      document.getElementById('pesan').value = '';
-    }, 2200);
+      document.getElementById('nama').value   = '';
+      document.getElementById('pesan').value  = '';
+      document.getElementById('phone1').value = '';
+      document.getElementById('phone2').value = '';
+      const label = document.getElementById('selectLabel');
+      label.textContent = 'pilih ukuran banner';
+      label.style.color = '#c0c0c0';
+      document.querySelectorAll('.select-option').forEach(o => o.classList.remove('selected'));
+    }, 2000);
   }
 
   function shakeEl(id) {
@@ -459,13 +563,18 @@
     el.style.boxShadow   = '0 0 0 3px rgba(255,77,77,0.15)';
     el.style.animation   = 'none';
     requestAnimationFrame(() => { el.style.animation = 'shake 0.4s ease'; });
-    setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 1200);
+    setTimeout(() => {
+      el.style.borderColor = '';
+      el.style.boxShadow   = '';
+      el.style.animation   = '';
+    }, 1400);
   }
 
-  function showToast() {
+  function showToast(msg) {
     const t = document.getElementById('toast');
+    t.textContent = msg;
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
+    setTimeout(() => t.classList.remove('show'), 2800);
   }
 </script>
 </body>
