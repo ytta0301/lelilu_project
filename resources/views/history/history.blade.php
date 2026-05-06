@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LeLiLu – Riwayat Pesanan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f4f0;
+  min-height: 100vh;
+  color: #111;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #e5e3dc;
+  height: 58px;
+  display: flex; align-items: center;
+  padding: 0 40px;
+  gap: 0;
+}
+.nav-logo {
+  font-weight: 800; font-size: 1.2rem;
+  color: #111; letter-spacing: -.3px;
+  padding-right: 24px;
+  border-right: 1.5px solid #e0ddd5;
+  margin-right: 36px;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none; flex: 1;
+}
+.nav-links a {
+  font-size: .88rem; font-weight: 500; color: #111;
+  text-decoration: none; transition: opacity .2s;
+}
+.nav-links a:hover { opacity: .55; }
+.nav-back {
+  font-size: .88rem; font-weight: 600; color: #111;
+  cursor: pointer; margin-left: auto;
+  transition: opacity .2s;
+}
+.nav-back:hover { opacity: .6; }
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+}
+
+/* ── FILTER TABS ── */
+.filter-bar {
+  background: #fff;
+  border-radius: 50px;
+  display: flex; align-items: center;
+  padding: 5px;
+  gap: 2px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e3dc;
+}
+.filter-tab {
+  flex: 1; text-align: center;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: .85rem; font-weight: 500;
+  color: #888;
+  cursor: pointer;
+  border: none; background: none;
+  font-family: 'Poppins', sans-serif;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.filter-tab.active {
+  background: #f5c800;
+  color: #111; font-weight: 700;
+}
+.filter-tab:hover:not(.active) { color: #111; }
+
+/* ── SEARCH ── */
+.search-wrap {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff;
+  border: 1.5px solid #e5e3dc;
+  border-radius: 10px;
+  padding: 0 16px;
+  margin-bottom: 0;
+}
+.search-wrap svg { color: #bbb; flex-shrink: 0; }
+.search-wrap input {
+  border: none; background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: .87rem; color: #999;
+  padding: 13px 0; outline: none; width: 100%;
+}
+
+/* ── WAVE + CONTENT AREA ── */
+.wave-area {
+  position: relative;
+  margin-top: -1px;
+}
+.wave-top {
+  display: block; width: 100%;
+  line-height: 0; margin-top: 24px;
+}
+
+.yellow-bg {
+  background: #f5c800;
+  padding: 0 0 40px;
+}
+
+/* ── CONTENT CARD (white rounded) ── */
+.content-card {
+  background: #fff;
+  border-radius: 20px;
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 36px 36px 28px;
+  position: relative;
+}
+
+/* ── SECTION HEADING ── */
+.daftar-title {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.daftar-title h1 {
+  font-weight: 900; font-size: 1.9rem;
+  color: #111;
+  white-space: nowrap;
+}
+.daftar-title h1 span { color: #f5c800; }
+.title-line {
+  flex: 1; height: 3px;
+  background: linear-gradient(90deg, #f5c800 80%, transparent 100%);
+  border-radius: 2px;
+  position: relative;
+}
+.title-dots {
+  display: flex; gap: 4px;
+  margin-left: -8px;
+}
+.title-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #f5c800;
+}
+.title-dot:last-child { background: #ccc; }
+
+/* ── ORDER CARD ── */
+.order-card {
+  border-radius: 14px;
+  border: 1.5px solid #e5e3dc;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+/* Status header strip */
+.order-status-bar {
+  padding: 12px 20px;
+  text-align: center;
+  font-weight: 600; font-size: .9rem;
+  letter-spacing: .01em;
+}
+.status-proses  { background: #d6e8f7; color: #4a90c4; }
+.status-selesai { background: #d4f0d4; color: #3a9a5c; }
+.status-pending { background: #fff3cd; color: #c08a00; }
+.status-batal   { background: #fde0e0; color: #c04040; }
+.status-kirim   { background: #e8d6f7; color: #7a4ac4; }
+
+/* Order body */
+.order-body {
+  padding: 20px 20px 16px;
+}
+.order-top {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 18px;
+}
+.order-icon {
+  width: 68px; height: 68px;
+  background: #fff8e0;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.order-icon svg { color: #c8a200; }
+.order-meta h3 {
+  font-weight: 800; font-size: 1.1rem;
+  color: #111; margin-bottom: 4px;
+}
+.order-meta .order-date {
+  font-size: .83rem; color: #aaa; font-weight: 400;
+}
+
+.order-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f0eeea;
+}
+.order-total-label {
+  font-size: .82rem; font-weight: 600; color: #111;
+  margin-bottom: 3px;
+}
+.order-price {
+  font-weight: 700; font-size: 1rem;
+  color: #f5a800;
+}
+
+.btn-beli-lagi {
+  border: 1.5px solid #f5c800;
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  padding: 9px 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; font-size: .83rem;
+  cursor: pointer;
+  transition: background .18s, color .18s;
+}
+.btn-beli-lagi:hover { background: #f5c800; }
+
+/* ── PAGINATION ── */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0 4px;
+}
+.page-btn {
+  background: none; border: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background .18s, color .18s;
+}
+.page-btn:hover { background: #f5c800; color: #111; }
+.page-number {
+  font-weight: 800; font-size: 1rem;
+  color: #111;
+}
+
+/* ── HIDDEN FILTER CONTENT ── */
+.filter-content { display: none; }
+.filter-content.show { display: block; }
+.all-content { display: block; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <span class="nav-logo">LeLiLu</span>
+  <ul class="nav-links">
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Portofolio</a></li>
+    <li><a href="#">Testimoni</a></li>
+  </ul>
+  <span class="nav-back" onclick="history.back()">Back</span>
+</nav>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- Filter Tabs -->
+  <div class="filter-bar">
+    <button class="filter-tab active" onclick="filterTab(this,'semua')">Semua</button>
+    <button class="filter-tab" onclick="filterTab(this,'pending')">Pending</button>
+    <button class="filter-tab" onclick="filterTab(this,'kirim')">Sudah Dikirim</button>
+    <button class="filter-tab" onclick="filterTab(this,'selesai')">Selesai</button>
+    <button class="filter-tab" onclick="filterTab(this,'batal')">Batal</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" placeholder="Cari apa?...."/>
+  </div>
+</div>
+
+<!-- WAVE + YELLOW BG -->
+<div style="max-width:900px;margin:0 auto;">
+  <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;line-height:0;margin-top:20px;">
+    <path d="M0,60 L0,30 Q112,0 225,30 Q337,60 450,30 Q562,0 675,30 Q787,60 900,30 L900,60 Z" fill="#f5c800"/>
+  </svg>
+</div>
+
+<div class="yellow-bg">
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+    <div class="content-card">
+
+      <!-- Title -->
+      <div class="daftar-title">
+        <h1>Daftar <span>Pesanan</span></h1>
+        <div class="title-line"></div>
+        <div class="title-dots">
+          <div class="title-dot"></div>
+          <div class="title-dot"></div>
+        </div>
+      </div>
+
+      <!-- Orders — shown for "Semua" -->
+      <div id="semua" class="all-content">
+
+        <!-- Card 1: Proses -->
+        <div class="order-card">
+          <div class="order-status-bar status-proses">Prosess</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <div>
+                <div class="order-total-label">Total Pembelian</div>
+                <div class="order-price">Rp.450.000</div>
+              </div>
+              <button class="btn-beli-lagi">Beli lagi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Proses -->
+        <div class="order-card">
+          <div class="order-status-bar status-proses">Prosess</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <div>
+                <div class="order-total-label">Total Pembelian</div>
+                <div class="order-price">Rp.450.000</div>
+              </div>
+              <button class="btn-beli-lagi">Beli lagi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Selesai -->
+        <div class="order-card">
+          <div class="order-status-bar status-selesai">Selesai</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#semua -->
+
+      <!-- Pending filter -->
+      <div id="pending" class="filter-content">
+        <div class="order-card">
+          <div class="order-status-bar status-pending">Pending</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <div>
+                <div class="order-total-label">Total Pembelian</div>
+                <div class="order-price">Rp.450.000</div>
+              </div>
+              <button class="btn-beli-lagi">Beli lagi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sudah Dikirim filter -->
+      <div id="kirim" class="filter-content">
+        <div class="order-card">
+          <div class="order-status-bar status-kirim">Sudah Dikirim</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <div>
+                <div class="order-total-label">Total Pembelian</div>
+                <div class="order-price">Rp.450.000</div>
+              </div>
+              <button class="btn-beli-lagi">Beli lagi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selesai filter -->
+      <div id="selesai" class="filter-content">
+        <div class="order-card">
+          <div class="order-status-bar status-selesai">Selesai</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <div>
+                <div class="order-total-label">Total Pembelian</div>
+                <div class="order-price">Rp.450.000</div>
+              </div>
+              <button class="btn-beli-lagi">Beli lagi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Batal filter -->
+      <div id="batal" class="filter-content">
+        <div class="order-card">
+          <div class="order-status-bar status-batal">Batal</div>
+          <div class="order-body">
+            <div class="order-top">
+              <div class="order-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div class="order-meta">
+                <h3>Desain logo</h3>
+                <span class="order-date">22 april 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn" onclick="changePage(-1)">&lt;</button>
+        <span class="page-number" id="pageNum">1</span>
+        <button class="page-btn" onclick="changePage(1)">&gt;</button>
+      </div>
+
+    </div><!-- /.content-card -->
+  </div>
+</div>
+
+<script>
+let currentPage = 1;
+let activeFilter = 'semua';
+
+function filterTab(btn, filter) {
+  // Update tabs
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = filter;
+
+  // Show/hide content
+  document.getElementById('semua').style.display = filter === 'semua' ? 'block' : 'none';
+  document.querySelectorAll('.filter-content').forEach(el => el.classList.remove('show'));
+  if (filter !== 'semua') {
+    const el = document.getElementById(filter);
+    if (el) el.classList.add('show');
+  }
+
+  currentPage = 1;
+  document.getElementById('pageNum').textContent = currentPage;
+}
+
+function changePage(dir) {
+  currentPage = Math.max(1, currentPage + dir);
+  document.getElementById('pageNum').textContent = currentPage;
+}
+</script>
+</body>
+</html>
