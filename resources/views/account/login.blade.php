@@ -69,7 +69,7 @@
                     <a href="/" type="button" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto">
                         Kembali
                     </a>
-                    <a href="/dashbord" type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">Masuk Ke Akun</a>
+                    <a href="/dashboard" type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">Masuk Ke Akun</a>
                 </div>
             </form>
 

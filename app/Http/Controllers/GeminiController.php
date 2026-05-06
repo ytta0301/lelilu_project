@@ -73,7 +73,7 @@ class GeminiController extends Controller
 
             $response = $result->text();
         } catch (\Exception $e) {
-            $response = "Error: ";// . $e->getMessage();
+            $response = "Error: " . $e->getMessage();
         }
 
         $history = session('chat_history', []);

@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('no_wa')->unique();
             $table->string('password');
+            $table->enum('role', ['admin', 'worker', 'user'])->default('user'); // tambahkan ini
             $table->timestamps();
         });
     }
