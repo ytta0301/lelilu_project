@@ -13,16 +13,16 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             // Admin
             [
-                'nama'       => 'Admin Utama',
-                'no_wa'      => '081200000001',
+                'name'       => 'Admin Utama',
+                'whatsapp'   => '081200000001',
                 'password'   => Hash::make('admin123'),
                 'role'       => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama'       => 'Worker hitam',
-                'no_wa'      => '081200000002',
+                'name'       => 'Worker hitam',
+                'whatsapp'   => '081200000002',
                 'password'   => Hash::make('worker123'),
                 'role'       => 'worker',
                 'created_at' => now(),
@@ -31,24 +31,24 @@ class UserSeeder extends Seeder
 
             // User
             [
-                'nama'       => 'Budi Santoso',
-                'no_wa'      => '081234567001',
+                'name'       => 'Budi Santoso',
+                'whatsapp'   => '081234567001',
                 'password'   => Hash::make('user123'),
                 'role'       => 'user',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama'       => 'Siti Rahayu',
-                'no_wa'      => '081234567002',
+                'name'       => 'Siti Rahayu',
+                'whatsapp'   => '081234567002',
                 'password'   => Hash::make('user123'),
                 'role'       => 'user',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama'       => 'Andi Prasetyo',
-                'no_wa'      => '081234567003',
+                'name'       => 'Andi Prasetyo',
+                'whatsapp'   => '081234567003',
                 'password'   => Hash::make('user123'),
                 'role'       => 'user',
                 'created_at' => now(),

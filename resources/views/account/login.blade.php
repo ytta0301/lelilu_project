@@ -31,27 +31,37 @@
                 <p class="text-gray-400 text-sm mt-4">Masuk ke akun LeLiLu Anda untuk melanjutkan</p>
             </div>
 
-            <form action="#" class="space-y-4">
+            <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
+                @csrf
+
                 <div>
                     <label class="block text-gray-700 font-semibold mb-1">Nomor WhatsApp</label>
-                    <input type="text" placeholder="Nomor WhatsApp anda" 
-                           class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
+                    <input type="text" name="whatsapp" value="{{ old('whatsapp') }}"
+                        placeholder="Nomor WhatsApp anda" 
+                        class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
+                    @error('whatsapp')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div>
                     <label class="block text-gray-700 font-semibold mb-1">Password</label>
-                    <input type="password" placeholder="Password" 
-                           class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
+                    <input type="password" name="password" placeholder="Password" 
+                        class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
+                    @error('password')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="flex items-center justify-between text-xs sm:text-sm">
                     <div class="flex items-center">
-                        <input type="checkbox" id="remember" class="accent-yellow-400">
+                        <input type="checkbox" name="remember" id="remember" class="accent-yellow-400">
                         <label for="remember" class="ml-2 text-gray-600">Remember me</label>
                     </div>
                     <a href="#" class="text-yellow-500 hover:underline">Forgot Password?</a>
                 </div>
 
+                {{-- Tombol Google (kosongkan dulu, belum ada OAuth) --}}
                 <div class="flex flex-col sm:flex-row gap-4 pt-2">
                     <button type="button" class="flex-1 flex items-center justify-center border border-gray-300 py-2.5 rounded-xl hover:bg-gray-50 transition">
                         <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5 mr-2" alt="Google">
@@ -66,10 +76,13 @@
                 </div>
 
                 <div class="flex gap-3">
-                    <a href="/" type="button" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto">
+                    <a href="/" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto">
                         Kembali
                     </a>
-                    <a href="/dashboard" type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">Masuk Ke Akun</a>
+                    {{-- Ganti <a> jadi <button type="submit"> --}}
+                    <button type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">
+                        Masuk Ke Akun
+                    </button>
                 </div>
             </form>
 
