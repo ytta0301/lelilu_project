@@ -239,7 +239,6 @@
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/portofolio">Portofolio</a></li>
-    <li><a href="#" class="">Testimoni</a></li>
   </ul>
 </nav>
 <!-- MAIN -->

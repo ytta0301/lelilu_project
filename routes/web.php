@@ -20,10 +20,7 @@ Route::get('/chatbot', [GeminiController::class, 'index'])->name('chatbot.index'
 Route::post('/chatbot/ask', [GeminiController::class, 'ask'])->name('gemini.ask');
 Route::post('/chatbot/clear', [GeminiController::class, 'clear'])->name('chatbot.clear');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c87020c8180f6ff1dba18cfa2c4a7b102b402da2
 Route::get('/', function () {
     return view('welcome'); // Folder.NamaFile
 });
@@ -56,3 +53,6 @@ Route::get('/testimoni', function () {
     return view('testimoni.testimoni'); // Folder.NamaFile
 });
 
+Route::get('/profile', function () {
+    return view('profile.profile'); // Folder.NamaFile
+});

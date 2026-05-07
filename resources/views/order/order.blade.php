@@ -434,7 +434,7 @@
           <textarea class="form-textarea" id="pesan" placeholder="Tulis deskripsi desain yang kamu inginkan..."></textarea>
         </div>
 
-        <button class="btn-primary" onclick="submitOrder()">masukan gambar</button>
+        <a href="/payment"><button class="btn-primary" onclick="submitOrder()">masukan gambar</button></a>
       </div>
 
       <!-- RIGHT: CUSTOM REFERENCE -->

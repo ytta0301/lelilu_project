@@ -531,15 +531,13 @@
             <div class="logo">LeLilu</div>
             <div class="nav-divider"></div>
             <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Portofolio</a></li>
-                <li><a href="#">Testimoni</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">AI</a></li>
+                <li><a href="/dashboard" class="active">Home</a></li>
+                <li><a href="/portofolio">Portofolio</a></li>
+                <li><a href="/chatbot">AI</a></li>
             </ul>
         </div>
         <div class="nav-right">
-            <span class="nav-username">Username</span>
+            <a href="/profile"><span class="nav-username">Username</span></a>
             <button class="btn-logout">Log out</button>
         </div>
     </nav>
