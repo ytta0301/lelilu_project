@@ -164,7 +164,6 @@
       display: block;
     }
 
-    /* Colored avatar placeholder */
     .avatar-placeholder {
       width: 38px;
       height: 38px;
@@ -292,6 +291,7 @@
     <li><a href="/portofolio">Portofolio</a></li>
   </ul>
 </nav>
+
 <!-- MAIN -->
 <main>
   <div class="page-title-wrap">
@@ -299,7 +299,30 @@
     <div class="title-line"></div>
   </div>
 
-  <div class="testimonial-grid" id="grid"></div>
+  <div class="testimonial-grid" id="grid">
+    @forelse($testimonis as $t)
+      <div class="card">
+        <p class="card-text">{{ $t->komentar }}</p>
+        <div class="card-author">
+          <div class="avatar-wrap">
+            <div class="avatar-placeholder" style="background: #F5C518">
+              {{ strtoupper(substr($t->user->name ?? 'U', 0, 2)) }}
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="2,5 4.5,7.5 8,3" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="author-info">
+            <span class="author-name">{{ $t->user->name ?? 'User' }}</span>
+          </div>
+        </div>
+      </div>
+    @empty
+      <p style="color: #888; font-size: 0.9rem; grid-column: 1/-1; text-align: center; padding: 2rem;">Belum ada testimoni.</p>
+    @endforelse
+  </div>
 </main>
 
 <!-- FOOTER ART -->
@@ -307,124 +330,5 @@
   <img src="{{ asset('images/canvas.png') }}" alt="">
 </div>
 
-<script>
-  const testimonials = [
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      name: "Kentanggoreng",
-      handle: "@kentang123",
-      color: "#27ae60"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      name: "Kentanggoreng",
-      handle: "@kentang123",
-      color: "#27ae60"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      name: "Kentanggoreng",
-      handle: "@kentang123",
-      color: "#27ae60"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      name: "Kibutsuji Muzan",
-      handle: "@muzan12",
-      color: "#c0392b"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-    {
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      name: "Christofer",
-      handle: "@chh_2008",
-      color: "#2c3e50"
-    },
-  ];
-
-  function getInitial(name) {
-    return name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-  }
-
-  const checkSVG = `<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><polyline points="2,5 4.5,7.5 8,3" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-  const grid = document.getElementById('grid');
-  testimonials.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <p class="card-text">${t.text}</p>
-      <div class="card-author">
-        <div class="avatar-wrap">
-          <div class="avatar-placeholder" style="background:${t.color}">${getInitial(t.name)}</div>
-          <div class="badge">${checkSVG}</div>
-        </div>
-        <div class="author-info">
-          <span class="author-name">${t.name} &ndash; <span class="author-handle">${t.handle}</span></span>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-</script>
 </body>
 </html>
