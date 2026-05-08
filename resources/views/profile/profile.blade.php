@@ -87,7 +87,7 @@
       text-align: center;
     }
 
-    .user-email {
+    .user-telpon {
       font-size: 0.78rem;
       color: #aaa;
       text-decoration: underline;
@@ -209,9 +209,7 @@
       background: #fffbea;
       transform: translateX(-3px);
     }
-    .btn-kembali:active {
-      transform: translateX(0);
-    }
+    .btn-kembali:active { transform: translateX(0); }
 
     .btn-simpan {
       background: #F5C518;
@@ -233,14 +231,8 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(245,197,24,0.35);
     }
-    .btn-simpan:active {
-      transform: translateY(0);
-      box-shadow: none;
-    }
-    .btn-simpan.loading {
-      pointer-events: none;
-      opacity: .8;
-    }
+    .btn-simpan:active { transform: translateY(0); box-shadow: none; }
+    .btn-simpan.loading { pointer-events: none; opacity: .8; }
 
     /* TOAST */
     .toast {
@@ -262,10 +254,7 @@
       align-items: center;
       gap: 8px;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     .toast.success { background: #1a1a1a; color: #fff; }
     .toast.error   { background: #ff4d4d; color: #fff; }
 
@@ -295,7 +284,6 @@
     }
     .fab:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.18); color: #F5C518; }
 
-    /* shake animation */
     @keyframes shake {
       0%,100% { transform: translateX(0); }
       20%      { transform: translateX(-6px); }
@@ -304,96 +292,239 @@
       80%      { transform: translateX(4px); }
     }
 
+    @media (max-width: 900px) {
+      .profile-card { padding: 32px 32px 28px; }
+      .card-body { gap: 0; }
+      .left-panel { width: 200px; padding-right: 28px; }
+      .avatar-wrap { width: 120px; height: 120px; }
+      .avatar-ring { inset: -3px; }
+      .avatar-placeholder { width: 120px; height: 120px; font-size: 2.5rem; border-width: 3px; }
+      .user-name { font-size: 1.1rem; }
+      .right-panel { padding-left: 28px; }
+      .section-title { font-size: 1rem; }
+      .field-input { padding: 10px 14px; font-size: 0.82rem; }
+      .btn-kembali { padding: 10px 20px; font-size: 0.85rem; }
+      .btn-simpan { padding: 16px 44px; font-size: 1rem; }
+    }
+
     @media (max-width: 700px) {
+      body { padding: 32px 16px 60px; }
+      .profile-card { padding: 24px 20px 24px; border-radius: 16px; max-width: 100%; }
       .card-body { flex-direction: column; }
-      .left-panel { width: 100%; border-right: none; border-bottom: 1px solid #ddd; padding-right: 0; padding-bottom: 28px; margin-bottom: 28px; }
+      .left-panel { 
+        width: 100%; 
+        border-right: none; 
+        border-bottom: 1px solid #ddd; 
+        padding-right: 0; 
+        padding-bottom: 20px; 
+        margin-bottom: 20px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 16px;
+        align-items: center;
+      }
+      .avatar-wrap { width: 100px; height: 100px; margin-bottom: 0; flex-shrink: 0; }
+      .avatar-ring { inset: -2px; }
+      .avatar-placeholder { width: 100px; height: 100px; font-size: 2rem; border-width: 3px; }
+      .user-info { text-align: left; }
+      .user-name { font-size: 1.05rem; text-align: left; }
+      .user-telpon { font-size: 0.72rem; text-align: left; }
       .right-panel { padding-left: 0; }
-      .bottom-row { flex-direction: column; gap: 12px; align-items: stretch; }
+      .section-title { font-size: 0.95rem; margin-bottom: 12px; }
+      .field-group { margin-bottom: 12px; }
+      .field-label { font-size: 0.78rem; margin-bottom: 5px; }
+      .field-input { padding: 9px 12px; font-size: 0.8rem; border-radius: 8px; }
+      .field-select { padding: 9px 12px; font-size: 0.8rem; border-radius: 8px; background-position: right 12px center; }
+      .input-wrap .field-input { padding-right: 36px; }
+      .eye-btn { right: 10px; }
+      .eye-btn svg { width: 16px; height: 16px; }
+      .section-spacer { margin-bottom: 16px; }
+      .bottom-row { 
+        flex-direction: column; 
+        gap: 12px; 
+        align-items: stretch; 
+        margin-top: 28px;
+        padding-top: 6px;
+      }
       .btn-kembali, .btn-simpan { justify-content: center; }
+      .btn-kembali { padding: 10px 20px; font-size: 0.85rem; border-radius: 10px; }
+      .btn-simpan { padding: 14px 36px; font-size: 0.95rem; border-radius: 12px; }
+      .fab-group { bottom: 20px; right: 20px; gap: 10px; }
+      .fab { width: 44px; height: 44px; font-size: 1rem; }
+      .toast { bottom: 20px; padding: 12px 20px; font-size: 0.82rem; border-radius: 40px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 24px 12px 50px; }
+      .profile-card { padding: 20px 14px 20px; border-radius: 14px; }
+      .left-panel { padding-bottom: 16px; margin-bottom: 16px; gap: 12px; }
+      .avatar-wrap { width: 80px; height: 80px; }
+      .avatar-ring { inset: -2px; }
+      .avatar-placeholder { width: 80px; height: 80px; font-size: 1.6rem; border-width: 2px; }
+      .user-name { font-size: 0.95rem; }
+      .user-telpon { font-size: 0.68rem; }
+      .right-panel { padding-left: 0; }
+      .section-title { font-size: 0.9rem; margin-bottom: 10px; }
+      .field-group { margin-bottom: 10px; }
+      .field-label { font-size: 0.74rem; margin-bottom: 4px; }
+      .field-input { padding: 8px 10px; font-size: 0.78rem; border-radius: 8px; }
+      .field-select { padding: 8px 10px; font-size: 0.78rem; border-radius: 8px; background-position: right 10px center; }
+      .input-wrap .field-input { padding-right: 32px; }
+      .eye-btn { right: 8px; }
+      .eye-btn svg { width: 14px; height: 14px; }
+      .section-spacer { margin-bottom: 12px; }
+      .bottom-row { margin-top: 24px; gap: 10px; }
+      .btn-kembali { padding: 10px 16px; font-size: 0.8rem; border-radius: 8px; }
+      .btn-simpan { padding: 12px 28px; font-size: 0.9rem; border-radius: 10px; }
+      .fab-group { bottom: 16px; right: 16px; gap: 8px; }
+      .fab { width: 40px; height: 40px; font-size: 0.9rem; }
+      .toast { bottom: 16px; padding: 10px 16px; font-size: 0.76rem; border-radius: 30px; }
+    }
+
+    @media (max-width: 360px) {
+      .profile-card { padding: 16px 10px 18px; border-radius: 12px; }
+      .left-panel { gap: 10px; }
+      .avatar-wrap { width: 70px; height: 70px; }
+      .avatar-placeholder { width: 70px; height: 70px; font-size: 1.4rem; }
+      .user-name { font-size: 0.9rem; }
+      .btn-kembali { padding: 8px 14px; font-size: 0.75rem; }
+      .btn-simpan { padding: 10px 24px; font-size: 0.85rem; }
+      .fab { width: 36px; height: 36px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
 <div class="profile-card">
-  <div class="card-body">
 
-    <!-- LEFT PANEL -->
-    <div class="left-panel">
-      <div class="avatar-wrap">
-        <div class="avatar-ring"></div>
-        <div class="avatar-placeholder">KM</div>
+  {{-- ✅ FORM Laravel: action ke route profile.update dengan ID user --}}
+  <form action="{{ route('profile.update', $user->id_user) }}" method="POST" id="profileForm">
+    @csrf
+    @method('PUT')
+
+    <div class="card-body">
+
+      <!-- LEFT PANEL -->
+      <div class="left-panel">
+        <div class="avatar-wrap">
+          <div class="avatar-ring"></div>
+          {{-- Ambil 2 huruf pertama nama user untuk avatar --}}
+          <div class="avatar-placeholder">
+            {{ strtoupper(substr($user->name, 0, 2)) }}
+          </div>
+        </div>
+        {{-- Tampilkan nama & whatsapp dari database --}}
+        <div class="user-name">{{ $user->name }}</div>
+        <div class="user-telpon">{{ $user->whatsapp }}</div>
       </div>
-      <div class="user-name">Lastyellow22</div>
-      <div class="user-email">sonn23@gmail.com</div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+
+        <!-- Notifikasi dari Laravel (muncul via JS toast di bawah) -->
+        @if(session('success'))
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              showToast('✓ {{ session("success") }}', 'success');
+            });
+          </script>
+        @endif
+
+        @if($errors->any())
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              showToast('⚠ {{ $errors->first() }}', 'error');
+            });
+          </script>
+        @endif
+
+        <!-- Identitas -->
+        <div class="section-title">Identitas Pengguna</div>
+
+        <div class="field-group">
+          <label class="field-label">Nama Pengguna</label>
+          {{-- name="name" → dikirim ke controller, value dari DB --}}
+          <input type="text" class="field-input" id="username"
+                 name="name"
+                 value="{{ old('name', $user->name) }}"/>
+        </div>
+
+        <div class="field-group section-spacer">
+          <label class="field-label">Whatsapp</label>
+          {{-- name="whatsapp" → dikirim ke controller, value dari DB --}}
+          <input type="text" class="field-input" id="whatsapp"
+                 name="whatsapp"
+                 value="{{ old('whatsapp', $user->whatsapp) }}"
+                 placeholder="Masukkan nomor Whatsapp"/>
+        </div>
+
+        <!-- Password -->
+        <div class="section-title">Password</div>
+
+        <div class="field-group">
+          <label class="field-label">Masukan Password lama</label>
+          <div class="input-wrap">
+            {{-- name="old_password" → dicek di controller pakai Hash::check --}}
+            <input type="password" class="field-input" id="pass-old"
+                   name="old_password" placeholder="••••••••" autocomplete="off" />
+            <button class="eye-btn" onclick="togglePass('pass-old', this)" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Buat Password baru</label>
+          <div class="input-wrap">
+            {{-- name="new_password" → di-hash di controller --}}
+            <input type="password" class="field-input" id="pass-new"
+                   name="new_password" placeholder="••••••••" autocomplete="new-password"/>
+            <button class="eye-btn" onclick="togglePass('pass-new', this)" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group section-spacer">
+          <label class="field-label">Konfirmasi Password</label>
+          <div class="input-wrap">
+            {{-- name="new_password_confirmation" → harus sama dengan new_password --}}
+            <input type="password" class="field-input" id="pass-confirm"
+                   name="new_password_confirmation" placeholder="••••••••" autocomplete="new-password"/>
+            <button class="eye-btn" onclick="togglePass('pass-confirm', this)" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bahasa -->
+        <div class="section-title">Bahasa</div>
+        <div class="field-group">
+          {{-- name="bahasa" → disimpan ke kolom bahasa di tabel users --}}
+          <select class="field-select" id="bahasa" name="bahasa">
+            <option value="id" {{ old('bahasa', $user->bahasa ?? 'id') == 'id' ? 'selected' : '' }}>Indonesia</option>
+            <option value="en" {{ old('bahasa', $user->bahasa ?? '') == 'en' ? 'selected' : '' }}>English</option>
+            <option value="ms" {{ old('bahasa', $user->bahasa ?? '') == 'ms' ? 'selected' : '' }}>Melayu</option>
+          </select>
+        </div>
+
+      </div>
     </div>
 
-    <!-- RIGHT PANEL -->
-    <div class="right-panel">
+    <!-- BOTTOM ROW -->
+    <div class="bottom-row">
+      {{-- Kembali ke halaman sebelumnya --}}
+      <a href="/dashboard"  class="btn-kembali">&#8592; Kembali</a>
 
-      <!-- Identitas -->
-      <div class="section-title">Identitas Pengguna</div>
-      <div class="field-group">
-        <label class="field-label">Nama Pengguna</label>
-        <input type="text" class="field-input" id="username" value="@lastyellow22"/>
-      </div>
-      <div class="field-group section-spacer">
-        <label class="field-label">Email</label>
-        <input type="email" class="field-input" id="email" placeholder="sonn23@gmail.com"/>
-      </div>
-
-      <!-- Password -->
-      <div class="section-title">Password</div>
-      <div class="field-group">
-        <label class="field-label">Masukan Password lama</label>
-        <div class="input-wrap">
-          <input type="password" class="field-input" id="pass-old" placeholder="••••••••"/>
-          <button class="eye-btn" onclick="togglePass('pass-old', this)" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Buat Password baru</label>
-        <div class="input-wrap">
-          <input type="password" class="field-input" id="pass-new" placeholder="••••••••"/>
-          <button class="eye-btn" onclick="togglePass('pass-new', this)" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="field-group section-spacer">
-        <label class="field-label">Konfirmasi Password</label>
-        <div class="input-wrap">
-          <input type="password" class="field-input" id="pass-confirm" placeholder="••••••••"/>
-          <button class="eye-btn" onclick="togglePass('pass-confirm', this)" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Bahasa -->
-      <div class="section-title">Bahasa</div>
-      <div class="field-group">
-        <select class="field-select" id="bahasa">
-          <option value="id" selected>Indonesia</option>
-          <option value="en">English</option>
-          <option value="ms">Melayu</option>
-        </select>
-      </div>
-
+      {{-- Tombol Simpan: validasi JS dulu, baru submit form --}}
+      <button type="button" class="btn-simpan" id="btnSimpan" onclick="handleSimpan()">
+        Simpan
+      </button>
     </div>
-  </div>
 
-  <!-- BOTTOM ROW -->
-  <div class="bottom-row">
-    <a href="/dashboard"><button class="btn-kembali" onclick="handleKembali()"></a>
-      &#8592; Kembali
-    </button>
-    <button class="btn-simpan" id="btnSimpan" onclick="handleSimpan()">
-      Simpan
-    </button>
-  </div>
+  </form>
+  {{-- akhir form --}}
+
 </div>
 
 <!-- FAB BUTTONS -->
@@ -418,26 +549,16 @@
     btn.style.color = isHidden ? '#F5C518' : '#aaa';
   }
 
-  /* ── Kembali ── */
-  function handleKembali() {
-    if (history.length > 1) {
-      history.back();
-    } else {
-      // fallback jika tidak ada halaman sebelumnya
-      window.location.href = '/dashboard';
-    }
-  }
-
-  /* ── Simpan ── */
+  /* ── Simpan: validasi JS dulu → baru submit form ke Laravel ── */
   function handleSimpan() {
     const username    = document.getElementById('username').value.trim();
-    const email       = document.getElementById('email').value.trim();
+    const whatsapp       = document.getElementById('whatsapp').value.trim();
     const passOld     = document.getElementById('pass-old').value;
     const passNew     = document.getElementById('pass-new').value;
     const passConfirm = document.getElementById('pass-confirm').value;
 
     // reset error styles
-    ['username','email','pass-old','pass-new','pass-confirm'].forEach(id => {
+    ['username','whatsapp','pass-old','pass-new','pass-confirm'].forEach(id => {
       document.getElementById(id).classList.remove('error');
     });
 
@@ -448,10 +569,10 @@
       return;
     }
 
-    // validasi email
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      shakeField('email');
-      showToast('⚠ Format email tidak valid', 'error');
+    // validasi whatsapp
+    if (whatsapp && !/^\d{10,15}$/.test(whatsapp)) {
+      shakeField('whatsapp');
+      showToast('⚠ Format nomor Whatsapp tidak valid', 'error');
       return;
     }
 
@@ -474,21 +595,12 @@
       }
     }
 
-    // simulasi loading
+    // ✅ Semua validasi lolos → loading state → submit ke Laravel
     const btn = document.getElementById('btnSimpan');
     btn.classList.add('loading');
     btn.textContent = 'Menyimpan...';
 
-    setTimeout(() => {
-      btn.classList.remove('loading');
-      btn.textContent = 'Simpan';
-      showToast('✓ Perubahan berhasil disimpan!', 'success');
-
-      // reset password fields setelah simpan
-      document.getElementById('pass-old').value     = '';
-      document.getElementById('pass-new').value     = '';
-      document.getElementById('pass-confirm').value = '';
-    }, 1200);
+    document.getElementById('profileForm').submit();
   }
 
   /* ── Helpers ── */

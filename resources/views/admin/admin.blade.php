@@ -321,17 +321,118 @@ tbody td:first-child { padding-left: 0; }
 .td-layanan { color: #555; }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+  .main { padding: 28px 28px 40px; }
+  .stats-row { gap: 14px; }
+  .stat-card { padding: 18px 18px 14px; }
+  .stat-number { font-size: 1.6rem; }
+  .stat-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+}
+
 @media (max-width: 1100px) {
   .stats-row { grid-template-columns: 1fr 1fr; }
+  .table-section { padding: 20px 20px 6px; }
 }
-@media (max-width: 800px) {
+
+@media (max-width: 900px) {
   .sidebar { width: 200px; }
-  .main { margin-left: 200px; padding: 20px; }
+  .main { margin-left: 200px; padding: 20px 20px 32px; }
+  .sidebar-logo { font-size: 1.5rem; padding: 0 20px; }
+  .admin-card { margin: 0 12px 24px; padding: 12px 14px; }
+  .admin-avatar { width: 38px; height: 38px; font-size: 1rem; }
+  .nav-item { padding: 9px 20px; font-size: 0.88rem; }
+  .topbar { margin-bottom: 24px; }
+  .stats-row { gap: 12px; margin-bottom: 20px; }
+  .stat-card { padding: 16px 16px 12px; }
+  .stat-number { font-size: 1.5rem; }
+  .table-header { margin-bottom: 16px; }
+  .table-title { font-size: 1.05rem; }
 }
+
+@media (max-width: 768px) {
+  .sidebar { width: 180px; padding: 20px 0 24px; }
+  .main { margin-left: 180px; padding: 16px 16px 28px; }
+  .sidebar-logo { font-size: 1.4rem; padding: 0 16px; margin-bottom: 20px; }
+  .sidebar-logo span { font-size: inherit; }
+  .admin-card { margin: 0 10px 18px; padding: 10px 12px; gap: 10px; }
+  .admin-avatar { width: 34px; height: 34px; font-size: 0.9rem; }
+  .admin-name { font-size: 0.82rem; }
+  .admin-email { font-size: 0.68rem; }
+  .nav-section-label { font-size: 0.62rem; padding: 0 16px; margin-bottom: 4px; }
+  .nav-group { margin-bottom: 20px; }
+  .nav-item { padding: 8px 16px; font-size: 0.85rem; }
+  .topbar { gap: 10px; margin-bottom: 20px; }
+  .search-box { border-radius: 10px; }
+  .search-box input { font-size: 0.82rem; padding: 12px 0; }
+  .settings-btn { width: 44px; height: 44px; border-radius: 10px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat-card { padding: 14px 14px 10px; border-radius: 14px; }
+  .stat-number { font-size: 1.4rem; }
+  .stat-icon { width: 36px; height: 36px; font-size: 1rem; }
+  .stat-label { font-size: 0.76rem; }
+  .stat-growth { font-size: 0.68rem; }
+  .table-section { padding: 16px 16px 6px; border-radius: 14px; }
+  .table-header { margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  .table-title { font-size: 1rem; }
+  .btn-lihat-semua { padding: 9px 18px; font-size: 0.82rem; border-radius: 8px; }
+  thead th { font-size: 0.76rem; padding: 8px 10px; }
+  tbody td { padding: 14px 10px; font-size: 0.82rem; }
+  .td-customer { gap: 10px; }
+  .avatar-sm { width: 32px; height: 32px; }
+  .customer-name { font-size: 0.82rem; }
+  .badge { padding: 4px 12px; font-size: 0.72rem; }
+}
+
 @media (max-width: 640px) {
   .sidebar { display: none; }
   .main { margin-left: 0; }
-  .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .topbar { flex-wrap: wrap; }
+  .search-box { flex: 1 1 100%; }
+  .settings-btn { flex-shrink: 0; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 12px 12px 10px; }
+  .stat-number { font-size: 1.3rem; }
+  .stat-icon { width: 32px; height: 32px; }
+  table { display: block; overflow-x: auto; }
+  .table-section { overflow-x: hidden; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .main { padding: 12px 12px 24px; }
+  .topbar { margin-bottom: 16px; gap: 8px; }
+  .search-box { padding: 0 12px; }
+  .search-box input { font-size: 0.8rem; padding: 10px 0; }
+  .search-box svg { width: 16px; height: 16px; }
+  .settings-btn { width: 40px; height: 40px; }
+  .settings-btn svg { width: 18px; height: 18px; }
+  .stats-row { gap: 8px; margin-bottom: 14px; }
+  .stat-card { padding: 10px 10px 8px; border-radius: 12px; }
+  .stat-number { font-size: 1.2rem; }
+  .stat-icon { width: 28px; height: 28px; font-size: 0.9rem; }
+  .stat-label { font-size: 0.7rem; margin-bottom: 4px; }
+  .stat-growth { font-size: 0.62rem; }
+  .table-section { padding: 12px 12px 4px; border-radius: 12px; }
+  .table-header { margin-bottom: 10px; }
+  .table-title { font-size: 0.95rem; }
+  .btn-lihat-semua { padding: 8px 14px; font-size: 0.78rem; border-radius: 6px; }
+  thead th { font-size: 0.7rem; padding: 6px 8px; }
+  tbody td { padding: 10px 8px; font-size: 0.76rem; }
+  .td-id { font-size: 0.7rem; }
+  .td-customer { gap: 8px; }
+  .avatar-sm { width: 28px; height: 28px; }
+  .customer-name { font-size: 0.78rem; }
+  .badge { padding: 3px 10px; font-size: 0.68rem; border-radius: 16px; }
+  .td-saldo { font-size: 0.78rem; }
+  .td-date { font-size: 0.72rem; }
+  .td-layanan { font-size: 0.76rem; }
+}
+
+@media (max-width: 360px) {
+  .search-box { flex: 1 1 100%; }
+  .stats-row { grid-template-columns: 1fr; }
+  .stat-card { flex-direction: row; align-items: center; justify-content: space-between; }
+  .stat-top { margin-bottom: 0; }
 }
 </style>
 </head>

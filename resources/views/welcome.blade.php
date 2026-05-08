@@ -29,6 +29,197 @@
         }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .max-w-7xl { max-width: 960px; }
+            .lg\:text-9xl { font-size: 5rem; }
+        }
+
+        @media (max-width: 992px) {
+            nav { height: 70px; }
+            nav .max-w-7xl { padding: 0 24px; }
+            .hidden.md\:flex { display: none; }
+            .md\:block { display: block; }
+            .md\:text-2xl { font-size: 1.5rem; }
+            .md\:hidden { display: flex; }
+            section.relative { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+            .grid-cols-1.lg\:grid-cols-2 { grid-template-columns: 1fr; }
+            .text-5xl { font-size: 2.5rem; }
+            .text-6xl { font-size: 3rem; }
+            .lg\:text-8xl { font-size: 4rem; }
+            .lg\:text-9xl { font-size: 4.5rem; }
+            .font-handwriting { font-size: 2.5rem !important; }
+            .text-8xl { font-size: 4rem; }
+            .text-9xl { font-size: 4.5rem; }
+            .space-y-8 > * + * { margin-top: 2rem; }
+            .absolute.-top-\[5rem\] { position: relative; top: 0; margin-top: 2rem; }
+            .flex-col.sm\:flex-row { flex-direction: column; gap: 12px; }
+            .gap-4 { gap: 12px; }
+            .flex > button { width: 100%; justify-content: center; }
+            .w-full { width: 100%; }
+            .grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr; }
+            .lg\:col-span-9 { grid-column: span 1; }
+            .lg\:col-span-3 { display: none; }
+            .rounded-\[3rem\] { border-radius: 1.5rem; }
+            .p-8 { padding: 1.5rem; }
+            .lg\:grid-cols-12 { grid-template-columns: 1fr; }
+            .lg\:pt-20 { padding-top: 2rem; }
+            .lg\:col-span-7, .lg\:col-span-5 { grid-column: span 1; }
+            .absolute.-bottom-6 { position: relative; bottom: 0; margin-top: 1.5rem; }
+            .flex-wrap { flex-wrap: wrap; }
+            .justify-between { justify-content: center; }
+            .min-w-\[80px\] { min-width: 60px; }
+            .grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+            footer .max-w-7xl { padding: 0 24px 4rem; }
+            .pb-\[8rem\] { padding-bottom: 4rem; }
+            .text-5xl { font-size: 2.5rem; }
+            footer h2 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { height: 64px; padding: 0 16px; }
+            .text-xl { font-size: 1.25rem; }
+            .max-w-7xl { padding: 0 16px; }
+            .text-4xl { font-size: 2rem; }
+            .md\:text-5xl { font-size: 2rem; }
+            .text-5xl { font-size: 2.2rem; }
+            .text-6xl { font-size: 2.5rem; }
+            .text-7xl { font-size: 3rem; }
+            .text-8xl { font-size: 3rem; }
+            .text-9xl { font-size: 3.5rem; }
+            .font-handwriting { font-size: 2rem !important; }
+            section { padding-top: 90px; padding-bottom: 40px; }
+            .gap-6 { gap: 1rem; }
+            .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+            .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
+            .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+            .gap-4 { gap: 0.75rem; }
+            .bg-white { padding: 1rem; }
+            .grid-cols-1 { gap: 1rem; }
+            .gap-8 { gap: 1.5rem; }
+            .rounded-\[3rem\] { border-radius: 1.5rem; }
+            .p-8, .p-12 { padding: 1.25rem; }
+            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+            .hidden { display: none; }
+            .text-center { text-align: center; }
+            .items-center { align-items: center; }
+            .justify-center { justify-content: center; }
+            .flex-col { flex-direction: column; }
+            .w-auto { width: 100%; }
+            .h-auto { height: auto; }
+            img.h-full { max-height: 300px; width: auto; }
+            .mb-10 { margin-bottom: 1.5rem; }
+            .mb-12 { margin-bottom: 2rem; }
+            .mb-8 { margin-bottom: 1.5rem; }
+            .gap-4 { gap: 0.75rem; }
+            .text-sm { font-size: 0.875rem; }
+            .text-xs { font-size: 0.75rem; }
+            .border-b { border-bottom-width: 1px; }
+            .text-gray-600 { font-size: 0.875rem; }
+            .flex-col.md\:flex-row { flex-direction: column; }
+            .bg-white { border-radius: 0.75rem; }
+            footer .max-w-7xl { padding: 0 16px 3rem; }
+            footer h2 { font-size: 2rem; }
+            .text-xl.md\:text-2xl { font-size: 1.25rem; }
+            .bg-\[\#FFD700\] { padding: 1rem 2rem; }
+            button.py-3.px-8 { width: 100%; justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            nav { height: 60px; }
+            .max-w-7xl { padding: 0 12px; }
+            .flex.gap-6 { gap: 8px; }
+            .h-8 { height: 24px; }
+            .text-xl { font-size: 1.1rem; }
+            .text-4xl { font-size: 1.75rem; }
+            .md\:text-5xl { font-size: 1.75rem; }
+            .text-5xl { font-size: 2rem; }
+            .text-6xl { font-size: 2.2rem; }
+            .text-7xl { font-size: 2.5rem; }
+            .text-8xl { font-size: 2.8rem; }
+            .text-9xl { font-size: 3rem; }
+            .font-handwriting { font-size: 1.75rem !important; }
+            section { padding-top: 80px; padding-bottom: 30px; }
+            .py-16 { padding: 2rem 0; }
+            .py-20 { padding: 2rem 0; }
+            .py-24 { padding: 2rem 0; }
+            .gap-8 { gap: 1.25rem; }
+            .gap-4 { gap: 0.5rem; }
+            .text-base { font-size: 0.875rem; }
+            .text-sm { font-size: 0.75rem; }
+            .text-xs { font-size: 0.65rem; }
+            .leading-relaxed { line-height: 1.4; }
+            .leading-tight { line-height: 1.2; }
+            .mb-6 { margin-bottom: 1rem; }
+            .mb-8 { margin-bottom: 1.25rem; }
+            .mb-12 { margin-bottom: 1.5rem; }
+            .p-4 { padding: 0.75rem; }
+            .p-6 { padding: 1rem; }
+            .p-8 { padding: 1rem; }
+            .rounded-lg { border-radius: 0.5rem; }
+            .rounded-2xl { border-radius: 0.75rem; }
+            .rounded-\[3rem\] { border-radius: 1rem; }
+            .shadow-lg { box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1); }
+            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+            .w-40 { width: 60%; }
+            .h-40 { height: 40px; }
+            .gap-3 { gap: 0.5rem; }
+            .gap-4 { gap: 0.5rem; }
+            img { max-width: 100%; height: auto; }
+            .text-center { text-align: center; }
+            .flex { flex-direction: column; }
+            .items-center { align-items: center; }
+            .space-y-4 > * + * { margin-top: 0.75rem; }
+            .bg-white { padding: 0.75rem; }
+            .grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr; gap: 0.75rem; }
+            .grid-cols-2 { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            .gap-2 { gap: 0.25rem; }
+            .min-w-\[80px\] { min-width: 50px; }
+            .text-2xl { font-size: 1.25rem; }
+            .text-3xl { font-size: 1.5rem; }
+            .text-xl { font-size: 1rem; }
+            .text-lg { font-size: 0.875rem; }
+            .text-sm { font-size: 0.75rem; }
+            .text-xs { font-size: 0.65rem; }
+            .font-bold { font-weight: 700; }
+            .font-semibold { font-weight: 600; }
+            .font-medium { font-weight: 500; }
+            footer { padding-bottom: 2rem; }
+            footer .max-w-7xl { padding: 0 12px 2rem; }
+            footer h2 { font-size: 1.75rem; }
+            .text-5xl { font-size: 1.75rem; }
+            .text-white { font-size: 0.875rem; }
+            .gap-2 { gap: 0.5rem; }
+            .grid-cols-2.md\:grid-cols-4 { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .space-y-2 > * + * { margin-top: 0.25rem; }
+            .hidden.sm\:block { display: none; }
+            .w-full { width: 100%; }
+            .justify-between { justify-content: flex-start; }
+            .bg-\[\#FFD700\] { padding: 0.75rem 1.5rem; font-size: 0.875rem; }
+            .py-2\.5 { padding: 0.5rem 1rem; }
+            .px-8 { padding-left: 1rem; padding-right: 1rem; }
+            .rounded-full { border-radius: 9999px; }
+            .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+            button, .btn { width: 100%; }
+        }
+
+        @media (max-width: 400px) {
+            nav { height: 56px; }
+            .text-xl { font-size: 1rem; }
+            .text-4xl { font-size: 1.5rem; }
+            .text-5xl { font-size: 1.75rem; }
+            .text-6xl { font-size: 2rem; }
+            .text-7xl { font-size: 2.2rem; }
+            .text-8xl { font-size: 2.5rem; }
+            .text-9xl { font-size: 2.8rem; }
+            .font-handwriting { font-size: 1.5rem !important; }
+            .py-2\.5 { padding: 0.4rem 0.75rem; }
+            .text-sm { font-size: 0.7rem; }
+            footer h2 { font-size: 1.5rem; }
+            .text-white { font-size: 0.8rem; }
+            .text-2xl { font-size: 1.1rem; }
+        }
+
         /* Custom Wave Styles */
         .custom-wave-container {
     position: absolute;
@@ -64,17 +255,34 @@
                     <a href="/portofolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
                     <a href="#testimoni" class="text-gray-600 hover:text-black font-medium transition-colors">Testimoni</a>
                     <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
-                    <a href="/chatbot" class="text-gray-600 hover:text-black font-medium transition-colors">AI</a>
+                    <a href="/chatbot" class="text-gray-600 hover:text-black font-medium transition-colors">FAQ</a>
                 </div>
             </div>
-            <div class="flex items-center">
-                <a href="/login"><button class="bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</button>
-                <button class="md:hidden ml-4 text-gray-600"></a>
+<div class="flex items-center">
+                <a href="/login" class="hidden md:block bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</a>
+                <button id="mobile-menu-btn" class="md:hidden ml-4 text-gray-600 p-2" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg py-4 px-4 flex flex-col gap-3 z-40">
+            <a href="#" class="text-gray-600 hover:text-black font-medium py-2">Home</a>
+            <a href="/portofolio" class="text-gray-600 hover:text-black font-medium py-2">Portofolio</a>
+            <a href="#testimoni" class="text-gray-600 hover:text-black font-medium py-2">Testimoni</a>
+            <a href="#about" class="text-gray-600 hover:text-black font-medium py-2">About us</a>
+            <a href="/chatbot" class="text-gray-600 hover:text-black font-medium py-2">AI</a>
+            <a href="/login" class="bg-[#FFD700] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm text-center">Log in</a>
+        </div>
     </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 
     <!-- ================= HERO SECTION ================= -->
     <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-[#FFCF22] overflow-hidden min-h-screen flex items-center">
@@ -88,7 +296,7 @@
                         <span class="font-handwriting text-white italic text-6xl md:text-8xl lg:text-9xl block mt-2 drop-shadow-md">terbaik</span>
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="/order"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
+                        <a href="/dashboard"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
                         <button class="bg-[#202124] text-white font-medium py-3 px-8 rounded-full shadow-lg hover:bg-black transition flex items-center justify-center gap-3">
                             <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             Log in with Google
@@ -205,28 +413,35 @@
                                         <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>    
                                     </h4>
                                     <span class="text-xs text-gray-400">@muzan12</span>
-                                </div>
-                                
+                                </div>       
                             </div>
                         </div>
                         <!-- Card 2 -->
                         <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris..."</p>
+                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 text-sm">Christofer</h4><span class="text-xs text-gray-400">@chh_2008</span>
-                                </div>
-                                <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
+                                    <h4 class="font-bold text-gray-900 text-sm flex items-center gap-1">
+                                        Kibutsuji Muzan
+                                        <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>    
+                                    </h4>
+                                    <span class="text-xs text-gray-400">@muzan12</span>
+                                </div>       
                             </div>
                         </div>
                         <!-- Card 3 -->
                         <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."</p>
+                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                <div><h4 class="font-bold text-gray-900 text-sm">Kentanggoreng</h4><span class="text-xs text-gray-400">@kentang123</span></div>
-                                <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm flex items-center gap-1">
+                                        Kibutsuji Muzan
+                                        <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>    
+                                    </h4>
+                                    <span class="text-xs text-gray-400">@muzan12</span>
+                                </div>       
                             </div>
                         </div>
                          <!-- Card 4 -->
@@ -234,8 +449,13 @@
                             <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum..."</p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                <div><h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4><span class="text-xs text-gray-400">@muzan12</span></div>
-                                <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm flex items-center gap-1">
+                                        Kibutsuji Muzan
+                                        <svg class="w-4 h-4 text-blue-500 ml-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12L20.56 9.22L20.9 5.54L17.29 4.72L15.4 1.54L12 3L8.6 1.54L6.71 4.72L3.1 5.53L3.44 9.21L1 12L3.44 14.78L3.1 18.47L6.71 19.29L8.6 22.47L12 21L15.4 22.46L17.29 19.28L20.9 18.46L20.56 14.78L23 12ZM10 17L6 13L7.41 11.58L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>    
+                                    </h4>
+                                    <span class="text-xs text-gray-400">@muzan12</span>
+                                </div>       
                             </div>
                         </div>
                     </div>

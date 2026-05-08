@@ -196,6 +196,43 @@
       color: #222;
       text-align: center;
     }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      body { padding: 32px 16px 40px; }
+      .page-header { flex-direction: column-reverse; align-items: flex-start; gap: 16px; }
+      .btn-back { padding-top: 0; }
+      .page-title { font-size: 1.6rem; }
+      .title-line { width: 80px; height: 3px; }
+      .page-subtitle { font-size: 0.75rem; margin-bottom: 20px; }
+      .card { padding: 20px; margin-bottom: 12px; border-radius: 12px; }
+      .order-title { font-size: 0.9rem; }
+      .order-date { font-size: 0.72rem; }
+      .detail-header { gap: 10px; margin-bottom: 16px; }
+      .detail-icon { width: 36px; height: 36px; border-radius: 8px; }
+      .detail-title { font-size: 0.9rem; }
+      .detail-row { padding: 10px 0; }
+      .detail-label, .detail-value { font-size: 0.78rem; }
+      .total-bar { padding: 12px 16px; border-radius: 8px; margin-top: 6px; }
+      .total-label, .total-value { font-size: 0.9rem; }
+      .qr-card { padding: 16px; margin-bottom: 12px; border-radius: 12px; }
+      .qr-amount { font-size: 1.1rem; }
+      .qr-card canvas, .qr-card img { width: 180px !important; height: 180px !important; }
+    }
+
+    @media (max-width: 400px) {
+      body { padding: 24px 12px 32px; }
+      .page-title { font-size: 1.4rem; }
+      .page-subtitle { font-size: 0.7rem; }
+      .card { padding: 16px; }
+      .detail-icon { width: 32px; height: 32px; }
+      .detail-row { padding: 8px 0; }
+      .detail-label, .detail-value { font-size: 0.72rem; }
+      .total-bar { padding: 10px 14px; }
+      .total-label, .total-value { font-size: 0.82rem; }
+      .qr-card { padding: 12px; }
+      .qr-amount { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>

@@ -305,6 +305,64 @@
                 z-index: 250;
             }
             .overlay.active { display: block; }
+            .container { flex-direction: column; }
+            .sidebar { width: 280px; }
+            .main-content { width: 100%; }
+            .header { padding: 12px 16px; }
+            .header-title { font-size: 14px; }
+            .menu-toggle-btn { display: flex; }
+            .chat-area { padding: 16px; gap: 16px; }
+            .user-bubble, .ai-bubble { font-size: 13px; padding: 10px 14px; }
+            .ai-avatar { width: 28px; height: 28px; font-size: 12px; }
+            .bubble-label { font-size: 10px; }
+            .input-container { padding: 12px 16px 16px; }
+            .input-box { padding: 10px 14px; }
+            .chat-input { font-size: 14px; }
+            .send-btn { padding: 8px 12px; font-size: 12px; }
+            .send-btn svg { width: 14px; height: 14px; }
+            .powered-by { font-size: 10px; }
+            .gemini-badge { padding: 3px 6px; font-size: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar { width: 100%; }
+            .new-chat-btn { padding: 10px 12px; font-size: 13px; }
+            .new-chat-btn svg { width: 18px; height: 18px; }
+            .search-chat { padding: 8px 10px; font-size: 13px; }
+            .search-chat svg { width: 18px; height: 18px; }
+            .section-title { font-size: 11px; padding: 0 12px; }
+            .header { padding: 10px 12px; }
+            .header-left { gap: 8px; }
+            .header-title { font-size: 13px; }
+            .menu-toggle-btn { padding: 6px; }
+            .menu-toggle-btn svg { width: 18px; height: 18px; }
+            .chat-area { padding: 12px; gap: 12px; }
+            .empty-state { font-size: 14px; }
+            .user-bubble, .ai-bubble { font-size: 12px; padding: 8px 12px; border-radius: 14px 14px 2px 14px; }
+            .ai-bubble { border-radius: 14px 14px 14px 2px; }
+            .ai-avatar { width: 26px; height: 26px; font-size: 11px; margin-top: 2px; }
+            .bubble-label { font-size: 9px; padding: 0 2px; }
+            .typing-indicator { padding: 0 12px; }
+            .typing-bubble { padding: 8px 12px; }
+            .dot { width: 6px; height: 6px; }
+            .input-container { padding: 10px 12px 12px; }
+            .input-wrapper { max-width: 100%; }
+            .input-box { padding: 8px 12px; border-radius: 20px; }
+            .chat-input { font-size: 13px; max-height: 100px; }
+            .chat-input::placeholder { font-size: 13px; }
+            .send-btn { padding: 6px 10px; font-size: 11px; gap: 4px; }
+            .send-btn svg { width: 12px; height: 12px; }
+            .powered-by { margin-top: 8px; font-size: 9px; }
+            .gemini-badge { padding: 2px 5px; font-size: 9px; }
+            .gemini-badge img { width: 10px !important; height: 10px !important; }
+        }
+
+        @media (max-width: 360px) {
+            .header-title { font-size: 12px; }
+            .chat-area { padding: 10px; }
+            .user-bubble, .ai-bubble { font-size: 11px; padding: 6px 10px; }
+            .input-box { padding: 6px 10px; }
+            .chat-input { font-size: 12px; }
         }
     </style>
 </head>

@@ -251,6 +251,88 @@ body {
 .filter-content { display: none; }
 .filter-content.show { display: block; }
 .all-content { display: block; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .page { padding: 24px 20px 0; }
+      .filter-bar { overflow-x: auto; padding: 4px; }
+      .filter-tab { padding: 8px 12px; font-size: .8rem; }
+      .search-wrap { padding: 0 12px; }
+      .search-wrap input { font-size: .82rem; padding: 11px 0; }
+      .content-card { padding: 28px 28px 20px; border-radius: 16px; }
+      .daftar-title { margin-bottom: 20px; gap: 12px; }
+      .daftar-title h1 { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0 20px; height: 52px; }
+      .nav-logo { font-size: 1rem; padding-right: 16px; margin-right: 24px; }
+      .nav-links { display: none; }
+      .nav-back { font-size: .82rem; }
+      .page { padding: 20px 16px 0; }
+      .filter-bar { margin-bottom: 12px; }
+      .filter-tab { padding: 8px 14px; font-size: .78rem; white-space: nowrap; }
+      .search-wrap { border-radius: 8px; }
+      .search-wrap input { font-size: .8rem; padding: 10px 0; }
+      .search-wrap svg { width: 15px; height: 15px; }
+      .yellow-bg { padding: 0 0 32px; }
+      .content-card { padding: 20px 20px 16px; border-radius: 14px; }
+      .daftar-title { flex-wrap: wrap; margin-bottom: 16px; gap: 10px; }
+      .daftar-title h1 { font-size: 1.4rem; }
+      .title-line { flex: 1; min-width: 100px; }
+      .title-dots { display: none; }
+      .order-card { margin-bottom: 16px; border-radius: 12px; }
+      .order-status-bar { padding: 10px 16px; font-size: .82rem; }
+      .order-body { padding: 16px; }
+      .order-top { gap: 12px; margin-bottom: 14px; }
+      .order-icon { width: 56px; height: 56px; border-radius: 10px; }
+      .order-icon svg { width: 26px; height: 26px; }
+      .order-meta h3 { font-size: 1rem; }
+      .order-meta .order-date { font-size: .76rem; }
+      .order-footer { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .order-total-label { font-size: .76rem; }
+      .order-price { font-size: .9rem; }
+      .btn-beli-lagi { width: 100%; text-align: center; padding: 10px 16px; font-size: .8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .navbar { padding: 0 16px; height: 48px; }
+      .nav-logo { font-size: 0.95rem; padding-right: 12px; margin-right: 16px; }
+      .nav-back { font-size: .78rem; }
+      .page { padding: 16px 12px 0; }
+      .filter-bar { margin-bottom: 10px; border-radius: 40px; }
+      .filter-tab { padding: 6px 10px; font-size: .72rem; }
+      .search-wrap { border-radius: 6px; padding: 0 10px; }
+      .search-wrap input { font-size: .75rem; padding: 8px 0; }
+      .wave-top { margin-top: 16px; }
+      .yellow-bg { padding: 0 0 24px; }
+      .content-card { padding: 16px 14px 14px; border-radius: 12px; }
+      .daftar-title { margin-bottom: 12px; gap: 8px; }
+      .daftar-title h1 { font-size: 1.2rem; }
+      .order-status-bar { padding: 8px 12px; font-size: .76rem; }
+      .order-body { padding: 12px; }
+      .order-top { gap: 10px; margin-bottom: 10px; }
+      .order-icon { width: 48px; height: 48px; border-radius: 8px; }
+      .order-icon svg { width: 22px; height: 22px; }
+      .order-meta h3 { font-size: 0.9rem; }
+      .order-meta .order-date { font-size: .7rem; }
+      .order-footer { gap: 10px; }
+      .order-total-label { font-size: .7rem; }
+      .order-price { font-size: .85rem; }
+      .btn-beli-lagi { padding: 8px 14px; font-size: .75rem; }
+      .pagination { padding: 12px 0 4px; }
+      .page-btn { font-size: .9rem; padding: 6px 12px; }
+      .page-number { font-size: .85rem; }
+    }
+
+    @media (max-width: 360px) {
+      .navbar { padding: 0 12px; }
+      .nav-logo { font-size: 0.9rem; margin-right: 12px; }
+      .page-title { font-size: 1rem; }
+      .filter-tab { padding: 5px 8px; font-size: .68rem; }
+      .content-card { padding: 12px 10px 12px; }
+      .order-card { margin-bottom: 12px; }
+    }
 </style>
 </head>
 <body>

@@ -504,6 +504,10 @@
             color: #FFFFFF;
         }
 
+        @media (max-width: 1200px) {
+            .catalog-container { padding: 40px 3%; }
+        }
+
         @media (max-width: 992px) {
             .about-section { flex-direction: column; }
             .about-images { margin-top: 60px; }
@@ -512,14 +516,70 @@
             .sidebar { width: 100%; }
             .grid-container { grid-template-columns: repeat(2, 1fr); }
             .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .welcome-section { padding: 30px 3% 0 3%; }
+            .orders-section { padding: 0 3% 40px 3%; }
+            .about-section { padding: 40px 3%; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.85rem; }
+            .welcome-text h1 { font-size: 2.2rem; }
+            .welcome-image img { max-width: 300px; }
+            .about-text h2 { font-size: 2.5rem; }
+            .about-images { flex-direction: column; gap: 20px; }
+            .img-large { width: 100%; height: 150px; }
+            .img-small-1, .img-small-2 { position: relative; width: 45%; height: 150px; bottom: 0; left: 0; right: 0; margin: 0 auto; }
+            .tabs { gap: 15px; overflow-x: auto; }
+            .tabs span { font-size: 0.85rem; white-space: nowrap; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 30px 3% 40px 3%; }
+            .footer-logo { grid-column: span 2; font-size: 2rem; }
+            .catalog-container { padding: 30px 3%; }
+            .search-bar { padding: 8px 12px; }
         }
 
         @media (max-width: 600px) {
-            .welcome-top { flex-direction: column; text-align: center; }
-            .welcome-image { margin-top: 30px; }
-            .grid-container { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; }
-            nav .nav-links { display: none; }
+            nav { height: 60px; padding: 0 16px; }
+            nav .logo { font-size: 1.1rem; }
+            .nav-divider { display: none; }
+            .nav-links { display: none; }
+            .nav-right { gap: 8px; }
+            .btn-logout { padding: 8px 16px; font-size: 0.8rem; }
+            .welcome-top { flex-direction: column; text-align: center; gap: 20px; }
+            .welcome-text h1 { font-size: 2rem; }
+            .welcome-image { margin-top: 20px; }
+            .welcome-image img { max-width: 100%; width: 100%; height: auto; }
+            .about-section { padding: 30px 4%; }
+            .about-text h2 { font-size: 2rem; }
+            .about-text p { font-size: 0.9rem; max-width: 100%; }
+            .about-images { flex-direction: column; align-items: center; }
+            .img-large { width: 100%; max-width: 300px; height: 120px; }
+            .img-small-1, .img-small-2 { position: relative; width: 45%; max-width: 150px; height: 100px; }
+            .catalog-container { flex-direction: column; padding: 20px 4%; }
+            .sidebar { width: 100%; }
+            .sidebar h2 { font-size: 1.5rem; }
+            .category-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+            .category-list li { font-size: 0.8rem; padding: 6px 12px; background: #f5f5f5; border-radius: 20px; }
+            .grid-container { grid-template-columns: 1fr; gap: 12px; }
+            .card img { height: 120px; }
+            .card-body h4 { font-size: 0.9rem; }
+            .card-body p { font-size: 0.7rem; }
+            .footer-content { grid-template-columns: 1fr; gap: 20px; padding: 24px 4% 40px 4%; }
+            .footer-logo { grid-column: span 1; font-size: 1.8rem; }
+            .footer-col h5 { font-size: 0.9rem; margin-bottom: 12px; }
+            .footer-col ul li { font-size: 0.8rem; margin-bottom: 8px; }
+            .orders-title h2 { font-size: 1.2rem; }
+            .orders-title p { font-size: 0.8rem; }
+            .empty-orders { height: 150px; }
+        }
+
+        @media (max-width: 400px) {
+            .welcome-text h1 { font-size: 1.6rem; }
+            .about-text h2 { font-size: 1.6rem; }
+            .footer-logo { font-size: 1.5rem; }
+            .btn-logout { padding: 6px 12px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -531,14 +591,16 @@
             <div class="logo">LeLilu</div>
             <div class="nav-divider"></div>
             <ul class="nav-links">
-                <li><a href="/dashboard" class="active">Home</a></li>
+                <li><a href="/testimoni" class="active">Testimoni</a></li>
                 <li><a href="/portofolio">Portofolio</a></li>
-                <li><a href="/chatbot">AI</a></li>
+                <li><a href="/chatbot">FAQ</a></li>
+                <LI><a href="/history">History</a></LI>
+                <li><a href="#katalog">katalog</a></li>
             </ul>
         </div>
         <div class="nav-right">
             @auth
-                <span class="nav-username">{{ auth()->user()->name }}</span>
+                <a href="/profile"><span class="nav-username">{{ auth()->user()->name }}</span></a> 
                 <form action="{{ route('logout') }}" method="POST" style="display:inline">
                     @csrf
                     <button type="submit" class="btn-logout">Log out</button>

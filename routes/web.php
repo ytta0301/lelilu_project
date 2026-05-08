@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeminiController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\ProfileController;
 
 // Guest only
 Route::middleware('guest')->group(function () {
@@ -26,7 +27,13 @@ Route::get('/testimoni', fn() => view('testimoni.testimoni'));
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 Route::get('/admin', fn() => view('admin.admin'));
 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
+
 // Chatbot
 Route::get('/chatbot', [GeminiController::class, 'index'])->name('chatbot.index');
 Route::post('/chatbot/ask', [GeminiController::class, 'ask'])->name('gemini.ask');
 Route::post('/chatbot/clear', [GeminiController::class, 'clear'])->name('chatbot.clear');
+

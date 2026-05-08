@@ -352,12 +352,61 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 680px) {
-    .wrapper { padding: 36px 20px; }
+  @media (max-width: 900px) {
+    .wrapper { padding: 40px 24px; }
+    .order-layout { gap: 30px; }
+    .card { padding: 30px 28px 36px; }
+    .page-title { font-size: 2.6rem; }
+  }
+
+  @media (max-width: 768px) {
+    .wrapper { padding: 32px 20px; }
     .page-title { font-size: 2.2rem; }
-    .card { padding: 28px 20px 32px; }
-    .order-layout { grid-template-columns: 1fr; }
-    .ref-box { aspect-ratio: 4 / 3; }
+    .page-subtitle { font-size: 0.88rem; }
+    .card { padding: 24px 20px 28px; }
+    .order-layout { grid-template-columns: 1fr; gap: 24px; }
+    .card-title { font-size: 1rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 0.95rem; }
+    .form-input, .form-textarea { padding: 12px 14px; font-size: 0.9rem; }
+    .form-textarea { height: 150px; }
+    .ref-panel { padding-top: 0; }
+    .ref-box { aspect-ratio: 16 / 10; max-width: 300px; margin: 0 auto; }
+    .ref-placeholder { font-size: 0.8rem; padding: 16px; }
+    .btn-primary { padding: 14px 32px; font-size: 0.95rem; width: 100%; }
+    .back-link { margin-top: 24px; font-size: 0.9rem; }
+  }
+
+  @media (max-width: 480px) {
+    .wrapper { padding: 24px 16px; }
+    .page-title { font-size: 1.8rem; }
+    .page-subtitle { font-size: 0.82rem; margin-bottom: 32px; }
+    .page-subtitle br { display: none; }
+    .card { padding: 20px 16px 24px; border-radius: 14px; }
+    .card-title { font-size: 0.95rem; margin-bottom: 20px; }
+    .form-label { font-size: 0.9rem; margin-bottom: 8px; }
+    .form-input, .form-textarea { padding: 10px 12px; font-size: 0.85rem; border-radius: 10px; }
+    .form-textarea { height: 120px; }
+    .select-wrapper { margin-bottom: 16px; }
+    .custom-select { padding: 12px 14px; font-size: 0.85rem; }
+    .select-option { padding: 12px 14px; font-size: 0.85rem; }
+    .option-badge { width: 20px; height: 20px; font-size: 0.65rem; }
+    .ref-box { aspect-ratio: 4 / 3; max-width: 100%; }
+    .ref-placeholder { font-size: 0.75rem; gap: 8px; }
+    .ref-placeholder svg { width: 32px; height: 32px; }
+    .btn-primary { padding: 12px 24px; font-size: 0.9rem; }
+    .btn-edit { padding: 8px 20px; font-size: 0.8rem; }
+    .back-link { margin-top: 20px; font-size: 0.85rem; }
+    .toast { padding: 12px 20px; font-size: 0.8rem; }
+  }
+
+  @media (max-width: 360px) {
+    .wrapper { padding: 20px 12px; }
+    .page-title { font-size: 1.6rem; }
+    .page-subtitle { font-size: 0.78rem; }
+    .card-title { font-size: 0.9rem; }
+    .form-input, .form-textarea { padding: 8px 10px; font-size: 0.8rem; }
+    .btn-primary { padding: 10px 20px; font-size: 0.85rem; }
   }
 </style>
 </head>

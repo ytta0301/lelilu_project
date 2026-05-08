@@ -395,10 +395,62 @@
 
     .footer-col ul li a:hover { color: var(--yellow); }
 
+    @media (max-width: 1024px) {
+      .main-content { padding: 20px 20px 30px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+
     @media (max-width: 800px) {
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-cols { grid-template-columns: repeat(2, 1fr); }
-      .proyek-section { flex-direction: column; }
+      .proyek-section { flex-direction: column; padding: 40px 20px; }
+      .proyek-left, .proyek-right { flex: none; width: 100%; }
+      .proyek-title { font-size: 2rem; }
+      .proyek-desc { font-size: 0.85rem; }
+      .search-filter { flex-direction: column; align-items: stretch; gap: 16px; }
+      .search-wrap { flex: none; width: 100%; }
+      .filter-tabs { flex-wrap: wrap; gap: 12px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; height: auto; padding: 12px 16px; gap: 12px; }
+      .nav-logo { border-right: none; padding: 8px 0; font-size: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .nav-links li a { padding: 8px 12px; font-size: 0.8rem; border-right: none; }
+      .nav-right { padding: 8px 0; }
+      .breadcrumb { padding: 8px 16px; font-size: 0.75rem; }
+      .main-content { padding: 16px 16px 24px; }
+      .search-wrap input { font-size: 0.8rem; padding: 8px 12px 8px 36px; }
+      .filter-tabs li { font-size: 0.8rem; }
+      .portfolio-grid { grid-template-columns: 1fr; gap: 12px; }
+      .porto-card { border-radius: 8px; }
+      .porto-img { height: 140px; }
+      .porto-body { padding: 12px; }
+      .porto-title { font-size: 0.9rem; }
+      .porto-desc { font-size: 0.7rem; margin-bottom: 10px; }
+      .porto-btn { width: 70px; height: 24px; }
+      .pagination { justify-content: center; }
+      .pag-bar { width: 100px; }
+      .proyek-section { padding: 30px 16px; gap: 24px; }
+      .proyek-title { font-size: 1.6rem; }
+      .proyek-desc { font-size: 0.8rem; margin-bottom: 20px; }
+      .btn-gabung { padding: 12px 20px; font-size: 0.85rem; }
+      .proyek-img-placeholder { height: 200px; }
+      .footer-inner { padding: 0 20px; }
+      .footer-logo { font-size: 1.8rem; margin-bottom: 24px; }
+      .footer-cols { grid-template-columns: 1fr; gap: 20px; }
+      .footer-col h4 { font-size: 0.85rem; margin-bottom: 12px; }
+      .footer-col ul li a { font-size: 0.78rem; }
+      .footer-art { height: 150px; }
+    }
+
+    @media (max-width: 400px) {
+      .page-title { font-size: 1.4rem; }
+      .search-wrap { flex: none; width: 100%; }
+      .filter-tabs { flex-direction: column; gap: 8px; }
+      .filter-tabs li { text-align: center; }
+      .porto-img { height: 120px; }
+      .proyek-title { font-size: 1.4rem; }
     }
   </style>
 </head>

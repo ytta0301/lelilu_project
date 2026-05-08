@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-yellow-400 min-h-screen flex items-center justify-center p-6">
+<body class="bg-yellow-400 min-h-screen flex items-center justify-center p-4 sm:p-6">
 
-    <div class="bg-white rounded-[50px] shadow-2xl flex flex-col md:flex-row w-full max-w-5xl overflow-hidden relative">
+    <div class="bg-white rounded-[30px] sm:rounded-[50px] shadow-2xl flex flex-col md:flex-row w-full max-w-5xl overflow-hidden relative">
 
         <div class="relative w-full md:w-6/12 h-64 md:h-auto">
             <div class="absolute top-8 left-8 z-10">
