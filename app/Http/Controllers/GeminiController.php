@@ -36,7 +36,7 @@ class GeminiController extends Controller
 
             LAYANAN DESAIN:
             - Menerima berbagai jenis desain (banner, foto profil, dll.)
-            - TIDAK menerima order desain logo (untuk saat ini)
+            - Tidak menerima order desain logo (untuk saat ini)
 
             HARGA:
             - Mulai dari Rp 30.000
@@ -68,7 +68,7 @@ class GeminiController extends Controller
 
             // dd($ayam);
 
-            $result = Gemini::generativeModel(model: 'gemini-2.5-flash-lite')
+            $result = Gemini::generativeModel(model: 'gemini-3.1-flash-lite')
                 ->generateContent($fullPrompt);
 
             $response = $result->text();
