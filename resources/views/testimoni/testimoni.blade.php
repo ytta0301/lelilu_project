@@ -290,6 +290,7 @@
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/portofolio">Portofolio</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
   </ul>
 </nav>
 <!-- MAIN -->

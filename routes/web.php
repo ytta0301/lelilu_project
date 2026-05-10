@@ -25,7 +25,15 @@ Route::get('/order', fn() => view('order.order'));
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
-Route::get('/admin', fn() => view('admin.admin'));
+Route::get('/detail', fn() => view('detail.detail'))->name('detail');
+
+
+
+
+Route::get('/admin/worker', fn() => view('admin.worker'));
+Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
+route::get('/admin/detail', fn() => view('admin.detail'))->name('admin.detail');
+
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');

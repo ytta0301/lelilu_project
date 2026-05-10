@@ -341,9 +341,10 @@ body {
 <nav class="navbar">
   <span class="nav-logo">LeLiLu</span>
   <ul class="nav-links">
-    <li><a href="#">About us</a></li>
-    <li><a href="#">Portofolio</a></li>
-    <li><a href="#">Testimoni</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/portofolio">Portofolio</a></li>
+    <li><a href="/testimoni">Testimoni</a></li>
+    <li><a href="/chatbot">FAQ</a></li>
   </ul>
   <span class="nav-back" onclick="history.back()">Back</span>
 </nav>
@@ -426,6 +427,7 @@ body {
                   <div class="order-total-label">Total Pembelian</div>
                   <div class="order-price">Rp {{ number_format($pesan->harga, 0, ',', '.') }}</div>
                 </div>
+                <a href="/detail" class="btn-bel"></a>
                 <a href="/order" class="btn-beli-lagi">Pesan Lagi</a>
               </div>
             </div>
