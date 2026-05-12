@@ -20,8 +20,8 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Semua halaman bebas diakses
-Route::get('/', fn() => view('welcome'));
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/order', fn() => view('order.order'));
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));
@@ -30,8 +30,8 @@ Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
 
-Route::get('/admin/admin', fn() => view('admin.admin'));
-Route::get('/admin/worker', fn() => view('admin.worker'));
+Route::get('/admin/admin', fn() => view('admin.admin'))->name('admin.admin');
+Route::get('/admin/worker', fn() => view('admin.worker'))->name('admin.worker');
 Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
 route::get('/admin/detail', fn() => view('admin.detail'))->name('admin.detail');
 route::get('/admin/input', fn() => view('admin.input'))->name('admin.input');
