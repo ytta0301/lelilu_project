@@ -626,9 +626,10 @@
             <div class="orders-title">
                 <h2>Pesanan anda</h2>
                 <p>Lihat dan temukan pesanan anda</p>
+                <a href="/history">Lihat History Pesanan</a>
             </div>
             <div class="empty-orders">
-                Tidak Ada pesanan
+                anda belum memiliki pesanan
             </div>
         </div>
     </header>

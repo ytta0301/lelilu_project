@@ -473,7 +473,7 @@
           <label class="form-label">Nomor Telepon</label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <input class="form-input" id="phone1" type="tel" placeholder="08___">
-            <input class="form-input" id="phone2" type="tel" placeholder="lanjutan nomor">
+           
           </div>
         </div>
 

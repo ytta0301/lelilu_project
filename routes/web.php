@@ -29,16 +29,19 @@ Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
 
-
+// halaman admin
 Route::get('/admin/worker', fn() => view('admin.worker'));
 Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
 route::get('/admin/detail', fn() => view('admin.detail'))->name('admin.detail');
+route::get('/admin/input', fn() => view('admin.input'))->name('admin.input');
+route::get('/admin/edit', fn() => view('admin.edit'))->name('admin.edit');
 
-
+// halaman user profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
+// halaman testimoni
 Route::get('/testimoni', fn() => view('testimoni.testimoni'));
 Route::get('/testimoni', [TestimoniController::class, 'index']);
 
