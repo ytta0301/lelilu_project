@@ -457,19 +457,7 @@
 <body>
 
 <!-- NAVBAR -->
-<nav>
-  <div class="nav-logo">LeLiLu</div>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/testimoni">Testimoni</a></li>
-    <li><a href="/dashboard">Dashboard</a></li>
-  </ul>
-  <div class="nav-right">
-    <span class="nav-lang"><sub style="font-size:0.6rem"></sub></span>
-    
-  </div>
-</nav>
-
+@include('partials.navbar')
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <a href="#">Home</a> &rsaquo; <span>Portofolio</span>

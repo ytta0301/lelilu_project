@@ -285,14 +285,7 @@
 <body>
 
 <!-- NAVBAR -->
-<nav>
-  <div class="nav-logo">LeLiLu</div>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/portofolio">Portofolio</a></li>
-    <li><a href="/dashboard">Dashboard</a></li>
-  </ul>
-</nav>
+@include('partials.navbar')
 <!-- MAIN -->
 <main>
   <div class="page-title-wrap">

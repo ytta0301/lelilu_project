@@ -21,7 +21,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Semua halaman bebas diakses
 Route::get('/', fn() => view('welcome'))->name('home');
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/order', fn() => view('order.order'));
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));
