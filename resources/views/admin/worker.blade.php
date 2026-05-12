@@ -318,10 +318,10 @@
 
   <!-- LOGOUT -->
   <div class="sidebar-bottom">
-    <a class="nav-item" href="#" style="margin-bottom:0;">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      <span class="nav-text" style="color:#E74C3C;">Keluar</span>
-    </a>
+    <form action="{{ route('logout') }}" method="POST" style="display:inline">
+        @csrf
+        <button type="submit" class="btn-logout">Keluar</button>
+    </form>
   </div>
 
 </aside>

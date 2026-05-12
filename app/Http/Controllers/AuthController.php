@@ -89,8 +89,8 @@ class AuthController extends Controller
         Auth::login($user, $request->boolean('remember'));
 
         return $user->role === 'user'
-            ? redirect('/dashboard')
-            : redirect('/admin');
+            ? redirect('/')
+            : redirect('/admin/worker');
     }
 
     public function logout(Request $request)

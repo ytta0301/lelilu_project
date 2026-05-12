@@ -30,7 +30,7 @@ Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
 
-
+Route::get('/admin/admin', fn() => view('admin.admin'));
 Route::get('/admin/worker', fn() => view('admin.worker'));
 Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
 route::get('/admin/detail', fn() => view('admin.detail'))->name('admin.detail');
