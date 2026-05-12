@@ -6,6 +6,7 @@ use App\Http\Controllers\GeminiController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\DashboardController;
 
 // Guest only
 Route::middleware('guest')->group(function () {
@@ -20,7 +21,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Semua halaman bebas diakses
 Route::get('/', fn() => view('welcome'));
-Route::get('/dashboard', fn() => view('dashboard.dashboard'));
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/order', fn() => view('order.order'));
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));

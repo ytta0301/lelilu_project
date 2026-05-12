@@ -54,6 +54,14 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name'       => 'Andi Prasetyo',
+                'whatsapp'   => '081234567004',
+                'password'   => Hash::make('user321'),
+                'role'       => 'user',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

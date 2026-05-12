@@ -35,6 +35,24 @@ class TestimoniSeeder extends Seeder
                 'created_at'     => now()->subDays(12),
                 'updated_at'     => now()->subDays(12),
             ],
+            [
+                'user_id'        => 5, // Andi
+                'pemesanan_id'   => 4,
+                'isi_testimoni'  => 'Di dek observasi, kalian berdiri berdampingan menatap bintang.
+
+“Sepi ya?” katanya.
+“Tenang,” jawabmu.
+
+Di planet dengan langit kehijauan, ia duduk di sampingmu dan menyandarkan kepala di bahumu.
+
+“Indah… andaikan waktuku lebih panjang.”
+“Kita buat terasa panjang,” katamu pelan.
+
+Untuk pertama kalinya, Firefly tersenyum hangat—dan semesta terasa seperti rumah kecil yang kalian bagi bersama.',
+                'rating'         => 5,
+                'created_at'     => now()->subDays(12),
+                'updated_at'     => now()->subDays(12),
+            ],
         ]);
     }
 }

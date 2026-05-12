@@ -35,11 +35,13 @@
                 @csrf
 
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-1">Nomor WhatsApp</label>
-                    <input type="text" name="whatsapp" value="{{ old('whatsapp') }}"
-                        placeholder="Nomor WhatsApp anda" 
+                    <label class="block text-gray-700 font-semibold mb-1">
+                        Nomor WhatsApp / Nama
+                    </label>
+                    <input type="text" name="identifier" value="{{ old('identifier') }}"
+                        placeholder="Nomor WhatsApp atau nama Anda"
                         class="w-full px-4 py-3 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none">
-                    @error('whatsapp')
+                    @error('identifier')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

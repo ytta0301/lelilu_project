@@ -504,6 +504,114 @@
             color: #FFFFFF;
         }
 
+        .orders-title-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .orders-see-all {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            text-decoration: none;
+            white-space: nowrap;
+            margin-top: 4px;
+        }
+
+        .orders-see-all:hover {
+            text-decoration: underline;
+        }
+
+        .orders-list {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-top: 10px;
+            padding-bottom: 40px;
+        }
+
+        .order-card {
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-card-img {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background-color: #F0F0F0;
+        }
+
+        .order-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .order-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .order-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .order-jenis {
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        .order-type {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .order-status {
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-pending    { color: #856404; }
+        .status-proses     { color: #0d6efd; }
+        .status-selesai    { color: #198754; }
+        .status-dibatalkan { color: #dc3545; }
+
+        .order-brief {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .orders-list {
+                flex-direction: column;
+            }
+        }
         @media (max-width: 1200px) {
             .catalog-container { padding: 40px 3%; }
         }
@@ -615,7 +723,7 @@
     <header class="welcome-section">
         <div class="welcome-top">
             <div class="welcome-text">
-                <h1>Hi *User*<br>Selamat<br>datang<br>kembali</h1>
+                <h1>Hi {{ Auth::user()->name }},<br>Selamat<br>datang<br>kembali</h1>
             </div>
             <div class="welcome-image">
                 <img src="https://placehold.co/500x250/2C2C2C/FFD700?text=Hello!" alt="Hello Card">
@@ -624,12 +732,61 @@
         
         <div class="orders-section">
             <div class="orders-title">
-                <h2>Pesanan anda</h2>
-                <p>Lihat dan temukan pesanan anda</p>
+                <div class="orders-title-top">
+                    <div>
+                        <h2>Pesanan anda</h2>
+                        <p>Lihat dan temukan pesanan anda</p>
+                    </div>
+                    @auth
+                        <a href="{{ route('history') }}" class="orders-see-all">lihat pesanan anda &rsaquo;</a>
+                    @endauth
+                </div>
             </div>
-            <div class="empty-orders">
-                Tidak Ada pesanan
-            </div>
+
+            @if($pesanans->isEmpty())
+                <div class="empty-orders">
+                    Tidak Ada pesanan
+                </div>
+            @else
+                <div class="orders-list">
+                    @foreach($pesanans as $p)
+                        @php
+                            $gambar = null;
+                            if ($p->status === 'selesai' && $p->fileHasil) {
+                                $gambar = asset('storage/' . $p->fileHasil->gambar_hasil);
+                            } elseif ($p->referensi) {
+                                $gambar = asset('storage/' . $p->referensi);
+                            }
+                        @endphp
+                        <div class="order-card">
+                            <div class="order-card-img">
+                                @if($gambar)
+                                    <img src="{{ $gambar }}" alt="Gambar Pesanan">
+                                @else
+                                    <div class="order-img-placeholder">Belum ada gambar</div>
+                                @endif
+                            </div>
+                            <div class="order-card-body">
+                                <div class="order-info">
+                                    <div>
+                                        <span class="order-jenis">{{ $p->jenis }}</span>
+                                        <span class="order-type">art commision</span>
+                                    </div>
+                                    <span class="order-status status-{{ $p->status }}">
+                                        {{ match($p->status) {
+                                            'pending'    => 'Pending',
+                                            'proses'     => 'On progress',
+                                            'selesai'    => 'selesai',
+                                            'dibatalkan' => 'Dibatalkan',
+                                        } }}
+                                    </span>
+                                </div>
+                                <p class="order-brief">{{ $p->brief }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </header>
 
