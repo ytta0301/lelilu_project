@@ -68,7 +68,7 @@ class GeminiController extends Controller
 
             // dd($ayam);
 
-            $result = Gemini::generativeModel(model: 'gemini-3.1-pro')
+            $result = Gemini::generativeModel(model: 'gemini-3.1-flash-lite')
                 ->generateContent($fullPrompt);
 
             $response = $result->text();
