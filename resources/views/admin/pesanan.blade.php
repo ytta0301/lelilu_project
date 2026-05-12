@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesanan - LeLiLu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -12,109 +14,11 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #ebebeb;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       min-height: 100vh;
-    }
-
-    /* ==============================
-       SIDEBAR
-    ============================== */
-    .sidebar {
-      width: 240px;
-      min-width: 240px;
-      background: #2b2b2b;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 24px;
-    }
-
-    .sidebar-brand {
-      font-size: 28px;
-      font-weight: 800;
-      color: #f5c518;
-      padding: 24px 24px 20px;
-      letter-spacing: 1px;
-    }
-
-    .worker-card {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 2px solid #f5c518;
-      border-radius: 12px;
-      margin: 0 14px 24px;
-      padding: 10px 12px;
-    }
-
-    .worker-avatar {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #555;
-      overflow: hidden;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .worker-info .worker-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .worker-info .worker-email {
-      font-size: 11px;
-      color: #aaa;
-      margin-top: 2px;
-    }
-
-    .menu-label {
-      font-size: 10px;
-      color: #888;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      padding: 10px 24px 6px;
-      text-transform: uppercase;
-    }
-
-    .menu-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 22px;
-      font-size: 14px;
-      color: #bbb;
-      text-decoration: none;
-      border-radius: 8px;
-      margin: 2px 10px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .menu-item:hover {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-    }
-
-    .menu-item.active {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .menu-icon {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-
-    .menu-item.active .menu-icon {
-      opacity: 1;
     }
 
     /* ==============================
@@ -337,10 +241,25 @@
       font-weight: 600;
     }
 
-    .status-done     { background: #bbf7d0; color: #15803d; }
-    .status-proses   { background: #bfdbfe; color: #1d4ed8; }
-    .status-waiting  { background: #fde68a; color: #92400e; }
-    .status-pending  { background: #fde68a; color: #92400e; }
+    .status-done {
+      background: #bbf7d0;
+      color: #15803d;
+    }
+
+    .status-proses {
+      background: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    .status-waiting {
+      background: #fde68a;
+      color: #92400e;
+    }
+
+    .status-pending {
+      background: #fde68a;
+      color: #92400e;
+    }
 
     .col-saldo {
       font-weight: 700;
@@ -409,66 +328,14 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- ==============================
        SIDEBAR
   ============================== -->
-  <aside class="sidebar">
-    <div class="sidebar-brand">LeLiLu</div>
 
-    <div class="worker-card">
-      <div class="worker-avatar">
-        <svg viewBox="0 0 46 46" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="23" cy="23" r="23" fill="#666"/>
-          <circle cx="23" cy="18" r="9" fill="#aaa"/>
-          <ellipse cx="23" cy="40" rx="14" ry="9" fill="#888"/>
-        </svg>
-      </div>
-      <div class="worker-info">
-        <div class="worker-name">mas fachri</div>
-        <div class="worker-email">fachrilelilu@gmail.com</div>
-      </div>
-    </div>
-
-    <div class="menu-label">Menu Utama</div>
-
-    <a href="/admin/worker" class="menu-item">
-      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-      </svg>
-      Dasboard
-    </a>
-
-    <a href="/admin/pesanan" class="menu-item active">
-      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-        <rect x="9" y="3" width="6" height="4" rx="1"/>
-        <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
-      </svg>
-      Pesanan
-    </a>
-
-    <div class="menu-label">Sistem</div>
-
-    <a href="#" class="menu-item">
-      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
-      </svg>
-      Pengaturan
-    </a>
-
-    <a href="#" class="menu-item">
-      <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-        <polyline points="16 17 21 12 16 7"/>
-        <line x1="21" y1="12" x2="9" y2="12"/>
-      </svg>
-      Log out
-    </a>
-  </aside>
+  @include('layout.sidebar')
 
   <!-- ==============================
        MAIN CONTENT
@@ -478,7 +345,8 @@
     <!-- Search Bar -->
     <div class="search-wrapper">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
       <input class="search-input" type="text" placeholder="Cari pesanan?....">
     </div>
@@ -520,10 +388,12 @@
         <div class="table-header-right">
           <a href="#" class="lihat-semua">Lihat Semua</a>
           <svg class="filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
-            <line x1="8" y1="18" x2="21" y2="18"/>
-            <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/>
-            <line x1="3" y1="18" x2="3.01" y2="18"/>
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
           </svg>
         </div>
       </div>
@@ -546,7 +416,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -563,7 +438,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -580,7 +460,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -597,7 +482,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -614,7 +504,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -631,7 +526,12 @@
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36"><circle cx="18" cy="18" r="18" fill="#f0d0d8"/><ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9"/><ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)"/><ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)"/></svg>
+                  <svg viewBox="0 0 36 36" width="36" height="36">
+                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
+                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
+                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
+                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
+                  </svg>
                 </div>
                 <span class="akun-name">Andi.M</span>
               </div>
@@ -665,4 +565,5 @@
   </main>
 
 </body>
+
 </html>

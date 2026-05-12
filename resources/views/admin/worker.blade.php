@@ -29,106 +29,7 @@
     min-height: 100vh;
   }
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    width: 235px;
-    min-height: 100vh;
-    background: var(--sidebar-bg);
-    display: flex;
-    flex-direction: column;
-    padding: 24px 14px;
-    flex-shrink: 0;
-  }
-
-  .logo {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 28px;
-    padding-left: 4px;
-  }
-  .logo span.le { color: #FFFFFF; }
-  .logo span.li { color: var(--yellow); }
-  .logo span.lu { color: #FFFFFF; }
-
-  .profile-card {
-    background: linear-gradient(135deg, #3a3a3c, #2a2a2c);
-    border: 1.5px solid #444;
-    border-radius: 14px;
-    padding: 14px 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: #555;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: #ccc;
-    overflow: hidden;
-  }
-  .avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .profile-info .name { color: #fff; font-weight: 700; font-size: 13px; }
-  .profile-info .email { color: var(--muted); font-size: 10.5px; margin-top: 2px; }
-
-  /* ── NAV MENU ── */
-  .nav-section { margin-top: 28px; flex: 1; }
-  .nav-group-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #555;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 0 8px;
-    margin-bottom: 6px;
-    margin-top: 20px;
-  }
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background .18s, color .18s;
-    margin-bottom: 2px;
-    text-decoration: none;
-  }
-  .nav-item:hover { background: rgba(255,255,255,.06); }
-  .nav-item.active { background: var(--yellow); }
-  .nav-item .nav-icon {
-    width: 18px; height: 18px;
-    flex-shrink: 0;
-    opacity: 0.85;
-  }
-  .nav-item .nav-text {
-    font-size: 13px;
-    font-weight: 600;
-    color: #bbb;
-    transition: color .18s;
-  }
-  .nav-item:hover .nav-text { color: #fff; }
-  .nav-item.active .nav-text { color: #1C1C1E; font-weight: 700; }
-  .nav-item.active .nav-icon { opacity: 1; filter: brightness(0); }
-
-  .nav-badge {
-    margin-left: auto;
-    background: var(--yellow);
-    color: #1C1C1E;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 20px;
-    line-height: 1.5;
-  }
-  .nav-item.active .nav-badge { background: #1C1C1E; color: var(--yellow); }
-
-  .sidebar-bottom {
-    padding-top: 16px;
-    border-top: 1px solid #333;
-  }
+  
 
   /* ── MAIN ── */
   .main {
@@ -275,57 +176,8 @@
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="logo"><span class="le">Le</span><span class="li">Li</span><span class="lu">Lu</span></div>
-  <div class="profile-card">
-    <div class="avatar">👤</div>
-    <div class="profile-info">
-      <div class="name">Fachri lelilu</div>
-      <div class="email">fachrilelilu@gmail.com</div>
-    </div>
-  </div>
-
-  <!-- MAIN MENU -->
-  <nav class="nav-section">
-    <div class="nav-group-label">Menu Utama</div>
-
-    <a class="nav-item active" href="#">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-      <span class="nav-text">Dashboard</span>
-    </a>
-
-    <a class="nav-item" href="/admin/pesanan">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="nav-text">Pesanan</span>
-      <span class="nav-badge">15</span>
-    </a>
-
-    <!-- SISTEM -->
-    <div class="nav-group-label" style="margin-top:24px;">Sistem</div>
-
-    <a class="nav-item" href="#">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      <span class="nav-text">Pengaturan</span>
-    </a>
-
-    <a class="nav-item" href="#">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      <span class="nav-text">Notifikasi</span>
-    </a>
-
-  </nav>
-
-  <!-- LOGOUT -->
-  <div class="sidebar-bottom">
-    <form action="{{ route('logout') }}" method="POST" style="display:inline">
-        @csrf
-        <button type="submit" class="btn-logout">Keluar</button>
-    </form>
-  </div>
-
-</aside>
-
+<!-- jmbt -->
+@include('layout.sidebar')
 <!-- MAIN -->
 <main class="main">
   <h1 class="greeting">Selamat datang "Fachri"</h1>
