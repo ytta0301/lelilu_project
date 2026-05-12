@@ -70,6 +70,26 @@ class PemesananSeeder extends Seeder
                 'created_at' => now()->subDays(5),
                 'updated_at' => now()->subDays(5),
             ],
+            [
+                'user_id'    => 5, // Andi
+                'jenis'      => 'Logo',
+                'brief'      => 'Logo untuk startup teknologi, kesan futuristik dan dinamis.',
+                'referensi'  => 'referensi/logo_ref2.jpg',
+                'harga'      => 300000,
+                'status'     => 'dibatalkan',
+                'created_at' => now()->subDays(5),
+                'updated_at' => now()->subDays(5),
+            ],
+             [
+                'user_id'    => 7, // Kisari
+                'jenis'      => 'Ilustrasi',
+                'brief'      => 'Ilustrasi untuk buku anak-anak, tema kunang-kunang luar angkasa.',
+                'referensi'  => 'referensi/ilustrasi_ref1.jpg',
+                'harga'      => 500000,
+                'status'     => 'selesai',
+                'created_at' => now()->subDays(2),
+                'updated_at' => now()->subDays(2),
+            ],
         ]);
     }
 }
