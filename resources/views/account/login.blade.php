@@ -63,17 +63,9 @@
                     <a href="#" class="text-yellow-500 hover:underline">Forgot Password?</a>
                 </div>
 
-                {{-- Tombol Google (kosongkan dulu, belum ada OAuth) --}}
-                <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                    <button type="button" class="flex-1 flex items-center justify-center border border-gray-300 py-2.5 rounded-xl hover:bg-gray-50 transition">
-                        <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5 mr-2" alt="Google">
-                        <span class="text-sm font-medium text-gray-700">Masuk dengan Google</span>
-                    </button>
-                </div>
-
                 <div class="relative flex py-4 items-center">
                     <div class="flex-grow border-t border-gray-300"></div>
-                    <span class="flex-shrink mx-4 text-gray-400 text-sm bg-black text-white px-3 py-0.5 rounded-full">atau</span>
+                    <span class="flex-shrink mx-4 text-gray-400 text-sm bg-black text-white px-3 py-0.5 rounded-full"></span>
                     <div class="flex-grow border-t border-gray-300"></div>
                 </div>
 

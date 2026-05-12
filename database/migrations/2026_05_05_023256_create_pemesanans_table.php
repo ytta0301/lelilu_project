@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users', 'id_user')->cascadeOnDelete();
             $table->string('jenis');
             $table->text('brief');
-            $table->string('referensi')->nullable();
+            $table->string('referensi');
             $table->decimal('harga', 15, 2);
             $table->enum('status', ['pending', 'proses', 'selesai', 'dibatalkan'])->default('pending');
             $table->timestamps();

@@ -458,10 +458,6 @@
 
 <!-- NAVBAR -->
 @include('partials.navbar')
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="#">Home</a> &rsaquo; <span>Portofolio</span>
-</div>
 
 <!-- MAIN CONTENT -->
 <div class="main-content">
