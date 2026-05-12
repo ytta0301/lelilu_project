@@ -31,71 +31,6 @@
             color: inherit;
         }
 
-        /* ===================== */
-        /*        NAVBAR         */
-        /* ===================== */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 32px;
-            height: 68px;
-            background-color: #FFFFFF;
-            border-bottom: 1px solid #EAEAEA;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--text-dark);
-        }
-
-        .nav-divider {
-            width: 1px;
-            height: 28px;
-            background-color: #D0D0D0;
-            margin: 0 24px;
-        }
-
-        nav .nav-links {
-            display: flex;
-            gap: 32px;
-            font-size: 0.9rem;
-            font-weight: 400;
-            list-style: none;
-        }
-
-        nav .nav-links a {
-            color: #555555;
-            transition: color 0.2s;
-        }
-
-        nav .nav-links a:hover {
-            color: var(--text-dark);
-        }
-
-        nav .nav-links a.active {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-username {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-
         .btn-logout {
             background-color: var(--primary-yellow);
             color: var(--text-dark);
@@ -630,9 +565,6 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0 20px; }
-            .nav-links { gap: 16px; }
-            .nav-links a { font-size: 0.85rem; }
             .welcome-text h1 { font-size: 2.2rem; }
             .welcome-image img { max-width: 300px; }
             .about-text h2 { font-size: 2.5rem; }
@@ -649,11 +581,6 @@
         }
 
         @media (max-width: 600px) {
-            nav { height: 60px; padding: 0 16px; }
-            nav .logo { font-size: 1.1rem; }
-            .nav-divider { display: none; }
-            .nav-links { display: none; }
-            .nav-right { gap: 8px; }
             .btn-logout { padding: 8px 16px; font-size: 0.8rem; }
             .welcome-top { flex-direction: column; text-align: center; gap: 20px; }
             .welcome-text h1 { font-size: 2rem; }
@@ -694,36 +621,12 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
-        <div class="nav-left">
-            <div class="logo">LeLilu</div>
-            <div class="nav-divider"></div>
-            <ul class="nav-links">
-                <li><a href="/testimoni" class="active">Testimoni</a></li>
-                <li><a href="/portofolio">Portofolio</a></li>
-                <li><a href="/chatbot">FAQ</a></li>
-                <LI><a href="/history">History</a></LI>
-                <li><a href="#katalog">katalog</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            @auth
-                <a href="/profile"><span class="nav-username">{{ auth()->user()->name }}</span></a> 
-                <form action="{{ route('logout') }}" method="POST" style="display:inline">
-                    @csrf
-                    <button type="submit" class="btn-logout">Log out</button>
-                </form>
-            @else
-                <a href="/login" class="btn-logout">Login</a>
-            @endauth
-        </div>
-    </nav>
-
+    @include('partials.navbar')
     <!-- Welcome Section -->
     <header class="welcome-section">
         <div class="welcome-top">
             <div class="welcome-text">
-                <h1>Hi {{ Auth::user()->name }},<br>Selamat<br>datang<br>kembali</h1>
+                <h1>Hi {{ Auth::user()->name ?? 'Desainers' }},<br>Selamat<br>datang<br>kembali</h1>
             </div>
             <div class="welcome-image">
                 <img src="https://placehold.co/500x250/2C2C2C/FFD700?text=Hello!" alt="Hello Card">

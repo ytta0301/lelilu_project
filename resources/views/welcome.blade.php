@@ -36,8 +36,6 @@
         }
 
         @media (max-width: 992px) {
-            nav { height: 70px; }
-            nav .max-w-7xl { padding: 0 24px; }
             .hidden.md\:flex { display: none; }
             .md\:block { display: block; }
             .md\:text-2xl { font-size: 1.5rem; }
@@ -77,7 +75,6 @@
         }
 
         @media (max-width: 768px) {
-            nav { height: 64px; padding: 0 16px; }
             .text-xl { font-size: 1.25rem; }
             .max-w-7xl { padding: 0 16px; }
             .text-4xl { font-size: 2rem; }
@@ -126,7 +123,6 @@
         }
 
         @media (max-width: 600px) {
-            nav { height: 60px; }
             .max-w-7xl { padding: 0 12px; }
             .flex.gap-6 { gap: 8px; }
             .h-8 { height: 24px; }
@@ -204,7 +200,6 @@
         }
 
         @media (max-width: 400px) {
-            nav { height: 56px; }
             .text-xl { font-size: 1rem; }
             .text-4xl { font-size: 1.5rem; }
             .text-5xl { font-size: 1.75rem; }
@@ -245,45 +240,7 @@
 <body class="bg-white text-gray-800 overflow-x-hidden">
 
     <!-- ================= NAVBAR ================= -->
-    <nav class="fixed w-full z-50 bg-white border-b border-gray-100 h-20 flex items-center transition-all duration-300 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <a href="#" class="text-xl md:text-2xl font-bold tracking-tight text-gray-900">LeLiLu</a>
-                <div class="h-8 w-[1px] bg-gray-200 hidden md:block"></div>
-                <div class="hidden md:flex space-x-8 items-center ml-2">
-                    <a href="#" class="text-gray-600 hover:text-black font-medium transition-colors">Home</a>
-                    <a href="/portofolio" class="text-gray-600 hover:text-black font-medium transition-colors">Portofolio</a>
-                    <a href="#testimoni" class="text-gray-600 hover:text-black font-medium transition-colors">Testimoni</a>
-                    <a href="#about" class="text-gray-600 hover:text-black font-medium transition-colors">About us</a>
-                    <a href="/chatbot" class="text-gray-600 hover:text-black font-medium transition-colors">FAQ</a>
-                </div>
-            </div>
-<div class="flex items-center">
-                <a href="/login" class="hidden md:block bg-[#FFD700] hover:bg-[#E6C200] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 text-sm md:text-base">Log in</a>
-                <button id="mobile-menu-btn" class="md:hidden ml-4 text-gray-600 p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg py-4 px-4 flex flex-col gap-3 z-40">
-            <a href="#" class="text-gray-600 hover:text-black font-medium py-2">Home</a>
-            <a href="/portofolio" class="text-gray-600 hover:text-black font-medium py-2">Portofolio</a>
-            <a href="#testimoni" class="text-gray-600 hover:text-black font-medium py-2">Testimoni</a>
-            <a href="#about" class="text-gray-600 hover:text-black font-medium py-2">About us</a>
-            <a href="/chatbot" class="text-gray-600 hover:text-black font-medium py-2">AI</a>
-            <a href="/login" class="bg-[#FFD700] text-black font-semibold py-2.5 px-8 rounded-full shadow-sm text-center">Log in</a>
-        </div>
-    </nav>
-
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
-
+    @include('partials.navbar')
     <!-- ================= HERO SECTION ================= -->
     <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-[#FFCF22] overflow-hidden min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -574,11 +531,6 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem]">
             
-            <!-- Logo -->
-            <div class="mb-12">
-                <h2 class="text-5xl font-bold font-poppins tracking-tight text-white">LeLiLu</h2>
-            </div>
-
             <!-- Grid Links -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
                 
