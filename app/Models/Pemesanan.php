@@ -22,4 +22,8 @@ class Pemesanan extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id_user');
     }
+    public function fileHasil()
+    {
+    return $this->hasOne(FileHasil::class, 'pemesanan_id', 'id_pemesanan');
+    }
 }

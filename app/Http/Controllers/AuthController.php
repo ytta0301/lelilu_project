@@ -49,28 +49,48 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'whatsapp' => 'required|string',
-            'password' => 'required|string',
+            'identifier' => 'required',
+            'password'   => 'required',
         ], [
-            'whatsapp.required' => 'Nomor WhatsApp wajib diisi.',
-            'password.required' => 'Password wajib diisi.',
+            'identifier.required' => 'Nomor WhatsApp atau nama wajib diisi.',
+            'password.required'   => 'Password wajib diisi.',
         ]);
 
-        $user = User::where('whatsapp', $request->whatsapp)->first();
+        $identifier = $request->identifier;
+        $password   = $request->password;
+        $user       = null;
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return back()->withErrors([
-                'whatsapp' => 'Nomor WhatsApp atau password salah.',
-            ])->withInput();
+        // Coba cocokkan sebagai nomor WhatsApp dulu
+        $candidate = User::where('whatsapp', $identifier)->first();
+
+        if ($candidate && Hash::check($password, $candidate->password)) {
+            $user = $candidate;
+        }
+
+        // Jika tidak ketemu via WhatsApp, cari berdasarkan nama
+        if (!$user) {
+            $candidates = User::where('name', $identifier)->get();
+
+            foreach ($candidates as $c) {
+                if (Hash::check($password, $c->password)) {
+                    $user = $c;
+                    break;
+                }
+            }
+        }
+
+        // Jika masih tidak ketemu
+        if (!$user) {
+            return back()
+                ->withErrors(['identifier' => 'Nomor WhatsApp/nama atau password salah.'])
+                ->withInput(['identifier' => $identifier]);
         }
 
         Auth::login($user, $request->boolean('remember'));
 
-        if ($user->role === 'admin') {
-            return redirect('/admin');
-        }
-
-        return redirect('/dashboard');
+        return $user->role === 'user'
+            ? redirect('/')
+            : redirect('/admin/worker');
     }
 
     public function logout(Request $request)
