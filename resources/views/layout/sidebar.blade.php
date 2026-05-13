@@ -207,7 +207,62 @@
         background: rgba(255, 255, 255, .06);
         color: #fff;
     }
+
+    /* ── HAMBURGER ── */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 1001;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        background: var(--yellow);
+        color: #1C1C1E;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 998;
+    }
+
+    @media (max-width: 768px) {
+        .sidebar-toggle { display: flex; }
+
+        .sidebar {
+            position: fixed;
+            left: -280px;
+            top: 0;
+            bottom: 0;
+            z-index: 999;
+            transition: left 0.3s ease;
+            width: 250px;
+            height: 100vh;
+        }
+
+        .sidebar.open { left: 0; }
+
+        .sidebar-overlay.open { display: block; }
+    }
 </style>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+</button>
 
 
 <!-- SIDEBAR -->
@@ -325,3 +380,14 @@
     </div>
 
 </aside>
+
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebarOverlay').classList.toggle('open');
+        document.querySelector('.sidebar').classList.toggle('open');
+    }
+    document.getElementById('sidebarOverlay').addEventListener('click', function() {
+        this.classList.remove('open');
+        document.querySelector('.sidebar').classList.remove('open');
+    });
+</script>

@@ -367,6 +367,35 @@
       z-index: 300;
     }
     .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 992px) {
+      .content { padding: 20px; }
+      .card-header { flex-wrap: wrap; gap: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      body { overflow-x: hidden; }
+      .content { padding: 16px; }
+      .topbar { padding: 0 16px; }
+      .topbar-title { font-size: 13px; }
+      .card { border-radius: 12px; overflow-x: auto; }
+      .card-header { padding: 14px 16px 12px; }
+      .card-title { font-size: 14px; }
+      .btn-add { padding: 7px 12px; font-size: 12px; }
+      table { min-width: 500px; }
+      thead th { padding: 9px 16px; font-size: 10px; }
+      tbody td { padding: 10px 16px; font-size: 12px; }
+      .badge { font-size: 10px; padding: 2px 8px; }
+      .btn-icon { width: 28px; height: 28px; }
+      .modal { width: 90vw; padding: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .content { padding: 12px; }
+      .card-header { flex-direction: column; align-items: stretch; }
+      .btn-add { justify-content: center; }
+    }
   </style>
     <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

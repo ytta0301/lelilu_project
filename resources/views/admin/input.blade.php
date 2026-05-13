@@ -16,6 +16,7 @@
       background: #ebebeb;
       display: flex;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* ==============================
@@ -355,6 +356,36 @@
 
     .back-btn:hover {
       color: #1a1a1a;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .card-inner { flex-direction: column; }
+      .divider { width: 100%; height: 1px; margin: 24px 0; align-self: auto; }
+      .left-panel { padding-right: 0; }
+      .right-panel { width: 100%; padding-top: 0; min-height: auto; }
+      .send-row { position: relative; bottom: auto; right: auto; margin-top: 16px; }
+      .main { padding: 24px 20px; }
+      .banner-img { max-width: 100%; }
+      .detail-textarea { max-width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .main { padding: 16px; gap: 16px; }
+      .page-title { font-size: 22px; }
+      .card { padding: 20px; border-radius: 12px; }
+      .customer-name { font-size: 15px; }
+      .customer-avatar { width: 64px; height: 64px; }
+      .banner-title { font-size: 15px; }
+      .banner-img { aspect-ratio: auto; height: 180px; }
+      .field-label { font-size: 15px; }
+      .send-btn { width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 400px) {
+      .main { padding: 12px; }
+      .card { padding: 16px; }
+      .page-title { font-size: 18px; }
     }
   </style>
 </head>

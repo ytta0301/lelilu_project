@@ -213,6 +213,9 @@
             footer h2 { font-size: 1.5rem; }
             .text-white { font-size: 0.8rem; }
             .text-2xl { font-size: 1.1rem; }
+
+            /* Sembunyikan hero image di layar sangat kecil */
+            section.relative.overflow-hidden > .absolute.-top-\[5rem\] { display: none; }
         }
 
         /* Custom Wave Styles */

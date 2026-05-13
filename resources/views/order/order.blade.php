@@ -25,6 +25,7 @@
     background: var(--bg);
     color: var(--dark);
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .wrapper {

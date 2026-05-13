@@ -19,6 +19,7 @@
       color: var(--text);
       display: flex;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* ==============================
@@ -402,6 +403,51 @@
 
     .page-btn:hover {
       background: #f5f5f5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .stats-row { flex-wrap: wrap; }
+      .stat-card { flex: 1 1 calc(50% - 8px); min-width: 140px; }
+    }
+
+    @media (max-width: 992px) {
+      .content { padding: 20px; }
+    }
+
+    @media (max-width: 768px) {
+      .main { margin-left: 0; }
+      .content { padding: 16px; gap: 16px; }
+      .topbar { padding: 0 16px; }
+      .topbar-title { font-size: 13px; }
+
+      .stats-row { gap: 10px; }
+      .stat-card { flex: 1 1 calc(50% - 5px); padding: 14px; }
+      .stat-number { font-size: 20px; }
+
+      .table-section { border-radius: 12px; overflow-x: auto; }
+      .table-header { padding: 14px 16px 12px; flex-wrap: wrap; gap: 10px; }
+      .table-title { font-size: 15px; }
+
+      table { min-width: 600px; }
+      thead th { padding: 10px 14px; font-size: 11px; }
+      tbody td { padding: 12px 14px; font-size: 12px; }
+      .status-badge { padding: 5px 14px; font-size: 11px; }
+      .pagination { flex-direction: column; gap: 10px; align-items: flex-start; padding: 12px 16px; }
+
+      .search-wrapper { width: 100%; }
+      .search-input { padding: 10px 14px 10px 40px; font-size: 13px; }
+    }
+
+    @media (max-width: 480px) {
+      .content { padding: 12px; }
+      .stat-card { flex: 1 1 100%; }
+      .stat-number { font-size: 18px; }
+      .table-header-right { flex-wrap: wrap; width: 100%; }
+      .col-id { font-size: 12px; }
+      .akun-cell { gap: 6px; }
+      .akun-avatar { width: 28px; height: 28px; }
+      .akun-name { font-size: 12px; }
     }
   </style>
 </head>

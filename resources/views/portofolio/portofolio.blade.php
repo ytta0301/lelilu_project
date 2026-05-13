@@ -21,6 +21,7 @@
       font-family: 'Poppins', sans-serif;
       background: var(--white);
       color: var(--dark);
+      overflow-x: hidden;
     }
 
     /* ===== NAVBAR ===== */

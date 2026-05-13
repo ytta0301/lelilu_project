@@ -11,20 +11,30 @@
         .bg-yellow-main { background-color: #FACC15; }
         .text-yellow-main { color: #FACC15; }
         .custom-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+        }
+        @media (max-width: 360px) {
+            body { padding: 8px; }
+            .text-2xl { font-size: 1.2rem; }
+            .px-6 { padding-left: 12px; padding-right: 12px; }
+            .py-8 { padding-top: 16px; padding-bottom: 16px; }
+        }
     </style>
 </head>
 <body class="bg-yellow-400 min-h-screen flex items-center justify-center p-4">
 
-    <div class="bg-white rounded-[50px] overflow-hidden flex flex-col md:flex-row max-w-3x1 w-50 h-50 custom-shadow">
+    <div class="bg-white rounded-[30px] md:rounded-[50px] overflow-hidden flex flex-col md:flex-row max-w-4xl w-full custom-shadow">
         
-        <div class="relative min-h-[300px]">
-            <div class="absolute top-8 left-8 z-10">
-                <h1 class="text-white text-3xl font-bold tracking-wider drop-shadow-md">LeLiLu</h1>
+        <div class="relative w-full md:w-1/2 h-48 md:h-auto md:min-h-[300px] overflow-hidden">
+            <div class="absolute top-6 md:top-8 left-6 md:left-8 z-10">
+                <h1 class="text-white text-2xl md:text-3xl font-bold tracking-wider drop-shadow-md">LeLiLu</h1>
             </div>
-            <img src="{{ asset('image/bunga.png') }}" alt="" class="w-50 h-50 object-cover">
+            <img src="{{ asset('image/bunga.png') }}" alt="" class="w-full h-full object-cover">
         </div>
 
-        <div class="md:w-1/2 px-8 md:px-12 flex flex-col justify-center">
+        <div class="w-full md:w-1/2 px-6 md:px-12 py-8 md:py-0 flex flex-col justify-center">
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-800">Selamat Datang <span class="text-yellow-500 italic">Kembali</span></h2>
                 <div class="h-1.5 w-24 bg-yellow-400 mt-1 rounded-full"></div>
@@ -69,12 +79,11 @@
                     <div class="flex-grow border-t border-gray-300"></div>
                 </div>
 
-                <div class="flex gap-3">
-                    <a href="/" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="/" class="px-10 py-3 border-2 border-gray-200 rounded-2xl text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition font-bold w-full sm:w-auto text-center">
                         Kembali
                     </a>
-                    {{-- Ganti <a> jadi <button type="submit"> --}}
-                    <button type="submit" class="flex-1 bg-yellow-400 py-2 rounded-lg text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center">
+                    <button type="submit" class="flex-1 bg-yellow-400 py-3 rounded-2xl text-gray-800 font-bold shadow-md hover:bg-yellow-500 transition flex items-center justify-center w-full sm:w-auto">
                         Masuk Ke Akun
                     </button>
                 </div>

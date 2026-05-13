@@ -14,6 +14,7 @@
       min-height: 100vh;
       padding: 48px 24px 60px;
       color: #222;
+      overflow-x: hidden;
     }
 
     .page-wrap {

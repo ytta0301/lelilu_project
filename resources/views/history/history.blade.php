@@ -14,6 +14,7 @@ body {
   background: #f5f4f0;
   min-height: 100vh;
   color: #111;
+  overflow-x: hidden;
 }
 
 /* ── NAVBAR ── */

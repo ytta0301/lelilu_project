@@ -27,6 +27,7 @@
     display: flex;
     justify-content: center;
     padding-bottom: 40px;
+    overflow-x: hidden;
   }
 
   .page {
@@ -211,6 +212,45 @@
     text-align: center; line-height: 1.3;
   }
   .step.inactive .step-label { color: var(--muted); }
+
+  @media (max-width: 480px) {
+    .page { padding: 0 4px; }
+    .header { padding: 16px 12px 4px; }
+    .header-title { font-size: 15px; }
+    .card { margin: 0 8px; border-radius: 12px; }
+    .order-num-card { padding: 14px 16px; }
+    .order-num-card .label { font-size: 15px; }
+    .order-num-card .date { font-size: 11px; }
+    .payment-card { padding: 16px 16px 0; }
+    .pay-icon { width: 36px; height: 36px; border-radius: 10px; }
+    .pay-title { font-size: 15px; }
+    .pay-row { padding: 10px 0; }
+    .pay-row .key, .pay-row .val { font-size: 12px; }
+    .pay-total { margin: 12px -16px 0; padding: 12px 16px; }
+    .pay-total .key, .pay-total .val { font-size: 14px; }
+    .image-section { margin: 0 8px; gap: 8px; grid-template-columns: 1fr; }
+    .status-card { padding: 16px 16px 20px; }
+    .status-icon { width: 36px; height: 36px; }
+    .status-title { font-size: 15px; }
+    .stepper { padding: 0 4px; }
+    .stepper::before { left: calc(4px + 14px); right: calc(4px + 14px); }
+    .stepper::after { left: calc(4px + 14px); }
+    .step-dot { width: 28px; height: 28px; }
+    .step-label { font-size: 10px; }
+    .step-dot.done::after { width: 10px; height: 6px; }
+  }
+
+  @media (max-width: 360px) {
+    .header { padding: 12px 8px 2px; }
+    .header-title { font-size: 13px; }
+    .card { margin: 0 4px; border-radius: 10px; }
+    .order-num-card { padding: 10px 12px; }
+    .pay-row { padding: 8px 0; }
+    .pay-row .key, .pay-row .val { font-size: 11px; }
+    .pay-total { padding: 10px 12px; }
+    .step-dot { width: 24px; height: 24px; }
+    .step-label { font-size: 9px; }
+  }
 </style>
 </head>
 <body>

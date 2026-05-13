@@ -25,6 +25,7 @@
     display: flex;
     min-height: 100vh;
     color: var(--text-primary);
+    overflow-x: hidden;
   }
 
   /* ── SIDEBAR ── */
@@ -325,12 +326,87 @@
     transition: color 0.15s;
   }
   .back-link:hover { color: var(--text-primary); }
+
+  /* ── SIDEBAR TOGGLE ── */
+  .sidebar-toggle {
+    display: none;
+    position: fixed; top: 12px; left: 12px; z-index: 1001;
+    width: 40px; height: 40px; border: none; border-radius: 10px;
+    background: var(--accent); color: #fff;
+    cursor: pointer; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4); z-index: 998;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .top-row { flex-wrap: wrap; }
+    .banners-row { flex-wrap: wrap; }
+    .banner-thumb.ref, .banner-thumb.result { width: 100%; max-width: 280px; }
+    .middle-row { flex-direction: column; }
+    .right-col { width: 100%; }
+    .order-nums { gap: 1.5rem; }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-toggle { display: flex; }
+
+    aside {
+      position: fixed;
+      left: -240px;
+      top: 0; bottom: 0;
+      z-index: 999;
+      width: 210px;
+      transition: left 0.3s ease;
+    }
+    aside.open { left: 0; }
+    .sidebar-overlay.open { display: block; }
+
+    main { margin-left: 0; padding: 1.5rem 1.2rem 2rem; }
+    .page-title { font-size: 1.3rem; }
+    .main-card { padding: 1.2rem; border-radius: 12px; }
+    .top-row { flex-direction: column; align-items: stretch; }
+    .customer-col { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .banners-row { flex-direction: column; }
+    .banner-thumb { height: 100px; }
+    .banner-thumb.ref, .banner-thumb.result { width: 100%; max-width: 100%; }
+    .order-nums { flex-direction: column; gap: 0.8rem; }
+    .payment-box { padding: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 1rem 0.8rem 1.5rem; }
+    .main-card { padding: 0.8rem; }
+    .page-title { font-size: 1.1rem; }
+    .customer-avatar-big { width: 56px; height: 56px; font-size: 1.4rem; }
+    .customer-name { font-size: 0.85rem; }
+    .payment-box h3 { font-size: 0.85rem; }
+    .payment-row { font-size: 0.75rem; }
+    .payment-total { font-size: 0.8rem; }
+    .banner-label { font-size: 0.85rem; }
+    .banner-date { font-size: 0.7rem; }
+    .upload-box { height: 140px; }
+    .btn-revisi { font-size: 0.85rem; padding: 0.55rem; }
+    .detail-revisi h3 { font-size: 0.9rem; }
+    .revisi-textarea { min-height: 100px; font-size: 0.8rem; }
+  }
 </style>
+
+<button class="sidebar-toggle" onclick="toggleAltSidebar()">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+<div class="sidebar-overlay" id="altSidebarOverlay"></div>
 </head>
 <body>
 
 <!-- SIDEBAR -->
-<aside>
+<aside id="altSidebar">
   <div class="sidebar-logo">Le<span>Li</span>Lu</div>
   <div class="admin-card">
     <div class="admin-avatar">A</div>
@@ -513,6 +589,16 @@
     if (!wrapper.contains(e.target)) {
       document.getElementById('statusDropdown').style.display = 'none';
     }
+  });
+
+  /* ── Sidebar toggle ── */
+  function toggleAltSidebar() {
+    document.getElementById('altSidebar').classList.toggle('open');
+    document.getElementById('altSidebarOverlay').classList.toggle('open');
+  }
+  document.getElementById('altSidebarOverlay').addEventListener('click', function() {
+    this.classList.remove('open');
+    document.getElementById('altSidebar').classList.remove('open');
   });
 </script>
 </body>

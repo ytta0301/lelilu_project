@@ -11,7 +11,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #f5f5f5;
             height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .container { display: flex; height: 100vh; }

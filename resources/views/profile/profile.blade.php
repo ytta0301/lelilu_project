@@ -16,6 +16,7 @@
       align-items: flex-start;
       justify-content: center;
       padding: 48px 20px 80px;
+      overflow-x: hidden;
     }
 
     .profile-card {
