@@ -22,11 +22,88 @@
     }
 
     /* ==============================
-       MAIN
+       LAYOUT
     ============================== */
+    :root {
+      --topbar-h: 60px;
+      --card-bg: #ffffff;
+      --text-primary: #1a1d27;
+      --text-secondary: #6b7280;
+      --border: #e5e7eb;
+    }
+
     .main {
+      /* margin-left: 235px; */
       flex: 1;
-      padding: 28px 36px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      height: var(--topbar-h);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: background .15s;
+    }
+
+    .topbar-user:hover { background: #f3f4f8; }
+
+    .topbar-avatar {
+      width: 34px;
+      height: 34px;
+      background: #e84040;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .topbar-avatar svg { width: 18px; height: 18px; fill: #fff; }
+
+    .topbar-info { text-align: right; }
+
+    .topbar-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .topbar-role {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .chevron {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-secondary);
+    }
+
+    .content {
+      padding: 28px;
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 22px;
@@ -338,18 +415,14 @@
   @include('layout.sidebar')
 
   <!-- ==============================
-       MAIN CONTENT
+       MAIN
   ============================== -->
-  <main class="main">
+  <div class="main">
+    <!-- CONTENT -->
+    <main class="content">
 
     <!-- Search Bar -->
-    <div class="search-wrapper">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-      <input class="search-input" type="text" placeholder="Cari pesanan?....">
-    </div>
+   
 
     <!-- Stats Cards -->
     <div class="stats-row">
@@ -386,7 +459,13 @@
       <div class="table-header">
         <span class="table-title">Pesanan Terbaru</span>
         <div class="table-header-right">
-          <a href="#" class="lihat-semua">Lihat Semua</a>
+           <div class="search-wrapper">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <input class="search-input" type="text" placeholder="Cari pesanan?....">
+    </div>
           <svg class="filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="8" y1="6" x2="21" y2="6" />
             <line x1="8" y1="12" x2="21" y2="12" />

@@ -90,7 +90,7 @@ class AuthController extends Controller
 
         return $user->role === 'user'
             ? redirect('/')
-            : redirect('/admin/worker');
+            : redirect('/admin/pesanan');
     }
 
     public function logout(Request $request)

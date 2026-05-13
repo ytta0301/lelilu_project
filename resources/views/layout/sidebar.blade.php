@@ -225,7 +225,7 @@
     <nav class="nav-section">
         <div class="nav-group-label">Menu Utama</div>
 
-        <a class="nav-item {{ Request::is('admin/worker') ? 'active' : '' }}" href="/admin/worker">
+       <!-- <a class="nav-item {{ Request::is('admin/worker') ? 'active' : '' }}" href="/admin/worker">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="7" height="7" rx="1.5" />
                 <rect x="14" y="3" width="7" height="7" rx="1.5" />
@@ -233,7 +233,7 @@
                 <rect x="14" y="14" width="7" height="7" rx="1.5" />
             </svg>
             <span class="nav-text">Dashboard</span>
-        </a>
+        </a> -->
 
         <a class="nav-item {{ Request::is('admin/pesanan') ? 'active' : '' }}" href="/admin/pesanan">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -242,7 +242,47 @@
                 <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
             <span class="nav-text">Pesanan</span>
-            <span class="nav-badge">15</span>
+            <!-- <span class="nav-badge">15</span> -->
+        </a>
+
+         <a class="nav-item {{ Request::is('admin/user') ? 'active' : '' }}" href="/admin/user">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="nav-text">User</span>
+            <!-- <span class="nav-badge">15</span> -->
+        </a>
+
+          <a class="nav-item {{ Request::is('admin/portofolio') ? 'active' : '' }}" href="/admin/portofolio">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="nav-text">Portofolio</span>
+            <!-- <span class="nav-badge">15</span> -->
+        </a>
+
+          <a class="nav-item {{ Request::is('admin/testimoni') ? 'active' : '' }}" href="/admin/testimoni">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="nav-text">Testimoni</span>
+            <!-- <span class="nav-badge">15</span> -->
+        </a>
+
+          <a class="nav-item {{ Request::is('admin/produk') ? 'active' : '' }}" href="/admin/produk">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="nav-text">Produk</span>
+            <!-- <span class="nav-badge">15</span> -->
         </a>
 
         <!-- SISTEM -->
