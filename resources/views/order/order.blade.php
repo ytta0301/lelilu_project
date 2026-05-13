@@ -413,7 +413,6 @@
 <body>
 
 <div class="wrapper">
-  <!-- HEADER -->
   <h1 class="page-title">
     <strong>Order</strong> <em>Page</em>
   </h1>
@@ -422,106 +421,128 @@
     kami siap melayani <strong>!!</strong>
   </p>
 
-  <!-- CARD -->
+  {{-- [TAMBAH] Alert sukses --}}
+  @if(session('success'))
+    <div class="alert-success">{{ session('success') }}</div>
+  @endif
+
   <div class="card">
     <p class="card-title">Form Pemesanan Banner</p>
 
-    <div class="order-layout">
+    {{-- [UBAH] Ganti <div> jadi <form> --}}
+    <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
 
-      <!-- LEFT: FORM -->
-      <div class="form-col">
+      <div class="order-layout">
+        <div class="form-col">
 
-        <!-- NAMA -->
-        <div class="form-group">
-          <label class="form-label">Nama</label>
-          <input class="form-input" id="nama" type="text" placeholder="Nama kamu">
-        </div>
+          <!-- NAMA -->
+          <div class="form-group">
+            <label class="form-label">Nama</label>
+            {{-- [UBAH] tambah name, value auto-fill dari $user->name --}}
+            <input class="form-input @error('nama') input-error @enderror"
+                   id="nama" name="nama" type="text" placeholder="Nama kamu"
+                   value="{{ old('nama', $user->name ?? '') }}">
+            @error('nama')<span class="field-error">{{ $message }}</span>@enderror
+          </div>
 
-        <!-- UKURAN BANNER -->
-        <div class="form-group">
-          <label class="form-label">ukuran banner</label>
-          <div class="select-wrapper">
-            <div class="custom-select" id="customSelect" onclick="toggleSelect()">
-              <span id="selectLabel" style="color:#c0c0c0">pilih ukuran banner</span>
-              <span class="select-arrow">&#8964;</span>
+          <!-- UKURAN BANNER -->
+          <div class="form-group">
+            <label class="form-label">Ukuran Banner</label>
+            <div class="select-wrapper">
+              <div class="custom-select" id="customSelect" onclick="toggleSelect()">
+                <span id="selectLabel" style="color:{{ old('jenis') ? 'var(--dark)' : '#c0c0c0' }}">
+                  {{ old('jenis') ?? 'pilih ukuran banner' }}
+                </span>
+                <span class="select-arrow">&#8964;</span>
+              </div>
+              <div class="select-dropdown" id="selectDropdown">
+                @foreach(['60x160' => '60 × 160 cm', '80x200' => '80 × 200 cm', '100x200' => '100 × 200 cm', '120x240' => '120 × 240 cm', '150x300' => '150 × 300 cm', 'custom' => 'Custom'] as $val => $label)
+                  <div class="select-option {{ old('jenis') === $val ? 'selected' : '' }}"
+                       data-value="{{ $val }}" onclick="pickOption(this)">
+                    <span class="option-badge">{{ $loop->iteration === 6 ? '✦' : $loop->iteration }}</span>
+                    {{ $label }}
+                  </div>
+                @endforeach
+              </div>
+              {{-- [TAMBAH] hidden input wajib ada untuk kirim nilai ke server --}}
+              <input type="hidden" name="jenis" id="jenisInput" value="{{ old('jenis') }}">
             </div>
-            <div class="select-dropdown" id="selectDropdown">
-              <div class="select-option" data-value="60x160" onclick="pickOption(this)">
-                <span class="option-badge">1</span> 60 × 160 cm
-              </div>
-              <div class="select-option" data-value="80x200" onclick="pickOption(this)">
-                <span class="option-badge">2</span> 80 × 200 cm
-              </div>
-              <div class="select-option" data-value="100x200" onclick="pickOption(this)">
-                <span class="option-badge">3</span> 100 × 200 cm
-              </div>
-              <div class="select-option" data-value="120x240" onclick="pickOption(this)">
-                <span class="option-badge">4</span> 120 × 240 cm
-              </div>
-              <div class="select-option" data-value="150x300" onclick="pickOption(this)">
-                <span class="option-badge">5</span> 150 × 300 cm
-              </div>
-              <div class="select-option" data-value="custom" onclick="pickOption(this)">
-                <span class="option-badge">✦</span> Custom
-              </div>
+            @error('jenis')<span class="field-error">{{ $message }}</span>@enderror
+          </div>
+
+          <!-- NOMOR WHATSAPP -->
+          <div class="form-group">
+            <label class="form-label">Nomor WhatsApp</label>
+            {{-- [UBAH] tambah name="whatsapp", value auto-fill dari $user->whatsapp --}}
+            <input class="form-input @error('whatsapp') input-error @enderror"
+                   id="phone1" name="whatsapp" type="tel" placeholder="08___"
+                   value="{{ old('whatsapp', $user->whatsapp ?? '') }}">
+            @error('whatsapp')<span class="field-error">{{ $message }}</span>@enderror
+          </div>
+
+          <!-- DESKRIPSI -->
+          <div class="form-group">
+            <label class="form-label">Deskripsi Pemesanan</label>
+            {{-- [UBAH] tambah name="brief" --}}
+            <textarea class="form-textarea @error('brief') input-error @enderror"
+                      id="pesan" name="brief"
+                      placeholder="Tulis deskripsi desain yang kamu inginkan...">{{ old('brief') }}</textarea>
+            @error('brief')<span class="field-error">{{ $message }}</span>@enderror
+          </div>
+
+          {{-- [UBAH] Tombol jadi type="submit", hapus href --}}
+          <button type="submit" class="btn-primary" onclick="return validateForm()">
+            Kirim Pesanan
+          </button>
+
+        </div>
+
+        <!-- GAMBAR REFERENSI -->
+        <div class="ref-panel">
+          <div class="ref-box" id="refBox" onclick="triggerUpload()">
+            <div class="ref-placeholder" id="refPlaceholder">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.4">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+              <span>Custom Reference<br>here</span>
             </div>
+            <div class="hover-overlay" id="hoverOverlay">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <img id="refPreview" class="ref-preview" alt="Reference preview">
           </div>
+          <button type="button" class="btn-edit" onclick="triggerUpload()">Edit</button>
+
+          {{-- [UBAH] tambah name="referensi" --}}
+          <input type="file" id="refFileInput" name="referensi"
+                 accept="image/*" onchange="handleRefFile(event)" style="display:none">
+          @error('referensi')<span class="field-error" style="text-align:center">{{ $message }}</span>@enderror
         </div>
 
-        <!-- NOMOR TELEPON -->
-        <div class="form-group">
-          <label class="form-label">Nomor Telepon</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <input class="form-input" id="phone1" type="tel" placeholder="08___">
-           
-          </div>
-        </div>
-
-        <!-- DESKRIPSI -->
-        <div class="form-group">
-          <label class="form-label">Deskripsi Pemesanan</label>
-          <textarea class="form-textarea" id="pesan" placeholder="Tulis deskripsi desain yang kamu inginkan..."></textarea>
-        </div>
-
-        <a href="/payment"><button class="btn-primary" onclick="submitOrder()">masukan gambar</button></a>
       </div>
-
-      <!-- RIGHT: CUSTOM REFERENCE -->
-      <div class="ref-panel">
-        <!-- Image box -->
-        <div class="ref-box" id="refBox" onclick="triggerUpload()" title="Klik untuk tambah gambar referensi">
-          <div class="ref-placeholder" id="refPlaceholder">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.4">
-              <rect x="3" y="3" width="18" height="18" rx="3"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <path d="M21 15l-5-5L5 21"/>
-            </svg>
-            <span>Custom Reference<br>here</span>
-          </div>
-          <!-- Edit overlay (shown on hover when image is loaded) -->
-          <div class="hover-overlay" id="hoverOverlay">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-            </svg>
-          </div>
-          <img id="refPreview" class="ref-preview" alt="Reference preview">
-        </div>
-
-        <!-- Edit button -->
-        <button class="btn-edit" onclick="triggerUpload()">Edit</button>
-
-        <!-- Hidden file input -->
-        <input type="file" id="refFileInput" accept="image/*" onchange="handleRefFile(event)" style="display:none">
-      </div>
-
-    </div><!-- /order-layout -->
-  </div><!-- /card -->
+    </form>{{-- [UBAH] tutup </form> bukan </div> --}}
+  </div>
 
   <a class="back-link" href="/dashboard">Back</a>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
+
+{{-- [TAMBAH] Style tambahan untuk error & sukses --}}
+<style>
+  .input-error { border-color: #ff4d4d !important; }
+  .field-error { display:block; color:#ff4d4d; font-size:0.82rem; margin-top:6px; font-weight:500; }
+  .alert-success {
+    background:#f0fdf4; border:1.5px solid #86efac; color:#166534;
+    border-radius:13px; padding:14px 20px; margin-bottom:24px;
+    font-size:0.95rem; font-weight:500;
+  }
+</style>
 
 <script>
   /* ── Custom Select ── */
@@ -532,7 +553,6 @@
       setTimeout(() => document.addEventListener('click', closeOnOutside), 0);
     }
   }
-
   function closeOnOutside(e) {
     const sel = document.getElementById('customSelect');
     const dd  = document.getElementById('selectDropdown');
@@ -541,90 +561,62 @@
       document.removeEventListener('click', closeOnOutside);
     }
   }
-
   function pickOption(el) {
     document.querySelectorAll('.select-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
+    const value = el.getAttribute('data-value');
     const clone = el.cloneNode(true);
     clone.querySelector('.option-badge').remove();
     const label = document.getElementById('selectLabel');
     label.textContent = clone.textContent.trim();
     label.style.color = 'var(--dark)';
+    document.getElementById('jenisInput').value = value; // [TAMBAH] set hidden input
     document.getElementById('customSelect').classList.remove('open');
     document.removeEventListener('click', closeOnOutside);
   }
 
   /* ── Image Upload ── */
-  function triggerUpload() {
-    document.getElementById('refFileInput').click();
-  }
-
+  function triggerUpload() { document.getElementById('refFileInput').click(); }
   function handleRefFile(e) {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
     reader.onload = function(ev) {
-      const img         = document.getElementById('refPreview');
-      const placeholder = document.getElementById('refPlaceholder');
-      const overlay     = document.getElementById('hoverOverlay');
+      const img = document.getElementById('refPreview');
       img.src = ev.target.result;
       img.classList.add('visible');
-      placeholder.style.display = 'none';
-      overlay.classList.add('active');
-      showToast('✓ Gambar referensi berhasil diubah');
+      document.getElementById('refPlaceholder').style.display = 'none';
+      document.getElementById('hoverOverlay').classList.add('active');
+      showToast('✓ Gambar referensi berhasil dipilih');
     };
     reader.readAsDataURL(file);
-    e.target.value = '';
   }
 
-  /* ── Submit ── */
-  function submitOrder() {
+  /* ── Validasi client-side sebelum submit ── */
+  function validateForm() {
     const nama  = document.getElementById('nama').value.trim();
-    const phone = document.getElementById('phone1').value.trim();
+    const wa    = document.getElementById('phone1').value.trim();
     const pesan = document.getElementById('pesan').value.trim();
-    const img   = document.getElementById('refPreview');
-
-    if (!nama)  { shakeEl('nama');  showToast('⚠ Nama belum diisi'); return; }
-    if (!phone) { shakeEl('phone1'); showToast('⚠ Nomor telepon belum diisi'); return; }
-    if (!pesan) { shakeEl('pesan'); showToast('⚠ Deskripsi belum diisi'); return; }
-    if (!img.classList.contains('visible')) {
-      showToast('⚠ Tambahkan gambar referensi dulu');
-      triggerUpload();
-      return;
-    }
-
-    showToast('🎉 Pesanan berhasil dikirim!');
-    setTimeout(() => {
-      document.getElementById('nama').value   = '';
-      document.getElementById('pesan').value  = '';
-      document.getElementById('phone1').value = '';
-      document.getElementById('phone2').value = '';
-      const label = document.getElementById('selectLabel');
-      label.textContent = 'pilih ukuran banner';
-      label.style.color = '#c0c0c0';
-      document.querySelectorAll('.select-option').forEach(o => o.classList.remove('selected'));
-    }, 2000);
+    const jenis = document.getElementById('jenisInput').value;
+    if (!nama)  { showToast('⚠ Nama belum diisi');  return false; }
+    if (!wa)    { showToast('⚠ Nomor WhatsApp belum diisi'); return false; }
+    if (!jenis) { showToast('⚠ Pilih ukuran banner dulu'); return false; }
+    if (!pesan) { showToast('⚠ Deskripsi belum diisi'); return false; }
+    showToast('Mengirim pesanan...');
+    return true;
   }
 
-  function shakeEl(id) {
-    const el = document.getElementById(id);
-    el.style.borderColor = '#ff4d4d';
-    el.style.boxShadow   = '0 0 0 3px rgba(255,77,77,0.15)';
-    el.style.animation   = 'none';
-    requestAnimationFrame(() => { el.style.animation = 'shake 0.4s ease'; });
-    setTimeout(() => {
-      el.style.borderColor = '';
-      el.style.boxShadow   = '';
-      el.style.animation   = '';
-    }, 1400);
-  }
-
+  /* ── Toast ── */
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
   }
+
+  @if(session('success'))
+    document.addEventListener('DOMContentLoaded', () => showToast('🎉 Pesanan berhasil dikirim!'));
+  @endif
 </script>
 </body>
 </html>

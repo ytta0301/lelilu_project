@@ -7,6 +7,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PemesananController;
 
 // Guest only
 Route::middleware('guest')->group(function () {
@@ -22,7 +23,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Semua halaman bebas diakses
 Route::get('/', fn() => view('welcome'))->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/order', fn() => view('order.order'));
+Route::get('/order', [PemesananController::class, 'create'])->name('order.create');
+Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));
 Route::get('/history', [HistoryController::class, 'index'])->name('history');

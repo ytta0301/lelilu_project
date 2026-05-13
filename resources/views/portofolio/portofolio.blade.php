@@ -495,7 +495,8 @@
   <div class="proyek-left">
     <h2 class="proyek-title">Punya Proyek<br>untuk <span class="highlight">Kami?</span></h2>
     <p class="proyek-desc">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br>sed do</p>
-    <button class="btn-gabung">Ayo gabung<br>sekarang!</button>
+    <a href="{{ url('/order') }}" class="lelu-nav__btn">Ayo gabung<br>sekarang!</a>
+    
   </div>
   <div class="proyek-right">
     <div class="proyek-img-placeholder">

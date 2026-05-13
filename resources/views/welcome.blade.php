@@ -253,7 +253,7 @@
                         <span class="font-handwriting text-white italic text-6xl md:text-8xl lg:text-9xl block mt-2 drop-shadow-md">terbaik</span>
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="/dashboard"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
+                        <a href="/order"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
                         
                     </div>
                 </div>

@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('id_pemesanan');
-            $table->foreignId('user_id')->constrained('users', 'id_user')->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id_user')->on('users')->nullOnDelete();
             $table->string('jenis');
             $table->text('brief');
-            $table->string('referensi');
-            $table->decimal('harga', 15, 2);
+            $table->string('referensi')->nullable();
+            $table->decimal('harga', 15, 2)->nullable();
             $table->enum('status', ['pending', 'proses', 'selesai', 'dibatalkan'])->default('pending');
             $table->timestamps();
         });
