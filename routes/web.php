@@ -32,12 +32,11 @@ Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
 
-Route::get('/admin/admin', fn() => view('admin.admin'))->name('admin.admin');
-Route::get('/admin/worker', fn() => view('admin.worker'))->name('admin.worker');
+///Route::get('/admin/worker', fn() => view('admin.worker'))->name('admin.worker');
+Route::get('/admin/user', fn() => view('admin.user'))->name('admin.user');
 Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
-route::get('/admin/detail', fn() => view('admin.detail'))->name('admin.detail');
 route::get('/admin/input', fn() => view('admin.input'))->name('admin.input');
-route::get('/admin/edit', fn() => view('admin.edit'))->name('admin.edit');
+route::get('/admin/revisi', fn() => view('admin.revisi'))->name('admin.revisi');
 
 // halaman user profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

@@ -363,31 +363,7 @@
   <!-- ==============================
        SIDEBAR
   ============================== -->
-  <aside class="sidebar">
-    <div class="sidebar-brand">LeLiLu</div>
-
-    <div class="worker-card">
-      <div class="worker-avatar">
-        <svg viewBox="0 0 44 44" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="22" cy="22" r="22" fill="#555"/>
-          <circle cx="22" cy="17" r="8" fill="#aaa"/>
-          <ellipse cx="22" cy="38" rx="13" ry="8" fill="#888"/>
-        </svg>
-      </div>
-      <div class="worker-info">
-        <div class="worker-name">Worker LeLiLu</div>
-        <div class="worker-email">Worker@gmail.com</div>
-      </div>
-    </div>
-
-    <div class="menu-label">Menu Utama</div>
-    <a href="/admin/worker" class="menu-item">Dasboard</a>
-    <a href="/admin/pesanan" class="menu-item active">Pesanan</a>
-
-    <div class="menu-label">Sistem</div>
-    <a href="#" class="menu-item">Pengaturan</a>
-    <a href="#" class="menu-item">Log out</a>
-  </aside>
+  @include('layout.sidebar')
 
   <!-- ==============================
        MAIN CONTENT
