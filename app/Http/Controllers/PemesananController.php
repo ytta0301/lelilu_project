@@ -13,6 +13,15 @@ class PemesananController extends Controller
         $user = Auth::user(); // null kalau belum login, ada datanya kalau sudah login
         return view('order.order', compact('user'));
     }
+    public function thanks()
+    {
+        // Kalau tidak ada wa_url di session, tolak akses langsung
+        if (!session('wa_url')) {
+            return redirect()->route('order.create');
+        }
+
+        return view('order.thanks');
+    }
 
     public function store(Request $request)
     {
@@ -56,6 +65,7 @@ class PemesananController extends Controller
 
         $nomorAdmin = env('WA_ADMIN');
 
-        return redirect("https://wa.me/{$nomorAdmin}?text={$pesan}");
+        return redirect()->route('order.thanks')
+            ->with('wa_url', "https://wa.me/{$nomorAdmin}?text={$pesan}");
     }
 }
