@@ -694,8 +694,8 @@
         </div>
     </header>
 
-    <!-- About Section -->
-    <section class="about-section">
+    About Section
+    <!-- <section class="about-section">
         <div class="about-text">
             <h2>ADA APA<br>AJA SIH<br>DI <span>LELILU?</span></h2>
             <br>
@@ -706,7 +706,7 @@
             <img src="https://placehold.co/200x200/A0D6B4/FFFFFF?text=Vintage+Cars" alt="Img2" class="img-small-1">
             <img src="https://placehold.co/180x250/FFB347/FFFFFF?text=Vintage+Poster" alt="Img3" class="img-small-2">
         </div>
-    </section>
+    </section> -->
 
     <!-- Catalog Section -->
     <section class="catalog-container">

@@ -72,15 +72,8 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .breadcrumb a {
-      color: var(--gray);
-      text-decoration: none;
-    }
-
-    .breadcrumb span {
-      color: var(--yellow);
-      font-weight: 600;
-    }
+    .breadcrumb a { color: var(--gray); text-decoration: none; }
+    .breadcrumb span { color: var(--yellow); font-weight: 600; }
 
     /* ===== MAIN ===== */
     main {
@@ -165,7 +158,6 @@
       display: block;
     }
 
-    /* Colored avatar placeholder */
     .avatar-placeholder {
       width: 38px;
       height: 38px;
@@ -192,35 +184,29 @@
       border: 2px solid var(--white);
     }
 
-    .badge svg {
-      width: 7px;
-      height: 7px;
-      fill: white;
-    }
+    .badge svg { width: 7px; height: 7px; fill: white; }
 
-    .author-info {
-      display: flex;
-      flex-direction: column;
-    }
+    .author-info { display: flex; flex-direction: column; }
+    .author-name { font-size: 0.82rem; font-weight: 700; color: var(--dark); }
+    .author-handle { font-size: 0.75rem; color: var(--gray); }
 
-    .author-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .author-handle {
-      font-size: 0.75rem;
-      color: var(--gray);
-    }
-
-    /* ===== FOOTER IMAGE AREA ===== */
+    /* ============================================================
+       FOOTER IMAGE — EDIT BAGIAN INI SESUAI KEINGINAN
+    ============================================================ */
     .footer-art {
       width: 100%;
-      height: 220px;
-      margin-top: 40px;
-      overflow: hidden;
+      margin-top: 40px;     /* <-- jarak dari card ke gambar */
+      line-height: 0;
     }
+
+    .footer-art img {
+      width: 100%;
+      height: 260px;            /* <-- tinggi gambar, ubah sesuai keinginan */
+      object-fit: cover;        /* <-- crop gambar, hapus baris ini jika tidak mau di-crop */
+      object-position: center;  /* <-- posisi crop: top / center / bottom */
+      display: block;
+    }
+    /* ============================================================ */
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
@@ -240,6 +226,8 @@
       .title-line { height: 4px; max-width: 150px; }
       .card { padding: 18px 16px 14px; min-height: 140px; }
       .card-text { font-size: 0.8rem; margin-bottom: 16px; }
+      .footer-art { margin-top: 30px; }
+      .footer-art img { height: 180px; } /* <-- tinggi di tablet */
     }
 
     @media (max-width: 600px) {
@@ -261,7 +249,8 @@
       .badge svg { width: 6px; height: 6px; }
       .author-name { font-size: 0.78rem; }
       .author-handle { font-size: 0.7rem; }
-      .footer-art { height: 160px; margin-top: 30px; }
+      .footer-art { margin-top: 24px; }
+      .footer-art img { height: 150px; } /* <-- tinggi di HP */
     }
 
     @media (max-width: 400px) {
@@ -279,50 +268,54 @@
       .avatar, .avatar-placeholder { width: 30px; height: 30px; font-size: 0.75rem; }
       .author-name { font-size: 0.72rem; }
       .author-handle { font-size: 0.65rem; }
-      .footer-art { height: 120px; margin-top: 24px; }
+      .footer-art { margin-top: 20px; }
+      .footer-art img { height: 120px; } /* <-- tinggi di HP kecil */
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-@include('partials.navbar')
-<!-- MAIN -->
-<main>
-  <div class="page-title-wrap">
-    <h1 class="page-title">Testimoni</h1>
-    <div class="title-line"></div>
+  {{-- NAVBAR --}}
+  @include('partials.navbar')
+
+  {{-- MAIN --}}
+  <main>
+    <div class="page-title-wrap">
+      <h1 class="page-title">Testimoni</h1>
+      <div class="title-line"></div>
+    </div>
+
+    <div class="testimonial-grid">
+      @forelse ($testimonis as $t)
+        <div class="card">
+          <p class="card-text">{{ $t->isi_testimoni }}</p>
+          <div class="card-author">
+            <div class="avatar-wrap">
+              <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name), 0, 6) }}">
+                {{ strtoupper(substr($t->user->name, 0, 2)) }}
+              </div>
+              <div class="badge">
+                <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+                  <polyline points="2,5 4.5,7.5 8,3" stroke="white" stroke-width="1.8"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="author-info">
+              <span class="author-name">{{ $t->user->name }}</span>
+            </div>
+          </div>
+        </div>
+      @empty
+        <p style="color: #888; font-size: 0.9rem;">Belum ada testimoni.</p>
+      @endforelse
+    </div>
+  </main>
+
+  {{-- FOOTER ART — di luar main agar full width --}}
+  <div class="footer-art">
+    <img src="{{ asset('Image/canvas.png') }}" alt="decoration">
   </div>
 
-<div class="testimonial-grid">
-  @forelse ($testimonis as $t)
-    <div class="card">
-      <p class="card-text">{{ $t->isi_testimoni }}</p>
-      <div class="card-author">
-        <div class="avatar-wrap">
-          <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name), 0, 6) }}">
-            {{ strtoupper(substr($t->user->name, 0, 2)) }}
-          </div>
-          <div class="badge">
-            <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="2,5 4.5,7.5 8,3" stroke="white" stroke-width="1.8"
-                fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <div class="author-info">
-          <span class="author-name">{{ $t->user->name }}</span>
-        </div>
-      </div>
-    </div>
-  @empty
-    <p style="color: #888; font-size: 0.9rem;">Belum ada testimoni.</p>
-  @endforelse
-</div>
-<!-- FOOTER ART -->
-<div class="footer-art">
-  <img src="{{ asset('Image/canvas.png') }}" alt="imagenya salah">
-</div>
-</script>
 </body>
 </html>

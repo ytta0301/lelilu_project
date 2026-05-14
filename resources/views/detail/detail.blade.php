@@ -1,342 +1,397 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rincian Pesanan</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rincian Pesanan - LeLiLu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --yellow: #F5C518;
-    --bg:     #F0EFEb;
-    --card:   #FFFFFF;
-    --text:   #1C1C1E;
-    --muted:  #9B9B9B;
-    --green:  #3CC08F;
-    --radius: 16px;
-    --shadow: 0 2px 12px rgba(0,0,0,.07);
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
 
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
-    overflow-x: hidden;
-  }
+    .page {
+      width: 100%;
+      max-width: 480px;
+      background: #f0f0f0;
+      padding: 0 0 40px;
+    }
 
-  .page {
-    width: 100%;
-    max-width: 480px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+    /* ==============================
+       HEADER / NAVBAR
+    ============================== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      background: #f0f0f0;
+    }
 
-  /* ── HEADER ── */
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 20px 20px 8px;
-    background: var(--bg);
-    position: sticky; top: 0; z-index: 10;
-  }
-  .back-btn {
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none; color: var(--text);
-    border-radius: 10px;
-    transition: background .15s;
-  }
-  .back-btn:hover { background: rgba(0,0,0,.06); }
-  .header-title { font-size: 17px; font-weight: 700; }
+    .back-btn {
+      font-size: 22px;
+      color: #333;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1;
+    }
 
-  /* ── CARD base ── */
-  .card {
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: 0 16px;
-    overflow: hidden;
-  }
+    .navbar-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
 
-  /* ── ORDER NUMBER CARD ── */
-  .order-num-card { padding: 20px 22px; }
-  .order-num-card .label {
-    font-size: 18px; font-weight: 800;
-  }
-  .order-num-card .date {
-    font-size: 13px; color: var(--muted); margin-top: 5px; font-weight: 500;
-  }
+    /* ==============================
+       CARD BASE
+    ============================== */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      margin: 0 16px 16px;
+      padding: 20px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+    }
 
-  /* ── PAYMENT CARD ── */
-  .payment-card { padding: 20px 22px 0; }
+    /* ==============================
+       NOMOR PESANAN CARD
+    ============================== */
+    .order-number {
+      font-size: 17px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
 
-  .payment-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 20px;
-  }
-  .pay-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: var(--yellow);
-    flex-shrink: 0;
-  }
-  .pay-title { font-size: 17px; font-weight: 800; }
+    .order-date {
+      font-size: 13px;
+      color: #aaa;
+    }
 
-  .pay-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 13px 0;
-    border-bottom: 1px solid #F2F2F0;
-  }
-  .pay-row:last-of-type { border-bottom: none; }
-  .pay-row .key   { font-size: 14px; color: #555; font-weight: 500; }
-  .pay-row .val   { font-size: 14px; font-weight: 700; color: var(--text); }
+    /* ==============================
+       RINCIAN PEMBAYARAN CARD
+    ============================== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
 
-  .pay-total {
-    display: flex; justify-content: space-between; align-items: center;
-    background: var(--yellow);
-    margin: 16px -22px 0;
-    padding: 16px 22px;
-  }
-  .pay-total .key { font-size: 16px; font-weight: 800; color: var(--text); }
-  .pay-total .val { font-size: 16px; font-weight: 800; color: var(--text); }
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      background: #f5c518;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
 
-  /* ── IMAGE SECTION ── */
-  .image-section {
-    margin: 0 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .img-box {
-    border-radius: var(--radius);
-    overflow: hidden;
-    aspect-ratio: 1;
-    box-shadow: var(--shadow);
-  }
-  .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
 
-  .img-placeholder {
-    background: var(--card);
-    border-radius: var(--radius);
-    aspect-ratio: 1;
-    box-shadow: var(--shadow);
-    border: 2px solid #E5E5E3;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .img-placeholder span {
-    font-size: 14px; color: var(--muted); font-weight: 500;
-    letter-spacing: .3px;
-  }
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
 
-  /* ── STATUS CARD ── */
-  .status-card { padding: 20px 22px 28px; }
+    .payment-row:last-of-type {
+      border-bottom: none;
+    }
 
-  .status-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 28px;
-  }
-  .status-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: var(--yellow); flex-shrink: 0;
-  }
-  .status-title { font-size: 17px; font-weight: 800; }
+    .payment-label {
+      font-size: 14px;
+      color: #888;
+    }
 
-  /* stepper */
-  .stepper {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    position: relative;
-    padding: 0 10px;
-  }
+    .payment-value {
+      font-size: 14px;
+      color: #888;
+    }
 
-  /* connecting line */
-  .stepper::before {
-    content: '';
-    position: absolute;
-    top: 18px;
-    left: calc(10px + 18px);
-    right: calc(10px + 18px);
-    height: 3px;
-    background: #E0E0DE;
-    z-index: 0;
-  }
+    .total-bar {
+      background: #f5c518;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+    }
 
-  /* yellow progress line — 2 of 4 steps done = ~33% of the track */
-  .stepper::after {
-    content: '';
-    position: absolute;
-    top: 18px;
-    left: calc(10px + 18px);
-    width: 33.3%;
-    height: 3px;
-    background: var(--yellow);
-    z-index: 1;
-  }
+    .total-label {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
 
-  .step {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    position: relative; z-index: 2;
-    flex: 1;
-  }
+    .total-value {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
 
-  .step-dot {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .step-dot.done {
-    background: var(--green);
-  }
-  .step-dot.done::after {
-    content: '';
-    display: block;
-    width: 12px; height: 7px;
-    border-left: 2.5px solid #fff;
-    border-bottom: 2.5px solid #fff;
-    transform: rotate(-45deg) translateY(-2px);
-  }
-  .step-dot.pending {
-    background: #D9D9D9;
-  }
+    /* ==============================
+       IMAGE GALLERY
+    ============================== */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 16px 16px;
+      position: relative;
+    }
 
-  .step-label {
-    font-size: 11.5px; font-weight: 600; color: var(--text);
-    text-align: center; line-height: 1.3;
-  }
-  .step.inactive .step-label { color: var(--muted); }
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: #ddd;
+      position: relative;
+    }
 
-  @media (max-width: 480px) {
-    .page { padding: 0 4px; }
-    .header { padding: 16px 12px 4px; }
-    .header-title { font-size: 15px; }
-    .card { margin: 0 8px; border-radius: 12px; }
-    .order-num-card { padding: 14px 16px; }
-    .order-num-card .label { font-size: 15px; }
-    .order-num-card .date { font-size: 11px; }
-    .payment-card { padding: 16px 16px 0; }
-    .pay-icon { width: 36px; height: 36px; border-radius: 10px; }
-    .pay-title { font-size: 15px; }
-    .pay-row { padding: 10px 0; }
-    .pay-row .key, .pay-row .val { font-size: 12px; }
-    .pay-total { margin: 12px -16px 0; padding: 12px 16px; }
-    .pay-total .key, .pay-total .val { font-size: 14px; }
-    .image-section { margin: 0 8px; gap: 8px; grid-template-columns: 1fr; }
-    .status-card { padding: 16px 16px 20px; }
-    .status-icon { width: 36px; height: 36px; }
-    .status-title { font-size: 15px; }
-    .stepper { padding: 0 4px; }
-    .stepper::before { left: calc(4px + 14px); right: calc(4px + 14px); }
-    .stepper::after { left: calc(4px + 14px); }
-    .step-dot { width: 28px; height: 28px; }
-    .step-label { font-size: 10px; }
-    .step-dot.done::after { width: 10px; height: 6px; }
-  }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-  @media (max-width: 360px) {
-    .header { padding: 12px 8px 2px; }
-    .header-title { font-size: 13px; }
-    .card { margin: 0 4px; border-radius: 10px; }
-    .order-num-card { padding: 10px 12px; }
-    .pay-row { padding: 8px 0; }
-    .pay-row .key, .pay-row .val { font-size: 11px; }
-    .pay-total { padding: 10px 12px; }
-    .step-dot { width: 24px; height: 24px; }
-    .step-label { font-size: 9px; }
-  }
-</style>
+    /* Placeholder gradient untuk demo */
+    .gallery-item.demo-1 {
+      background: linear-gradient(135deg, #1a3a8f, #4a90d9, #f5c518);
+    }
+
+    .gallery-item.demo-2 {
+      background: linear-gradient(135deg, #90ee55, #55cc44, #88dd00);
+    }
+
+    .feedback-btn {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #f5c518;
+      color: #1a1a1a;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 20px;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ==============================
+       STATUS PEMESANAN CARD
+    ============================== */
+    .status-track {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 10px;
+      padding: 0 8px;
+    }
+
+    /* Garis penghubung */
+    .status-track::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      right: 40px;
+      height: 3px;
+      background: #f5c518;
+      z-index: 0;
+    }
+
+    .status-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .status-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #2dd4a0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-dot.inactive {
+      background: #d0d0d0;
+    }
+
+    .status-dot svg {
+      width: 20px;
+      height: 20px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .status-label {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ==============================
+       REVISI SECTION
+    ============================== */
+    .revisi-section {
+      padding: 0 16px;
+    }
+
+    .revisi-btn {
+      display: inline-block;
+      background: #f5c518;
+      color: #1a1a1a;
+      font-size: 14px;
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      margin-bottom: 12px;
+    }
+
+    .revisi-note {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <a href="/history" class="back-btn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-    </a>
-    <span class="header-title">Rincian Pesanan</span>
-  </div>
+  <div class="page">
 
-  <!-- ORDER NUMBER -->
-  <div class="card order-num-card">
-    <div class="label">"Nomor Pesanan"</div>
-    <div class="date">Dibuat pada 12 april 2029</div>
-  </div>
-
-  <!-- PAYMENT DETAIL -->
-  <div class="card payment-card">
-    <div class="payment-header">
-      <div class="pay-icon"></div>
-      <span class="pay-title">Rincian Pembayaran</span>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a href="#" class="back-btn">&#8592;</a>
+      <span class="navbar-title">Rincian Pesanan</span>
     </div>
 
-    <div class="pay-row">
-      <span class="key">Nomor Transaksi</span>
-      <span class="val">000000001</span>
-    </div>
-    <div class="pay-row">
-      <span class="key">Total Pesanan</span>
-      <span class="val">Rp.698.000</span>
-    </div>
-    <div class="pay-row">
-      <span class="key">Biaya Admin</span>
-      <span class="val">Rp.698.000</span>
+    <!-- NOMOR PESANAN -->
+    <div class="card">
+      <div class="order-number">"Nomor Pesanan"</div>
+      <div class="order-date">Dibuat pada 12 april 2029</div>
     </div>
 
-    <div class="pay-total">
-      <span class="key">Total  Pembayaran</span>
-      <span class="val">Rp.6677.000</span>
-    </div>
-  </div>
-
-  <!-- IMAGES -->
-  <div class="image-section">
-    <div class="img-box">
-      <img src="https://i.imgur.com/placeholder.jpg"
-           onerror="this.style.background='#dde4f0';this.removeAttribute('src')"
-           alt="Gambar Pesanan" />
-    </div>
-    <div class="img-placeholder">
-      <span>On Progress.....</span>
-    </div>
-  </div>
-
-  <!-- STATUS -->
-  <div class="card status-card">
-    <div class="status-header">
-      <div class="status-icon"></div>
-      <span class="status-title">Status  Pemesanan</span>
-    </div>
-
-    <div class="stepper">
-      <div class="step">
-        <div class="step-dot done"></div>
-        <span class="step-label">Pemesanan</span>
+    <!-- RINCIAN PEMBAYARAN -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon"></div>
+        <span class="section-title">Rincian Pembayaran</span>
       </div>
-      <div class="step">
-        <div class="step-dot done"></div>
-        <span class="step-label">pembayaran</span>
+
+      <div class="payment-row">
+        <span class="payment-label">Nomor Transaksi</span>
+        <span class="payment-value">000000001</span>
       </div>
-      <div class="step inactive">
-        <div class="step-dot pending"></div>
-        <span class="step-label">progress</span>
+      <div class="payment-row">
+        <span class="payment-label">Total Pesanan</span>
+        <span class="payment-value">Rp.698.000</span>
       </div>
-      <div class="step inactive">
-        <div class="step-dot pending"></div>
-        <span class="step-label">Selesai</span>
+      <div class="payment-row">
+        <span class="payment-label">Biaya Admin</span>
+        <span class="payment-value">Rp.698.000</span>
+      </div>
+
+      <div class="total-bar">
+        <span class="total-label">Total  Pembayaran</span>
+        <span class="total-value">Rp.6677.000</span>
       </div>
     </div>
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <div class="gallery-item demo-1"></div>
+      <div class="gallery-item demo-2" style="position:relative;">
+        <button class="feedback-btn">beri masukan</button>
+      </div>
+    </div>
+
+    <!-- STATUS PEMESANAN -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-icon"></div>
+        <span class="section-title">Status Pemesanan</span>
+      </div>
+
+      <div class="status-track">
+
+        <div class="status-step">
+          <div class="status-dot">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="status-label">Pemesanan</span>
+        </div>
+
+        <div class="status-step">
+          <div class="status-dot">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="status-label">pembayaran</span>
+        </div>
+
+        <div class="status-step">
+          <div class="status-dot">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="status-label">progress</span>
+        </div>
+
+        <div class="status-step">
+          <div class="status-dot">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="status-label">Selesai</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- REVISI -->
+    <div class="revisi-section">
+      <button class="revisi-btn">Butuh Revisi? Kami bisa!</button>
+      <p class="revisi-note">
+        *Maksimal revisi 3 kali untuk pembiayaan gratis<br>
+        jika sudah melebihi maka akan dikenakan biaya<br>
+        tambahan
+      </p>
+    </div>
+
   </div>
 
-</div>
 </body>
 </html>

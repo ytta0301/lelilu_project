@@ -259,7 +259,7 @@
       font-weight: 600;
     }
     .badge-admin    { background: #fce8e8; color: #d63030; }
-    .badge-guru     { background: #e8f0fe; color: #3b5ec6; }
+    .badge-user     { background: #e8f0fe; color: #3b5ec6; }
     .badge-stafftu  { background: #e8f5ea; color: #2e7d32; }
     .badge-kepala   { background: #f3e8fd; color: #7b1fa2; }
 
@@ -672,7 +672,7 @@
         <thead>
           <tr>
             <th>Nama</th>
-            <th>Email</th>
+            <th>Nomer</th>
             <th>Role</th>
             <th>Aksi</th>
           </tr>
@@ -697,16 +697,14 @@
       <input class="form-input" type="text" id="inputNama" placeholder="Masukkan nama lengkap"/>
     </div>
     <div class="form-group">
-      <label class="form-label">Email</label>
-      <input class="form-input" type="email" id="inputEmail" placeholder="nama@smpn1waru.sch.id"/>
+      <label class="form-label">Nomer</label>
+      <input class="form-input" id="inputNomer" placeholder="Masukan Nomer Telpon"/>
     </div>
     <div class="form-group">
       <label class="form-label">Role</label>
       <select class="form-select" id="inputRole">
-        <option value="Administrator">Administrator</option>
-        <option value="Guru">Guru</option>
-        <option value="Staff TU">Staff TU</option>
-        <option value="Kepala Sekolah">Kepala Sekolah</option>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
       </select>
     </div>
     <div class="modal-actions">
@@ -739,21 +737,21 @@
 <script>
   // ── DATA ──
   let users = [
-    { id: 1, nama: 'Budi Santoso',     email: 'budi.santoso@smpn1waru.sch.id',     role: 'Administrator' },
-    { id: 2, nama: 'Ani Wijaya',       email: 'ani.wijaya@smpn1waru.sch.id',       role: 'Guru' },
-    { id: 3, nama: 'Candra Permana',   email: 'candra.permana@smpn1waru.sch.id',   role: 'Staff TU' },
-    { id: 4, nama: 'Dewi Lestari',     email: 'dewi.lestari@smpn1waru.sch.id',     role: 'Guru' },
-    { id: 5, nama: 'Eko Prasetyo',     email: 'eko.prasetyo@smpn1waru.sch.id',     role: 'Kepala Sekolah' },
-    { id: 6, nama: 'Fitri Handayani',  email: 'fitri.handayani@smpn1waru.sch.id',  role: 'Guru' },
-    { id: 7, nama: 'Gunawan Ahmad',    email: 'gunawan.ahmad@smpn1waru.sch.id',    role: 'Staff TU' },
-    { id: 8, nama: 'Hesti Rahayu',     email: 'hesti.rahayu@smpn1waru.sch.id',     role: 'Guru' },
+    { id: 1, nama: 'Budi Santoso',     nomer: '08456787654',     role: 'User' },
+    { id: 2, nama: 'Ani Wijaya',       nomer: '08123456789',     role: 'User' },
+    { id: 3, nama: 'Candra Permana',   nomer: '08123456780',     role: 'Admin' },
+    { id: 4, nama: 'Dewi Lestari',     nomer: '08123456781',     role: 'User' },
+    { id: 5, nama: 'Eko Prasetyo',     nomer: '08123456782',     role: 'User' },
+    { id: 6, nama: 'Fitri Handayani',  nomer: '08123456783',     role: 'User' },
+    { id: 7, nama: 'Gunawan Ahmad',    nomer: '08123456784',     role: 'User' },
+    { id: 8, nama: 'Hesti Rahayu',     nomer: '08123456785',     role: 'Admin' },
   ];
   let nextId = 9;
   let editingId = null;
   let deletingId = null;
 
   function badgeClass(role) {
-    return { 'Administrator':'badge-admin', 'Guru':'badge-guru', 'Staff TU':'badge-stafftu', 'Kepala Sekolah':'badge-kepala' }[role] || 'badge-guru';
+    return { 'Admin':'badge-admin', 'User':'badge-user' }[role] || 'badge-user';
   }
 
   function render() {
@@ -761,7 +759,7 @@
     tbody.innerHTML = users.map(u => `
       <tr>
         <td>${u.nama}</td>
-        <td style="color:#6b7280">${u.email}</td>
+        <td style="color:#6b7280">${u.nomer}</td>
         <td><span class="badge ${badgeClass(u.role)}">${u.role}</span></td>
         <td>
           <div class="aksi">
@@ -792,8 +790,8 @@
     editingId = null;
     document.getElementById('modalTitle').textContent = 'Tambah User';
     document.getElementById('inputNama').value = '';
-    document.getElementById('inputEmail').value = '';
-    document.getElementById('inputRole').value = 'Guru';
+    document.getElementById('inputNomer').value = '';
+    document.getElementById('inputRole').value = 'User';
     openModal('formModal');
   }
 
@@ -802,23 +800,23 @@
     editingId = id;
     document.getElementById('modalTitle').textContent = 'Edit User';
     document.getElementById('inputNama').value = u.nama;
-    document.getElementById('inputEmail').value = u.email;
+    document.getElementById('inputNomer').value = u.nomer;
     document.getElementById('inputRole').value = u.role;
     openModal('formModal');
   }
 
   function saveUser() {
     const nama  = document.getElementById('inputNama').value.trim();
-    const email = document.getElementById('inputEmail').value.trim();
+    const nomer = document.getElementById('inputNomer').value.trim();
     const role  = document.getElementById('inputRole').value;
-    if (!nama || !email) { showToast('Nama dan email wajib diisi.'); return; }
+    if (!nama || !nomer) { showToast('Nama dan nomor telepon wajib diisi.'); return; }
 
     if (editingId) {
       const u = users.find(x => x.id === editingId);
-      u.nama = nama; u.email = email; u.role = role;
+      u.nama = nama; u.nomer = nomer; u.role = role;
       showToast('User berhasil diperbarui.');
     } else {
-      users.push({ id: nextId++, nama, email, role });
+      users.push({ id: nextId++, nama, nomer, role });
       showToast('User berhasil ditambahkan.');
     }
     closeModal('formModal');
