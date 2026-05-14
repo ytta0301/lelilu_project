@@ -615,9 +615,6 @@
     setTimeout(() => t.classList.remove('show'), 2800);
   }
 
-  @if(session('success'))
-    document.addEventListener('DOMContentLoaded', () => showToast('🎉 Pesanan berhasil dikirim!'));
-  @endif
 </script>
 </body>
 </html>

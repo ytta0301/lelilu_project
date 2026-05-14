@@ -27,9 +27,11 @@ Route::get('/', fn() => view('welcome'))->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/order', [PemesananController::class, 'create'])->name('order.create');
 Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
+Route::get('/order/thanks', [PemesananController::class, 'thanks'])->name('order.thanks');
 Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', fn() => view('portofolio.portofolio'));
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
+
 Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
