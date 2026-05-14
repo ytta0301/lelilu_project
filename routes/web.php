@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\AdminTestimoniController;
+use App\Http\Controllers\AdminUserController;
 
 // Guest only
 Route::middleware('guest')->group(function () {
@@ -33,8 +35,14 @@ Route::get('/detail', fn() => view('detail.detail'))->name('detail');
 
 
 ///Route::get('/admin/worker', fn() => view('admin.worker'))->name('admin.worker');
-Route::get('/admin/user', fn() => view('admin.user'))->name('admin.user');
-Route::get('/admin/testimoni', fn() => view('admin.testimoni'))->name('admin.testimoni');
+Route::get('/admin/user', [AdminUserController::class, 'index'])->name('admin.user');
+Route::post('/admin/user', [AdminUserController::class, 'store']);
+Route::put('/admin/user/{id}', [AdminUserController::class, 'update']);
+Route::delete('/admin/user/{id}', [AdminUserController::class, 'destroy']);
+Route::get('/admin/testimoni', [AdminTestimoniController::class, 'index'])->name('admin.testimoni');
+Route::post('/admin/testimoni', [AdminTestimoniController::class, 'store']);
+Route::put('/admin/testimoni/{id}', [AdminTestimoniController::class, 'update']);
+Route::delete('/admin/testimoni/{id}', [AdminTestimoniController::class, 'destroy']);
 Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
 route::get('/admin/input', fn() => view('admin.input'))->name('admin.input');
 route::get('/admin/revisi', fn() => view('admin.revisi'))->name('admin.revisi');

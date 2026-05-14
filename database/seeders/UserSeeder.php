@@ -20,15 +20,6 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [
-                'name'       => 'Worker hitam',
-                'whatsapp'   => '081200000002',
-                'password'   => Hash::make('worker123'),
-                'role'       => 'worker',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
             // User
             [
                 'name'       => 'Budi Santoso',

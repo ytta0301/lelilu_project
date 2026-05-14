@@ -646,6 +646,7 @@
     }
     .btn-cancel:hover { background: #f7f8fa; border-color: #c8d3df; }
   </style>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
@@ -703,9 +704,13 @@
     <div class="form-group">
       <label class="form-label">Role</label>
       <select class="form-select" id="inputRole">
-        <option value="Admin">Admin</option>
-        <option value="User">User</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
       </select>
+    </div>
+    <div class="form-group" id="passwordGroup">
+      <label class="form-label">Password</label>
+      <input class="form-input" type="password" id="inputPassword" placeholder="Minimal 6 karakter"/>
     </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('formModal')">Batal</button>
@@ -736,31 +741,35 @@
 
 <script>
   // ── DATA ──
-  let users = [
-    { id: 1, nama: 'Budi Santoso',     nomer: '08456787654',     role: 'User' },
-    { id: 2, nama: 'Ani Wijaya',       nomer: '08123456789',     role: 'User' },
-    { id: 3, nama: 'Candra Permana',   nomer: '08123456780',     role: 'Admin' },
-    { id: 4, nama: 'Dewi Lestari',     nomer: '08123456781',     role: 'User' },
-    { id: 5, nama: 'Eko Prasetyo',     nomer: '08123456782',     role: 'User' },
-    { id: 6, nama: 'Fitri Handayani',  nomer: '08123456783',     role: 'User' },
-    { id: 7, nama: 'Gunawan Ahmad',    nomer: '08123456784',     role: 'User' },
-    { id: 8, nama: 'Hesti Rahayu',     nomer: '08123456785',     role: 'Admin' },
-  ];
-  let nextId = 9;
+  const initialData = @json($users);
+  let users = initialData.map(u => ({
+    id: u.id_user,
+    nama: u.name,
+    nomer: u.whatsapp,
+    role: u.role,
+  }));
   let editingId = null;
   let deletingId = null;
 
+  function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+  }
+
   function badgeClass(role) {
-    return { 'Admin':'badge-admin', 'User':'badge-user' }[role] || 'badge-user';
+    return { 'admin':'badge-admin', 'user':'badge-user' }[role] || 'badge-user';
   }
 
   function render() {
     const tbody = document.getElementById('userBody');
+    if (!users.length) {
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;padding:40px;color:var(--text-secondary)">Belum ada data user.</td></tr>`;
+      return;
+    }
     tbody.innerHTML = users.map(u => `
       <tr>
         <td>${u.nama}</td>
         <td style="color:#6b7280">${u.nomer}</td>
-        <td><span class="badge ${badgeClass(u.role)}">${u.role}</span></td>
+        <td><span class="badge ${badgeClass(u.role)}">${u.role.charAt(0).toUpperCase() + u.role.slice(1)}</span></td>
         <td>
           <div class="aksi">
             <button class="btn-icon btn-edit" onclick="openEdit(${u.id})" title="Edit">
@@ -791,7 +800,9 @@
     document.getElementById('modalTitle').textContent = 'Tambah User';
     document.getElementById('inputNama').value = '';
     document.getElementById('inputNomer').value = '';
-    document.getElementById('inputRole').value = 'User';
+    document.getElementById('inputRole').value = 'user';
+    document.getElementById('inputPassword').value = '';
+    document.getElementById('passwordGroup').style.display = 'block';
     openModal('formModal');
   }
 
@@ -802,22 +813,69 @@
     document.getElementById('inputNama').value = u.nama;
     document.getElementById('inputNomer').value = u.nomer;
     document.getElementById('inputRole').value = u.role;
+    document.getElementById('inputPassword').value = '';
+    document.getElementById('passwordGroup').style.display = 'none';
     openModal('formModal');
   }
 
-  function saveUser() {
+  async function saveUser() {
     const nama  = document.getElementById('inputNama').value.trim();
     const nomer = document.getElementById('inputNomer').value.trim();
     const role  = document.getElementById('inputRole').value;
     if (!nama || !nomer) { showToast('Nama dan nomor telepon wajib diisi.'); return; }
 
     if (editingId) {
-      const u = users.find(x => x.id === editingId);
-      u.nama = nama; u.nomer = nomer; u.role = role;
-      showToast('User berhasil diperbarui.');
+      const body = { name: nama, whatsapp: nomer, role };
+      const pw = document.getElementById('inputPassword').value.trim();
+      if (pw) body.password = pw;
+
+      try {
+        const res = await fetch(`/admin/user/${editingId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': getCsrfToken() },
+          credentials: 'same-origin',
+          body: JSON.stringify(body),
+        });
+        const text = await res.text();
+        if (!res.ok) {
+          let msg = 'Gagal memperbarui';
+          try { const j = JSON.parse(text); msg = j.message || j.errors?.[Object.keys(j.errors)[0]]?.[0] || msg; } catch(e) {}
+          throw new Error(msg);
+        }
+        const updated = JSON.parse(text);
+        const u = users.find(x => x.id === editingId);
+        u.nama = updated.name;
+        u.nomer = updated.whatsapp;
+        u.role = updated.role;
+        showToast('User berhasil diperbarui.');
+      } catch (e) {
+        showToast('Gagal: ' + e.message);
+        return;
+      }
     } else {
-      users.push({ id: nextId++, nama, nomer, role });
-      showToast('User berhasil ditambahkan.');
+      const password = document.getElementById('inputPassword').value.trim();
+      if (!password) { showToast('Password wajib diisi.'); return; }
+
+      try {
+        const res = await fetch('/admin/user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': getCsrfToken() },
+          credentials: 'same-origin',
+          body: JSON.stringify({ name: nama, whatsapp: nomer, role, password }),
+        });
+        const text = await res.text();
+        if (!res.ok) {
+          let msg = 'Gagal menyimpan';
+          try { const j = JSON.parse(text); msg = j.message || j.errors?.[Object.keys(j.errors)[0]]?.[0] || msg; } catch(e) {}
+          throw new Error(msg);
+        }
+        const saved = JSON.parse(text);
+        users.push({ id: saved.id_user, nama: saved.name, nomer: saved.whatsapp, role: saved.role });
+        showToast('User berhasil ditambahkan.');
+      } catch (e) {
+        showToast('Gagal: ' + e.message);
+        return;
+      }
     }
     closeModal('formModal');
     render();
@@ -829,11 +887,21 @@
     openModal('delModal');
   }
 
-  function confirmDelete() {
-    users = users.filter(x => x.id !== deletingId);
-    closeModal('delModal');
-    render();
-    showToast('User berhasil dihapus.');
+  async function confirmDelete() {
+    try {
+      const res = await fetch(`/admin/user/${deletingId}`, {
+        method: 'DELETE',
+        headers: { 'Accept': 'application/json', 'X-CSRF-TOKEN': getCsrfToken() },
+        credentials: 'same-origin',
+      });
+      if (!res.ok) throw new Error('Gagal menghapus');
+      users = users.filter(x => x.id !== deletingId);
+      closeModal('delModal');
+      render();
+      showToast('User berhasil dihapus.');
+    } catch (e) {
+      showToast('Gagal menghapus user.');
+    }
   }
 
   // ── TOAST ──

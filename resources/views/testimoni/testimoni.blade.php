@@ -291,8 +291,8 @@
           <p class="card-text">{{ $t->isi_testimoni }}</p>
           <div class="card-author">
             <div class="avatar-wrap">
-              <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name), 0, 6) }}">
-                {{ strtoupper(substr($t->user->name, 0, 2)) }}
+              <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name ?? $t->nama), 0, 6) }}">
+                {{ strtoupper(substr($t->user->name ?? $t->nama, 0, 2)) }}
               </div>
               <div class="badge">
                 <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
@@ -302,7 +302,7 @@
               </div>
             </div>
             <div class="author-info">
-              <span class="author-name">{{ $t->user->name }}</span>
+              <span class="author-name">{{ $t->user->name ?? $t->nama }}</span>
             </div>
           </div>
         </div>

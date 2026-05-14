@@ -9,10 +9,15 @@ class Testimoni extends Model
     protected $table = 'testimonis';
     protected $primaryKey = 'id_testimoni';
 
-    protected $fillable = ['user_id', 'pemesanan_id', 'isi_testimoni', 'rating'];
+    protected $fillable = ['nama', 'isi_testimoni'];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id_user');
+    }
+
+    public function pemesanan()
+    {
+        return $this->belongsTo(Pemesanan::class, 'pemesanan_id', 'id_pemesanan');
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('whatsapp')->unique();
             $table->string('password');
-            $table->enum('role', ['admin', 'worker', 'user'])->default('user'); // tambahkan ini
+            $table->enum('role', ['admin', 'user'])->default('user'); // tambahkan ini
             $table->timestamps();
         });
     }
