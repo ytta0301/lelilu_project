@@ -361,6 +361,12 @@
             font-family: 'Poppins', sans-serif;
         }
         /* ===== END CAROUSEL STYLES ===== */
+
+        .footer-content {
+            display: flex;
+            gap: 4rem;
+            flex-wrap: wrap;    
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 overflow-x-hidden">
@@ -406,8 +412,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-between items-end mb-10 fade-in-up">
                 <div class="flex items-center gap-4">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Best <span class="text-[#FFD700]">Seller</span></h2>
-                    <div class="h-2 w-24 bg-[#FFD700] rounded-full hidden md:block"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Produk <span class="text-[#FFD700]">Kami</span></h2>
+                    <div class="h-2 w-36 bg-[#FFD700] rounded-full hidden md:block"></div>
                 </div>
                 
             </div>
@@ -652,7 +658,7 @@
         <img src="{{ asset('Image/titik2.png') }}" alt="Wave" class="absolute -top-11 left-0 w-full z-0 pointer-events-none">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem] pt-[12rem]">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+            <div class="footer-content">
                 <div>
                     <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
                     <ul class="space-y-2 text-gray-400">

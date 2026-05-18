@@ -54,7 +54,7 @@
 
         .new-chat-btn:hover { background-color: #ffd54f; }
 
-        .search-chat {
+        .back-btn {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -63,6 +63,13 @@
             color: #666;
             font-size: 14px;
             margin-bottom: 20px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #f5f5f5;
+            color: #333;
         }
 
         .section-title {
@@ -328,8 +335,8 @@
             .sidebar { width: 100%; }
             .new-chat-btn { padding: 10px 12px; font-size: 13px; }
             .new-chat-btn svg { width: 18px; height: 18px; }
-            .search-chat { padding: 8px 10px; font-size: 13px; }
-            .search-chat svg { width: 18px; height: 18px; }
+            .back-btn { padding: 8px 10px; font-size: 13px; }
+            .back-btn svg { width: 18px; height: 18px; }
             .section-title { font-size: 11px; padding: 0 12px; }
             .header { padding: 10px 12px; }
             .header-left { gap: 8px; }
@@ -381,12 +388,12 @@
             </button>
         </form>
 
-        <div class="search-chat">
+        <a href="/" class="back-btn">
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
-            <span>Search Chat</span>
-        </div>
+            <span>Kembali</span>
+        </a>
 
         <div class="section-title">Percakapan</div>
     </aside>

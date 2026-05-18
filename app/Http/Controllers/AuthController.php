@@ -17,9 +17,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'whatsapp' => 'required|string|regex:/^(\+62|62|0)8[0-9]{8,11}$/|unique:users,whatsapp', // ← tambah regex
-            'password' => 'required|min:6|max:32|confirmed', // ← tambah max:32
+                'name'      => 'required|string|max:255',
+                'whatsapp'  => ['required', 'string', 'regex:/^(\+62|62|0)8[0-9]{8,11}$/', 'unique:users,whatsapp'],
+                'password'  => 'required|min:6|max:32|confirmed',
+
         ], [
             'name.required'      => 'Nama wajib diisi.',
             'whatsapp.required'  => 'Nomor WhatsApp wajib diisi.',

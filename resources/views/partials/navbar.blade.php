@@ -365,6 +365,7 @@
                 <li><a href="{{ url('/portofolio') }}">Portofolio</a></li>
                 <li><a href="{{ url('/testimoni') }}">Testimoni</a></li>
                 <li><a href="{{ url('/chatbot') }}">FAQ</a></li>
+                <li><a href="{{ url('/produk') }}">Produk</a></li>
             </ul>
         </div>
 
