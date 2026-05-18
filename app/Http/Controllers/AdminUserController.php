@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminUserController extends Controller
 {
@@ -20,11 +21,13 @@ class AdminUserController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|max:255',
             'whatsapp' => 'required|string|max:255|unique:users,whatsapp',
-            'password' => 'required|string|min:6',
+            'password' => 'nullable|string|min:6',
             'role'     => 'required|in:admin,user',
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
+        $validated['password'] = $request->filled('password')
+            ? Hash::make($validated['password'])
+            : Hash::make(Str::random(8));
 
         $user = User::create($validated);
 

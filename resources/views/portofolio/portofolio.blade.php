@@ -94,8 +94,23 @@
 
     /* ===== MAIN CONTENT ===== */
     .main-content {
-      background: var(--light-gray);
+      z-index: 1;
       padding: 28px 28px 40px;
+    }
+    
+    main {
+      background: var(--light-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-wave {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 0;
     }
 
     /* ===== SEARCH + FILTER ===== */
@@ -154,12 +169,14 @@
 
     /* ===== PORTFOLIO GRID ===== */
     .portfolio-grid {
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .porto-card {
+      z-index: 1;
       background: var(--white);
       border-radius: 12px;
       overflow: hidden;
@@ -461,35 +478,39 @@
 @include('partials.navbar')
 
 <!-- MAIN CONTENT -->
-<div class="main-content">
+ <main>
+   <img class="main-wave" src="{{ asset('Image/wave2.png') }}" alt="">
 
-  <!-- Search + Filter -->
-  <div class="search-filter">
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" placeholder="Cari apa?...."/>
-    </div>
-    <ul class="filter-tabs">
-      <li class="active">Semua</li>
-      <li>BundLe Desain</li>
-      <li>BundLe Lainnya</li>
-    </ul>
-  </div>
-
-  <!-- Portfolio Grid -->
-  <div class="portfolio-grid" id="porto-grid"></div>
-
-  <!-- Pagination -->
-  <div class="pagination">
-    <div class="pag-bar"></div>
-    <div class="pag-dot active"></div>
-    <div class="pag-dot"></div>
-    <div class="pag-dot"></div>
-    <div class="pag-dot"></div>
-    <div class="pag-dot"></div>
-  </div>
-
-</div>
+   <div class="main-content">
+   
+     <!-- Search + Filter -->
+     <div class="search-filter">
+       <div class="search-wrap">
+         <span class="search-icon">🔍</span>
+         <input type="text" placeholder="Cari apa?...."/>
+       </div>
+       <ul class="filter-tabs">
+         <li class="active">Semua</li>
+         <li>BundLe Desain</li>
+         <li>BundLe Lainnya</li>
+       </ul>
+     </div>
+   
+     <!-- Portfolio Grid -->
+     <div class="portfolio-grid" id="porto-grid"></div>
+   
+     <!-- Pagination -->
+     <div class="pagination">
+       <div class="pag-bar"></div>
+       <div class="pag-dot active"></div>
+       <div class="pag-dot"></div>
+       <div class="pag-dot"></div>
+       <div class="pag-dot"></div>
+       <div class="pag-dot"></div>
+     </div>
+   
+   </div>
+ </main>
 
 <!-- PROYEK SECTION -->
 <section class="proyek-section">
@@ -519,7 +540,6 @@
 </div>
 
 <!-- FOOTER -->
- <div style="width:100%;overflow:hidden;line-height:0;margin-bottom:-2px;"><img src="{{ asset('Image/wave2.png') }}" alt="">
 <footer>
 
 

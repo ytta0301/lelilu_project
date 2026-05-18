@@ -405,6 +405,11 @@
       background: #f5f5f5;
     }
 
+    .page-btn.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1200px) {
       .stats-row { flex-wrap: wrap; }
@@ -473,29 +478,24 @@
     <!-- Stats Cards -->
     <div class="stats-row">
       <div class="stat-card">
-        <div class="stat-number">20</div>
+        <div class="stat-number">{{ $totalPesanan }}</div>
         <div class="stat-label">Total pesanan</div>
-        <div class="stat-change">67% dari bulan lalu</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">15</div>
+        <div class="stat-number">{{ $totalPending }}</div>
         <div class="stat-label">Pesanan pending</div>
-        <div class="stat-change">67% dari bulan lalu</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">20</div>
-        <div class="stat-label">Total pesanan</div>
-        <div class="stat-change">67% dari bulan lalu</div>
+        <div class="stat-number">{{ $totalProses }}</div>
+        <div class="stat-label">Pesanan diproses</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">15</div>
-        <div class="stat-label">Pesanan pending</div>
-        <div class="stat-change">67% dari bulan lalu</div>
+        <div class="stat-number">{{ $totalSelesai }}</div>
+        <div class="stat-label">Pesanan selesai</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">—</div>
-        <div class="stat-label">Total pesanan</div>
-        <div class="stat-change">67% dari bulan lalu</div>
+        <div class="stat-number">{{ $totalPesanan - $totalPending - $totalProses - $totalSelesai }}</div>
+        <div class="stat-label">Dibatalkan / lainnya</div>
       </div>
     </div>
 
@@ -505,13 +505,13 @@
       <div class="table-header">
         <span class="table-title">Pesanan Terbaru</span>
         <div class="table-header-right">
-           <div class="search-wrapper">
+           <form class="search-wrapper" action="{{ route('admin.pesanan') }}" method="GET">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
-      <input class="search-input" type="text" placeholder="Cari pesanan?....">
-    </div>
+      <input class="search-input" name="search" type="text" placeholder="Cari pesanan..." value="{{ request('search') }}">
+    </form>
           <svg class="filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="8" y1="6" x2="21" y2="6" />
             <line x1="8" y1="12" x2="21" y2="12" />
@@ -536,8 +536,9 @@
         </thead>
         <tbody>
 
+          @forelse ($pemesanans as $p)
           <tr>
-            <td class="col-id">sda-77</td>
+            <td class="col-id">#{{ $p->id_pemesanan }}</td>
             <td>
               <div class="akun-cell">
                 <div class="akun-avatar">
@@ -548,141 +549,44 @@
                     <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
                   </svg>
                 </div>
-                <span class="akun-name">Andi.M</span>
+                <span class="akun-name">{{ $p->user->name ?? 'Tanpa akun' }}</span>
               </div>
             </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-done">Done</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="/admin/input"></a></td>
-          </tr>
-
-          <tr>
-            <td class="col-id">sda-77</td>
+            <td>{{ $p->user->whatsapp ?? '—' }}</td>
+            <td>{{ \Carbon\Carbon::parse($p->created_at)->isoFormat('D MMM Y') }}</td>
             <td>
-              <div class="akun-cell">
-                <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36">
-                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
-                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
-                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
-                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
-                  </svg>
-                </div>
-                <span class="akun-name">Andi.M</span>
-              </div>
+              @php
+                $map = ['selesai' => 'done', 'proses' => 'proses', 'pending' => 'pending', 'dibatalkan' => 'waiting'];
+                $label = ['selesai' => 'Selesai', 'proses' => 'Proses', 'pending' => 'Pending', 'dibatalkan' => 'Dibatalkan'];
+              @endphp
+              <span class="status-badge status-{{ $map[$p->status] ?? 'pending' }}">{{ $label[$p->status] ?? $p->status }}</span>
             </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-proses">Proses</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="detail-pesanan.html"></a></td>
+            <td class="col-saldo">Rp {{ number_format($p->harga, 0, ',', '.') }}</td>
+            <td class="row-link"><a href="/admin/input?id={{ $p->id_pemesanan }}"></a></td>
           </tr>
-
+          @empty
           <tr>
-            <td class="col-id">sda-77</td>
-            <td>
-              <div class="akun-cell">
-                <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36">
-                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
-                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
-                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
-                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
-                  </svg>
-                </div>
-                <span class="akun-name">Andi.M</span>
-              </div>
-            </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-proses">Proses</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="detail-pesanan.html"></a></td>
+            <td colspan="7" style="text-align:center;padding:40px 20px;color:#aaa;">Belum ada pesanan.</td>
           </tr>
-
-          <tr>
-            <td class="col-id">sda-77</td>
-            <td>
-              <div class="akun-cell">
-                <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36">
-                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
-                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
-                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
-                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
-                  </svg>
-                </div>
-                <span class="akun-name">Andi.M</span>
-              </div>
-            </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-proses">Proses</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="detail-pesanan.html"></a></td>
-          </tr>
-
-          <tr>
-            <td class="col-id">sda-77</td>
-            <td>
-              <div class="akun-cell">
-                <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36">
-                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
-                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
-                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
-                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
-                  </svg>
-                </div>
-                <span class="akun-name">Andi.M</span>
-              </div>
-            </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-proses">Proses</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="detail-pesanan.html"></a></td>
-          </tr>
-
-          <tr>
-            <td class="col-id">sda-77</td>
-            <td>
-              <div class="akun-cell">
-                <div class="akun-avatar">
-                  <svg viewBox="0 0 36 36" width="36" height="36">
-                    <circle cx="18" cy="18" r="18" fill="#f0d0d8" />
-                    <ellipse cx="18" cy="17" rx="7" ry="9" fill="#c0405a" opacity="0.9" />
-                    <ellipse cx="13" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(-25 13 23)" />
-                    <ellipse cx="23" cy="23" rx="6" ry="4" fill="#a03050" opacity="0.7" transform="rotate(25 23 23)" />
-                  </svg>
-                </div>
-                <span class="akun-name">Andi.M</span>
-              </div>
-            </td>
-            <td>0809******</td>
-            <td>29 Apr 2026</td>
-            <td><span class="status-badge status-waiting">Waiting</span></td>
-            <td class="col-saldo">Rp 450.000</td>
-            <td class="row-link"><a href="detail-pesanan.html"></a></td>
-          </tr>
+          @endforelse
 
         </tbody>
       </table>
 
       <!-- Pagination -->
       <div class="pagination">
-        <span class="pagination-info"><span>1 - 5</span> of 56</span>
+        <span class="pagination-info">
+          <span>{{ $pemesanans->firstItem() }} - {{ $pemesanans->lastItem() }}</span> of {{ $pemesanans->total() }}
+        </span>
         <div class="pagination-right">
-          <span class="pagination-label">The page you're on</span>
-          <select class="page-select">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+          <span class="pagination-label">Halaman</span>
+          <select class="page-select" onchange="location = this.value;">
+            @for ($i = 1; $i <= $pemesanans->lastPage(); $i++)
+            <option value="{{ $pemesanans->url($i) }}" {{ $pemesanans->currentPage() == $i ? 'selected' : '' }}>{{ $i }}</option>
+            @endfor
           </select>
-          <button class="page-btn">&#8249;</button>
-          <button class="page-btn">&#8250;</button>
+          <a href="{{ $pemesanans->previousPageUrl() ?? '#' }}" class="page-btn {{ $pemesanans->onFirstPage() ? 'disabled' : '' }}">&#8249;</a>
+          <a href="{{ $pemesanans->nextPageUrl() ?? '#' }}" class="page-btn {{ $pemesanans->hasMorePages() ? '' : 'disabled' }}">&#8250;</a>
         </div>
       </div>
 

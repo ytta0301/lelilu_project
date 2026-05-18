@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('kode')->unique();          // PF-001, PF-002, dst.
-            $table->string('nama_pembuat');            // Nama proyek / pembuat
-            $table->string('thumbnail')->nullable();   // Path gambar (storage/...)
-            $table->timestamps();                      // created_at & updated_at
-            $table->softDeletes();                     // deleted_at (hapus aman)
+            $table->string('kode', 10)->unique()->comment('Format: PF-001');
+            $table->string('nama_kreator', 100);
+            $table->text('deskripsi')->nullable();
+            $table->string('gambar')->nullable()->comment('Path file gambar di storage/app/public');
+            $table->boolean('is_aktif')->default(true)->comment('Tampil / tidak di halaman publik');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

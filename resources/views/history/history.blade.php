@@ -114,6 +114,7 @@ body {
 .yellow-bg {
   background: #f5c800;
   padding: 0 0 40px;
+  min-height: 400px;
 }
 
 /* ── CONTENT CARD (white rounded) ── */
@@ -372,8 +373,8 @@ body {
 </div>
 
 <!-- WAVE + YELLOW BG -->
-<div style="max-width:900px;margin:0 auto;">
-  <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;line-height:0;margin-top:20px;">
+<div style="width:100%;overflow:hidden;">
+  <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;line-height:0;">
     <path d="M0,60 L0,30 Q112,0 225,30 Q337,60 450,30 Q562,0 675,30 Q787,60 900,30 L900,60 Z" fill="#f5c800"/>
   </svg>
 </div>

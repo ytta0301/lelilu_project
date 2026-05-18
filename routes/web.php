@@ -8,8 +8,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\AdminPortofolioController;
 use App\Http\Controllers\AdminTestimoniController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminPesananController;
+
 
 // Guest only
 Route::middleware('guest')->group(function () {
@@ -45,9 +48,17 @@ Route::get('/admin/testimoni', [AdminTestimoniController::class, 'index'])->name
 Route::post('/admin/testimoni', [AdminTestimoniController::class, 'store']);
 Route::put('/admin/testimoni/{id}', [AdminTestimoniController::class, 'update']);
 Route::delete('/admin/testimoni/{id}', [AdminTestimoniController::class, 'destroy']);
-Route::get('/admin/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
+Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('admin.pesanan');
 route::get('/admin/input', fn() => view('admin.input'))->name('admin.input');
 route::get('/admin/revisi', fn() => view('admin.revisi'))->name('admin.revisi');
+route::get('/admin/produk', fn() => view('admin.produk'))->name('admin.produk');
+
+Route::get('/admin/portofolio', [AdminPortofolioController::class, 'index'])->name('admin.portofolio');
+Route::post('/admin/portofolio', [AdminPortofolioController::class, 'store']);
+Route::put('/admin/portofolio/{id}', [AdminPortofolioController::class, 'update']);
+Route::delete('/admin/portofolio/{id}', [AdminPortofolioController::class, 'destroy']);
+
+
 
 // halaman user profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

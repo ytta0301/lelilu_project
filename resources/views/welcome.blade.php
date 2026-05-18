@@ -409,9 +409,7 @@
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Best <span class="text-[#FFD700]">Seller</span></h2>
                     <div class="h-2 w-24 bg-[#FFD700] rounded-full hidden md:block"></div>
                 </div>
-                <a href="#" class="text-gray-800 font-semibold hover:text-[#FFD700] transition flex items-center gap-1 group">
-                    See More <span class="transform group-hover:translate-x-1 transition-transform">&gt;</span>
-                </a>
+                
             </div>
             
             <!-- ===== CAROUSEL WRAPPER ===== -->

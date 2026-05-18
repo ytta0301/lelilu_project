@@ -708,10 +708,6 @@
         <option value="user">User</option>
       </select>
     </div>
-    <div class="form-group" id="passwordGroup">
-      <label class="form-label">Password</label>
-      <input class="form-input" type="password" id="inputPassword" placeholder="Minimal 6 karakter"/>
-    </div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal('formModal')">Batal</button>
       <button class="btn-save" onclick="saveUser()">Simpan</button>
@@ -801,8 +797,6 @@
     document.getElementById('inputNama').value = '';
     document.getElementById('inputNomer').value = '';
     document.getElementById('inputRole').value = 'user';
-    document.getElementById('inputPassword').value = '';
-    document.getElementById('passwordGroup').style.display = 'block';
     openModal('formModal');
   }
 
@@ -813,8 +807,6 @@
     document.getElementById('inputNama').value = u.nama;
     document.getElementById('inputNomer').value = u.nomer;
     document.getElementById('inputRole').value = u.role;
-    document.getElementById('inputPassword').value = '';
-    document.getElementById('passwordGroup').style.display = 'none';
     openModal('formModal');
   }
 
@@ -826,8 +818,6 @@
 
     if (editingId) {
       const body = { name: nama, whatsapp: nomer, role };
-      const pw = document.getElementById('inputPassword').value.trim();
-      if (pw) body.password = pw;
 
       try {
         const res = await fetch(`/admin/user/${editingId}`, {
@@ -853,15 +843,12 @@
         return;
       }
     } else {
-      const password = document.getElementById('inputPassword').value.trim();
-      if (!password) { showToast('Password wajib diisi.'); return; }
-
       try {
         const res = await fetch('/admin/user', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': getCsrfToken() },
           credentials: 'same-origin',
-          body: JSON.stringify({ name: nama, whatsapp: nomer, role, password }),
+          body: JSON.stringify({ name: nama, whatsapp: nomer, role }),
         });
         const text = await res.text();
         if (!res.ok) {
