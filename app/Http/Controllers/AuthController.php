@@ -18,14 +18,16 @@ class AuthController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'whatsapp' => 'required|string|unique:users,whatsapp',
-            'password' => 'required|min:6|confirmed',
+            'whatsapp' => 'required|string|regex:/^(\+62|62|0)8[0-9]{8,11}$/|unique:users,whatsapp', // ← tambah regex
+            'password' => 'required|min:6|max:32|confirmed', // ← tambah max:32
         ], [
             'name.required'      => 'Nama wajib diisi.',
             'whatsapp.required'  => 'Nomor WhatsApp wajib diisi.',
+            'whatsapp.regex'     => 'Format nomor WhatsApp tidak valid.', // ← tambah pesan
             'whatsapp.unique'    => 'Nomor WhatsApp sudah terdaftar.',
             'password.required'  => 'Password wajib diisi.',
             'password.min'       => 'Password minimal 6 karakter.',
+            'password.max'       => 'Password maksimal 32 karakter.', // ← tambah pesan
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
@@ -87,6 +89,7 @@ class AuthController extends Controller
         }
 
         Auth::login($user, $request->boolean('remember'));
+        $request->session()->regenerate(); // ← tambah regenerasi session
 
         return $user->role === 'user'
             ? redirect('/')
