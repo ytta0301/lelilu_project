@@ -340,16 +340,7 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar">
-  <span class="nav-logo">LeLiLu</span>
-  <ul class="nav-links">
-    <li><a href="/dashboard">Dashboard</a></li>
-    <li><a href="/portofolio">Portofolio</a></li>
-    <li><a href="/testimoni">Testimoni</a></li>
-    <li><a href="/chatbot">FAQ</a></li>
-  </ul>
-  <span class="nav-back" onclick="history.back()">Back</span>
-</nav>
+@include('partials.navbar')
 
 <!-- PAGE -->
 <div class="page">

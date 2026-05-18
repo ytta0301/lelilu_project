@@ -21,7 +21,7 @@ class AdminUserController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|max:255',
             'whatsapp' => 'required|string|max:255|unique:users,whatsapp',
-            'password' => 'nullable|string|min:6',
+            'password' => 'required|string|min:6',
             'role'     => 'required|in:admin,user',
         ]);
 
