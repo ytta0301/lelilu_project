@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('portfolios'); // tambahkan baris ini
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
             $table->string('kode', 10)->unique()->comment('Format: PF-001');

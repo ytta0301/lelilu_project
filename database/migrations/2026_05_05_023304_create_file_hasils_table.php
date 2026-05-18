@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('file_hasils', function (Blueprint $table) {
             $table->id();
-            $table->string('kode')->unique();          // PF-001, PF-002, dst.
-            $table->string('nama_pembuat');            // Nama proyek / pembuat
-            $table->string('thumbnail')->nullable();   // Path gambar (storage/...)
+            $table->foreignId('pemesanan_id')->constrained('pemesanans', 'id_pemesanan')->cascadeOnDelete();
+            $table->string('gambar_hasil')->nullable();
+            $table->boolean('tampil_portofolio')->default(false);
+            $table->dateTime('tanggal_upload')->nullable();
             $table->timestamps();                      // created_at & updated_at
             $table->softDeletes();                     // deleted_at (hapus aman)
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('file_hasils');
     }
 };

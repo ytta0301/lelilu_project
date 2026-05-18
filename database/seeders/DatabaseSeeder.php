@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
             PemesananSeeder::class,
             FileHasilSeeder::class,
             TestimoniSeeder::class,
-            PortfolioSeeder::class,
+            PortofolioSeeder::class,
         ]);
     }
 }
