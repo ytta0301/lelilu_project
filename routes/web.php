@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeminiController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\AdminPortofolioController;
 use App\Http\Controllers\AdminTestimoniController;
 use App\Http\Controllers\AdminUserController;
@@ -31,7 +32,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // ──────────────────────────────────────────
 //  Halaman publik (tanpa login)
 // ──────────────────────────────────────────
-Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/order', [PemesananController::class, 'create'])->name('order.create');
 Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
 Route::get('/order/thanks', [PemesananController::class, 'thanks'])->name('order.thanks');
