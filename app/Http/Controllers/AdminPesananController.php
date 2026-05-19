@@ -88,8 +88,9 @@ class AdminPesananController extends Controller
                     'tanggal_upload'    => now()->toDateString(),
                 ]);
             }
-        } elseif ($pemesanan->fileHasil) {
+        } elseif ($pemesanan->fileHasil?->id_file) {
             // Tidak ada upload baru, tapi bisa ubah tampil_portofolio
+            // Cek id_file tidak null sebelum update agar tidak query WHERE id_file IS NULL
             $pemesanan->fileHasil->update([
                 'tampil_portofolio' => $request->boolean('tampil_portofolio'),
             ]);

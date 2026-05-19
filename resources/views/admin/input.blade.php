@@ -334,13 +334,17 @@
               <h3 class="banner-title">
                 {{ $pemesanan->jenis ?? 'Pesanan' }} || <em>Reference</em>
               </h3>
-              @if ($pemesanan->referensi && filter_var($pemesanan->referensi, FILTER_VALIDATE_URL))
-                <img class="banner-img" src="{{ $pemesanan->referensi }}" alt="Referensi">
+              @if ($pemesanan->referensi)
+                <img class="banner-img"
+                     src="{{ Storage::url($pemesanan->referensi) }}"
+                     alt="Referensi desain"
+                     onerror="this.style.display='none';document.getElementById('ref-placeholder').style.display='block';">
+                <div class="banner-placeholder" id="ref-placeholder" style="display:none;"></div>
               @else
                 <div class="banner-placeholder"></div>
-                @if ($pemesanan->referensi)
-                  <p style="margin-top:8px;font-size:13px;color:#666;">{{ $pemesanan->referensi }}</p>
-                @endif
+                <p style="margin-top:8px;font-size:13px;color:#aaa;font-style:italic;">
+                  Tidak ada referensi dari pelanggan.
+                </p>
               @endif
             </div>
 
