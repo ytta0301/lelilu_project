@@ -4,21 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
-// Tambahkan import Facade Auth di bawah ini
 use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
+    // ── Daftar semua history pesanan milik user ──
     public function index(Request $request)
     {
-        // Gunakan Auth::check() agar Intelephense mengenalnya
         if (!Auth::check()) {
             return view('history.history', ['pemesanans' => collect()]);
         }
 
         $status = $request->query('status');
 
-        // Gunakan Auth::user() untuk mengambil id_user
         $query = Pemesanan::where('user_id', Auth::user()->id_user)
                           ->orderBy('created_at', 'desc');
 
@@ -29,5 +27,16 @@ class HistoryController extends Controller
         $pemesanans = $query->get();
 
         return view('history.history', compact('pemesanans'));
+    }
+
+    // ── Detail satu pesanan milik user ──
+    public function show($id)
+    {
+        // Pastikan pesanan ini milik user yang sedang login
+        $pemesanan = Pemesanan::with(['user', 'fileHasil'])
+            ->where('user_id', Auth::user()->id_user)
+            ->findOrFail($id);
+
+        return view('detail.detail', compact('pemesanan'));
     }
 }
