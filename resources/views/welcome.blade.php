@@ -4,37 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeLiLu - Solusi Digital Terbaik</title>
-    
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .font-handwriting { font-family: 'Kalam', cursive; }
-        
-        /* Hide Scrollbar */
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animations */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
             .max-w-7xl { max-width: 960px; }
             .lg\:text-9xl { font-size: 5rem; }
         }
-
         @media (max-width: 992px) {
             .hidden.md\:flex { display: none; }
             .md\:block { display: block; }
@@ -70,10 +61,8 @@
             .grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
             footer .max-w-7xl { padding: 0 24px 4rem; }
             .pb-\[8rem\] { padding-bottom: 4rem; }
-            .text-5xl { font-size: 2.5rem; }
             footer h2 { font-size: 2.5rem; }
         }
-
         @media (max-width: 768px) {
             .text-xl { font-size: 1.25rem; }
             .max-w-7xl { padding: 0 16px; }
@@ -89,46 +78,19 @@
             .gap-6 { gap: 1rem; }
             .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
             .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
-            .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
             .gap-4 { gap: 0.75rem; }
-            .bg-white { padding: 1rem; }
             .grid-cols-1 { gap: 1rem; }
             .gap-8 { gap: 1.5rem; }
             .rounded-\[3rem\] { border-radius: 1.5rem; }
             .p-8, .p-12 { padding: 1.25rem; }
-            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
             .hidden { display: none; }
-            .text-center { text-align: center; }
-            .items-center { align-items: center; }
-            .justify-center { justify-content: center; }
-            .flex-col { flex-direction: column; }
-            .w-auto { width: 100%; }
-            .h-auto { height: auto; }
-            img.h-full { max-height: 300px; width: auto; }
-            .mb-10 { margin-bottom: 1.5rem; }
-            .mb-12 { margin-bottom: 2rem; }
-            .mb-8 { margin-bottom: 1.5rem; }
-            .gap-4 { gap: 0.75rem; }
-            .text-sm { font-size: 0.875rem; }
-            .text-xs { font-size: 0.75rem; }
-            .border-b { border-bottom-width: 1px; }
-            .text-gray-600 { font-size: 0.875rem; }
-            .flex-col.md\:flex-row { flex-direction: column; }
-            .bg-white { border-radius: 0.75rem; }
             footer .max-w-7xl { padding: 0 16px 3rem; }
             footer h2 { font-size: 2rem; }
-            .text-xl.md\:text-2xl { font-size: 1.25rem; }
-            .bg-\[\#FFD700\] { padding: 1rem 2rem; }
-            button.py-3.px-8 { width: 100%; justify-content: center; }
         }
-
         @media (max-width: 600px) {
             .max-w-7xl { padding: 0 12px; }
-            .flex.gap-6 { gap: 8px; }
-            .h-8 { height: 24px; }
-            .text-xl { font-size: 1.1rem; }
             .text-4xl { font-size: 1.75rem; }
-            .md\:text-5xl { font-size: 1.75rem; }
             .text-5xl { font-size: 2rem; }
             .text-6xl { font-size: 2.2rem; }
             .text-7xl { font-size: 2.5rem; }
@@ -136,117 +98,25 @@
             .text-9xl { font-size: 3rem; }
             .font-handwriting { font-size: 1.75rem !important; }
             section { padding-top: 80px; padding-bottom: 30px; }
-            .py-16 { padding: 2rem 0; }
-            .py-20 { padding: 2rem 0; }
-            .py-24 { padding: 2rem 0; }
             .gap-8 { gap: 1.25rem; }
             .gap-4 { gap: 0.5rem; }
-            .text-base { font-size: 0.875rem; }
-            .text-sm { font-size: 0.75rem; }
-            .text-xs { font-size: 0.65rem; }
-            .leading-relaxed { line-height: 1.4; }
-            .leading-tight { line-height: 1.2; }
-            .mb-6 { margin-bottom: 1rem; }
-            .mb-8 { margin-bottom: 1.25rem; }
-            .mb-12 { margin-bottom: 1.5rem; }
-            .p-4 { padding: 0.75rem; }
-            .p-6 { padding: 1rem; }
-            .p-8 { padding: 1rem; }
-            .rounded-lg { border-radius: 0.5rem; }
-            .rounded-2xl { border-radius: 0.75rem; }
-            .rounded-\[3rem\] { border-radius: 1rem; }
-            .shadow-lg { box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1); }
-            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-            .w-40 { width: 60%; }
-            .h-40 { height: 40px; }
-            .gap-3 { gap: 0.5rem; }
-            .gap-4 { gap: 0.5rem; }
-            img { max-width: 100%; height: auto; }
-            .text-center { text-align: center; }
-            .flex { flex-direction: column; }
-            .items-center { align-items: center; }
-            .space-y-4 > * + * { margin-top: 0.75rem; }
-            .bg-white { padding: 0.75rem; }
-            .grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr; gap: 0.75rem; }
-            .grid-cols-2 { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-            .gap-2 { gap: 0.25rem; }
-            .min-w-\[80px\] { min-width: 50px; }
-            .text-2xl { font-size: 1.25rem; }
-            .text-3xl { font-size: 1.5rem; }
-            .text-xl { font-size: 1rem; }
-            .text-lg { font-size: 0.875rem; }
-            .text-sm { font-size: 0.75rem; }
-            .text-xs { font-size: 0.65rem; }
-            .font-bold { font-weight: 700; }
-            .font-semibold { font-weight: 600; }
-            .font-medium { font-weight: 500; }
-            footer { padding-bottom: 2rem; }
             footer .max-w-7xl { padding: 0 12px 2rem; }
             footer h2 { font-size: 1.75rem; }
-            .text-5xl { font-size: 1.75rem; }
-            .text-white { font-size: 0.875rem; }
-            .gap-2 { gap: 0.5rem; }
-            .grid-cols-2.md\:grid-cols-4 { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .space-y-2 > * + * { margin-top: 0.25rem; }
-            .hidden.sm\:block { display: none; }
-            .w-full { width: 100%; }
-            .justify-between { justify-content: flex-start; }
-            .bg-\[\#FFD700\] { padding: 0.75rem 1.5rem; font-size: 0.875rem; }
-            .py-2\.5 { padding: 0.5rem 1rem; }
-            .px-8 { padding-left: 1rem; padding-right: 1rem; }
-            .rounded-full { border-radius: 9999px; }
-            .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-            button, .btn { width: 100%; }
         }
-
         @media (max-width: 400px) {
-            .text-xl { font-size: 1rem; }
             .text-4xl { font-size: 1.5rem; }
-            .text-5xl { font-size: 1.75rem; }
-            .text-6xl { font-size: 2rem; }
-            .text-7xl { font-size: 2.2rem; }
-            .text-8xl { font-size: 2.5rem; }
             .text-9xl { font-size: 2.8rem; }
             .font-handwriting { font-size: 1.5rem !important; }
-            .py-2\.5 { padding: 0.4rem 0.75rem; }
-            .text-sm { font-size: 0.7rem; }
-            footer h2 { font-size: 1.5rem; }
-            .text-white { font-size: 0.8rem; }
-            .text-2xl { font-size: 1.1rem; }
-            section.relative.overflow-hidden > .absolute.-top-\[5rem\] { display: none; }
         }
 
-        /* Custom Wave Styles */
-        .custom-wave-container {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            z-index: 0;
-        }
-        
-        .wave-divider {
-            bottom: -1px;
-        }
-        
-        .wave-footer {
-            top: 0;
-            transform: rotate(180deg);
-        }
+        /* ===== WAVE ===== */
+        .custom-wave-container { position: absolute; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 0; }
+        .wave-divider { bottom: -1px; }
+        .wave-footer { top: 0; transform: rotate(180deg); }
 
-        /* ===== CAROUSEL STYLES ===== */
-        #bestSellerCarousel {
-            position: relative;
-            overflow: hidden;
-        }
-
-        #carouselTrack {
-            display: flex;
-            gap: 20px;
-            padding: 8px 0;
-            /* Tidak pakai transition di sini agar JS bisa kontrol smooth */
-        }
+        /* ===== CAROUSEL ===== */
+        #bestSellerCarousel { position: relative; overflow: hidden; }
+        #carouselTrack { display: flex; gap: 20px; padding: 8px 0; }
 
         .carousel-card {
             min-width: 300px;
@@ -258,19 +128,11 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-
-        @media (min-width: 768px) {
-            .carousel-card:first-child { min-width: 450px; }
-            .carousel-card:nth-child(2) { min-width: 300px; }
-            .carousel-card:nth-child(3) { min-width: 240px; }
-        }
-
         .carousel-card:hover {
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
             transform: scale(1.03);
             z-index: 5;
         }
-
         .carousel-card img {
             width: 100%;
             height: 250px;
@@ -278,10 +140,7 @@
             display: block;
             transition: transform 0.5s ease;
         }
-
-        .carousel-card:hover img {
-            transform: scale(1.08);
-        }
+        .carousel-card:hover img { transform: scale(1.08); }
 
         .card-overlay {
             position: absolute;
@@ -294,10 +153,7 @@
             background: rgba(0,0,0,0.45);
             backdrop-filter: blur(2px);
         }
-
-        .carousel-card:hover .card-overlay {
-            opacity: 1;
-        }
+        .carousel-card:hover .card-overlay { opacity: 1; }
 
         .card-popup {
             background: white;
@@ -309,10 +165,7 @@
             min-width: 160px;
             pointer-events: none;
         }
-
-        .carousel-card:hover .card-popup {
-            transform: translateY(0);
-        }
+        .carousel-card:hover .card-popup { transform: translateY(0); }
 
         /* Nav buttons */
         .carousel-nav-btn {
@@ -335,58 +188,41 @@
             transition: background 0.2s, transform 0.2s;
             line-height: 1;
         }
-
-        .carousel-nav-btn:hover {
-            background: #FFD700;
-            transform: translateY(-50%) scale(1.1);
-        }
-
+        .carousel-nav-btn:hover { background: #FFD700; transform: translateY(-50%) scale(1.1); }
         #carouselBtnLeft  { left: 8px; }
         #carouselBtnRight { right: 8px; }
 
-        /* Pause indicator */
-        #carouselPauseBadge {
-            position: absolute;
-            top: 12px;
-            right: 60px;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            font-size: 11px;
-            padding: 4px 12px;
-            border-radius: 999px;
-            z-index: 20;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            font-family: 'Poppins', sans-serif;
-        }
-        /* ===== END CAROUSEL STYLES ===== */
-
-        .footer-content {
-            display: flex;
-            gap: 4rem;
-            flex-wrap: wrap;    
+        /* Empty state carousel */
+        .carousel-empty {
+            padding: 40px 20px;
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+            width: 100%;
         }
     </style>
 </head>
 <body class="bg-white text-gray-800 overflow-x-hidden">
 
-    <!-- ================= NAVBAR ================= -->
     @include('partials.navbar')
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- ================= HERO ================= -->
     <section class="relative pt-10 pb-10 lg:pt-16 lg:pb-16 bg-[#FFCF22] overflow-hidden min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8 fade-in-up">
                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-black drop-shadow-sm">
-                        <span class="block font-poppins">Proses</span> 
+                        <span class="block font-poppins">Proses</span>
                         <span class="font-handwriting text-white italic text-6xl md:text-8xl lg:text-9xl block mt-2 drop-shadow-md">sat set</span>
-                        <span class="block font-poppins mt-2">hasil</span> 
+                        <span class="block font-poppins mt-2">hasil</span>
                         <span class="font-handwriting text-white italic text-6xl md:text-8xl lg:text-9xl block mt-2 drop-shadow-md">terbaik</span>
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="/order"><button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">Order Now</button></a>
+                        <a href="/order">
+                            <button class="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-50 transition transform hover:scale-105">
+                                Order Now
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="absolute -top-[5rem] right-0 lg:h-full flex items-center justify-center fade-in-up" style="animation-delay: 0.2s;">
@@ -394,11 +230,10 @@
                 </div>
             </div>
         </div>
-        
         <div class="custom-wave-container wave-divider"></div>
     </section>
 
-    <!-- ================= BEST SELLER SECTION ================= -->
+    <!-- ================= BEST SELLER ================= -->
     <section id="portfolio" class="py-20 bg-[#FAFAFA] relative overflow-hidden">
         <div class="absolute bottom-0 right-0 w-64 h-64 opacity-20 pointer-events-none">
             <svg width="100%" height="100%" viewBox="0 0 200 200">
@@ -408,76 +243,66 @@
                 <rect width="100%" height="100%" fill="url(#dots)"></rect>
             </svg>
         </div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-between items-end mb-10 fade-in-up">
                 <div class="flex items-center gap-4">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Produk <span class="text-[#FFD700]">Kami</span></h2>
-                    <div class="h-2 w-36 bg-[#FFD700] rounded-full hidden md:block"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+                        Karya <span class="text-[#FFD700]">Kami</span>
+                    </h2>
+                    <div class="h-2 w-24 bg-[#FFD700] rounded-full hidden md:block"></div>
                 </div>
-                
             </div>
-            
-            <!-- ===== CAROUSEL WRAPPER ===== -->
+
+            <!-- CAROUSEL -->
             <div class="fade-in-up" style="animation-delay: 0.2s;">
                 <div id="bestSellerCarousel" style="position: relative;">
 
+                    @if ($portofolios->isNotEmpty())
+                        <button id="carouselBtnLeft"  class="carousel-nav-btn" aria-label="Sebelumnya">&#8249;</button>
+                        <button id="carouselBtnRight" class="carousel-nav-btn" aria-label="Berikutnya">&#8250;</button>
+                    @endif
 
-
-                    <!-- Tombol Kiri -->
-                    <button id="carouselBtnLeft" class="carousel-nav-btn" aria-label="Sebelumnya">&#8249;</button>
-
-                    <!-- Tombol Kanan -->
-                    <button id="carouselBtnRight" class="carousel-nav-btn" aria-label="Berikutnya">&#8250;</button>
-
-                    <!-- Track -->
                     <div style="overflow: hidden;">
                         <div id="carouselTrack">
-
-                            <!-- ITEM 1 -->
-                            <div class="carousel-card" style="min-width: 300px;" data-md-width="450">
-                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banner Promosi">
+                            @forelse ($portofolios as $porto)
+                            <div class="carousel-card">
+                                @if ($porto->gambar_url)
+                                    <img src="{{ $porto->gambar_url }}"
+                                         alt="{{ $porto->deskripsi ?? $porto->nama_kreator }}"
+                                         onerror="this.style.background='#f0f0f0'; this.src='';">
+                                @else
+                                    {{-- Placeholder warna jika tidak ada gambar --}}
+                                    <div style="width:100%;height:250px;background:linear-gradient(135deg,#FFD700,#ff9f43);display:flex;align-items:center;justify-content:center;">
+                                        <span style="font-size:13px;color:#fff;font-weight:600;">{{ $porto->kode }}</span>
+                                    </div>
+                                @endif
                                 <div class="card-overlay">
                                     <div class="card-popup">
-                                        <h3 style="font-weight:700; font-size:14px; color:#111; margin:0 0 4px;">Banner Promosi</h3>
-                                        <p style="font-size:11px; color:#777; margin:0 0 6px;">Ukuran 19:6 | High Res</p>
-                                        <span style="font-weight:700; font-size:14px; color:#c9a200;">Rp 150.000</span>
+                                        <h3 style="font-weight:700;font-size:14px;color:#111;margin:0 0 4px;">
+                                            {{ $porto->nama_kreator }}
+                                        </h3>
+                                        @if ($porto->deskripsi)
+                                        <p style="font-size:11px;color:#777;margin:0;">
+                                            {{ Str::limit($porto->deskripsi, 60) }}
+                                        </p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- ITEM 2 -->
-                            <div class="carousel-card" style="min-width: 250px;" data-md-width="300">
-                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Feed Instagram">
-                                <div class="card-overlay">
-                                    <div class="card-popup">
-                                        <h3 style="font-weight:700; font-size:14px; color:#111; margin:0 0 4px;">Feed Instagram</h3>
-                                        <p style="font-size:11px; color:#777; margin:0 0 6px;">Ukuran 1:1 | Estetik</p>
-                                        <span style="font-weight:700; font-size:14px; color:#c9a200;">Rp 50.000</span>
-                                    </div>
-                                </div>
+                            @empty
+                            <div class="carousel-empty">
+                                Belum ada portofolio yang ditampilkan.
                             </div>
-
-                            <!-- ITEM 3 -->
-                            <div class="carousel-card" style="min-width: 200px;" data-md-width="240">
-                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Story IG">
-                                <div class="card-overlay">
-                                    <div class="card-popup">
-                                        <h3 style="font-weight:700; font-size:14px; color:#111; margin:0 0 4px;">Story IG</h3>
-                                        <p style="font-size:11px; color:#777; margin:0 0 6px;">Ukuran 4:5 | Interaktif</p>
-                                        <span style="font-weight:700; font-size:14px; color:#c9a200;">Rp 35.000</span>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforelse
                         </div>
                     </div>
+
                 </div>
             </div>
-            <!-- ===== END CAROUSEL ===== -->
+            <!-- END CAROUSEL -->
         </div>
-        
-        <!-- WAVE DIVIDER -->
+
         <div class="custom-wave-container wave-divider">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path fill="#F9F5F0" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -485,12 +310,11 @@
         </div>
     </section>
 
-    <!-- ================= TESTIMONI SECTION ================= -->
+    <!-- ================= TESTIMONI ================= -->
     <section id="testimoni" class="py-24 bg-[#F9F5F0] relative overflow-hidden">
         <img src="{{ asset('Image/titik.png') }}" alt="Titik" class="absolute top-0 left-0 h-full">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
-             style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;">
-        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+             style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -499,82 +323,49 @@
                 <div class="lg:col-span-9 bg-[#FFD700] rounded-[3rem] p-8 md:p-12 shadow-xl relative overflow-hidden fade-in-up">
                     <div class="flex justify-between items-end mb-10 border-b border-black/10 pb-6">
                         <h2 class="text-4xl md:text-5xl font-bold text-black font-poppins">Testimoni</h2>
-                        <a href="/testimoni" class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">
-                            See More <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&gt;</span>
+                        <a href="/testimoni"
+                           class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">
+                            See More
+                            <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&gt;</span>
                         </a>
                     </div>
 
+                    @if ($testimonis->isNotEmpty())
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                        {{-- Card 1 --}}
+                        @foreach ($testimonis as $t)
                         <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
+                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">
+                                "{{ $t->isi_testimoni }}"
+                            </p>
                             <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                                 <div class="relative inline-block flex-shrink-0">
-                                    <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
+                                    {{-- Avatar: gunakan foto user jika ada, fallback ke placeholder --}}
+                                    <img src="https://placehold.co/40x40"
+                                         alt="{{ $t->nama }}"
+                                         class="w-10 h-10 rounded-full object-cover">
                                     <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
-                                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white"
+                                             stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
                                     </div>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4>
-                                    <span class="text-xs text-gray-400">@muzan12</span>
+                                    <h4 class="font-bold text-gray-900 text-sm">{{ $t->nama }}</h4>
+                                    @if ($t->user)
+                                        <span class="text-xs text-gray-400">
+                                            {{ $t->user->whatsapp ? '+'.ltrim($t->user->whatsapp, '0') : '' }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-
-                        {{-- Card 2 --}}
-                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
-                            <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                                <div class="relative inline-block flex-shrink-0">
-                                    <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
-                                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4>
-                                    <span class="text-xs text-gray-400">@muzan12</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Card 3 --}}
-                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</p>
-                            <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                                <div class="relative inline-block flex-shrink-0">
-                                    <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
-                                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4>
-                                    <span class="text-xs text-gray-400">@muzan12</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Card 4 --}}
-                        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 flex flex-col h-full">
-                            <p class="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum..."</p>
-                            <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                                <div class="relative inline-block flex-shrink-0">
-                                    <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full object-cover">
-                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
-                                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 text-sm">Kibutsuji Muzan</h4>
-                                    <span class="text-xs text-gray-400">@muzan12</span>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
+                    @else
+                    <p class="text-black/60 text-sm text-center py-10">Belum ada testimoni.</p>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -586,75 +377,77 @@
         </div>
     </section>
 
-    <!-- ================= ABOUT US SECTION ================= -->
+    <!-- ================= ABOUT US ================= -->
     <section id="about" class="py-20 bg-[#F9F5F0] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-12 reveal">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-black inline-block mr-4 font-poppins">Siapa <span class="text-yellow-500 italic">Kami?</span></h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-black inline-block mr-4 font-poppins">
+                    Siapa <span class="text-yellow-500 italic">Kami?</span>
+                </h2>
                 <div class="h-2 w-7/12 bg-yellow-500 inline-block align-middle rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-7 relative reveal delay-100">
                     <img src="{{ asset('image/Firefly.webp') }}" class="w-full h-auto object-cover block rounded-xl shadow-sm">
-                    <div class="absolute -bottom-6 left-4 right-4 md:left-8 md:right-auto md:w-[90%] bg-white p-6 rounded-xl shadow-2xl flex justify-between items-center z-20 border border-gray-100 flex-wrap gap-4">
-                        <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">19Jt</p><p class="text-xs text-gray-500">Project Selesai</p></div>
-                        <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">67%</p><p class="text-xs text-gray-500">Klien Puas</p></div>
-                        <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">76+</p><p class="text-xs text-gray-500">Klien Aktif</p></div>
-                        <div class="text-center min-w-[80px]"><p class="text-2xl font-bold text-yellow-500 font-poppins">3+</p><p class="text-xs text-gray-500">Tahun Pengalaman</p></div>
+
+                    {{-- Statistik dari DB --}}
+                    <div class="absolute -bottom-6 left-4 right-4 md:left-8 md:right-auto md:w-[90%]
+                                bg-white p-6 rounded-xl shadow-2xl flex justify-center items-center
+                                z-20 border border-gray-100 flex-wrap gap-4">
+                        <div class="text-center min-w-[80px]">
+                            <p class="text-2xl font-bold text-yellow-500 font-poppins">{{ $projectSelesai }}</p>
+                            <p class="text-xs text-gray-500">Project Selesai</p>
+                        </div>
+                        <div class="text-center min-w-[80px]">
+                            <p class="text-2xl font-bold text-yellow-500 font-poppins">{{ $klienAktif }}</p>
+                            <p class="text-xs text-gray-500">Klien Aktif</p>
+                        </div>
+                        <div class="text-center min-w-[80px]">
+                            <p class="text-2xl font-bold text-yellow-500 font-poppins">3+</p>
+                            <p class="text-xs text-gray-500">Tahun Berdiri</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 pt-10 lg:pt-20 reveal delay-200">
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-poppins">Partner Terpercaya untuk Solusi Digital Anda</h3>
-                    <p class="text-gray-600 text-base mb-8">LeLiLu memberikan layanan digital cepat, efisien, dan berkualitas. Dengan tim profesional dan tingkat kepuasan 98%, kami fokus memberikan hasil terbaik sekaligus membangun hubungan jangka panjang bagi setiap klien.</p>
-                    
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-poppins">
+                        Partner Terpercaya untuk Solusi Digital Anda
+                    </h3>
+                    <p class="text-gray-600 text-base mb-8">
+                        LeLiLu memberikan layanan digital cepat, efisien, dan berkualitas.
+                        Dengan tim profesional, kami fokus memberikan hasil terbaik sekaligus
+                        membangun hubungan jangka panjang bagi setiap klien.
+                    </p>
+
                     <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-                        <div class="flex items-start gap-4 mb-5">
+                        @foreach ([
+                            ['Profesional', 'Tim berpengalaman dan tersertifikasi di bidangnya'],
+                            ['Cepat', 'Proses pengerjaan yang efisien tanpa mengorbankan kualitas'],
+                            ['Berkualitas', 'Standar kerja tinggi dengan hasil yang memuaskan'],
+                            ['Terpercaya', 'Transparan, amanah, dan bertanggung jawab'],
+                        ] as [$judul, $desc])
+                        <div class="flex items-start gap-4 {{ !$loop->last ? 'mb-5' : '' }}">
                             <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm">
-                                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                </svg>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800 leading-tight">Profesional:</h4>
-                                <p class="text-gray-600 text-sm mt-1">Tim berpengalaman dan tersertifikasi di bidangnya</p>
+                                <h4 class="font-semibold text-gray-800 leading-tight">{{ $judul }}:</h4>
+                                <p class="text-gray-600 text-sm mt-1">{{ $desc }}</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 mb-5">
-                            <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm">
-                                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 leading-tight">Cepat:</h4>
-                                <p class="text-gray-600 text-sm mt-1">Proses pengerjaan yang efisien tanpa mengorbankan kualitas</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 mb-5">
-                            <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm">
-                                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 leading-tight">Berkualitas:</h4>
-                                <p class="text-gray-600 text-sm mt-1">Standar kerja tinggi dengan hasil yang memuaskan</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm">
-                                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800 leading-tight">Terpercaya:</h4>
-                                <p class="text-gray-600 text-sm mt-1">Transparan, amanah, dan bertanggung jawab</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- ================= FOOTER ================= -->
     <footer class="relative">
-        <img src="{{ asset('Image/wave.png') }}" alt="Wave" class="absolute -top-14 left-0 w-full z-0 pointer-events-none">
+        <img src="{{ asset('Image/wave.png') }}"   alt="Wave" class="absolute -top-14 left-0 w-full z-0 pointer-events-none">
         <img src="{{ asset('Image/titik2.png') }}" alt="Wave" class="absolute -top-11 left-0 w-full z-0 pointer-events-none">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem] pt-[12rem]">
@@ -700,45 +493,37 @@
     </footer>
 
     <!-- ================= CAROUSEL SCRIPT ================= -->
+    @if ($portofolios->isNotEmpty())
     <script>
     (function () {
-        const track       = document.getElementById('carouselTrack');
-        const carousel    = document.getElementById('bestSellerCarousel');
-        const btnLeft     = document.getElementById('carouselBtnLeft');
-        const btnRight    = document.getElementById('carouselBtnRight');
+        const track    = document.getElementById('carouselTrack');
+        const carousel = document.getElementById('bestSellerCarousel');
+        const btnLeft  = document.getElementById('carouselBtnLeft');
+        const btnRight = document.getElementById('carouselBtnRight');
 
-        if (!track) return;
+        if (!track || track.children.length === 0) return;
 
-        // Duplikat semua item agar loop seamless
+        // Duplikat item agar loop seamless
         const origCards = Array.from(track.children);
-        origCards.forEach(card => {
-            const clone = card.cloneNode(true);
-            track.appendChild(clone);
-        });
+        origCards.forEach(card => track.appendChild(card.cloneNode(true)));
 
-        // Total lebar semua item asli (tidak duplikat)
         function totalOrigWidth() {
             let w = 0;
-            origCards.forEach(card => {
-                w += card.offsetWidth + 20; // 20 = gap
-            });
+            origCards.forEach(card => { w += card.offsetWidth + 20; });
             return w;
         }
 
-        let offset    = 0;
-        let paused    = false;
-        let lastTime  = null;
-        const SPEED   = 8000; // px per detik (lebih besar = lebih lambat)
+        let offset   = 0;
+        let paused   = false;
+        let lastTime = null;
+        const SPEED  = 8000; // px per detik (lebih besar = lebih lambat)
 
         function animate(ts) {
             if (!paused) {
                 if (lastTime !== null) {
                     const delta = ts - lastTime;
                     offset += (delta / SPEED) * totalOrigWidth();
-                    // Reset saat sudah melewati semua item asli
-                    if (offset >= totalOrigWidth()) {
-                        offset -= totalOrigWidth();
-                    }
+                    if (offset >= totalOrigWidth()) offset -= totalOrigWidth();
                     track.style.transform = 'translateX(-' + offset + 'px)';
                 }
                 lastTime = ts;
@@ -748,24 +533,17 @@
             requestAnimationFrame(animate);
         }
 
-        // Pause saat hover di area carousel
-        carousel.addEventListener('mouseenter', () => {
-            paused = true;
-        });
-        carousel.addEventListener('mouseleave', () => {
-            paused = false;
-        });
+        carousel.addEventListener('mouseenter', () => { paused = true; });
+        carousel.addEventListener('mouseleave', () => { paused = false; });
 
-        // Tombol kiri
-        btnLeft.addEventListener('click', (e) => {
+        btnLeft && btnLeft.addEventListener('click', (e) => {
             e.stopPropagation();
             const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
             offset = Math.max(0, offset - step);
             track.style.transform = 'translateX(-' + offset + 'px)';
         });
 
-        // Tombol kanan
-        btnRight.addEventListener('click', (e) => {
+        btnRight && btnRight.addEventListener('click', (e) => {
             e.stopPropagation();
             const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
             offset = (offset + step) % totalOrigWidth();
@@ -775,6 +553,7 @@
         requestAnimationFrame(animate);
     })();
     </script>
+    @endif
 
 </body>
-</html>x
+</html>
