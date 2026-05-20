@@ -532,6 +532,14 @@
             white-space: nowrap;
         }
 
+        .proyek-section {
+            display: flex;
+            align-items: center;
+            padding: 60px 28px;
+            gap: 40px;
+            background: var(--white);
+        }   
+
         .status-pending    { color: #856404; }
         .status-proses     { color: #0d6efd; }
         .status-selesai    { color: #198754; }
@@ -609,6 +617,7 @@
             .orders-title h2 { font-size: 1.2rem; }
             .orders-title p { font-size: 0.8rem; }
             .empty-orders { height: 150px; }
+            .proyek-section { padding: 30px 16px; gap: 24px; }
         }
 
         @media (max-width: 400px) {
@@ -617,6 +626,12 @@
             .footer-logo { font-size: 1.5rem; }
             .btn-logout { padding: 6px 12px; font-size: 0.75rem; }
         }
+
+         @media (max-width: 800px) {
+        .proyek-section { flex-direction: column; padding: 40px 20px; }
+        }
+
+
     </style>
 </head>
 <body>
@@ -694,7 +709,7 @@
         </div>
     </header>
 
-    About Section
+    
     <!-- <section class="about-section">
         <div class="about-text">
             <h2>ADA APA<br>AJA SIH<br>DI <span>LELILU?</span></h2>
@@ -709,7 +724,7 @@
     </section> -->
 
     <!-- Catalog Section -->
-    <section class="catalog-container">
+    <!-- <section class="catalog-container">
         <aside class="sidebar">
             <h2>Katalog</h2>
             
@@ -797,7 +812,28 @@
 
             <a href="#" class="see-more">Lihat Selengkapnya</a>
         </main>
-    </section>
+    </section> -->
+
+    <section class="proyek-section">
+  <div class="proyek-left">
+    <h2 class="proyek-title">Punya Proyek<br>untuk <span class="highlight">Kami?</span></h2>
+    <p class="proyek-desc">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br>sed do</p>
+    <a href="{{ url('/order') }}" class="lelu-nav__btn">Ayo gabung<br>sekarang!</a>
+    
+  </div>
+  <div class="proyek-right">
+    <div class="proyek-img-placeholder">
+      <!-- Dark desk/writing photo placeholder -->
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a 0%,#333 100%);display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:4rem;">✍️</span>
+      </div>
+    </div>
+    <div class="proyek-indicator">
+      <div class="ind-dot"></div>
+      <div class="ind-line"></div>
+    </div>
+  </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer-wrapper">

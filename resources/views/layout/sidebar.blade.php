@@ -267,7 +267,9 @@
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
-    <div class="logo"><span class="le">Le</span><span class="li">Li</span><span class="lu">Lu</span></div>
+    <a href="/" style="text-decoration: none;">
+        <div class="logo"><span class="le">Le</span><span class="li">Li</span><span class="lu">Lu</span></div>
+    </a>
     <div class="profile-card">
         <div class="avatar">👤</div>
         <div class="profile-info">
@@ -330,15 +332,14 @@
             <!-- <span class="nav-badge">15</span> -->
         </a>
 
-          <a class="nav-item {{ Request::is('admin/produk') ? 'active' : '' }}" href="/admin/produk">
+          <!-- <a class="nav-item {{ Request::is('admin/produk') ? 'active' : '' }}" href="/admin/produk">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
             <span class="nav-text">Produk</span>
-            <!-- <span class="nav-badge">15</span> -->
-        </a>
+        </a> -->
 
         <!-- SISTEM -->
         <div class="nav-group-label">Sistem</div>

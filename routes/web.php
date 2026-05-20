@@ -7,6 +7,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminPortofolioController;
@@ -37,11 +38,10 @@ Route::get('/order', [PemesananController::class, 'create'])->name('order.create
 Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
 Route::get('/order/thanks', [PemesananController::class, 'thanks'])->name('order.thanks');
 Route::get('/payment', fn() => view('payment.payment'));
-Route::get('/portofolio', fn() => view('portofolio.portofolio'));
+Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio');
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 
-Route::get('/detail', fn() => view('detail.detail'))->name('detail');
-
+Route::get('/detail/{id}', [PemesananController::class, 'show'])->name('detail');
 
 
 ///Route::get('/admin/worker', fn() => view('admin.worker'))->name('admin.worker');
@@ -82,7 +82,7 @@ Route::post('/chatbot/clear', [GeminiController::class, 'clear'])->name('chatbot
 // ──────────────────────────────────────────
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/detail', fn() => view('detail.detail'))->name('detail');
+    Route::get('/detail/{id}', [PemesananController::class, 'show'])->name('detail');
     Route::get('/history', [HistoryController::class, 'index'])->name('history');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');

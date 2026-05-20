@@ -420,7 +420,7 @@ body {
                   <div class="order-total-label">Total Pembelian</div>
                   <div class="order-price">Rp {{ number_format($pesan->harga, 0, ',', '.') }}</div>
                 </div>
-                <a href="/detail" class="btn-bel"></a>
+                <a href="/detail/{{ $pesan->id_pemesanan }}" class="btn-beli-lagi">Detail</a>
                 <a href="/order" class="btn-beli-lagi">Pesan Lagi</a>
               </div>
             </div>

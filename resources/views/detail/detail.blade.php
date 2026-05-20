@@ -283,7 +283,8 @@
 
   <!-- NOMOR PESANAN -->
   <div class="card">
-    <div class="order-number">#{{ $pemesanan->id_pemesanan }}</div>
+    <!-- <div class="/admin/input/">#{{ $pemesanan->id_pemesanan }}</div> -->
+    <div class="order-number">Pesanan #{{ $pemesanan->id_pemesanan }}</div>
     <div class="order-date">
       Dibuat pada {{ \Carbon\Carbon::parse($pemesanan->created_at)->isoFormat('D MMMM Y') }}
     </div>

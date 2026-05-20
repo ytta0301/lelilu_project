@@ -68,4 +68,10 @@ class PemesananController extends Controller
         return redirect()->route('order.thanks')
             ->with('wa_url', "https://wa.me/{$nomorAdmin}?text={$pesan}");
     }
+
+    public function show($id)
+    {
+        $pemesanan = Pemesanan::findOrFail($id);
+        return view('detail.detail', compact('pemesanan'));
+    }
 }
