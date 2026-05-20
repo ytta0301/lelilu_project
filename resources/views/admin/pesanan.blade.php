@@ -355,7 +355,7 @@
           <tbody>
             @forelse ($pemesanans as $p)
             {{-- FIX: data-href pada <tr>, navigasi lewat JS — tidak perlu <td> ekstra --}}
-            <tr data-href="{{ route('admin.input', $p->id_pemesanan) }}">
+            <tr data-href="/admin/input/{{ $p->id_pemesanan }}">
               <td class="col-id">#{{ $p->id_pemesanan }}</td>
               <td>
                 <div class="akun-cell">
