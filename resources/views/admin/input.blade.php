@@ -4,107 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detail Pesanan - LeLiLu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: #ebebeb;
       display: flex;
       min-height: 100vh;
     }
 
-    /* ==============================
-       SIDEBAR
-    ============================== */
-    .sidebar {
-      width: 240px;
-      min-width: 240px;
-      background: #2b2b2b;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 24px;
-    }
-
-    .sidebar-brand {
-      font-size: 28px;
-      font-weight: 800;
-      color: #f5c518;
-      padding: 24px 24px 20px;
-      letter-spacing: 1px;
-    }
-
-    .worker-card {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 2px solid #f5c518;
-      border-radius: 12px;
-      margin: 0 14px 24px;
-      padding: 10px 12px;
-    }
-
-    .worker-avatar {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #555;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .worker-info .worker-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .worker-info .worker-email {
-      font-size: 11px;
-      color: #aaa;
-      margin-top: 2px;
-    }
-
-    .menu-label {
-      font-size: 10px;
-      color: #888;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      padding: 10px 24px 6px;
-      text-transform: uppercase;
-    }
-
-    .menu-item {
-      display: block;
-      padding: 10px 22px;
-      font-size: 14px;
-      color: #bbb;
-      text-decoration: none;
-      border-radius: 8px;
-      margin: 2px 10px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .menu-item:hover {
-      background: rgba(255,255,255,0.07);
-      color: #fff;
-    }
-
-    .menu-item.active {
-      color: #fff;
-      font-weight: 700;
-      background: rgba(255,255,255,0.09);
-    }
-
-    /* ==============================
-       MAIN
-    ============================== */
+    /* ── Main ── */
     .main {
       flex: 1;
       padding: 32px 36px;
@@ -113,44 +24,33 @@
       gap: 20px;
     }
 
-    .page-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+    .page-header { display: flex; align-items: center; gap: 18px; }
+    .page-title  { font-size: 28px; font-weight: 800; color: #1a1a1a; }
+    .title-line  { flex: 0 0 90px; height: 4px; background: #f5c518; border-radius: 4px; margin-top: 4px; }
 
-    .page-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: #1a1a1a;
+    /* ── Toast / alert ── */
+    .alert-error {
+      background: #fee2e2;
+      border: 1.5px solid #fca5a5;
+      color: #991b1b;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
     }
+    .alert-error ul { margin: 6px 0 0 18px; font-weight: 400; }
 
-    .title-line {
-      flex: 0 0 90px;
-      height: 4px;
-      background: #f5c518;
-      border-radius: 4px;
-      margin-top: 4px;
-    }
-
-    /* ==============================
-       CARD
-    ============================== */
+    /* ── Card ── */
     .card {
       background: #fff;
       border-radius: 16px;
       padding: 30px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
     }
 
-    .card-inner {
-      display: flex;
-      gap: 0;
-    }
+    .card-inner { display: flex; gap: 0; }
 
-    /* ==============================
-       LEFT PANEL
-    ============================== */
+    /* ── Left Panel ── */
     .left-panel {
       flex: 1;
       padding-right: 36px;
@@ -165,10 +65,8 @@
       align-items: center;
       gap: 8px;
     }
-
     .customer-avatar {
-      width: 86px;
-      height: 86px;
+      width: 86px; height: 86px;
       border-radius: 50%;
       overflow: hidden;
       border: 3px solid #f0d0d8;
@@ -177,47 +75,17 @@
       align-items: center;
       justify-content: center;
     }
+    .customer-name  { font-size: 17px; font-weight: 700; color: #1a1a1a; border-bottom: 2px solid #1a1a1a; padding-bottom: 3px; }
+    .customer-phone { font-size: 13px; color: #666; }
 
-    .customer-name {
-      font-size: 17px;
-      font-weight: 700;
-      color: #1a1a1a;
-      border-bottom: 2px solid #1a1a1a;
-      padding-bottom: 3px;
-    }
+    .order-meta            { display: flex; flex-direction: column; gap: 5px; }
+    .order-meta p          { font-size: 14px; color: #333; }
+    .order-meta b          { font-weight: 700; }
 
-    .customer-phone {
-      font-size: 13px;
-      color: #666;
-    }
+    .banner-title          { font-size: 17px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px; }
+    .banner-title em       { font-weight: 400; font-style: italic; }
 
-    .order-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .order-meta p {
-      font-size: 14px;
-      color: #333;
-    }
-
-    .order-meta b {
-      font-weight: 700;
-    }
-
-    .banner-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-    }
-
-    .banner-title em {
-      font-weight: 400;
-      font-style: italic;
-    }
-
+    /* Referensi: bisa gambar atau teks */
     .banner-img {
       width: 100%;
       max-width: 350px;
@@ -225,16 +93,16 @@
       display: block;
       aspect-ratio: 16/9;
       object-fit: cover;
+    }
+    .banner-placeholder {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      aspect-ratio: 16/9;
       background: linear-gradient(135deg, #2d6a1f, #7ab648, #c8e85a, #e8a020);
     }
 
-    .detail-label {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 7px;
-    }
-
+    .detail-label    { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 7px; }
     .detail-textarea {
       width: 100%;
       max-width: 420px;
@@ -251,26 +119,15 @@
       line-height: 1.5;
     }
 
-    /* ==============================
-       DIVIDER
-    ============================== */
-    .divider {
-      width: 1px;
-      background: #e0e0e0;
-      margin: 0 36px;
-      align-self: stretch;
-    }
+    /* ── Divider ── */
+    .divider { width: 1px; background: #e0e0e0; margin: 0 36px; align-self: stretch; }
 
-    /* ==============================
-       RIGHT PANEL
-    ============================== */
+    /* ── Right Panel ── */
     .right-panel {
       width: 310px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      padding-top: 0;
-      position: relative;
     }
 
     .field-label {
@@ -280,26 +137,21 @@
       color: #1a1a1a;
       margin-bottom: 9px;
     }
-
     .field-input {
       width: 100%;
       border: 1.5px solid #ddd;
       border-radius: 8px;
       padding: 12px 14px;
       font-size: 14px;
-      color: #aaa;
+      color: #333;
       outline: none;
       font-family: inherit;
       background: #fafafa;
-      transition: border-color 0.2s;
+      transition: border-color .2s;
     }
+    .field-input:focus { border-color: #f5c518; }
 
-    .field-input:focus {
-      border-color: #f5c518;
-      color: #333;
-    }
-
-    /* ── Image Upload ── */
+    /* ── Upload area ── */
     .upload-area {
       width: 100%;
       height: 180px;
@@ -312,74 +164,39 @@
       justify-content: center;
       gap: 10px;
       cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color .2s, background .2s;
       position: relative;
       overflow: hidden;
     }
-
-    .upload-area:hover {
-      border-color: #aaa;
-      background: #f3f3f3;
-    }
-
-    .upload-area input[type="file"] {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-    }
-
-    .upload-plus {
-      font-size: 38px;
-      color: #bbb;
-      line-height: 1;
-      font-weight: 300;
-    }
-
-    .upload-text {
-      font-size: 15px;
-      color: #bbb;
-      font-weight: 400;
-    }
-
+    .upload-area:hover     { border-color: #aaa; background: #f3f3f3; }
+    .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-plus  { font-size: 38px; color: #bbb; line-height: 1; font-weight: 300; }
+    .upload-text  { font-size: 15px; color: #bbb; }
     .upload-preview {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       position: absolute;
       inset: 0;
       border-radius: 9px;
-      display: none;
     }
 
-    /* ── Catatan ── */
-    .catatan-textarea {
-      width: 100%;
-      min-height: 80px;
-      border: 1.5px solid #ddd;
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 13px;
+    /* ── Checkbox tampil portofolio ── */
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
       color: #333;
-      resize: none;
-      background: #fafafa;
-      outline: none;
-      font-family: inherit;
-      transition: border-color 0.2s;
+      cursor: pointer;
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: #f5c518;
+      cursor: pointer;
     }
 
-    .catatan-textarea:focus {
-      border-color: #f5c518;
-    }
-
-    /* ── Status select (styled like badge) ── */
-    .status-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
+    /* ── Status select (badge style) ── */
+    .status-wrapper { position: relative; display: inline-block; }
     .status-select {
       appearance: none;
       -webkit-appearance: none;
@@ -391,37 +208,28 @@
       border-radius: 20px;
       cursor: pointer;
       font-family: inherit;
-      background-color: #bfdbfe;
-      color: #1d4ed8;
-      transition: background 0.2s;
+      transition: background .2s;
     }
-
-    .status-select.status-pending  { background: #fde68a; color: #92400e; }
-    .status-select.status-progress { background: #bfdbfe; color: #1d4ed8; }
-    .status-select.status-done     { background: #bbf7d0; color: #15803d; }
-    .status-select.status-waiting  { background: #fde68a; color: #92400e; }
-    .status-select.status-cancel   { background: #fecaca; color: #991b1b; }
+    .status-select.status-pending    { background: #fde68a; color: #92400e; }
+    .status-select.status-proses     { background: #bfdbfe; color: #1d4ed8; }
+    .status-select.status-selesai    { background: #bbf7d0; color: #15803d; }
+    .status-select.status-dibatalkan { background: #fecaca; color: #991b1b; }
 
     .status-arrow {
       position: absolute;
-      right: 12px;
-      top: 50%;
+      right: 12px; top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
-      color: currentColor;
     }
 
-    /* ── Bottom row ── */
+    /* ── Bottom row (status + save) ── */
     .bottom-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      margin-top: auto;
+      padding-top: 8px;
     }
-
     .send-btn {
       background: #f5c518;
       color: #1a1a1a;
@@ -432,16 +240,11 @@
       font-weight: 700;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.15s;
+      transition: background .15s;
     }
+    .send-btn:hover { background: #e6b800; }
 
-    .send-btn:hover {
-      background: #e6b800;
-    }
-
-    /* ==============================
-       BACK BUTTON
-    ============================== */
+    /* ── Back button ── */
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -450,20 +253,26 @@
       color: #555;
       text-decoration: none;
       font-weight: 500;
-      cursor: pointer;
     }
+    .back-btn:hover { color: #1a1a1a; }
 
-    .back-btn:hover {
-      color: #1a1a1a;
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .card-inner    { flex-direction: column; }
+      .left-panel    { padding-right: 0; }
+      .divider       { width: 100%; height: 1px; margin: 20px 0; }
+      .right-panel   { width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .main { padding: 20px 16px; }
+      .page-title { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- SIDEBAR -->
- @include('layout.sidebar')
+  @include('layout.sidebar')
 
-  <!-- MAIN -->
   <main class="main">
 
     <!-- Page Title -->
@@ -472,135 +281,175 @@
       <div class="title-line"></div>
     </div>
 
+    {{-- Validasi error --}}
+    @if ($errors->any())
+      <div class="alert-error">
+        Terdapat kesalahan:
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
     <!-- Card -->
     <div class="card">
-      <div class="card-inner">
+      {{-- FORM: method PUT, enctype untuk upload file --}}
+      <form method="POST"
+            action="{{ route('admin.input.update', $pemesanan->id_pemesanan) }}"
+            enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-        <!-- LEFT PANEL -->
-        <div class="left-panel">
+        <div class="card-inner">
 
-          <!-- Customer -->
-          <div class="customer-section">
-            <div class="customer-avatar">
-              <svg viewBox="0 0 86 86" width="86" height="86" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="43" cy="43" r="43" fill="#f0d0d8"/>
-                <ellipse cx="43" cy="41" rx="15" ry="20" fill="#c0405a" opacity="0.9"/>
-                <ellipse cx="30" cy="53" rx="12" ry="7" fill="#a03050" opacity="0.7" transform="rotate(-25 30 53)"/>
-                <ellipse cx="56" cy="53" rx="12" ry="7" fill="#a03050" opacity="0.7" transform="rotate(25 56 53)"/>
-                <circle cx="43" cy="43" r="43" fill="none" stroke="#c0607a" stroke-width="2"/>
-              </svg>
-            </div>
-            <div class="customer-name">Andi.M</div>
-            <div class="customer-phone">1234567897656</div>
-          </div>
+          <!-- ══ LEFT PANEL (read-only) ══ -->
+          <div class="left-panel">
 
-          <!-- Order Meta -->
-          <div class="order-meta">
-            <p><b>Nomor Pesanan:</b> #0331292384439</p>
-            <p><b>Nama Pelanggan:</b> Andi.M</p>
-            <p><b>Tanggal Pesan:</b> 04 Mei 2026</p>
-          </div>
-
-          <!-- Banner -->
-          <div>
-            <h3 class="banner-title">Banner 9:16 || <em>Reference</em></h3>
-            <div class="banner-img"></div>
-          </div>
-
-          <!-- Detail Pemesanan -->
-          <div>
-            <p class="detail-label">Detail Pemesanan :</p>
-            <textarea class="detail-textarea" readonly>Warna minta Hijau warm dan sedikit ada glow effectnya.. .</textarea>
-          </div>
-
-        </div>
-
-        <!-- DIVIDER -->
-        <div class="divider"></div>
-
-        <!-- RIGHT PANEL -->
-        <div class="right-panel">
-
-          <!-- Nama Pesanan -->
-          <div>
-            <label class="field-label">Nama Pesanan</label>
-            <input class="field-input" type="text" placeholder="Beri nama/label pesanan ini">
-          </div>
-
-          <!-- Harga -->
-          <div>
-            <label class="field-label">Harga</label>
-            <input class="field-input" type="text" placeholder="Masukkan harga yang sudah didiskusikan">
-          </div>
-
-          <!-- Image Upload -->
-          <div>
-            <label class="field-label">Image</label>
-            <div class="upload-area" id="uploadArea">
-              <input type="file" accept="image/*" onchange="previewImage(event)">
-              <div class="upload-plus">+</div>
-              <div class="upload-text">Upload Here</div>
-              <img class="upload-preview" id="uploadPreview" src="" alt="Preview">
-            </div>
-          </div>
-
-          <!-- Catatan -->
-          <div>
-            <label class="field-label" style="font-size:15px;">Catatan :</label>
-            <textarea class="catatan-textarea" placeholder=""></textarea>
-          </div>
-
-          <!-- Status + Send -->
-          <div class="bottom-row">
-            <div class="status-wrapper">
-              <select class="status-select status-progress" id="statusSelect" onchange="updateStatus(this)">
-                <option value="pending"  style="background:#fde68a; color:#92400e; font-weight:700;">Pending</option>
-                <option value="progress" style="background:#bfdbfe; color:#1d4ed8; font-weight:700;" selected>Progress</option>
-                <option value="done"     style="background:#bbf7d0; color:#15803d; font-weight:700;">Done</option>
-                <option value="cancel"   style="background:#fecaca; color:#991b1b; font-weight:700;">Cancel</option>
-              </select>
-              <svg class="status-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+            <!-- Customer -->
+            <div class="customer-section">
+              <div class="customer-avatar">
+                <svg viewBox="0 0 86 86" width="86" height="86" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="43" cy="43" r="43" fill="#f0d0d8"/>
+                  <ellipse cx="43" cy="41" rx="15" ry="20" fill="#c0405a" opacity=".9"/>
+                  <ellipse cx="30" cy="53" rx="12" ry="7" fill="#a03050" opacity=".7" transform="rotate(-25 30 53)"/>
+                  <ellipse cx="56" cy="53" rx="12" ry="7" fill="#a03050" opacity=".7" transform="rotate(25 56 53)"/>
+                </svg>
+              </div>
+              <div class="customer-name">{{ $pemesanan->user->name ?? 'Tanpa akun' }}</div>
+              <div class="customer-phone">{{ $pemesanan->user->whatsapp ?? '—' }}</div>
             </div>
 
-            <a href="/admin/pesanan"><button class="send-btn">Save</button></a>
-          </div>
+            <!-- Order Meta -->
+            <div class="order-meta">
+              <p><b>Nomor Pesanan:</b> #{{ $pemesanan->id_pemesanan }}</p>
+              <p><b>Nama Pelanggan:</b> {{ $pemesanan->user->name ?? '—' }}</p>
+              <p><b>Tanggal Pesan:</b> {{ \Carbon\Carbon::parse($pemesanan->created_at)->isoFormat('D MMMM Y') }}</p>
+              <p><b>Jenis:</b> {{ $pemesanan->jenis ?? '—' }}</p>
+            </div>
 
-        </div>
-      </div>
+            <!-- Referensi -->
+            <div>
+              <h3 class="banner-title">
+                {{ $pemesanan->jenis ?? 'Pesanan' }} || <em>Reference</em>
+              </h3>
+              @if ($pemesanan->referensi && filter_var($pemesanan->referensi, FILTER_VALIDATE_URL))
+                <img class="banner-img" src="{{ $pemesanan->referensi }}" alt="Referensi">
+              @else
+                <div class="banner-placeholder"></div>
+                @if ($pemesanan->referensi)
+                  <p style="margin-top:8px;font-size:13px;color:#666;">{{ $pemesanan->referensi }}</p>
+                @endif
+              @endif
+            </div>
+
+            <!-- Brief / Detail Pemesanan -->
+            <div>
+              <p class="detail-label">Detail Pemesanan :</p>
+              <textarea class="detail-textarea" readonly>{{ $pemesanan->brief ?? '—' }}</textarea>
+            </div>
+
+          </div>
+          <!-- end LEFT PANEL -->
+
+          <div class="divider"></div>
+
+          <!-- ══ RIGHT PANEL (editable) ══ -->
+          <div class="right-panel">
+
+            <!-- Jenis / Nama Pesanan (read-only info) -->
+            <div>
+              <label class="field-label">Nama / Jenis Pesanan</label>
+              <input class="field-input" type="text"
+                     value="{{ $pemesanan->jenis ?? '—' }}" readonly
+                     style="background:#f0f0f0;color:#888;cursor:not-allowed;">
+            </div>
+
+            <!-- Harga (editable) -->
+            <div>
+              <label class="field-label" for="harga">Harga</label>
+              <input class="field-input" type="number" id="harga" name="harga"
+                     min="0" step="1000"
+                     value="{{ old('harga', $pemesanan->harga) }}"
+                     placeholder="Masukkan harga yang sudah didiskusikan">
+            </div>
+
+            <!-- Upload Hasil Kerja -->
+            <div>
+              <label class="field-label">Hasil Kerja</label>
+              <div class="upload-area" id="uploadArea">
+                <input type="file" name="gambar_hasil" accept="image/*" onchange="previewImage(event)">
+                @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
+                  <img class="upload-preview" id="uploadPreview"
+                       src="{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}" alt="Hasil">
+                @else
+                  <div class="upload-plus" id="uploadPlus">+</div>
+                  <div class="upload-text" id="uploadText">Upload Hasil</div>
+                  <img class="upload-preview" id="uploadPreview" src="" alt="" style="display:none;">
+                @endif
+              </div>
+            </div>
+
+            <!-- Tampil di Portofolio -->
+            <label class="checkbox-row">
+              <input type="checkbox" name="tampil_portofolio" value="1"
+                {{ ($pemesanan->fileHasil && $pemesanan->fileHasil->tampil_portofolio) ? 'checked' : '' }}>
+              Tampilkan di halaman portofolio
+            </label>
+
+            <!-- Status + Save -->
+            <div class="bottom-row">
+              <div class="status-wrapper">
+                <select class="status-select status-{{ $pemesanan->status }}"
+                        name="status" id="statusSelect"
+                        onchange="updateStatus(this)">
+                  <option value="pending"    {{ $pemesanan->status === 'pending'    ? 'selected' : '' }}>Pending</option>
+                  <option value="proses"     {{ $pemesanan->status === 'proses'     ? 'selected' : '' }}>Proses</option>
+                  <option value="selesai"    {{ $pemesanan->status === 'selesai'    ? 'selected' : '' }}>Selesai</option>
+                  <option value="dibatalkan" {{ $pemesanan->status === 'dibatalkan' ? 'selected' : '' }}>Dibatalkan</option>
+                </select>
+                <svg class="status-arrow" width="12" height="12" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
+
+              <button type="submit" class="send-btn">Save</button>
+            </div>
+
+          </div>
+          <!-- end RIGHT PANEL -->
+
+        </div>{{-- card-inner --}}
+      </form>
     </div>
 
-    <!-- Back -->
-    <a href="/admin/pesanan" class="back-btn">&#8592; Kembali</a>
+    <a href="{{ route('admin.pesanan') }}" class="back-btn">&#8592; Kembali</a>
 
   </main>
 
   <script>
-    // Preview image after upload
+    // Preview gambar baru sebelum upload
     function previewImage(event) {
       const file = event.target.files[0];
       if (!file) return;
       const preview = document.getElementById('uploadPreview');
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        preview.src = e.target.result;
+      const reader  = new FileReader();
+      reader.onload = e => {
+        preview.src          = e.target.result;
         preview.style.display = 'block';
-        document.querySelector('.upload-plus').style.display = 'none';
-        document.querySelector('.upload-text').style.display = 'none';
+        const plus = document.getElementById('uploadPlus');
+        const text = document.getElementById('uploadText');
+        if (plus) plus.style.display = 'none';
+        if (text) text.style.display = 'none';
       };
       reader.readAsDataURL(file);
     }
 
-    // Change badge color based on selected status
+    // Ganti warna badge status sesuai pilihan
     function updateStatus(select) {
-      const classMap = {
-        pending:  'status-pending',
-        progress: 'status-progress',
-        done:     'status-done',
-        cancel:   'status-cancel',
-      };
-      select.className = 'status-select ' + (classMap[select.value] || '');
+      select.className = 'status-select status-' + select.value;
     }
   </script>
 

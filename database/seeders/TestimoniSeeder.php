@@ -36,7 +36,7 @@ class TestimoniSeeder extends Seeder
                 'updated_at'     => now()->subDays(12),
             ],
             [
-                'user_id'        => 7, // Kisari
+                'user_id'        => 6, // Kisari
                 'pemesanan_id'   => 5,
                 'isi_testimoni'  => 'Di dek observasi, kalian berdiri berdampingan menatap bintang.
 

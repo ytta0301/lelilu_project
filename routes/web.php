@@ -13,8 +13,9 @@ use App\Http\Controllers\AdminTestimoniController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminPesananController;
 
-
-// Guest only
+// ──────────────────────────────────────────
+//  Guest only
+// ──────────────────────────────────────────
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -22,10 +23,14 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 });
 
-// Logout
+// ──────────────────────────────────────────
+//  Logout
+// ──────────────────────────────────────────
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Halaman publik (tanpa login)
+// ──────────────────────────────────────────
+//  Halaman publik (tanpa login)
+// ──────────────────────────────────────────
 Route::get('/', fn() => view('welcome'))->name('home');
 Route::get('/order', [PemesananController::class, 'create'])->name('order.create');
 Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
@@ -71,7 +76,9 @@ Route::get('/chatbot', [GeminiController::class, 'index'])->name('chatbot.index'
 Route::post('/chatbot/ask', [GeminiController::class, 'ask'])->name('gemini.ask');
 Route::post('/chatbot/clear', [GeminiController::class, 'clear'])->name('chatbot.clear');
 
-// Halaman yang butuh login (auth)
+// ──────────────────────────────────────────
+//  Butuh login (auth)
+// ──────────────────────────────────────────
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/detail', fn() => view('detail.detail'))->name('detail');
@@ -81,17 +88,35 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-// Halaman admin (butuh login + role admin)
+// ──────────────────────────────────────────
+//  Admin (butuh login + role admin)
+// ──────────────────────────────────────────
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+
+    // User management
     Route::get('/user', [AdminUserController::class, 'index'])->name('admin.user');
     Route::post('/user', [AdminUserController::class, 'store']);
     Route::put('/user/{id}', [AdminUserController::class, 'update']);
     Route::delete('/user/{id}', [AdminUserController::class, 'destroy']);
+
+    // Testimoni
     Route::get('/testimoni', [AdminTestimoniController::class, 'index'])->name('admin.testimoni');
     Route::post('/testimoni', [AdminTestimoniController::class, 'store']);
     Route::put('/testimoni/{id}', [AdminTestimoniController::class, 'update']);
     Route::delete('/testimoni/{id}', [AdminTestimoniController::class, 'destroy']);
-    Route::get('/pesanan', fn() => view('admin.pesanan'))->name('admin.pesanan');
-    Route::get('/input', fn() => view('admin.input'))->name('admin.input');
+
+    // Pesanan  ← DIPERBAIKI: pakai controller, bukan closure
+    Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('admin.pesanan');
+    Route::get('/input/{id}', [AdminPesananController::class, 'show'])->name('admin.input');
+    Route::put('/input/{id}', [AdminPesananController::class, 'update'])->name('admin.input.update');
+
+    // Lainnya
     Route::get('/revisi', fn() => view('admin.revisi'))->name('admin.revisi');
+    Route::get('/produk', fn() => view('admin.produk'))->name('admin.produk');
+
+    // Portofolio
+    Route::get('/portofolio', [AdminPortofolioController::class, 'index'])->name('admin.portofolio');
+    Route::post('/portofolio', [AdminPortofolioController::class, 'store']);
+    Route::put('/portofolio/{id}', [AdminPortofolioController::class, 'update']);
+    Route::delete('/portofolio/{id}', [AdminPortofolioController::class, 'destroy']);
 });

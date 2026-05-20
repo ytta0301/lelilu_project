@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('file_hasils', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_file');
             $table->foreignId('pemesanan_id')->constrained('pemesanans', 'id_pemesanan')->cascadeOnDelete();
-            $table->string('gambar_hasil')->nullable();
+            $table->string('gambar_hasil');
             $table->boolean('tampil_portofolio')->default(false);
-            $table->dateTime('tanggal_upload')->nullable();
-            $table->timestamps();                      // created_at & updated_at
-            $table->softDeletes();                     // deleted_at (hapus aman)
+            $table->timestamp('tanggal_upload')->useCurrent();
         });
     }
-
     /**
      * Reverse the migrations.
      */
