@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <div class="absolute -top-[5rem] right-0 lg:h-full flex items-center justify-center fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="{{ asset('Image/hero-Image.png') }}" alt="Ilustrasi Kucing" class="h-full">
+                    <img src="{{ asset('Image/hero-image.png') }}" alt="Ilustrasi Kucing" class="h-full">
                 </div>
             </div>
         </div>
