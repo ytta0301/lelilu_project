@@ -1,0 +1,38 @@
+name: Deploy Laravel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+
+          script: |
+            cd /var/www/lelilu/laravel
+
+            git pull origin main
+
+            cd ..
+
+            docker compose up -d --build
+
+            docker exec laravel composer install --no-dev --optimize-autoloader
+
+            docker exec laravel php artisan migrate --force
+
+            docker exec laravel php artisan config:cache
+            docker exec laravel php artisan route:cache
+            docker exec laravel php artisan view:cache
+
