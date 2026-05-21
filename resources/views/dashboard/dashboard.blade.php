@@ -72,7 +72,7 @@
             line-height: 1.2;
         }
 
-        .welcome-image img {
+        .welcome-Image img {
             max-width: 400px;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -149,14 +149,14 @@
             max-width: 400px;
         }
 
-        .about-images {
+        .about-Image {
             flex: 1;
             display: flex;
             gap: 15px;
             position: relative;
         }
 
-        .about-images img {
+        .about-Image img {
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             object-fit: cover;
@@ -562,7 +562,7 @@
 
         @media (max-width: 992px) {
             .about-section { flex-direction: column; }
-            .about-images { margin-top: 60px; }
+            .about-Image { margin-top: 60px; }
             .img-small-1, .img-small-2 { position: relative; inset: 0; }
             .catalog-container { flex-direction: column; }
             .sidebar { width: 100%; }
@@ -575,9 +575,9 @@
 
         @media (max-width: 768px) {
             .welcome-text h1 { font-size: 2.2rem; }
-            .welcome-image img { max-width: 300px; }
+            .welcome-Image img { max-width: 300px; }
             .about-text h2 { font-size: 2.5rem; }
-            .about-images { flex-direction: column; gap: 20px; }
+            .about-Image { flex-direction: column; gap: 20px; }
             .img-large { width: 100%; height: 150px; }
             .img-small-1, .img-small-2 { position: relative; width: 45%; height: 150px; bottom: 0; left: 0; right: 0; margin: 0 auto; }
             .tabs { gap: 15px; overflow-x: auto; }
@@ -593,12 +593,12 @@
             .btn-logout { padding: 8px 16px; font-size: 0.8rem; }
             .welcome-top { flex-direction: column; text-align: center; gap: 20px; }
             .welcome-text h1 { font-size: 2rem; }
-            .welcome-image { margin-top: 20px; }
-            .welcome-image img { max-width: 100%; width: 100%; height: auto; }
+            .welcome-Image { margin-top: 20px; }
+            .welcome-Image img { max-width: 100%; width: 100%; height: auto; }
             .about-section { padding: 30px 4%; }
             .about-text h2 { font-size: 2rem; }
             .about-text p { font-size: 0.9rem; max-width: 100%; }
-            .about-images { flex-direction: column; align-items: center; }
+            .about-Image { flex-direction: column; align-items: center; }
             .img-large { width: 100%; max-width: 300px; height: 120px; }
             .img-small-1, .img-small-2 { position: relative; width: 45%; max-width: 150px; height: 100px; }
             .catalog-container { flex-direction: column; padding: 20px 4%; }
@@ -644,7 +644,7 @@
             <div class="welcome-text">
                 <h1>Hi {{ Auth::user()->name ?? 'Desainers' }},<br>Selamat<br>datang<br>kembali</h1>
             </div>
-            <div class="welcome-image">
+            <div class="welcome-Image">
                 <img src="https://placehold.co/500x250/2C2C2C/FFD700?text=Hello!" alt="Hello Card">
             </div>
         </div>
@@ -716,7 +716,7 @@
             <br>
             <p>Wujudkan ide imajinatifmu menjadi kenyataan dengan ilustrasi orisinal berkualitas tinggi, dibuat khusus sesuai <em>permintaanmu</em></p>
         </div>
-        <div class="about-images">
+        <div class="about-Image">
             <img src="https://placehold.co/400x200/C2B280/FFFFFF?text=Vintage+Gas+Station" alt="Img1" class="img-large">
             <img src="https://placehold.co/200x200/A0D6B4/FFFFFF?text=Vintage+Cars" alt="Img2" class="img-small-1">
             <img src="https://placehold.co/180x250/FFB347/FFFFFF?text=Vintage+Poster" alt="Img3" class="img-small-2">

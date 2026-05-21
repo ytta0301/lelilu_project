@@ -208,7 +208,7 @@
                 </button>
             </div>
 
-            <input type="file" id="inputFile" accept="image/*" style="display:none">
+            <input type="file" id="inputFile" accept="Image/*" style="display:none">
         </div>
 
         <div class="form-group">
@@ -401,7 +401,7 @@
     });
 
     function handleFile(file) {
-        if (!file || !file.type.startsWith('image/')) {
+        if (!file || !file.type.startsWith('Image/')) {
             showToast('File harus berupa gambar!', 'error');
             return;
         }

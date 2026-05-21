@@ -149,7 +149,7 @@
   .badge-progress { background: #e3f0ff; color: #1256a3; }
   .badge-revision { background: #fdecea; color: #a32020; }
 
-  /* banner images */
+  /* banner Image */
   .banners-col {
     display: flex; flex-direction: column; gap: 6px; flex: 1;
   }
@@ -519,7 +519,7 @@
       <!-- RIGHT -->
       <div class="right-col">
         <label class="upload-box" id="uploadLabel">
-          <input type="file" accept="image/*" id="fileInput" />
+          <input type="file" accept="Image/*" id="fileInput" />
           <div class="plus-icon" id="uploadPlusIcon">+</div>
           <div class="upload-label" id="uploadLabelText">Upload Here</div>
           <img id="uploadPreview" alt="Preview" />

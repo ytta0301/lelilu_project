@@ -266,7 +266,7 @@
     font-size: 18px;
   }
 
-  /* Colorful product image placeholders */
+  /* Colorful product Image placeholders */
   .img-1 { background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 40%, #4ecdc4 80%, #45b7d1 100%); }
   .img-2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 40%, #f093fb 80%, #f5576c 100%); }
   .img-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%); }

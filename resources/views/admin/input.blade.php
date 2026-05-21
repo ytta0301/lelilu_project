@@ -383,7 +383,7 @@
             <div>
               <label class="field-label">Hasil Kerja</label>
               <div class="upload-area" id="uploadArea">
-                <input type="file" name="gambar_hasil" accept="image/*" onchange="previewImage(event)">
+                <input type="file" name="gambar_hasil" accept="Image/*" onchange="previewImage(event)">
                 @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
                   <img class="upload-preview" id="uploadPreview"
                        src="{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}" alt="Hasil">

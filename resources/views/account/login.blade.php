@@ -31,7 +31,7 @@
             <div class="absolute top-6 md:top-8 left-6 md:left-8 z-10">
                 <h1 class="text-white text-2xl md:text-3xl font-bold tracking-wider drop-shadow-md">LeLiLu</h1>
             </div>
-            <img src="{{ asset('image/bunga.png') }}" alt="" class="w-full h-full object-cover">
+            <img src="{{ asset('Image/bunga.png') }}" alt="" class="w-full h-full object-cover">
         </div>
 
         <div class="w-full md:w-1/2 px-6 md:px-12 py-8 md:py-0 flex flex-col justify-center">

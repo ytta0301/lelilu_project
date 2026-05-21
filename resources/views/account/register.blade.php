@@ -17,7 +17,7 @@
             <div class="absolute top-8 left-8 z-10">
                 <h1 class="text-white text-3xl font-bold tracking-wider drop-shadow-md">LeLiLu</h1>
             </div>
-            <img src="{{ asset('image/cat.png') }}" alt="" class="h-full object-cover">
+            <img src="{{ asset('Image/cat.png') }}" alt="" class="h-full object-cover">
         </div>
 
         <div class="w-full md:w-5/12 px-5 md:px-5 md:py-5 flex flex-col justify-center bg-white">

@@ -472,7 +472,7 @@
                 </form>
                 <div class="powered-by">
                     <span>Powered By:</span>
-                    <div class="gemini-badge"><img src="{{ asset('images/google-gemini-icon.webp') }}" height="13px" width="13px"> Gemini</div>
+                    <div class="gemini-badge"><img src="{{ asset('Image/google-gemini-icon.webp') }}" height="13px" width="13px"> Gemini</div>
                 </div>
             </div>
         </div>

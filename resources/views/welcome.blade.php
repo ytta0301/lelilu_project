@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <div class="absolute -top-[5rem] right-0 lg:h-full flex items-center justify-center fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="{{ asset('Image/hero-image.png') }}" alt="Ilustrasi Kucing" class="h-full">
+                    <img src="{{ asset('Image/hero-Image.png') }}" alt="Ilustrasi Kucing" class="h-full">
                 </div>
             </div>
         </div>
@@ -314,7 +314,7 @@
     <section id="testimoni" class="py-24 bg-[#F9F5F0] relative overflow-hidden">
         <img src="{{ asset('Image/titik.png') }}" alt="Titik" class="absolute top-0 left-0 h-full">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
-             style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
+             style="background-Image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -389,7 +389,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-7 relative reveal delay-100">
-                    <img src="{{ asset('image/Firefly.webp') }}" class="w-full h-auto object-cover block rounded-xl shadow-sm">
+                    <img src="{{ asset('Image/Firefly.webp') }}" class="w-full h-auto object-cover block rounded-xl shadow-sm">
 
                     {{-- Statistik dari DB --}}
                     <div class="absolute -bottom-6 left-4 right-4 md:left-8 md:right-auto md:w-[90%]
@@ -450,46 +450,46 @@
         <img src="{{ asset('Image/wave.png') }}"   alt="Wave" class="absolute -top-14 left-0 w-full z-0 pointer-events-none">
         <img src="{{ asset('Image/titik2.png') }}" alt="Wave" class="absolute -top-11 left-0 w-full z-0 pointer-events-none">
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem] pt-[12rem]">
-            <div class="footer-content">
-                <div>
-                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-yellow-400 transition">Pemesanan Online</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Informasi Testimoni</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Customer Services</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Tentang Kami</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Karier</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Partner & Kerja Sama</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Kontak Kami</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-yellow-400 transition">Cara Daftar Akun</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Cara Pemesanan Online</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li>
-                        <li><a href="#" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li>
-                    </ul>
-                </div>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem] pt-[12rem]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Syarat & Ketentuan</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li>
+            </ul>
         </div>
+        <div>
+            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-yellow-400 transition">Pemesanan Online</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Informasi Testimoni</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Customer Services</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Tentang Kami</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Karier</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Partner & Kerja Sama</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Kontak Kami</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-yellow-400 transition">Cara Daftar Akun</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Cara Pemesanan Online</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li>
+                <li><a href="#" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
     </footer>
 
     <!-- ================= CAROUSEL SCRIPT ================= -->

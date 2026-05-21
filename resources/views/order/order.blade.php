@@ -268,7 +268,7 @@
   .ref-preview.visible { display: block; }
   .ref-box:hover .ref-preview.visible { transform: scale(1.03); }
 
-  /* hover overlay when image loaded */
+  /* hover overlay when Image loaded */
   .hover-overlay {
     position: absolute;
     inset: 0;
@@ -521,7 +521,7 @@
 
           {{-- [UBAH] tambah name="referensi" --}}
           <input type="file" id="refFileInput" name="referensi"
-                 accept="image/*" onchange="handleRefFile(event)" style="display:none">
+                 accept="Image/*" onchange="handleRefFile(event)" style="display:none">
           @error('referensi')<span class="field-error" style="text-align:center">{{ $message }}</span>@enderror
         </div>
 
