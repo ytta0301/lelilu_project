@@ -416,7 +416,7 @@
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.5s ease;
         }
 
         .carousel-card:hover {
@@ -459,7 +459,7 @@
             border-radius: 0.625rem;
             text-align: center;
             transform: translateY(12px);
-            transition: transform 0.3s ease;
+            transition: transform 0.1s ease;
             min-width: 160px;
             pointer-events: none;
         }
@@ -830,7 +830,7 @@
             let offset = 0;
             let paused = false;
             let lastTime = null;
-            const SPEED = 8000; // px per detik (lebih besar = lebih lambat)
+            const SPEED = 17000; // px per detik (lebih besar = lebih lambat)
 
             function animate(ts) {
                 if (!paused) {
