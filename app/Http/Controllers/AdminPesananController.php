@@ -21,6 +21,8 @@ class AdminPesananController extends Controller
                 $q->where('id_pemesanan', 'like', "%{$search}%")
                   ->orWhere('jenis', 'like', "%{$search}%")
                   ->orWhere('harga', 'like', "%{$search}%")
+                  ->orWhere('nama', 'like', "%{$search}%")
+                  ->orWhere('whatsapp', 'like', "%{$search}%")
                   ->orWhereHas('user', function ($uq) use ($search) {
                       $uq->where('name', 'like', "%{$search}%")
                          ->orWhere('whatsapp', 'like', "%{$search}%");

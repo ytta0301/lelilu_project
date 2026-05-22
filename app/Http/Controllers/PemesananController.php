@@ -48,6 +48,8 @@ class PemesananController extends Controller
 
         Pemesanan::create([
             'user_id'   => Auth::id(),
+            'nama'      => $request->nama,
+            'whatsapp'  => $request->whatsapp,
             'jenis'     => $request->jenis,
             'brief'     => $request->brief,
             'referensi' => $referensiPath,

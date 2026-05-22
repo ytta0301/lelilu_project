@@ -16,6 +16,8 @@ class Pemesanan extends Model
         'referensi',
         'harga',
         'status',
+        'nama',
+        'whatsapp',
     ];
 
     public function user()

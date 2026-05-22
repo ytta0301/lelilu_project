@@ -151,33 +151,105 @@
     }
     .field-input:focus { border-color: #f5c518; }
 
-    /* ── Upload area ── */
-    .upload-area {
+    /* ── Upload area (ref-box style dari order/order) ── */
+    .ref-box {
       width: 100%;
-      height: 180px;
+      aspect-ratio: 1 / 1;
       border: 1.5px solid #ddd;
       border-radius: 10px;
+      overflow: hidden;
+      position: relative;
       background: #fafafa;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .ref-box:hover {
+      border-color: #f5c518;
+      box-shadow: 0 0 0 3px rgba(245,197,24,0.18);
+    }
+    .ref-placeholder {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: border-color .2s, background .2s;
-      position: relative;
-      overflow: hidden;
+      gap: 12px;
+      color: #bbb;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+      pointer-events: none;
     }
-    .upload-area:hover     { border-color: #aaa; background: #f3f3f3; }
-    .upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-    .upload-plus  { font-size: 38px; color: #bbb; line-height: 1; font-weight: 300; }
-    .upload-text  { font-size: 15px; color: #bbb; }
-    .upload-preview {
-      width: 100%; height: 100%;
+    .ref-preview {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      display: none;
+      transition: transform .35s ease;
+    }
+    .ref-preview.visible { display: block; }
+    .ref-box:hover .ref-preview.visible { transform: scale(1.03); }
+    .hover-overlay {
       position: absolute;
       inset: 0;
-      border-radius: 9px;
+      background: rgba(0,0,0,0.28);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+    .hover-overlay.active { display: flex; }
+    .ref-box:hover .hover-overlay.active { opacity: 1; }
+    .btn-edit {
+      background: #f5c518;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 50px;
+      padding: 9px 28px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .btn-edit:hover {
+      background: #e6b800;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245,200,0,.35);
+    }
+    .btn-edit:active { transform: translateY(0); }
+
+    /* ── Toast ── */
+    .toast {
+      display: none;
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 999;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      gap: 10px;
+      align-items: center;
+    }
+    .toast.show {
+      display: flex;
+      animation: toastIn 0.35s ease forwards;
+    }
+    @keyframes toastIn {
+      from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+      to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
     }
 
     /* ── Checkbox tampil portofolio ── */
@@ -317,8 +389,12 @@
                   <ellipse cx="56" cy="53" rx="12" ry="7" fill="#a03050" opacity=".7" transform="rotate(25 56 53)"/>
                 </svg>
               </div>
-              <div class="customer-name">{{ $pemesanan->user->name ?? 'Tanpa akun' }}</div>
-              <div class="customer-phone">{{ $pemesanan->user->whatsapp ?? '—' }}</div>
+              <div class="customer-name">
+                {{ $pemesanan->user->name ?? ($pemesanan->nama ?? 'Guest') }}
+              </div>
+              <div class="customer-phone">
+                {{ $pemesanan->user->whatsapp ?? ($pemesanan->whatsapp ?? '—') }}
+              </div>
             </div>
 
             <!-- Order Meta -->
@@ -379,28 +455,35 @@
                      placeholder="Masukkan harga yang sudah didiskusikan">
             </div>
 
-            <!-- Upload Hasil Kerja -->
+            <!-- Upload Hasil Kerja (style order/order) -->
             <div>
               <label class="field-label">Hasil Kerja</label>
-              <div class="upload-area" id="uploadArea">
-                <input type="file" name="gambar_hasil" accept="Image/*" onchange="previewImage(event)">
+              <div class="ref-box" id="hasilBox" onclick="triggerUpload()">
                 @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
-                  <img class="upload-preview" id="uploadPreview"
+                  <img class="ref-preview visible" id="hasilPreview"
                        src="{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}" alt="Hasil">
+                  <div class="hover-overlay active" id="hasilOverlay">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+                      <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                  </div>
                 @else
-                  <div class="upload-plus" id="uploadPlus">+</div>
-                  <div class="upload-text" id="uploadText">Upload Hasil</div>
-                  <img class="upload-preview" id="uploadPreview" src="" alt="" style="display:none;">
+                  <div class="ref-placeholder" id="hasilPlaceholder">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.4">
+                      <rect x="3" y="3" width="18" height="18" rx="3"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Upload Hasil<br>Kerja</span>
+                  </div>
+                  <div class="hover-overlay" id="hasilOverlay"></div>
+                  <img class="ref-preview" id="hasilPreview" src="" alt="" style="display:none;">
                 @endif
               </div>
+              <button type="button" class="btn-edit" onclick="triggerUpload()">Edit</button>
+              <input type="file" id="hasilFileInput" name="gambar_hasil"
+                     accept="Image/*" onchange="handleHasilFile(event)" style="display:none">
             </div>
-
-            <!-- Tampil di Portofolio -->
-            <label class="checkbox-row">
-              <input type="checkbox" name="tampil_portofolio" value="1"
-                {{ ($pemesanan->fileHasil && $pemesanan->fileHasil->tampil_portofolio) ? 'checked' : '' }}>
-              Tampilkan di halaman portofolio
-            </label>
 
             <!-- Status + Save -->
             <div class="bottom-row">
@@ -433,20 +516,28 @@
 
   </main>
 
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
   <script>
-    // Preview gambar baru sebelum upload
-    function previewImage(event) {
-      const file = event.target.files[0];
+    // Trigger hidden file input
+    function triggerUpload() { document.getElementById('hasilFileInput').click(); }
+
+    // Preview gambar hasil kerja (sama seperti order/order)
+    function handleHasilFile(e) {
+      const file = e.target.files[0];
       if (!file) return;
-      const preview = document.getElementById('uploadPreview');
-      const reader  = new FileReader();
-      reader.onload = e => {
-        preview.src          = e.target.result;
-        preview.style.display = 'block';
-        const plus = document.getElementById('uploadPlus');
-        const text = document.getElementById('uploadText');
-        if (plus) plus.style.display = 'none';
-        if (text) text.style.display = 'none';
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const img = document.getElementById('hasilPreview');
+        img.src = ev.target.result;
+        img.classList.add('visible');
+        img.style.display = 'block';
+        const placeholder = document.getElementById('hasilPlaceholder');
+        if (placeholder) placeholder.style.display = 'none';
+        const overlay = document.getElementById('hasilOverlay');
+        if (overlay) overlay.classList.add('active');
+        showToast('Gambar hasil kerja berhasil dipilih');
       };
       reader.readAsDataURL(file);
     }
@@ -454,6 +545,14 @@
     // Ganti warna badge status sesuai pilihan
     function updateStatus(select) {
       select.className = 'status-select status-' + select.value;
+    }
+
+    // Toast notification
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
     }
   </script>
 

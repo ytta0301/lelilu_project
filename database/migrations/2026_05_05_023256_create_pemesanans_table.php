@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('id_pemesanan');
+            $table->string('nama')->nullable();
+            $table->string('whatsapp', 20)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id_user')->on('users')->nullOnDelete();
             $table->string('jenis');

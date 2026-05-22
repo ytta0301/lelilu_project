@@ -401,7 +401,7 @@
     });
 
     function handleFile(file) {
-        if (!file || !file.type.startsWith('Image/')) {
+        if (!file || !file.type.startsWith('image/')) {
             showToast('File harus berupa gambar!', 'error');
             return;
         }
