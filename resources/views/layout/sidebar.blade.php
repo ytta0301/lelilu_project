@@ -271,10 +271,12 @@
         <div class="logo"><span class="le">Le</span><span class="li">Li</span><span class="lu">Lu</span></div>
     </a>
     <div class="profile-card">
-        <div class="avatar">👤</div>
+        <div class="avatar">
+            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+        </div>
         <div class="profile-info">
-            <div class="name">Fachri lelilu</div>
-            <div class="email">fachrilelilu@gmail.com</div>
+            <div class="name">{{ Auth::user()->name }}</div>
+            <div class="email">{{ Auth::user()->whatsapp }}</div>
         </div>
     </div>
 

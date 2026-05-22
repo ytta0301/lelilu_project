@@ -416,7 +416,7 @@
   </div>
 
   <!-- REVISI -->
-  <div class="revisi-section">
+  <!-- <div class="revisi-section">
     {{-- Tombol revisi hanya aktif jika status proses/selesai, bukan dibatalkan --}}
     @if (in_array($pemesanan->status, ['proses', 'selesai']))
       <button class="revisi-btn">Butuh Revisi? Kami bisa!</button>
@@ -428,7 +428,7 @@
       jika sudah melebihi maka akan dikenakan biaya<br>
       tambahan
     </p>
-  </div>
+  </div> -->
 
 </div>
 
