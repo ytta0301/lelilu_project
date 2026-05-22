@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,111 +13,400 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .font-handwriting { font-family: 'Kalam', cursive; }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
 
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .footer-background {
+            padding-top: 100px;
+            background: #2c2a2a;
+        }
 
-        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .font-handwriting {
+            font-family: 'Kalam', cursive;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
-            .max-w-7xl { max-width: 960px; }
-            .lg\:text-9xl { font-size: 5rem; }
+            .max-w-7xl {
+                max-width: 960px;
+            }
+
+            .lg\:text-9xl {
+                font-size: 5rem;
+            }
         }
+
         @media (max-width: 992px) {
-            .hidden.md\:flex { display: none; }
-            .md\:block { display: block; }
-            .md\:text-2xl { font-size: 1.5rem; }
-            .md\:hidden { display: flex; }
-            section.relative { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
-            .grid-cols-1.lg\:grid-cols-2 { grid-template-columns: 1fr; }
-            .text-5xl { font-size: 2.5rem; }
-            .text-6xl { font-size: 3rem; }
-            .lg\:text-8xl { font-size: 4rem; }
-            .lg\:text-9xl { font-size: 4.5rem; }
-            .font-handwriting { font-size: 2.5rem !important; }
-            .text-8xl { font-size: 4rem; }
-            .text-9xl { font-size: 4.5rem; }
-            .space-y-8 > * + * { margin-top: 2rem; }
-            .absolute.-top-\[5rem\] { position: relative; top: 0; margin-top: 2rem; }
-            .flex-col.sm\:flex-row { flex-direction: column; gap: 12px; }
-            .gap-4 { gap: 12px; }
-            .flex > button { width: 100%; justify-content: center; }
-            .w-full { width: 100%; }
-            .grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr; }
-            .lg\:col-span-9 { grid-column: span 1; }
-            .lg\:col-span-3 { display: none; }
-            .rounded-\[3rem\] { border-radius: 1.5rem; }
-            .p-8 { padding: 1.5rem; }
-            .lg\:grid-cols-12 { grid-template-columns: 1fr; }
-            .lg\:pt-20 { padding-top: 2rem; }
-            .lg\:col-span-7, .lg\:col-span-5 { grid-column: span 1; }
-            .absolute.-bottom-6 { position: relative; bottom: 0; margin-top: 1.5rem; }
-            .flex-wrap { flex-wrap: wrap; }
-            .justify-between { justify-content: center; }
-            .min-w-\[80px\] { min-width: 60px; }
-            .grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
-            footer .max-w-7xl { padding: 0 24px 4rem; }
-            .pb-\[8rem\] { padding-bottom: 4rem; }
-            footer h2 { font-size: 2.5rem; }
+            .hidden.md\:flex {
+                display: none;
+            }
+
+            .md\:block {
+                display: block;
+            }
+
+            .md\:text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .md\:hidden {
+                display: flex;
+            }
+
+            section.relative {
+                min-height: auto;
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+
+            .grid-cols-1.lg\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+
+            .text-6xl {
+                font-size: 3rem;
+            }
+
+            .lg\:text-8xl {
+                font-size: 4rem;
+            }
+
+            .lg\:text-9xl {
+                font-size: 4.5rem;
+            }
+
+            .font-handwriting {
+                font-size: 2.5rem !important;
+            }
+
+            .text-8xl {
+                font-size: 4rem;
+            }
+
+            .text-9xl {
+                font-size: 4.5rem;
+            }
+
+            .space-y-8>*+* {
+                margin-top: 2rem;
+            }
+
+            .absolute.-top-\[5rem\] {
+                position: relative;
+                top: 0;
+                margin-top: 2rem;
+            }
+
+            .flex-col.sm\:flex-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .gap-4 {
+                gap: 12px;
+            }
+
+            .flex>button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .w-full {
+                width: 100%;
+            }
+
+            .grid-cols-1.md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .lg\:col-span-9 {
+                grid-column: span 1;
+            }
+
+            .lg\:col-span-3 {
+                display: none;
+            }
+
+            .rounded-\[3rem\] {
+                border-radius: 1.5rem;
+            }
+
+            .p-8 {
+                padding: 1.5rem;
+            }
+
+            .lg\:grid-cols-12 {
+                grid-template-columns: 1fr;
+            }
+
+            .lg\:pt-20 {
+                padding-top: 2rem;
+            }
+
+            .lg\:col-span-7,
+            .lg\:col-span-5 {
+                grid-column: span 1;
+            }
+
+            .absolute.-bottom-6 {
+                position: relative;
+                bottom: 0;
+                margin-top: 1.5rem;
+            }
+
+            .flex-wrap {
+                flex-wrap: wrap;
+            }
+
+            .justify-between {
+                justify-content: center;
+            }
+
+            .min-w-\[80px\] {
+                min-width: 60px;
+            }
+
+            .grid-cols-2.md\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            footer .max-w-7xl {
+                padding: 0 24px 4rem;
+            }
+
+            .pb-\[8rem\] {
+                padding-bottom: 4rem;
+            }
+
+            footer h2 {
+                font-size: 2.5rem;
+            }
         }
+
         @media (max-width: 768px) {
-            .text-xl { font-size: 1.25rem; }
-            .max-w-7xl { padding: 0 16px; }
-            .text-4xl { font-size: 2rem; }
-            .md\:text-5xl { font-size: 2rem; }
-            .text-5xl { font-size: 2.2rem; }
-            .text-6xl { font-size: 2.5rem; }
-            .text-7xl { font-size: 3rem; }
-            .text-8xl { font-size: 3rem; }
-            .text-9xl { font-size: 3.5rem; }
-            .font-handwriting { font-size: 2rem !important; }
-            section { padding-top: 90px; padding-bottom: 40px; }
-            .gap-6 { gap: 1rem; }
-            .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
-            .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
-            .gap-4 { gap: 0.75rem; }
-            .grid-cols-1 { gap: 1rem; }
-            .gap-8 { gap: 1.5rem; }
-            .rounded-\[3rem\] { border-radius: 1.5rem; }
-            .p-8, .p-12 { padding: 1.25rem; }
-            .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-            .hidden { display: none; }
-            footer .max-w-7xl { padding: 0 16px 3rem; }
-            footer h2 { font-size: 2rem; }
+            .text-xl {
+                font-size: 1.25rem;
+            }
+
+            .max-w-7xl {
+                padding: 0 16px;
+            }
+
+            .text-4xl {
+                font-size: 2rem;
+            }
+
+            .md\:text-5xl {
+                font-size: 2rem;
+            }
+
+            .text-5xl {
+                font-size: 2.2rem;
+            }
+
+            .text-6xl {
+                font-size: 2.5rem;
+            }
+
+            .text-7xl {
+                font-size: 3rem;
+            }
+
+            .text-8xl {
+                font-size: 3rem;
+            }
+
+            .text-9xl {
+                font-size: 3.5rem;
+            }
+
+            .font-handwriting {
+                font-size: 2rem !important;
+            }
+
+            section {
+                padding-top: 90px;
+                padding-bottom: 40px;
+            }
+
+            .gap-6 {
+                gap: 1rem;
+            }
+
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .py-24 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .gap-4 {
+                gap: 0.75rem;
+            }
+
+            .grid-cols-1 {
+                gap: 1rem;
+            }
+
+            .gap-8 {
+                gap: 1.5rem;
+            }
+
+            .rounded-\[3rem\] {
+                border-radius: 1.5rem;
+            }
+
+            .p-8,
+            .p-12 {
+                padding: 1.25rem;
+            }
+
+            .shadow-xl {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            footer .max-w-7xl {
+                padding: 0 16px 3rem;
+            }
+
+            footer h2 {
+                font-size: 2rem;
+            }
         }
+
         @media (max-width: 600px) {
-            .max-w-7xl { padding: 0 12px; }
-            .text-4xl { font-size: 1.75rem; }
-            .text-5xl { font-size: 2rem; }
-            .text-6xl { font-size: 2.2rem; }
-            .text-7xl { font-size: 2.5rem; }
-            .text-8xl { font-size: 2.8rem; }
-            .text-9xl { font-size: 3rem; }
-            .font-handwriting { font-size: 1.75rem !important; }
-            section { padding-top: 80px; padding-bottom: 30px; }
-            .gap-8 { gap: 1.25rem; }
-            .gap-4 { gap: 0.5rem; }
-            footer .max-w-7xl { padding: 0 12px 2rem; }
-            footer h2 { font-size: 1.75rem; }
+            .max-w-7xl {
+                padding: 0 12px;
+            }
+
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+
+            .text-5xl {
+                font-size: 2rem;
+            }
+
+            .text-6xl {
+                font-size: 2.2rem;
+            }
+
+            .text-7xl {
+                font-size: 2.5rem;
+            }
+
+            .text-8xl {
+                font-size: 2.8rem;
+            }
+
+            .text-9xl {
+                font-size: 3rem;
+            }
+
+            .font-handwriting {
+                font-size: 1.75rem !important;
+            }
+
+            section {
+                padding-top: 80px;
+                padding-bottom: 30px;
+            }
+
+            .gap-8 {
+                gap: 1.25rem;
+            }
+
+            .gap-4 {
+                gap: 0.5rem;
+            }
+
+            footer .max-w-7xl {
+                padding: 0 12px 2rem;
+            }
+
+            footer h2 {
+                font-size: 1.75rem;
+            }
         }
+
         @media (max-width: 400px) {
-            .text-4xl { font-size: 1.5rem; }
-            .text-9xl { font-size: 2.8rem; }
-            .font-handwriting { font-size: 1.5rem !important; }
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+
+            .text-9xl {
+                font-size: 2.8rem;
+            }
+
+            .font-handwriting {
+                font-size: 1.5rem !important;
+            }
         }
 
         /* ===== WAVE ===== */
-        .custom-wave-container { position: absolute; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 0; }
-        .wave-divider { bottom: -1px; }
-        .wave-footer { top: 0; transform: rotate(180deg); }
+        .custom-wave-container {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 0;
+        }
+
+        .wave-divider {
+            bottom: -1px;
+        }
+
+        .wave-footer {
+            top: 0;
+            transform: rotate(180deg);
+        }
 
         /* ===== CAROUSEL ===== */
-        #bestSellerCarousel { position: relative; overflow: hidden; }
-        #carouselTrack { display: flex; gap: 20px; padding: 8px 0; }
+        #bestSellerCarousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #carouselTrack {
+            display: flex;
+            gap: 20px;
+            padding: 8px 0;
+        }
 
         .carousel-card {
             min-width: 300px;
@@ -125,14 +415,16 @@
             position: relative;
             border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
+
         .carousel-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
             transform: scale(1.03);
             z-index: 5;
         }
+
         .carousel-card img {
             width: 100%;
             height: 250px;
@@ -140,7 +432,10 @@
             display: block;
             transition: transform 0.5s ease;
         }
-        .carousel-card:hover img { transform: scale(1.08); }
+
+        .carousel-card:hover img {
+            transform: scale(1.08);
+        }
 
         .card-overlay {
             position: absolute;
@@ -150,10 +445,13 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: rgba(0,0,0,0.45);
+            background: rgba(0, 0, 0, 0.45);
             backdrop-filter: blur(2px);
         }
-        .carousel-card:hover .card-overlay { opacity: 1; }
+
+        .carousel-card:hover .card-overlay {
+            opacity: 1;
+        }
 
         .card-popup {
             background: white;
@@ -165,7 +463,10 @@
             min-width: 160px;
             pointer-events: none;
         }
-        .carousel-card:hover .card-popup { transform: translateY(0); }
+
+        .carousel-card:hover .card-popup {
+            transform: translateY(0);
+        }
 
         /* Nav buttons */
         .carousel-nav-btn {
@@ -176,9 +477,9 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -188,9 +489,19 @@
             transition: background 0.2s, transform 0.2s;
             line-height: 1;
         }
-        .carousel-nav-btn:hover { background: #FFD700; transform: translateY(-50%) scale(1.1); }
-        #carouselBtnLeft  { left: 8px; }
-        #carouselBtnRight { right: 8px; }
+
+        .carousel-nav-btn:hover {
+            background: #FFD700;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #carouselBtnLeft {
+            left: 8px;
+        }
+
+        #carouselBtnRight {
+            right: 8px;
+        }
 
         /* Empty state carousel */
         .carousel-empty {
@@ -202,6 +513,7 @@
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800 overflow-x-hidden">
 
     @include('partials.navbar')
@@ -259,8 +571,8 @@
                 <div id="bestSellerCarousel" style="position: relative;">
 
                     @if ($portofolios->isNotEmpty())
-                        <button id="carouselBtnLeft"  class="carousel-nav-btn" aria-label="Sebelumnya">&#8249;</button>
-                        <button id="carouselBtnRight" class="carousel-nav-btn" aria-label="Berikutnya">&#8250;</button>
+                    <button id="carouselBtnLeft" class="carousel-nav-btn" aria-label="Sebelumnya">&#8249;</button>
+                    <button id="carouselBtnRight" class="carousel-nav-btn" aria-label="Berikutnya">&#8250;</button>
                     @endif
 
                     <div style="overflow: hidden;">
@@ -268,14 +580,14 @@
                             @forelse ($portofolios as $porto)
                             <div class="carousel-card">
                                 @if ($porto->gambar_url)
-                                    <img src="{{ $porto->gambar_url }}"
-                                         alt="{{ $porto->deskripsi ?? $porto->nama_kreator }}"
-                                         onerror="this.style.background='#f0f0f0'; this.src='';">
+                                <img src="{{ $porto->gambar_url }}"
+                                    alt="{{ $porto->deskripsi ?? $porto->nama_kreator }}"
+                                    onerror="this.style.background='#f0f0f0'; this.src='';">
                                 @else
-                                    {{-- Placeholder warna jika tidak ada gambar --}}
-                                    <div style="width:100%;height:250px;background:linear-gradient(135deg,#FFD700,#ff9f43);display:flex;align-items:center;justify-content:center;">
-                                        <span style="font-size:13px;color:#fff;font-weight:600;">{{ $porto->kode }}</span>
-                                    </div>
+                                {{-- Placeholder warna jika tidak ada gambar --}}
+                                <div style="width:100%;height:250px;background:linear-gradient(135deg,#FFD700,#ff9f43);display:flex;align-items:center;justify-content:center;">
+                                    <span style="font-size:13px;color:#fff;font-weight:600;">{{ $porto->kode }}</span>
+                                </div>
                                 @endif
                                 <div class="card-overlay">
                                     <div class="card-popup">
@@ -314,7 +626,7 @@
     <section id="testimoni" class="py-24 bg-[#F9F5F0] relative overflow-hidden">
         <img src="{{ asset('Image/titik.png') }}" alt="Titik" class="absolute top-0 left-0 h-full">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
-             style="background-Image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
+            style="background-Image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -324,7 +636,7 @@
                     <div class="flex justify-between items-end mb-10 border-b border-black/10 pb-6">
                         <h2 class="text-4xl md:text-5xl font-bold text-black font-poppins">Testimoni</h2>
                         <a href="/testimoni"
-                           class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">
+                            class="hidden md:inline-flex items-center text-lg font-semibold text-black hover:opacity-70 transition group">
                             See More
                             <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&gt;</span>
                         </a>
@@ -341,21 +653,21 @@
                                 <div class="relative inline-block flex-shrink-0">
                                     {{-- Avatar: gunakan foto user jika ada, fallback ke placeholder --}}
                                     <img src="https://placehold.co/40x40"
-                                         alt="{{ $t->nama }}"
-                                         class="w-10 h-10 rounded-full object-cover">
+                                        alt="{{ $t->nama }}"
+                                        class="w-10 h-10 rounded-full object-cover">
                                     <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
                                         <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white"
-                                             stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12"/>
+                                            stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12" />
                                         </svg>
                                     </div>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-900 text-sm">{{ $t->nama }}</h4>
                                     @if ($t->user)
-                                        <span class="text-xs text-gray-400">
-                                            {{ $t->user->whatsapp ? '+'.ltrim($t->user->whatsapp, '0') : '' }}
-                                        </span>
+                                    <span class="text-xs text-gray-400">
+                                        {{ $t->user->whatsapp ? '+'.ltrim($t->user->whatsapp, '0') : '' }}
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -422,15 +734,15 @@
 
                     <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                         @foreach ([
-                            ['Profesional', 'Tim berpengalaman dan tersertifikasi di bidangnya'],
-                            ['Cepat', 'Proses pengerjaan yang efisien tanpa mengorbankan kualitas'],
-                            ['Berkualitas', 'Standar kerja tinggi dengan hasil yang memuaskan'],
-                            ['Terpercaya', 'Transparan, amanah, dan bertanggung jawab'],
+                        ['Profesional', 'Tim berpengalaman dan tersertifikasi di bidangnya'],
+                        ['Cepat', 'Proses pengerjaan yang efisien tanpa mengorbankan kualitas'],
+                        ['Berkualitas', 'Standar kerja tinggi dengan hasil yang memuaskan'],
+                        ['Terpercaya', 'Transparan, amanah, dan bertanggung jawab'],
                         ] as [$judul, $desc])
                         <div class="flex items-start gap-4 {{ !$loop->last ? 'mb-5' : '' }}">
                             <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm">
                                 <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div>
@@ -447,113 +759,120 @@
 
     <!-- ================= FOOTER ================= -->
     <footer class="relative">
-        <img src="{{ asset('Image/wave.png') }}"   alt="Wave" class="absolute -top-14 left-0 w-full z-0 pointer-events-none">
-        <img src="{{ asset('Image/titik2.png') }}" alt="Wave" class="absolute -top-11 left-0 w-full z-0 pointer-events-none">
+        <img src="{{ asset('Image/wave.png') }}" alt="Wave" class="absolute -top-20 md:-top-14 left-0 w-full z-0 pointer-events-none">
+        <img src="{{ asset('Image/titik2.png') }}" alt="Wave" class="absolute bottom-0 md:-top-11 left-0 w-full z-10 pointer-events-none">
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-[8rem] pt-[12rem]">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
-            <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Syarat & Ketentuan</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li>
-            </ul>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-5 pb-[8rem] pt-[12rem] bg-[#2c2a2a] md:bg-transparent">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div>
+                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-yellow-400 transition">Pemesanan Online</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Informasi Testimoni</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Customer Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Tentang Kami</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Karier</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Partner & Kerja Sama</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Kontak Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-yellow-400 transition">Cara Daftar Akun</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Cara Pemesanan Online</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
-            <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-yellow-400 transition">Pemesanan Online</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Informasi Testimoni</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Customer Services</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Tentang Kami</h3>
-            <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Karier</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Partner & Kerja Sama</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Kontak Kami</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
-            <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-yellow-400 transition">Cara Daftar Akun</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Cara Pemesanan Online</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li>
-                <li><a href="#" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
     </footer>
 
     <!-- ================= CAROUSEL SCRIPT ================= -->
     @if ($portofolios->isNotEmpty())
     <script>
-    (function () {
-        const track    = document.getElementById('carouselTrack');
-        const carousel = document.getElementById('bestSellerCarousel');
-        const btnLeft  = document.getElementById('carouselBtnLeft');
-        const btnRight = document.getElementById('carouselBtnRight');
+        (function() {
+            const track = document.getElementById('carouselTrack');
+            const carousel = document.getElementById('bestSellerCarousel');
+            const btnLeft = document.getElementById('carouselBtnLeft');
+            const btnRight = document.getElementById('carouselBtnRight');
 
-        if (!track || track.children.length === 0) return;
+            if (!track || track.children.length === 0) return;
 
-        // Duplikat item agar loop seamless
-        const origCards = Array.from(track.children);
-        origCards.forEach(card => track.appendChild(card.cloneNode(true)));
+            // Duplikat item agar loop seamless
+            const origCards = Array.from(track.children);
+            origCards.forEach(card => track.appendChild(card.cloneNode(true)));
 
-        function totalOrigWidth() {
-            let w = 0;
-            origCards.forEach(card => { w += card.offsetWidth + 20; });
-            return w;
-        }
-
-        let offset   = 0;
-        let paused   = false;
-        let lastTime = null;
-        const SPEED  = 8000; // px per detik (lebih besar = lebih lambat)
-
-        function animate(ts) {
-            if (!paused) {
-                if (lastTime !== null) {
-                    const delta = ts - lastTime;
-                    offset += (delta / SPEED) * totalOrigWidth();
-                    if (offset >= totalOrigWidth()) offset -= totalOrigWidth();
-                    track.style.transform = 'translateX(-' + offset + 'px)';
-                }
-                lastTime = ts;
-            } else {
-                lastTime = null;
+            function totalOrigWidth() {
+                let w = 0;
+                origCards.forEach(card => {
+                    w += card.offsetWidth + 20;
+                });
+                return w;
             }
+
+            let offset = 0;
+            let paused = false;
+            let lastTime = null;
+            const SPEED = 8000; // px per detik (lebih besar = lebih lambat)
+
+            function animate(ts) {
+                if (!paused) {
+                    if (lastTime !== null) {
+                        const delta = ts - lastTime;
+                        offset += (delta / SPEED) * totalOrigWidth();
+                        if (offset >= totalOrigWidth()) offset -= totalOrigWidth();
+                        track.style.transform = 'translateX(-' + offset + 'px)';
+                    }
+                    lastTime = ts;
+                } else {
+                    lastTime = null;
+                }
+                requestAnimationFrame(animate);
+            }
+
+            carousel.addEventListener('mouseenter', () => {
+                paused = true;
+            });
+            carousel.addEventListener('mouseleave', () => {
+                paused = false;
+            });
+
+            btnLeft && btnLeft.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
+                offset = Math.max(0, offset - step);
+                track.style.transform = 'translateX(-' + offset + 'px)';
+            });
+
+            btnRight && btnRight.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
+                offset = (offset + step) % totalOrigWidth();
+                track.style.transform = 'translateX(-' + offset + 'px)';
+            });
+
             requestAnimationFrame(animate);
-        }
-
-        carousel.addEventListener('mouseenter', () => { paused = true; });
-        carousel.addEventListener('mouseleave', () => { paused = false; });
-
-        btnLeft && btnLeft.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
-            offset = Math.max(0, offset - step);
-            track.style.transform = 'translateX(-' + offset + 'px)';
-        });
-
-        btnRight && btnRight.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const step = origCards[0] ? origCards[0].offsetWidth + 20 : 320;
-            offset = (offset + step) % totalOrigWidth();
-            track.style.transform = 'translateX(-' + offset + 'px)';
-        });
-
-        requestAnimationFrame(animate);
-    })();
+        })();
     </script>
     @endif
 
 </body>
+
 </html>
