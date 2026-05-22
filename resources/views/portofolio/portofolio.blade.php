@@ -354,11 +354,7 @@
 {{-- NAVBAR --}}
 @include('partials.navbar')
 
-{{-- BREADCRUMB --}}
-<div class="breadcrumb">
-  <a href="{{ url('/') }}">Beranda</a> &rsaquo;
-  <span>Portofolio</span>
-</div>
+
 
 {{-- MAIN --}}
 <main>
