@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LeLiLu - Portofolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,57 +23,6 @@
       background: var(--white);
       color: var(--dark);
       overflow-x: hidden;
-    }
-
-    /* ===== NAVBAR ===== */
-    nav {
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-weight: 800;
-      font-size: 1.15rem;
-      padding: 18px 28px;
-      border-right: 1px solid var(--border);
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      flex: 1;
-    }
-
-    .nav-links li a {
-      display: block;
-      padding: 18px 28px;
-      text-decoration: none;
-      color: var(--dark);
-      font-size: 0.9rem;
-      font-weight: 500;
-      border-right: 1px solid var(--border);
-    }
-
-    .nav-links li a:hover { color: var(--yellow); }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 0 24px;
-    }
-
-    .btn-login {
-      background: var(--yellow);
-      border: none;
-      border-radius: 24px;
-      padding: 8px 22px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      color: var(--dark);
     }
 
     /* ===== BREADCRUMB ===== */
@@ -148,9 +98,7 @@
       color: #aaa;
     }
 
-    .porto-body {
-      padding: 16px 16px 18px;
-    }
+    .porto-body { padding: 16px 16px 18px; }
 
     .porto-kode {
       font-size: 0.7rem;
@@ -160,39 +108,16 @@
       letter-spacing: 0.5px;
     }
 
-    .porto-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
+    .porto-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
 
-    .porto-desc {
-      font-size: 0.78rem;
-      color: var(--gray);
-      line-height: 1.5;
-    }
+    .porto-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.5; }
 
     /* ===== EMPTY STATE ===== */
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--gray);
-    }
-
-    .empty-state span {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 12px;
-    }
+    .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--gray); }
+    .empty-state span { font-size: 3rem; display: block; margin-bottom: 12px; }
 
     /* ===== PAGINATION ===== */
-    .pagination-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 28px;
-    }
+    .pagination-wrap { display: flex; align-items: center; gap: 8px; margin-top: 28px; }
 
     .pagination-wrap .page-link {
       display: inline-flex;
@@ -211,15 +136,72 @@
     }
 
     .pagination-wrap .page-link:hover,
-    .pagination-wrap .page-link.active {
-      background: var(--yellow);
-      border-color: var(--yellow);
-    }
+    .pagination-wrap .page-link.active { background: var(--yellow); border-color: var(--yellow); }
+    .pagination-wrap .page-link.disabled { opacity: 0.4; pointer-events: none; }
 
-    .pagination-wrap .page-link.disabled {
-      opacity: 0.4;
-      pointer-events: none;
+    /* ===== MODAL GAMBAR ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: fadeIn 0.25s ease;
     }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      max-width: 90vw;
+      max-height: 90vh;
+      cursor: default;
+      animation: zoomIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-box img {
+      max-width: 90vw;
+      max-height: 70vh;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      cursor: default;
+      display: block;
+    }
+    .modal-desc {
+      background: #fff;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 0 0 12px 12px;
+      text-align: left;
+    }
+    .modal-desc h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .modal-desc p {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform 0.2s;
+      z-index: 1000;
+    }
+    .modal-close:hover { transform: scale(1.2); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
     /* ===== PROYEK SECTION ===== */
     .proyek-section {
@@ -240,17 +222,9 @@
       letter-spacing: -1px;
     }
 
-    .proyek-title .highlight {
-      color: var(--yellow);
-      font-style: italic;
-    }
+    .proyek-title .highlight { color: var(--yellow); font-style: italic; }
 
-    .proyek-desc {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
+    .proyek-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
 
     .btn-gabung {
       background: var(--yellow);
@@ -267,64 +241,17 @@
       display: inline-block;
     }
 
-    .proyek-right {
-      flex: 1;
-      max-width: 400px;
-    }
+    .proyek-right { flex: 1; max-width: 400px; }
 
-    .proyek-img-placeholder {
-      width: 100%;
-      height: 280px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+    .proyek-img-placeholder { width: 100%; height: 280px; border-radius: 12px; overflow: hidden; }
 
-    .proyek-indicator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
+    .proyek-indicator { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
     .ind-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
     .ind-line { width: 80px; height: 3px; background: var(--yellow); border-radius: 2px; }
 
     /* ===== FOOTER ART ===== */
-    .footer-art { width: 100%; height: 220px; overflow: hidden; }
+    .footer-art { width: 100%; height: 300px; overflow: hidden; }
     .footer-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #1a1a1a;
-      padding: 0 0 60px;
-    }
-
-    .footer-inner { padding: 0 48px; }
-
-    .footer-logo {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 48px;
-      display: block;
-    }
-
-    .footer-cols {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .footer-col h4 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col ul li a { text-decoration: none; color: #ccc; font-size: 0.82rem; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--yellow); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
@@ -332,7 +259,6 @@
     }
 
     @media (max-width: 800px) {
-      .footer-cols { grid-template-columns: repeat(2, 1fr); }
       .proyek-section { flex-direction: column; padding: 40px 20px; }
       .proyek-left, .proyek-right { flex: none; width: 100%; }
       .proyek-title { font-size: 2rem; }
@@ -341,9 +267,6 @@
     @media (max-width: 600px) {
       .portfolio-grid { grid-template-columns: 1fr; }
       .main-content { padding: 16px 16px 24px; }
-      .footer-inner { padding: 0 20px; }
-      .footer-cols { grid-template-columns: 1fr; }
-      .footer-logo { font-size: 1.8rem; margin-bottom: 24px; }
       .footer-art { height: 150px; }
       .proyek-title { font-size: 1.6rem; }
     }
@@ -353,8 +276,6 @@
 
 {{-- NAVBAR --}}
 @include('partials.navbar')
-
-
 
 {{-- MAIN --}}
 <main>
@@ -368,9 +289,8 @@
       @forelse ($portfolios as $porto)
         <div class="porto-card">
 
-          {{-- Gambar: pakai accessor gambar_url dari model --}}
           @if ($porto->gambar_url)
-            <img class="porto-img" src="{{ $porto->gambar_url }}" alt="{{ $porto->nama_kreator }}">
+            <img class="porto-img" src="{{ $porto->gambar_url }}" alt="{{ $porto->nama_kreator }}" style="cursor:pointer" onclick="openModal(this.src, '{{ $porto->nama_kreator }}', '{{ addslashes($porto->deskripsi ?? '') }}')">
           @else
             <div class="porto-img-placeholder">🖼️</div>
           @endif
@@ -445,49 +365,37 @@
 </div>
 
 {{-- FOOTER --}}
-<footer>
-  <div class="footer-inner">
-    <span class="footer-logo">LeLiLu</span>
-    <div class="footer-cols">
-      <div class="footer-col">
-        <h4>Bantuan &amp; Dukungan</h4>
-        <ul>
-          <li><a href="#">Hubungi Kami</a></li>
-          <li><a href="#">Pusat Bantuan</a></li>
-          <li><a href="#">Syarat &amp; Ketentuan</a></li>
-          <li><a href="#">Kebijakan Privasi</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Layanan &amp; Informasi</h4>
-        <ul>
-          <li><a href="#">Pemesanan Online</a></li>
-          <li><a href="#">Informasi Testimoni</a></li>
-          <li><a href="#">Jasa Desain</a></li>
-          <li><a href="#">Customer Services</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Tentang Kami</h4>
-        <ul>
-          <li><a href="#">Tentang LeLiLu</a></li>
-          <li><a href="#">Karier</a></li>
-          <li><a href="#">Partner &amp; Kerja Sama</a></li>
-          <li><a href="#">Kontak Kami</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Panduan Pengguna</h4>
-        <ul>
-          <li><a href="#">Cara Daftar Akun</a></li>
-          <li><a href="#">Cara Pemesanan Online</a></li>
-          <li><a href="#">Panduan Pembayaran</a></li>
-          <li><a href="#">Informasi Lainnya</a></li>
-        </ul>
-      </div>
+<div style="margin-top: -120px; position: relative; z-index: 1;">
+  @include('partfoot.footer')
+</div>
+
+{{-- MODAL GAMBAR --}}
+<div class="modal-overlay" id="imgModal" onclick="closeModal(event)">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <div class="modal-box">
+    <img id="modalImg" src="" alt="">
+    <div class="modal-desc">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
     </div>
   </div>
-</footer>
+</div>
+
+<script>
+function openModal(src, title, desc) {
+  document.getElementById('modalImg').src = src;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('imgModal').classList.add('open');
+}
+function closeModal(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('imgModal').classList.remove('open');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('imgModal').classList.remove('open');
+});
+</script>
 
 </body>
 </html>

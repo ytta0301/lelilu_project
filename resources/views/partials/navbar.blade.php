@@ -1,8 +1,6 @@
 {{-- =============================================================== --}}
 {{-- FILE : resources/views/partials/navbar.blade.php              --}}
 {{-- CARA PAKAI : @include('partials.navbar')                      --}}
-{{-- CATATAN : CSS sudah di-scope dengan prefix .lelu-nav          --}}
-{{--           agar tidak bentrok dengan CSS halaman lain          --}}
 {{-- =============================================================== --}}
 
 <style>
@@ -19,7 +17,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 72px;
+        height: 64px;
         background-color: #ffffff;
         border-bottom: 1px solid #f0f0f0;
         box-shadow: 0 1px 6px rgba(0,0,0,0.06);
@@ -75,9 +73,7 @@
         transition: color 0.2s;
     }
 
-    .lelu-nav__links a:hover {
-        color: #1a1a1a;
-    }
+    .lelu-nav__links a:hover { color: #1a1a1a; }
 
     /* ===== KANAN: Auth ===== */
     .lelu-nav__right {
@@ -99,6 +95,7 @@
         text-decoration: none;
         display: inline-block;
         transition: background-color 0.2s, transform 0.1s;
+        white-space: nowrap;
     }
 
     .lelu-nav__btn:hover  { background-color: #e6c200; }
@@ -122,11 +119,8 @@
         transition: background-color 0.2s;
     }
 
-    .lelu-nav__profile-trigger:hover {
-        background-color: #f5f5f5;
-    }
+    .lelu-nav__profile-trigger:hover { background-color: #f5f5f5; }
 
-    /* Avatar: lingkaran kuning berisi inisial nama */
     .lelu-nav__profile-avatar {
         width: 32px;
         height: 32px;
@@ -157,7 +151,6 @@
         flex-shrink: 0;
     }
 
-    /* Putar chevron saat dropdown terbuka */
     .lelu-nav__profile-trigger[aria-expanded="true"] .lelu-nav__profile-chevron {
         transform: rotate(180deg);
     }
@@ -178,16 +171,13 @@
         animation: leluDropIn 0.15s ease-out;
     }
 
-    .lelu-nav__dropdown.is-open {
-        display: block;
-    }
+    .lelu-nav__dropdown.is-open { display: block; }
 
     @keyframes leluDropIn {
         from { opacity: 0; transform: translateY(-6px); }
         to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Header dropdown: nama + email */
     .lelu-nav__dropdown-header {
         padding: 14px 16px;
         border-bottom: 1px solid #f0f0f0;
@@ -211,7 +201,6 @@
         white-space: nowrap;
     }
 
-    /* Item dropdown */
     .lelu-nav__dropdown-item {
         display: flex;
         align-items: center;
@@ -235,31 +224,21 @@
         color: #1a1a1a;
     }
 
-    .lelu-nav__dropdown-item svg {
-        flex-shrink: 0;
-        color: #aaa;
-    }
+    .lelu-nav__dropdown-item svg { flex-shrink: 0; color: #aaa; }
+    .lelu-nav__dropdown-item:hover svg { color: #FFD700; }
 
-    .lelu-nav__dropdown-item:hover svg {
-        color: #FFD700;
-    }
-
-    /* Garis pemisah */
     .lelu-nav__dropdown-sep {
         height: 1px;
         background-color: #f0f0f0;
         margin: 4px 0;
     }
 
-    /* Item logout (merah saat hover) */
     .lelu-nav__dropdown-item--danger:hover {
         background-color: #fff5f5;
         color: #dc3545;
     }
 
-    .lelu-nav__dropdown-item--danger:hover svg {
-        color: #dc3545;
-    }
+    .lelu-nav__dropdown-item--danger:hover svg { color: #dc3545; }
 
     /* ===== HAMBURGER ===== */
     .lelu-nav__hamburger {
@@ -269,6 +248,7 @@
         cursor: pointer;
         padding: 6px;
         color: #555;
+        flex-shrink: 0;
     }
 
     /* ===== MOBILE MENU ===== */
@@ -277,7 +257,7 @@
         flex-direction: column;
         gap: 4px;
         position: absolute;
-        top: 72px;
+        top: 64px;
         left: 0;
         width: 100%;
         background-color: #ffffff;
@@ -287,9 +267,7 @@
         z-index: 998;
     }
 
-    .lelu-nav__mobile.is-open {
-        display: flex;
-    }
+    .lelu-nav__mobile.is-open { display: flex; }
 
     .lelu-nav__mobile a {
         font-size: 0.9rem;
@@ -327,9 +305,7 @@
         text-decoration: none;
     }
 
-    .lelu-nav__mobile-auth a:not(.lelu-nav__btn):hover {
-        color: #1a1a1a;
-    }
+    .lelu-nav__mobile-auth a:not(.lelu-nav__btn):hover { color: #1a1a1a; }
 
     .lelu-nav__mobile-auth .lelu-nav__btn {
         text-align: center;
@@ -338,16 +314,38 @@
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-        .lelu-nav__links,
-        .lelu-nav__divider  { display: none; }
 
-        .lelu-nav__profile  { display: none; }
-        .lelu-nav__btn      { display: none; }
+    /* Tablet (769px - 1024px):
+       Sembunyikan nav links & divider, tampilkan hamburger.
+       Tombol Login/Profile TETAP TERLIHAT di kanan navbar. */
+    @media (max-width: 1024px) {
+        .lelu-nav__links,
+        .lelu-nav__divider { display: none; }
 
         .lelu-nav__hamburger { display: block; }
+    }
 
-        .lelu-nav__inner { padding: 0 20px; }
+    /* Mobile (≤ 768px):
+       Tombol Login TETAP TERLIHAT (lebih kecil) di sebelah hamburger.
+       Profile dropdown disembunyikan — gantinya pakai mobile menu. */
+    @media (max-width: 768px) {
+        .lelu-nav__inner { padding: 0 16px; }
+
+        /* Login button: perkecil padding agar muat di mobile */
+        .lelu-nav__btn {
+            font-size: 0.8rem;
+            padding: 8px 18px;
+        }
+
+        /* Profile dropdown desktop disembunyikan di mobile —
+           info user sudah ada di mobile menu */
+        .lelu-nav__profile-name,
+        .lelu-nav__profile-chevron { display: none; }
+
+        /* Avatar tetap muncul sebagai indikator sudah login */
+        .lelu-nav__profile-trigger {
+            padding: 4px 6px;
+        }
     }
 </style>
 
@@ -365,22 +363,19 @@
                 <li><a href="{{ url('/portofolio') }}">Portofolio</a></li>
                 <li><a href="{{ url('/testimoni') }}">Testimoni</a></li>
                 <li><a href="{{ url('/chatbot') }}">FAQ</a></li>
-                <!-- <li><a href="{{ url('/produk') }}">Produk</a></li> -->
             </ul>
         </div>
 
         {{-- ===== KANAN ===== --}}
         <div class="lelu-nav__right">
             @auth
-                {{-- ── PROFILE DROPDOWN (desktop) ── --}}
+                {{-- Profile (desktop: nama + chevron | mobile: avatar saja) --}}
                 <div class="lelu-nav__profile">
-
                     <button class="lelu-nav__profile-trigger"
                             onclick="leluToggleDropdown()"
                             aria-haspopup="true"
                             aria-expanded="false"
                             id="leluProfileTrigger">
-                        {{-- Inisial nama sebagai avatar --}}
                         <div class="lelu-nav__profile-avatar">
                             {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                         </div>
@@ -392,16 +387,10 @@
                     </button>
 
                     <div class="lelu-nav__dropdown" id="leluDropdown">
-
-                        {{-- Header: nama + email --}}
                         <div class="lelu-nav__dropdown-header">
                             <span class="lelu-nav__dropdown-header-name">{{ auth()->user()->name }}</span>
                             <span class="lelu-nav__dropdown-header-email">{{ auth()->user()->email }}</span>
                         </div>
-
-                        {{-- ══════════════════════════════════════════════════ --}}
-                        {{-- TAMBAH / KURANGI ITEM MENU DI SINI                --}}
-                        {{-- ══════════════════════════════════════════════════ --}}
 
                         <a href="{{ url('/profile') }}" class="lelu-nav__dropdown-item">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
@@ -417,7 +406,6 @@
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             Riwayat Pesanan
                         </a>
-                        {{-- ══ ADMIN PANEL (hanya tampil jika user adalah admin) ══ --}}
 
                         @if(auth()->user()->role === 'admin')
                             <a href="{{ url('/admin/pesanan') }}" class="lelu-nav__dropdown-item">
@@ -429,8 +417,7 @@
                             </a>
                             <div class="lelu-nav__dropdown-sep"></div>
                         @endif
-                        
-                        {{-- ══ GARIS PEMISAH + LOGOUT ══ --}}
+
                         <div class="lelu-nav__dropdown-sep"></div>
 
                         <form action="{{ url('/logout') }}" method="POST">
@@ -440,20 +427,15 @@
                                 Log out
                             </button>
                         </form>
-
                     </div>
                 </div>
 
-                {{-- <form action="{{ url('/logout') }}" method="POST" style="display:inline">
-                    @csrf
-                    <button type="submit" class="lelu-nav__btn">Log out</button>
-                </form> --}}
-
             @else
+                {{-- ✅ Tombol Login selalu terlihat: desktop & mobile --}}
                 <a href="{{ url('/login') }}" class="lelu-nav__btn">Log in</a>
             @endauth
 
-            {{-- Hamburger (mobile) --}}
+            {{-- Hamburger (tablet & mobile) --}}
             <button class="lelu-nav__hamburger" onclick="leluToggleMenu()" aria-label="Menu">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
                      stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -465,35 +447,39 @@
         </div>
     </div>
 
-    {{-- ===== MOBILE MENU ===== --}}
+    {{-- ===== MOBILE MENU (hamburger) ===== --}}
     <div class="lelu-nav__mobile" id="leluMobileMenu">
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/portofolio') }}">Portofolio</a>
         <a href="{{ url('/testimoni') }}">Testimoni</a>
+        <a href="{{ url('/chatbot') }}">FAQ</a>
 
         <div class="lelu-nav__mobile-auth">
             @auth
                 <span class="lelu-nav__username">{{ auth()->user()->name }}</span>
                 <a href="{{ url('/profile') }}">Profil Saya</a>
+                <a href="{{ url('/dashboard') }}">Dashboard</a>
                 <a href="{{ url('/history') }}">Riwayat Pesanan</a>
-                <a href="{{ url('/chatbot') }}">Hubungi Admin</a>
+                @if(auth()->user()->role === 'admin')
+                    <a href="{{ url('/admin/pesanan') }}">Admin Panel</a>
+                @endif
                 <form action="{{ url('/logout') }}" method="POST" style="margin-top:4px">
                     @csrf
                     <button type="submit" class="lelu-nav__btn">Log out</button>
                 </form>
             @else
+                {{-- Tetap ada di mobile menu sebagai alternatif --}}
                 <a href="{{ url('/login') }}" class="lelu-nav__btn">Log in</a>
             @endauth
         </div>
     </div>
 </nav>
 
-{{-- Spacer agar konten halaman tidak tertutup navbar --}}
-<div style="height: 72px; flex-shrink: 0;"></div>
+{{-- Spacer agar konten tidak tertutup navbar --}}
+<div style="height: 64px; flex-shrink: 0;"></div>
 
 @once
 <script>
-    /* ── Toggle dropdown profil ── */
     function leluToggleDropdown() {
         const dropdown = document.getElementById('leluDropdown');
         const trigger  = document.getElementById('leluProfileTrigger');
@@ -501,7 +487,6 @@
         trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 
-    /* ── Tutup dropdown jika klik di luar area ── */
     document.addEventListener('click', function (e) {
         const profile  = document.querySelector('.lelu-nav__profile');
         const dropdown = document.getElementById('leluDropdown');
@@ -512,7 +497,6 @@
         }
     });
 
-    /* ── Toggle mobile menu ── */
     function leluToggleMenu() {
         document.getElementById('leluMobileMenu').classList.toggle('is-open');
     }

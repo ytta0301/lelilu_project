@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LeLiLu - Testimoni</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -135,6 +136,16 @@
       color: #333;
       margin-bottom: 20px;
       flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .card-text.expanded {
+      -webkit-line-clamp: unset;
+      display: block;
     }
 
     .card-author {
@@ -288,7 +299,7 @@
     <div class="testimonial-grid">
       @forelse ($testimonis as $t)
         <div class="card">
-          <p class="card-text">{{ $t->isi_testimoni }}</p>
+          <p class="card-text" onclick="this.classList.toggle('expanded')">{{ $t->isi_testimoni }}</p>
           <div class="card-author">
             <div class="avatar-wrap">
               <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name ?? $t->nama), 0, 6) }}">
@@ -312,9 +323,14 @@
     </div>
   </main>
 
-  {{-- FOOTER ART — di luar main agar full width --}}
+  {{-- FOOTER ART --}}
   <div class="footer-art">
-    <img src="{{ asset('Image/canvas.png') }}" alt="decoration">
+    <img src="{{ asset('Image/canvas.png') }}" alt="">
+  </div>
+
+  {{-- FOOTER --}}
+  <div style="margin-top: -120px; position: relative; z-index: 1;">
+    @include('partfoot.footer')
   </div>
 
 </body>

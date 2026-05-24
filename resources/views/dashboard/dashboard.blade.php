@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeLilu - Desain & Ilustrasi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --primary-yellow: #F7D038;
@@ -836,54 +837,7 @@
 </section>
 
     <!-- Footer -->
-    <footer class="footer-wrapper">
-        <div class="footer-waves">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z" fill="#333333"></path>
-            </svg>
-        </div>
-        
-        <div class="footer-content">
-            <div class="footer-logo">LeLilu</div>
-            
-            <div class="footer-col">
-                <h5>Bantuan & Dukungan</h5>
-                <ul>
-                    <li>Hubungi Kami</li>
-                    <li>Pusat Bantuan</li>
-                    <li>Syarat & Ketentuan</li>
-                    <li>Kebijakan Privasi</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Layanan & Informasi</h5>
-                <ul>
-                    <li>Pemesanan Online</li>
-                    <li>Informasi Testimoni</li>
-                    <li>Jasa Desain</li>
-                    <li>Customer Service</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Tentang Kami</h5>
-                <ul>
-                    <li>Tentang LeLilu</li>
-                    <li>Karier</li>
-                    <li>Partner & Kerja Sama</li>
-                    <li>Kontak Kami</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Panduan Pengguna</h5>
-                <ul>
-                    <li>Cara Daftar Akun</li>
-                    <li>Cara Pemesanan Online</li>
-                    <li>Panduan Pembayaran</li>
-                    <li>Informasi Lainnya</li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    @include('partfoot.footer')
 
 </body>
 </html>
