@@ -65,7 +65,8 @@ class PemesananController extends Controller
             "Deskripsi: {$request->brief}"
         );
 
-        $nomorAdmin = env('WA_ADMIN');
+        // $nomorAdmin = env('WA_ADMIN');
+        $nomorAdmin = 6287787550993;
 
         return redirect()->route('order.thanks')
             ->with('wa_url', "https://wa.me/{$nomorAdmin}?text={$pesan}");
