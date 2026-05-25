@@ -91,6 +91,8 @@
         .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform 0.2s; }
         .toggle.on::after { transform: translateX(16px); }
         .toggle-label { font-size: 12px; color: #6B7280; }
+
+        .compress-info { font-size: 11px; color: #9CA3AF; margin-top: 6px; }
     </style>
 </head>
 <body>
@@ -195,20 +197,23 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
                 <p style="font-size:12px;color:#9CA3AF;">Klik atau drag gambar ke sini</p>
-                <p style="font-size:11px;color:#C0C5CE;">PNG, JPG, WEBP — maks 2MB</p>
+                <p style="font-size:11px;color:#C0C5CE;">PNG, JPG, WEBP — otomatis dikompres</p>
             </div>
 
             <div id="previewWrap" style="display:none;align-items:center;gap:12px;margin-top:10px;">
                 <img id="previewImg" src="" alt="preview"
                      style="width:60px;height:60px;border-radius:10px;object-fit:cover;">
-                <button type="button" id="btnGanti"
-                        style="font-size:12px;padding:5px 12px;border:1px solid #E5E7EB;border-radius:8px;
-                               background:transparent;color:#6B7280;cursor:pointer;font-family:'Poppins',sans-serif;">
-                    Ganti gambar
-                </button>
+                <div>
+                    <button type="button" id="btnGanti"
+                            style="font-size:12px;padding:5px 12px;border:1px solid #E5E7EB;border-radius:8px;
+                                   background:transparent;color:#6B7280;cursor:pointer;font-family:'Poppins',sans-serif;">
+                        Ganti gambar
+                    </button>
+                    <p class="compress-info" id="compressInfo"></p>
+                </div>
             </div>
 
-            <input type="file" id="inputFile" accept="Image/*" style="display:none">
+            <input type="file" id="inputFile" accept="image/*" style="display:none">
         </div>
 
         <div class="form-group">
@@ -262,11 +267,9 @@
     const previewWrap   = document.getElementById('previewWrap');
     const dropzone      = document.getElementById('dropzone');
     const btnGanti      = document.getElementById('btnGanti');
+    const compressInfo  = document.getElementById('compressInfo');
     const tbody         = document.getElementById('tbody');
     const searchInput   = document.getElementById('searchInput');
-    const statTotal     = document.getElementById('statTotal');
-    const statAktif     = document.getElementById('statAktif');
-    const statHapus     = document.getElementById('statHapus');
     const pgInfo        = document.getElementById('pgInfo');
     const pgTotal       = document.getElementById('pgTotal');
     const pageSelect    = document.getElementById('pageSelect');
@@ -276,7 +279,7 @@
     const toggleAktif   = document.getElementById('toggleAktif');
     const toggleLabel   = document.getElementById('toggleLabel');
 
-    let selectedFile = null;
+    let compressedBlob = null;
     let existingImage = null;
 
     function getCsrfToken() {
@@ -287,6 +290,51 @@
         if (!dateStr) return '-';
         const d = new Date(dateStr);
         return d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function formatSize(bytes) {
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    // ─── Fungsi kompres gambar via Canvas ───────────────────────────────────
+    function compressImage(file, maxWidth, maxHeight, quality) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onerror = () => reject(new Error('Gagal membaca file'));
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onerror = () => reject(new Error('Gagal memuat gambar'));
+                img.onload = () => {
+                    let w = img.width;
+                    let h = img.height;
+
+                    if (w > maxWidth || h > maxHeight) {
+                        const ratio = Math.min(maxWidth / w, maxHeight / h);
+                        w = Math.round(w * ratio);
+                        h = Math.round(h * ratio);
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width  = w;
+                    canvas.height = h;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, w, h);
+
+                    canvas.toBlob(
+                        (blob) => {
+                            if (!blob) return reject(new Error('Kompresi gagal'));
+                            resolve(blob);
+                        },
+                        'image/jpeg',
+                        quality
+                    );
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     const gradients = [
@@ -305,8 +353,7 @@
     }
 
     function render() {
-        const total = data.length;
-        document.getElementById('statTotal').textContent = total;
+        document.getElementById('statTotal').textContent = data.length;
         document.getElementById('statAktif').textContent = data.filter(d => d.is_aktif).length;
         document.getElementById('statHapus').textContent = deletedCount;
 
@@ -379,12 +426,13 @@
         btnSimpan.textContent = 'Simpan';
         inputNama.value = '';
         inputDesc.value = '';
-        selectedFile = null;
+        compressedBlob = null;
         existingImage = null;
         previewWrap.style.display = 'none';
         dropzone.style.display = 'flex';
         previewImg.src = '';
         inputFile.value = '';
+        compressInfo.textContent = '';
         toggleAktif.classList.add('on');
         toggleLabel.textContent = 'Aktif';
         toggleModal(true);
@@ -400,26 +448,53 @@
         toggleLabel.textContent = toggleAktif.classList.contains('on') ? 'Aktif' : 'Nonaktif';
     });
 
-    function handleFile(file) {
+    async function handleFile(file) {
         if (!file || !file.type.startsWith('image/')) {
             showToast('File harus berupa gambar!', 'error');
             return;
         }
-        if (file.size > 2 * 1024 * 1024) {
-            showToast('Ukuran gambar maks 2MB!', 'error');
-            return;
-        }
-        selectedFile = file;
-        const reader = new FileReader();
-        reader.onload = e => {
-            previewImg.src = e.target.result;
+
+        // Tampilkan loading di dropzone
+        dropzone.style.display = 'none';
+        previewWrap.style.display = 'flex';
+        compressInfo.textContent = 'Mengompres gambar...';
+        previewImg.src = '';
+
+        try {
+            const originalSize = file.size;
+
+            // Kompres: maks 1200x1200px, kualitas JPEG 80%
+            // Jika hasil masih > 900KB, kompres lagi dengan kualitas lebih rendah
+            let blob = await compressImage(file, 1200, 1200, 0.80);
+
+            if (blob.size > 900 * 1024) {
+                blob = await compressImage(file, 1000, 1000, 0.65);
+            }
+
+            if (blob.size > 700 * 1024) {
+                blob = await compressImage(file, 800, 800, 0.55);
+            }
+
+            compressedBlob = blob;
+
+            // Tampilkan preview
+            const url = URL.createObjectURL(blob);
+            previewImg.src = url;
             previewWrap.style.display = 'flex';
             dropzone.style.display = 'none';
-        };
-        reader.readAsDataURL(file);
+
+            const savedPct = Math.round((1 - blob.size / originalSize) * 100);
+            compressInfo.textContent = `${formatSize(originalSize)} → ${formatSize(blob.size)}${savedPct > 0 ? ' (hemat ' + savedPct + '%)' : ''}`;
+
+        } catch (err) {
+            showToast('Gagal memproses gambar: ' + err.message, 'error');
+            previewWrap.style.display = 'none';
+            dropzone.style.display = 'flex';
+            compressedBlob = null;
+        }
     }
 
-    inputFile.addEventListener('change', () => handleFile(inputFile.files[0]));
+    inputFile.addEventListener('change', () => { if (inputFile.files[0]) handleFile(inputFile.files[0]); });
     btnGanti.addEventListener('click', e => { e.stopPropagation(); inputFile.click(); });
 
     dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
@@ -427,7 +502,7 @@
     dropzone.addEventListener('drop', e => {
         e.preventDefault();
         dropzone.classList.remove('drag');
-        handleFile(e.dataTransfer.files[0]);
+        if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
     });
 
     async function handleSave() {
@@ -450,8 +525,11 @@
             formData.append('nama_kreator', nama);
             formData.append('deskripsi', desc);
             formData.append('is_aktif', isAktif ? '1' : '0');
-            if (selectedFile) {
-                formData.append('gambar', selectedFile);
+
+            if (compressedBlob) {
+                // Kirim sebagai file dengan nama dan tipe yang benar
+                const fileName = 'gambar_' + Date.now() + '.jpg';
+                formData.append('gambar', compressedBlob, fileName);
             }
 
             if (id) {
@@ -555,8 +633,9 @@
             btnSimpan.textContent = 'Perbarui';
             inputNama.value = row.nama_kreator;
             inputDesc.value = row.deskripsi === '-' ? '' : row.deskripsi;
-            selectedFile = null;
+            compressedBlob = null;
             existingImage = row.gambar_url;
+            compressInfo.textContent = '';
 
             if (row.gambar_url) {
                 previewImg.src = row.gambar_url;
