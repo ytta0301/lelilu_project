@@ -85,7 +85,6 @@
     .banner-title          { font-size: 17px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px; }
     .banner-title em       { font-weight: 400; font-style: italic; }
 
-    /* Referensi: bisa gambar atau teks */
     .banner-img {
       width: 100%;
       max-width: 350px;
@@ -151,7 +150,7 @@
     }
     .field-input:focus { border-color: #f5c518; }
 
-    /* ── Upload area (ref-box style dari order/order) ── */
+    /* ── Upload area ── */
     .ref-box {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -224,6 +223,30 @@
     }
     .btn-edit:active { transform: translateY(0); }
 
+    /* ── Upload progress bar ── */
+    .upload-progress {
+      display: none;
+      margin-top: 8px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .upload-progress.show { display: block; }
+    .upload-progress-bar {
+      height: 100%;
+      background: #f5c518;
+      border-radius: 6px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .upload-size-info {
+      font-size: 11px;
+      color: #999;
+      margin-top: 4px;
+      text-align: right;
+    }
+
     /* ── Toast ── */
     .toast {
       display: none;
@@ -250,21 +273,6 @@
     @keyframes toastIn {
       from { transform: translateX(-50%) translateY(20px); opacity: 0; }
       to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
-    }
-
-    /* ── Checkbox tampil portofolio ── */
-    .checkbox-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: #333;
-      cursor: pointer;
-    }
-    .checkbox-row input[type="checkbox"] {
-      width: 18px; height: 18px;
-      accent-color: #f5c518;
-      cursor: pointer;
     }
 
     /* ── Status select (badge style) ── */
@@ -433,7 +441,8 @@
       {{-- FORM: method PUT, enctype untuk upload file --}}
       <form method="POST"
             action="{{ route('admin.input.update', $pemesanan->id_pemesanan) }}"
-            enctype="multipart/form-data">
+            enctype="multipart/form-data"
+            id="mainForm">
         @csrf
         @method('PUT')
 
@@ -520,7 +529,7 @@
                      placeholder="Masukkan harga yang sudah didiskusikan">
             </div>
 
-            <!-- Upload Hasil Kerja (style order/order) -->
+            <!-- Upload Hasil Kerja -->
             <div>
               <label class="field-label">Hasil Kerja</label>
               <div class="ref-box" id="hasilBox" onclick="handleHasilClick()">
@@ -546,8 +555,16 @@
                 @endif
               </div>
               <button type="button" class="btn-edit" onclick="triggerUpload()">Edit</button>
+
+              {{-- Hidden file input — backend tetap menerima field 'gambar_hasil' --}}
               <input type="file" id="hasilFileInput" name="gambar_hasil"
-                     accept="Image/*" onchange="handleHasilFile(event)" style="display:none">
+                     accept="image/*" onchange="handleHasilFile(event)" style="display:none">
+
+              {{-- Progress bar & info ukuran (hanya tampil saat memilih file) --}}
+              <div class="upload-progress" id="uploadProgress">
+                <div class="upload-progress-bar" id="uploadProgressBar"></div>
+              </div>
+              <div class="upload-size-info" id="uploadSizeInfo"></div>
             </div>
 
             <!-- Status + Save -->
@@ -567,7 +584,7 @@
                 </svg>
               </div>
 
-              <button type="submit" class="send-btn">Save</button>
+              <button type="submit" class="send-btn" id="saveBtn">Save</button>
             </div>
 
           </div>
@@ -597,12 +614,152 @@
   </div>
 
   <script>
-    // Trigger hidden file input
-    function triggerUpload() { document.getElementById('hasilFileInput').click(); }
+    /* ============================================================
+       KOMPRESI GAMBAR DI BROWSER
+       — Mengurangi ukuran file sebelum dikirim ke server
+       — Backend tidak berubah sama sekali: field name tetap 'gambar_hasil'
+       ============================================================ */
 
-    // Klik ref-box hasil kerja: lihat gambar jika sudah ada, upload jika belum
+    // Konfigurasi kompresi — sesuaikan jika perlu
+    var COMPRESS_MAX_WIDTH  = 1280;   // lebar maksimum hasil (px)
+    var COMPRESS_MAX_HEIGHT = 1280;   // tinggi maksimum hasil (px)
+    var COMPRESS_QUALITY    = 0.82;   // kualitas JPEG (0–1)
+    var COMPRESS_MAX_MB     = 4;      // batas aman agar tidak 413
+
+    /**
+     * Kompres File gambar menggunakan Canvas API,
+     * lalu masukkan kembali ke input[type=file] via DataTransfer.
+     * Return Promise<File>
+     */
+    function compressImage(file) {
+      return new Promise(function(resolve, reject) {
+        var reader = new FileReader();
+        reader.onerror = reject;
+        reader.onload = function(ev) {
+          var img = new Image();
+          img.onerror = reject;
+          img.onload = function() {
+            // Hitung dimensi baru (proporsional)
+            var w = img.width;
+            var h = img.height;
+            if (w > COMPRESS_MAX_WIDTH) {
+              h = Math.round(h * COMPRESS_MAX_WIDTH / w);
+              w = COMPRESS_MAX_WIDTH;
+            }
+            if (h > COMPRESS_MAX_HEIGHT) {
+              w = Math.round(w * COMPRESS_MAX_HEIGHT / h);
+              h = COMPRESS_MAX_HEIGHT;
+            }
+
+            // Gambar ke canvas lalu export sebagai JPEG
+            var canvas = document.createElement('canvas');
+            canvas.width  = w;
+            canvas.height = h;
+            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+
+            canvas.toBlob(function(blob) {
+              if (!blob) { reject(new Error('Gagal kompres gambar')); return; }
+              // Buat File baru dengan nama yang sama
+              var ext      = file.name.replace(/\.[^.]+$/, '');
+              var newName  = ext + '_compressed.jpg';
+              var newFile  = new File([blob], newName, { type: 'image/jpeg' });
+              resolve(newFile);
+            }, 'image/jpeg', COMPRESS_QUALITY);
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    /** Format bytes ke string yang mudah dibaca (KB / MB) */
+    function formatSize(bytes) {
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    /** Tampilkan progress bar semu saat kompresi berlangsung */
+    function showProgress(pct) {
+      var bar  = document.getElementById('uploadProgressBar');
+      var wrap = document.getElementById('uploadProgress');
+      wrap.classList.add('show');
+      bar.style.width = pct + '%';
+    }
+    function hideProgress() {
+      document.getElementById('uploadProgress').classList.remove('show');
+      document.getElementById('uploadProgressBar').style.width = '0%';
+    }
+
+    /* ============================================================
+       HANDLER UTAMA — dipanggil saat user memilih file
+       ============================================================ */
+    function handleHasilFile(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+
+      // Validasi: harus berupa gambar
+      if (!file.type.startsWith('image/')) {
+        showToast('❌ File harus berupa gambar (JPG, PNG, dll)');
+        e.target.value = '';
+        return;
+      }
+
+      var originalSizeMB = file.size / (1024 * 1024);
+      showProgress(20);
+      showToast('Mengompres gambar…');
+
+      compressImage(file).then(function(compressed) {
+        showProgress(80);
+
+        var compressedSizeMB = compressed.size / (1024 * 1024);
+
+        // Peringatan jika masih > batas aman (jarang terjadi)
+        if (compressedSizeMB > COMPRESS_MAX_MB) {
+          showToast('⚠️ Gambar masih ' + compressedSizeMB.toFixed(1) + ' MB setelah dikompres. Coba gambar lain.');
+        }
+
+        // Masukkan file yang sudah dikompres ke input — backend menerima seperti biasa
+        var dt = new DataTransfer();
+        dt.items.add(compressed);
+        document.getElementById('hasilFileInput').files = dt.files;
+
+        // Preview
+        var url = URL.createObjectURL(compressed);
+        var preview = document.getElementById('hasilPreview');
+        preview.src = url;
+        preview.classList.add('visible');
+        preview.style.display = 'block';
+
+        var placeholder = document.getElementById('hasilPlaceholder');
+        if (placeholder) placeholder.style.display = 'none';
+        var overlay = document.getElementById('hasilOverlay');
+        if (overlay) overlay.classList.add('active');
+
+        // Info ukuran
+        document.getElementById('uploadSizeInfo').textContent =
+          'Asli: ' + formatSize(file.size) + ' → Setelah kompres: ' + formatSize(compressed.size);
+
+        showProgress(100);
+        setTimeout(hideProgress, 600);
+
+        showToast('✓ Gambar siap (' + formatSize(compressed.size) + ')');
+      }).catch(function(err) {
+        hideProgress();
+        console.error('Compress error:', err);
+        showToast('❌ Gagal mengompres gambar. Coba lagi.');
+      });
+    }
+
+    /* ============================================================
+       FUNGSI LAIN (tidak berubah dari versi awal)
+       ============================================================ */
+
+    function triggerUpload() {
+      document.getElementById('hasilFileInput').click();
+    }
+
     function handleHasilClick() {
-      const img = document.getElementById('hasilPreview');
+      var img = document.getElementById('hasilPreview');
       if (img && img.classList.contains('visible')) {
         openModal(img.src, 'Hasil Kerja', @json($pemesanan->jenis ?? 'Hasil Kerja'));
       } else {
@@ -610,11 +767,10 @@
       }
     }
 
-    // Modal
     function openModal(src, title, desc) {
-      document.getElementById('modalImg').src = src;
+      document.getElementById('modalImg').src   = src;
       document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalDesc').textContent  = desc;
       document.getElementById('imgModal').classList.add('open');
     }
     function closeModal(e) {
@@ -625,36 +781,15 @@
       if (e.key === 'Escape') document.getElementById('imgModal').classList.remove('open');
     });
 
-    // Preview gambar hasil kerja (sama seperti order/order)
-    function handleHasilFile(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        const img = document.getElementById('hasilPreview');
-        img.src = ev.target.result;
-        img.classList.add('visible');
-        img.style.display = 'block';
-        const placeholder = document.getElementById('hasilPlaceholder');
-        if (placeholder) placeholder.style.display = 'none';
-        const overlay = document.getElementById('hasilOverlay');
-        if (overlay) overlay.classList.add('active');
-        showToast('Gambar hasil kerja berhasil dipilih');
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // Ganti warna badge status sesuai pilihan
     function updateStatus(select) {
       select.className = 'status-select status-' + select.value;
     }
 
-    // Toast notification
     function showToast(msg) {
-      const t = document.getElementById('toast');
+      var t = document.getElementById('toast');
       t.textContent = msg;
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2800);
+      setTimeout(function() { t.classList.remove('show'); }, 2800);
     }
   </script>
 
