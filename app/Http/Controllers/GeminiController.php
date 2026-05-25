@@ -22,7 +22,7 @@ class GeminiController extends Controller
         try {
             // Prepend system instruction directly into the prompt
             $systemPrompt =
-            "Kamu adalah asisten virtual LeLiLu Creative (LeCre). Layani pelanggan dengan sopan dan semi-profesional.
+            "Kamu adalah asisten virtual LeLiLu Creative. Layani pelanggan dengan sopan dan semi-profesional.
 
             ATURAN UTAMA:
             - Sapa pelanggan dengan: 'Selamat siang kak.' (hanya saat menyapa pertama)
@@ -73,7 +73,7 @@ class GeminiController extends Controller
 
             $response = $result->text();
         } catch (\Exception $e) {
-            $response = "Error: " . $e->getMessage();
+            $response = "Error: "; //. $e->getMessage();
         }
 
         $history = session('chat_history', []);
