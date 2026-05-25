@@ -134,10 +134,10 @@
         .orders-see-all { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); text-decoration: none; white-space: nowrap; margin-top: 4px; }
         .orders-see-all:hover { text-decoration: underline; }
 
-        .orders-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px; padding-bottom: 40px; }
+        .orders-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px; padding-bottom: 40px; align-items: start; }
 
         .order-card { background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 12px; overflow: hidden; flex: 1; display: flex; flex-direction: column; }
-        .order-card-img { width: 100%; height: 160px; overflow: hidden; background-color: #F0F0F0; }
+        .order-card-img { width: 100%; height: 160px; overflow: hidden; background-color: #F0F0F0; cursor: pointer; }
         .order-card-img img { width: 100%; height: 100%; object-fit: cover; }
         .order-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.85rem; }
         .order-card-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
@@ -149,7 +149,34 @@
         .status-proses     { color: #0d6efd; }
         .status-selesai    { color: #198754; }
         .status-dibatalkan { color: #dc3545; }
-        .order-brief { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Order brief + see more */
+        .order-brief {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .order-brief.expanded {
+            display: block;
+            -webkit-line-clamp: unset;
+        }
+        .see-more-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            align-self: flex-start;
+        }
+        .see-more-btn:hover { color: var(--text-dark); text-decoration: underline; }
 
         /* ===== PROYEK SECTION ===== */
         .proyek-section {
@@ -344,8 +371,8 @@
                                 $gambar = asset('storage/' . $p->referensi);
                             }
                         @endphp
-                        <div class="order-card" onclick="window.location.href='/detail/{{ $p->id_pemesanan }}'">
-                            <div class="order-card-img">
+                        <div class="order-card">
+                            <div class="order-card-img" onclick="window.location.href='/detail/{{ $p->id_pemesanan }}'">
                                 @if($gambar)
                                     <img src="{{ $gambar }}" alt="Gambar Pesanan">
                                 @else
@@ -362,12 +389,17 @@
                                         {{ match($p->status) {
                                             'pending'    => 'Pending',
                                             'proses'     => 'On progress',
-                                            'selesai'    => 'selesai',
+                                            'selesai'    => 'Selesai',
                                             'dibatalkan' => 'Dibatalkan',
                                         } }}
                                     </span>
                                 </div>
-                                <p class="order-brief">{{ $p->brief }}</p>
+                                <p class="order-brief" id="brief-{{ $p->id_pemesanan }}">{{ $p->brief }}</p>
+                                @if(strlen($p->brief) > 80)
+                                    <button class="see-more-btn" onclick="toggleBrief('{{ $p->id_pemesanan }}', this)">
+                                        lihat selengkapnya ▾
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -398,6 +430,14 @@
 
     <!-- Footer -->
     @include('partfoot.footer')
+
+    <script>
+        function toggleBrief(id, btn) {
+            const el = document.getElementById('brief-' + id);
+            const expanded = el.classList.toggle('expanded');
+            btn.textContent = expanded ? 'sembunyikan ▴' : 'lihat selengkapnya ▾';
+        }
+    </script>
 
 </body>
 </html>
