@@ -84,7 +84,6 @@
         /* ===== WAVE ===== */
         .custom-wave-container { position: absolute; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 0; }
         .wave-divider { bottom: -1px; }
-        .wave-footer { top: 0; transform: rotate(180deg); }
 
         /* ===== CAROUSEL ===== */
         #bestSellerCarousel { position: relative; overflow: hidden; }
@@ -100,72 +99,97 @@
         /* ===== MODAL ===== */
         .wmodal-overlay {
             display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.7); z-index: 999;
+            background: rgba(0,0,0,0.75); z-index: 999;
             align-items: center; justify-content: center;
             cursor: pointer;
         }
-        .wmodal-overlay.open { display: flex; }
+        .wmodal-overlay.open {
+            display: flex;
+            animation: wFadeIn 0.22s ease forwards;
+        }
+        .wmodal-overlay.closing {
+            animation: wFadeOut 0.22s ease forwards;
+        }
+        @keyframes wFadeIn  { from { opacity:0; } to { opacity:1; } }
+        @keyframes wFadeOut { from { opacity:1; } to { opacity:0; } }
+
         .wmodal-box {
-            position: relative; max-width: 70vw; max-height: 80vh;
+            position: relative; max-width: 72vw; max-height: 82vh;
             cursor: default; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 12px 50px rgba(0,0,0,0.4);
-            animation: zoomIn 0.25s ease;
+            box-shadow: 0 12px 50px rgba(0,0,0,0.5);
         }
-        @keyframes zoomIn { from { opacity:0; transform:scale(0.92); } to { opacity:1; transform:scale(1); } }
-        .wmodal-box img { display: block; width: 100%; max-height: 70vh; object-fit: contain; }
+        .wmodal-overlay.open    .wmodal-box { animation: wZoomIn  0.25s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+        .wmodal-overlay.closing .wmodal-box { animation: wZoomOut 0.2s ease-in forwards; }
+        @keyframes wZoomIn  { from { opacity:0; transform:scale(0.86); } to { opacity:1; transform:scale(1); } }
+        @keyframes wZoomOut { from { opacity:1; transform:scale(1);    } to { opacity:0; transform:scale(0.9); } }
+
+        .wmodal-box img { display:block; width:100%; max-height:72vh; object-fit:contain; }
         .wmodal-caption {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 30px 20px 16px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            position:absolute; bottom:0; left:0; right:0;
+            padding:28px 18px 14px;
+            background:linear-gradient(transparent,rgba(0,0,0,0.78));
         }
-        .wmodal-caption h3 { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 2px; }
-        .wmodal-caption p  { font-size: 0.82rem; color: #ddd; margin: 0; line-height: 1.4; }
+        .wmodal-caption h3 { font-size:1rem; font-weight:700; color:#fff; margin:0 0 3px; }
+        .wmodal-caption p  { font-size:0.82rem; color:#ddd; margin:0; line-height:1.4; }
         .wmodal-close {
-            position: absolute; top: 12px; right: 16px; font-size: 30px;
-            color: #fff; cursor: pointer; line-height: 1; z-index: 10;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5); transition: transform 0.2s;
+            position:absolute; top:10px; right:14px; font-size:28px;
+            color:#fff; cursor:pointer; line-height:1; z-index:10;
+            text-shadow:0 2px 8px rgba(0,0,0,0.5); transition:transform 0.18s;
         }
-        .wmodal-close:hover { transform: scale(1.2); }
+        .wmodal-close:hover { transform:scale(1.2); }
 
         /* ===== CAROUSEL CARD ===== */
         .carousel-card {
             min-width: 300px; flex-shrink: 0; cursor: pointer;
             position: relative; border-radius: 1rem; overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            /* Hapus transform scale — penyebab kedap-kedip karena
-               kartu membesar lalu cursor keluar → mouseenter loop */
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-        .carousel-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); z-index: 5; }
-        .carousel-card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .carousel-card:hover {
+            box-shadow: 0 16px 28px -5px rgba(0,0,0,0.18);
+            transform: translateY(-4px);  /* naik sedikit — tidak membesar, tidak flicker */
+            z-index: 5;
+        }
+        .carousel-card img { width:100%; height:250px; object-fit:cover; display:block; }
 
         .card-overlay {
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-            background: rgba(0,0,0,0.45); backdrop-filter: blur(2px);
+            position:absolute; inset:0;
+            display:flex; align-items:center; justify-content:center;
+            opacity:0; transition:opacity 0.3s ease;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(2px);
         }
-        .carousel-card:hover .card-overlay { opacity: 1; }
+        .carousel-card:hover .card-overlay { opacity:1; }
         .card-popup {
-            background: white; padding: 1rem 1.25rem; border-radius: 0.625rem;
-            text-align: center; transform: translateY(12px); transition: transform 0.2s ease;
-            min-width: 160px; pointer-events: none;
+            background:white; padding:0.875rem 1.125rem; border-radius:0.625rem;
+            text-align:center; transform:translateY(10px); transition:transform 0.2s ease;
+            min-width:150px; pointer-events:none;
         }
-        .carousel-card:hover .card-popup { transform: translateY(0); }
+        .carousel-card:hover .card-popup { transform:translateY(0); }
+
+        /* Hint "klik untuk lihat" */
+        .card-click-hint {
+            position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+            background:rgba(0,0,0,0.55); color:#fff;
+            font-size:0.68rem; font-weight:600; letter-spacing:0.04em;
+            padding:3px 10px; border-radius:20px;
+            opacity:0; transition:opacity 0.3s ease;
+            pointer-events:none; white-space:nowrap;
+        }
+        .carousel-card:hover .card-click-hint { opacity:1; }
 
         .carousel-nav-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            z-index: 20; width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 18px; color: #333;
-            transition: background 0.2s, transform 0.2s; line-height: 1;
+            position:absolute; top:50%; transform:translateY(-50%);
+            z-index:20; width:40px; height:40px; border-radius:50%;
+            background:rgba(255,255,255,0.9); border:1px solid rgba(0,0,0,0.1);
+            box-shadow:0 2px 8px rgba(0,0,0,0.15);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; font-size:18px; color:#333;
+            transition:background 0.2s, transform 0.2s; line-height:1;
         }
-        .carousel-nav-btn:hover { background: #FFD700; transform: translateY(-50%) scale(1.1); }
-        #carouselBtnLeft  { left: 8px; }
-        #carouselBtnRight { right: 8px; }
-        .carousel-empty { padding: 40px 20px; text-align: center; color: #aaa; font-size: 14px; width: 100%; }
+        .carousel-nav-btn:hover { background:#FFD700; transform:translateY(-50%) scale(1.1); }
+        #carouselBtnLeft  { left:8px; }
+        #carouselBtnRight { right:8px; }
+        .carousel-empty { padding:40px 20px; text-align:center; color:#aaa; font-size:14px; width:100%; }
     </style>
 </head>
 
@@ -222,17 +246,18 @@
             </div>
 
             <div class="fade-in-up" style="animation-delay: 0.2s;">
-                <div id="bestSellerCarousel" style="position: relative;">
+                <div id="bestSellerCarousel" style="position:relative;">
 
                     @if ($portofolios->isNotEmpty())
                     <button id="carouselBtnLeft"  class="carousel-nav-btn" aria-label="Sebelumnya">&#8249;</button>
                     <button id="carouselBtnRight" class="carousel-nav-btn" aria-label="Berikutnya">&#8250;</button>
                     @endif
 
-                    <div style="overflow: hidden;">
+                    <div style="overflow:hidden;">
                         <div id="carouselTrack">
                             @forelse ($portofolios as $porto)
-                            <div class="carousel-card" onmouseenter="openWModal(this)">
+                            {{-- onclick: buka modal. Tidak ada onmouseenter → tidak ada flicker --}}
+                            <div class="carousel-card" onclick="openWModal(this)">
                                 @if ($porto->gambar_url)
                                 <img src="{{ $porto->gambar_url }}"
                                     alt="{{ $porto->deskripsi ?? $porto->nama_kreator }}"
@@ -250,6 +275,9 @@
                                         @endif
                                     </div>
                                 </div>
+                                {{-- Hint klik --}}
+                                <span class="card-click-hint">Klik untuk lihat</span>
+                                {{-- Data modal --}}
                                 <span class="wmodal-data" style="display:none"
                                     data-title="{{ $porto->nama_kreator }}"
                                     data-desc="{{ addslashes($porto->deskripsi ?? '') }}"
@@ -358,12 +386,12 @@
                 </div>
                 <div class="lg:col-span-5 pt-10 lg:pt-20 reveal delay-200">
                     <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-poppins">
-                        Partner Terpercaya untuk Solusi Digital Anda
+                        Wujudkan Desain Impian Anda Bersama Lelilu Creative
                     </h3>
                     <p class="text-gray-600 text-base mb-8">
-                        LeLiLu memberikan layanan digital cepat, efisien, dan berkualitas.
-                        Dengan tim profesional, kami fokus memberikan hasil terbaik sekaligus
-                        membangun hubungan jangka panjang bagi setiap klien.
+                    Lelilu Creative adalah solusi tepat untuk kebutuhan desain Anda. 
+                    Kami menghadirkan layanan desain sat-set, profesional, dan terpercaya. 
+                    Tuangkan ide Anda, dan kami akan  mengubahnya menjadi karya visual yang memukau!
                     </p>
                     <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
                         @foreach ([
@@ -405,37 +433,60 @@
     </div>
 
     <script>
-    /* ── Carousel pause state — dikontrol global ── */
-    window._carouselPaused = false;
+    /* ══════════════════════════════════════════
+       MODAL — dibuka dengan KLIK, bukan hover
+       Tidak ada masalah flicker sama sekali
+    ══════════════════════════════════════════ */
+    let _wClosing = false;
 
     function openWModal(el) {
         const data = el.querySelector('.wmodal-data');
         if (!data || !data.dataset.img) return;
-        document.getElementById('wModalImg').src              = data.dataset.img;
-        document.getElementById('wModalTitle').textContent    = data.dataset.title;
-        document.getElementById('wModalDesc').textContent     = data.dataset.desc;
-        document.getElementById('wModal').classList.add('open');
-        window._carouselPaused = true;   /* pause langsung */
+
+        const modal = document.getElementById('wModal');
+
+        /* Update konten */
+        document.getElementById('wModalImg').src           = data.dataset.img;
+        document.getElementById('wModalTitle').textContent = data.dataset.title;
+        document.getElementById('wModalDesc').textContent  = data.dataset.desc;
+
+        /* Buka dengan animasi */
+        modal.classList.remove('closing');
+        modal.classList.add('open');
+        _wClosing = false;
+
+        /* Pause carousel saat modal terbuka */
+        window._carouselPaused = true;
     }
 
     function closeWModal(e) {
+        /* Jika klik dari dalam box, abaikan */
         if (e && e.target !== e.currentTarget) return;
-        document.getElementById('wModal').classList.remove('open');
-        window._carouselPaused = false;  /* resume langsung */
+        _doClose();
     }
 
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            document.getElementById('wModal').classList.remove('open');
-            window._carouselPaused = false;
-        }
+    function _doClose() {
+        const modal = document.getElementById('wModal');
+        if (!modal.classList.contains('open') || _wClosing) return;
+        _wClosing = true;
+
+        modal.classList.add('closing');
+        setTimeout(function () {
+            modal.classList.remove('open', 'closing');
+            _wClosing = false;
+            window._carouselPaused = false; /* carousel jalan lagi */
+        }, 220);
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') _doClose();
     });
     </script>
 
     <!-- ================= CAROUSEL SCRIPT ================= -->
     @if ($portofolios->isNotEmpty())
     <script>
-    (function() {
+    (function () {
         const track    = document.getElementById('carouselTrack');
         const carousel = document.getElementById('bestSellerCarousel');
         const btnLeft  = document.getElementById('carouselBtnLeft');
@@ -444,29 +495,30 @@
         if (!track || track.children.length === 0) return;
 
         const origCards = Array.from(track.children);
-        origCards.forEach(card => track.appendChild(card.cloneNode(true)));
+        origCards.forEach(c => track.appendChild(c.cloneNode(true)));
 
-        function totalOrigWidth() {
+        function totalW() {
             let w = 0;
-            origCards.forEach(card => { w += card.offsetWidth + 20; });
+            origCards.forEach(c => { w += c.offsetWidth + 20; });
             return w;
         }
+
+        /* _carouselPaused diset oleh modal script di atas */
+        window._carouselPaused = window._carouselPaused || false;
 
         let offset = 0, hovered = false, lastTime = null;
         const SPEED = 17000;
 
+        /* Carousel hanya berhenti saat di-hover (bukan karena modal hover) */
         carousel.addEventListener('mouseenter', () => { hovered = true;  });
         carousel.addEventListener('mouseleave', () => { hovered = false; });
 
         function animate(ts) {
-            /* Paused jika: cursor di atas carousel ATAU modal sedang buka */
             const paused = hovered || window._carouselPaused;
-
             if (!paused) {
                 if (lastTime !== null) {
-                    const delta = ts - lastTime;
-                    offset += (delta / SPEED) * totalOrigWidth();
-                    if (offset >= totalOrigWidth()) offset -= totalOrigWidth();
+                    offset += ((ts - lastTime) / SPEED) * totalW();
+                    if (offset >= totalW()) offset -= totalW();
                     track.style.transform = 'translateX(-' + offset + 'px)';
                 }
                 lastTime = ts;
@@ -478,15 +530,13 @@
 
         btnLeft && btnLeft.addEventListener('click', e => {
             e.stopPropagation();
-            const step = (origCards[0]?.offsetWidth || 300) + 20;
-            offset = Math.max(0, offset - step);
+            offset = Math.max(0, offset - ((origCards[0]?.offsetWidth || 300) + 20));
             track.style.transform = 'translateX(-' + offset + 'px)';
         });
 
         btnRight && btnRight.addEventListener('click', e => {
             e.stopPropagation();
-            const step = (origCards[0]?.offsetWidth || 300) + 20;
-            offset = (offset + step) % totalOrigWidth();
+            offset = (offset + (origCards[0]?.offsetWidth || 300) + 20) % totalW();
             track.style.transform = 'translateX(-' + offset + 'px)';
         });
 

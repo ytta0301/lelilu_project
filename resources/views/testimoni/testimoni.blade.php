@@ -107,20 +107,18 @@
     /* ===== GRID ===== */
     .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
     /* ===== CARD ===== */
     .card {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 16px;
       padding: 22px 20px 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 160px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s, transform 0.2s;
     }
@@ -152,6 +150,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid #f0f0f0;
     }
 
     .avatar-wrap {
@@ -226,7 +226,6 @@
     }
 
     @media (max-width: 800px) {
-      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
       nav { flex-wrap: wrap; height: auto; padding: 12px 20px; gap: 12px; }
       .nav-logo { padding: 8px 0; border-right: none; }
       .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -299,12 +298,10 @@
     <div class="testimonial-grid">
       @forelse ($testimonis as $t)
         <div class="card">
-          <p class="card-text" onclick="this.classList.toggle('expanded')">{{ $t->isi_testimoni }}</p>
+          <p class="card-text" onclick="this.classList.toggle('expanded')">"{{ $t->isi_testimoni }}"</p>
           <div class="card-author">
             <div class="avatar-wrap">
-              <div class="avatar-placeholder" style="background: {{ '#' . substr(md5($t->user->name ?? $t->nama), 0, 6) }}">
-                {{ strtoupper(substr($t->user->name ?? $t->nama, 0, 2)) }}
-              </div>
+              <img src="https://placehold.co/40x40" alt="{{ $t->nama }}" class="avatar">
               <div class="badge">
                 <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
                   <polyline points="2,5 4.5,7.5 8,3" stroke="white" stroke-width="1.8"
@@ -314,6 +311,9 @@
             </div>
             <div class="author-info">
               <span class="author-name">{{ $t->user->name ?? $t->nama }}</span>
+              @if ($t->user)
+              <span class="author-handle">{{ $t->user->whatsapp ? '+'.ltrim($t->user->whatsapp, '0') : '' }}</span>
+              @endif
             </div>
           </div>
         </div>

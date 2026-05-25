@@ -149,6 +149,7 @@
       padding: 3px 8px;
       border-radius: 6px;
       letter-spacing: 0.5px;
+      z-index: 2;
     }
 
     .gallery-empty {
@@ -166,6 +167,85 @@
     .placeholder-hasil {
       width: 100%; height: 100%;
       background: linear-gradient(135deg, #d0d0d0, #e8e8e8);
+    }
+
+    /* ── Gallery clickable ── */
+    .gallery-item.clickable {
+      cursor: zoom-in;
+    }
+    .gallery-hint {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .gallery-item.clickable:hover .gallery-hint { opacity: 1; }
+
+    /* ── Image Popup Overlay ── */
+    #imgOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    #imgOverlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #imgOverlay img {
+      max-width: 92vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      object-fit: contain;
+      transform: scale(0.9);
+      transition: transform 0.25s ease;
+      display: block;
+    }
+    #imgOverlay.open img {
+      transform: scale(1);
+    }
+    .overlay-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      color: #fff;
+      font-size: 36px;
+      cursor: pointer;
+      line-height: 1;
+      font-weight: 300;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .overlay-close:hover { opacity: 1; }
+    .overlay-label {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255,255,255,0.15);
+      padding: 4px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
     }
 
     /* ── Status track ── */
@@ -189,7 +269,6 @@
       z-index: 0;
     }
 
-    /* Garis progress aktif — lebar diatur JS */
     .status-track::after {
       content: '';
       position: absolute;
@@ -219,8 +298,8 @@
       justify-content: center;
       transition: background 0.3s;
     }
-    .status-dot.active   { background: #2dd4a0; }
-    .status-dot.inactive { background: #d0d0d0; }
+    .status-dot.active    { background: #2dd4a0; }
+    .status-dot.inactive  { background: #d0d0d0; }
     .status-dot.cancelled { background: #fca5a5; }
 
     .status-dot svg {
@@ -273,6 +352,13 @@
 </head>
 <body>
 
+<!-- IMAGE POPUP OVERLAY -->
+<div id="imgOverlay" onclick="overlayBgClick(event)">
+  <span class="overlay-close" onclick="closeOverlay()">&times;</span>
+  <img id="overlayImg" src="" alt="">
+  <span class="overlay-label" id="overlayLabel"></span>
+</div>
+
 <div class="page">
 
   <!-- NAVBAR -->
@@ -283,7 +369,6 @@
 
   <!-- NOMOR PESANAN -->
   <div class="card">
-    <!-- <div class="/admin/input/">#{{ $pemesanan->id_pemesanan }}</div> -->
     <div class="order-number">Pesanan #{{ $pemesanan->id_pemesanan }}</div>
     <div class="order-date">
       Dibuat pada {{ \Carbon\Carbon::parse($pemesanan->created_at)->isoFormat('D MMMM Y') }}
@@ -335,31 +420,39 @@
   <!-- GALLERY: Referensi + Hasil -->
   <div class="gallery">
 
-    {{-- Gambar Referensi (dari user saat order) --}}
-    <div class="gallery-item">
-      <span class="gallery-label">Referensi</span>
-      @if ($pemesanan->referensi)
+    {{-- Gambar Referensi --}}
+    @if ($pemesanan->referensi)
+      <div class="gallery-item clickable" onclick="openOverlay('{{ Storage::url($pemesanan->referensi) }}', 'Referensi')">
+        <span class="gallery-label">Referensi</span>
         <img src="{{ Storage::url($pemesanan->referensi) }}"
              alt="Referensi"
-             onerror="this.parentElement.innerHTML='<div class=\'placeholder-referensi\'></div><span class=\'gallery-label\'>Referensi</span>'">
-      @else
+             onerror="this.parentElement.classList.remove('clickable'); this.parentElement.innerHTML='<div class=\'placeholder-referensi\'></div><span class=\'gallery-label\'>Referensi</span>'">
+        <span class="gallery-hint">🔍 Klik untuk lihat</span>
+      </div>
+    @else
+      <div class="gallery-item">
+        <span class="gallery-label">Referensi</span>
         <div class="placeholder-referensi"></div>
         <span style="position:absolute;bottom:10px;font-size:11px;color:rgba(255,255,255,0.7);">Belum ada</span>
-      @endif
-    </div>
+      </div>
+    @endif
 
-    {{-- Gambar Hasil Kerja (dari admin) --}}
-    <div class="gallery-item" style="position:relative;">
-      <span class="gallery-label">Hasil</span>
-      @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
+    {{-- Gambar Hasil Kerja --}}
+    @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
+      <div class="gallery-item clickable" onclick="openOverlay('{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}', 'Hasil')">
+        <span class="gallery-label">Hasil</span>
         <img src="{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}"
              alt="Hasil Kerja"
-             onerror="this.parentElement.innerHTML='<div class=\'placeholder-hasil\'></div><span class=\'gallery-label\'>Hasil</span>'">
-      @else
+             onerror="this.parentElement.classList.remove('clickable'); this.parentElement.innerHTML='<div class=\'placeholder-hasil\'></div><span class=\'gallery-label\'>Hasil</span>'">
+        <span class="gallery-hint">🔍 Klik untuk lihat</span>
+      </div>
+    @else
+      <div class="gallery-item">
+        <span class="gallery-label">Hasil</span>
         <div class="placeholder-hasil"></div>
         <span class="gallery-empty" style="position:absolute;">Belum tersedia</span>
-      @endif
-    </div>
+      </div>
+    @endif
 
   </div>
 
@@ -371,13 +464,6 @@
     </div>
 
     @php
-      /*
-       * Mapping status DB → berapa step yang aktif:
-       * pending    → 1 step  (Pemesanan)
-       * proses     → 3 steps (Pemesanan, Pembayaran, Progress)
-       * selesai    → 4 steps (semua)
-       * dibatalkan → 1 step aktif, sisanya merah
-       */
       $activeSteps = match($pemesanan->status) {
         'pending'    => 1,
         'proses'     => 3,
@@ -417,7 +503,6 @@
 
   <!-- REVISI -->
   <!-- <div class="revisi-section">
-    {{-- Tombol revisi hanya aktif jika status proses/selesai, bukan dibatalkan --}}
     @if (in_array($pemesanan->status, ['proses', 'selesai']))
       <button class="revisi-btn">Butuh Revisi? Kami bisa!</button>
     @else
@@ -433,19 +518,36 @@
 </div>
 
 <script>
-  // Animasikan garis progress status track
-  (function () {
-    const track     = document.getElementById('statusTrack');
-    if (!track) return;
-    const active    = parseInt(track.dataset.active, 10);
-    const total     = 4; // jumlah step
-    const segments  = total - 1; // jumlah garis antar step
-    const pct       = Math.max(0, Math.min(1, (active - 1) / segments));
-    track.style.setProperty('--progress', pct);
+  /* ── Image Popup ── */
+  function openOverlay(src, label) {
+    var overlay = document.getElementById('imgOverlay');
+    document.getElementById('overlayImg').src = src;
+    document.getElementById('overlayLabel').textContent = label;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 
-    // Sesuaikan pseudo-element ::after lewat inline style width
-    // Karena CSS pseudo-element tidak bisa diset via JS langsung,
-    // kita gunakan custom property dan set via style tag
+  function closeOverlay() {
+    document.getElementById('imgOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function overlayBgClick(e) {
+    if (e.target === document.getElementById('imgOverlay')) closeOverlay();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeOverlay();
+  });
+
+  /* ── Status track progress bar ── */
+  (function () {
+    const track    = document.getElementById('statusTrack');
+    if (!track) return;
+    const active   = parseInt(track.dataset.active, 10);
+    const segments = 3;
+    const pct      = Math.max(0, Math.min(1, (active - 1) / segments));
+
     const style = document.createElement('style');
     style.textContent = `
       #statusTrack::after {

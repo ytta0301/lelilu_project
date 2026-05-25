@@ -37,7 +37,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/order', [PemesananController::class, 'create'])->name('order.create');
 Route::post('/order', [PemesananController::class, 'store'])->name('order.store');
 Route::get('/order/thanks', [PemesananController::class, 'thanks'])->name('order.thanks');
-Route::get('/payment', fn() => view('payment.payment'));
 Route::get('/portofolio', [PortofolioController::class, 'index'])->name('portofolio');
 Route::get('/history', [HistoryController::class, 'index'])->name('history');
 

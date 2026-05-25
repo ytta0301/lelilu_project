@@ -339,6 +339,69 @@
       .main { padding: 20px 16px; }
       .page-title { font-size: 20px; }
     }
+
+    /* ===== MODAL GAMBAR ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: fadeIn 0.25s ease;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      max-width: 90vw;
+      max-height: 90vh;
+      cursor: default;
+      animation: zoomIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-box img {
+      max-width: 90vw;
+      max-height: 70vh;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      display: block;
+    }
+    .modal-desc {
+      background: #fff;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 0 0 12px 12px;
+      text-align: left;
+    }
+    .modal-desc h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .modal-desc p {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform 0.2s;
+      z-index: 1000;
+    }
+    .modal-close:hover { transform: scale(1.2); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -414,6 +477,8 @@
                 <img class="banner-img"
                      src="{{ Storage::url($pemesanan->referensi) }}"
                      alt="Referensi desain"
+                     style="cursor:pointer"
+                     onclick='openModal(this.src,"Referensi",@json($pemesanan->jenis ?? "Referensi Desain"))'
                      onerror="this.style.display='none';document.getElementById('ref-placeholder').style.display='block';">
                 <div class="banner-placeholder" id="ref-placeholder" style="display:none;"></div>
               @else
@@ -458,7 +523,7 @@
             <!-- Upload Hasil Kerja (style order/order) -->
             <div>
               <label class="field-label">Hasil Kerja</label>
-              <div class="ref-box" id="hasilBox" onclick="triggerUpload()">
+              <div class="ref-box" id="hasilBox" onclick="handleHasilClick()">
                 @if ($pemesanan->fileHasil && $pemesanan->fileHasil->gambar_hasil)
                   <img class="ref-preview visible" id="hasilPreview"
                        src="{{ Storage::url($pemesanan->fileHasil->gambar_hasil) }}" alt="Hasil">
@@ -519,9 +584,46 @@
   <!-- Toast -->
   <div class="toast" id="toast"></div>
 
+  <!-- Modal Gambar -->
+  <div class="modal-overlay" id="imgModal" onclick="closeModal(event)">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-box">
+      <img id="modalImg" src="" alt="">
+      <div class="modal-desc">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Trigger hidden file input
     function triggerUpload() { document.getElementById('hasilFileInput').click(); }
+
+    // Klik ref-box hasil kerja: lihat gambar jika sudah ada, upload jika belum
+    function handleHasilClick() {
+      const img = document.getElementById('hasilPreview');
+      if (img && img.classList.contains('visible')) {
+        openModal(img.src, 'Hasil Kerja', @json($pemesanan->jenis ?? 'Hasil Kerja'));
+      } else {
+        triggerUpload();
+      }
+    }
+
+    // Modal
+    function openModal(src, title, desc) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('imgModal').classList.add('open');
+    }
+    function closeModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('imgModal').classList.remove('open');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('imgModal').classList.remove('open');
+    });
 
     // Preview gambar hasil kerja (sama seperti order/order)
     function handleHasilFile(e) {
