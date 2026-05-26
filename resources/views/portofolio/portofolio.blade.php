@@ -341,11 +341,11 @@
 
 {{-- PROYEK SECTION --}}
 <section class="proyek-section">
-  <div class="proyek-left">
-    <h2 class="proyek-title">Punya Proyek<br>untuk <span class="highlight">Kami?</span></h2>
-    <p class="proyek-desc">Lorem ipsum dolor sit amet,<br>consectetur adipiscing elit,<br>sed do</p>
-    <a href="{{ url('/order') }}" class="btn-gabung">Ayo gabung<br>sekarang!</a>
-  </div>
+   <div class="proyek-left">
+            <h2 class="proyek-title">Butuh Benner Kreatif <br>Untuk<span class="highlight"> Bisnis MU? </span></h2>
+            <p class="proyek-desc">Sampaikan konsep atau ide kasarmu. Tim desainer kami siap mengeksekusinya menjadi visual promosi yang memikat dan tepat sasaran.<br>Untuk Anda</p>
+            <a href="{{ url('/order') }}" class="btn-gabung">Mulai Project<br>Anda!</a>
+        </div>
   <div class="proyek-right">
     <div class="proyek-img-placeholder">
       <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a 0%,#333 100%);display:flex;align-items:center;justify-content:center;">

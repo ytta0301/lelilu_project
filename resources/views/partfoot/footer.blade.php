@@ -10,39 +10,39 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-5 pb-[8rem] pt-[12rem] bg-[#2c2a2a] md:bg-transparent">
         <div class="flex flex-col md:flex-row gap-8">
             <div>
-                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan & Dukungan</h3>
+                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Bantuan </h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li><a href="#" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
+                    <li><a href="https://wa.me/6287787550993" class="hover:text-yellow-400 transition">Hubungi Kami</a></li>
+                     <li><a href="/chatbot" class="hover:text-yellow-400 transition">Customer Services</a></li>
+                     <!-- <li><a href="/chatbot" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li> -->
+                    <!-- <li><a href="#" class="hover:text-yellow-400 transition">Pusat Bantuan</a></li>
                     <li><a href="#" class="hover:text-yellow-400 transition">Syarat & Ketentuan</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Kebijakan Privasi</a></li> -->
                 </ul>
             </div>
             <div>
-                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
+                <!-- <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Layanan & Informasi</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="#" class="hover:text-yellow-400 transition">Pemesanan Online</a></li>
                     <li><a href="#" class="hover:text-yellow-400 transition">Informasi Testimoni</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Customer Services</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Jasa Desain</a></li> --> 
                 </ul>
             </div>
             <div>
-                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Tentang Kami</h3>
+                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Account Media Sosial</h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li><a href="#" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Karier</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Partner & Kerja Sama</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Kontak Kami</a></li>
+                    <!-- <li><a href="#siapakami" class="hover:text-yellow-400 transition">Tentang LeLiLu</a></li> -->
+                    <li><a href="#" class="hover:text-yellow-400 transition">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/lecrestudio?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="hover:text-yellow-400 transition">Instagram</a></li>
+                    <!-- <li><a href="#" class="hover:text-yellow-400 transition">X</a></li> -->
                 </ul>
             </div>
             <div>
-                <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
+                <!-- <h3 class="font-bold mb-4 text-gray-300 uppercase tracking-wider">Panduan Pengguna</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="#" class="hover:text-yellow-400 transition">Cara Daftar Akun</a></li>
                     <li><a href="#" class="hover:text-yellow-400 transition">Cara Pemesanan Online</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li>
-                    <li><a href="#" class="hover:text-yellow-400 transition">Informasi Lainnya</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Panduan Pembayaran</a></li> -->
                 </ul>
             </div>
         </div>

@@ -51,7 +51,8 @@ class GeminiController extends Controller
             WAKTU PENGERJAAN:
             - Maksimal 24 jam untuk desain reguler (banner, foto profil, dll.)
 
-            Jika pelanggan bertanya detail harga spesifik yang tidak ada di atas, arahkan untuk menghubungi admin LeLiLu Creative.;  
+            Jika pelanggan bertanya detail harga spesifik yang tidak ada di atas, arahkan untuk menghubungi admin LeLiLu Creative.
+            Nomer admin adalah 087787550993 (WhatsApp).;  
             \n\n";
             $fullPrompt = $systemPrompt . $request->input('prompt');
 
